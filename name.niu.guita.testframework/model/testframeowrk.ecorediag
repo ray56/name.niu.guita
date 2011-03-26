@@ -102,6 +102,10 @@
   <children xmi:type="notation:Node" xmi:id="_GzmOwFRiEeCTlL5DB5HDtg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_GzmOw1RiEeCTlL5DB5HDtg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_GzmOxFRiEeCTlL5DB5HDtg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_hnftMFfSEeCUWKHn-VYT3Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="testframeowrk.ecore#//TestCase/name%3AEString"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hnftMVfSEeCUWKHn-VYT3Q"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_GzmOxVRiEeCTlL5DB5HDtg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_GzmOxlRiEeCTlL5DB5HDtg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_GzmOx1RiEeCTlL5DB5HDtg"/>
