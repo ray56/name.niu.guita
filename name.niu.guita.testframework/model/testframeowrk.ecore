@@ -36,6 +36,7 @@
     <eOperations name="stop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTestCase" upperBound="-1"
         eType="#//TestCase" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name:EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UISUTVariable" eSuperTypes="#//UIVariableBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" upperBound="-1"

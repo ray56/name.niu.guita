@@ -130,6 +130,10 @@
   <children xmi:type="notation:Node" xmi:id="_xwXIsFRlEeCTlL5DB5HDtg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_xwXIs1RlEeCTlL5DB5HDtg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_xwXItFRlEeCTlL5DB5HDtg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_0O2C0FfSEeCUWKHn-VYT3Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="testframeowrk.ecore#//TestSuite/name%3AEString"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_0O2C0VfSEeCUWKHn-VYT3Q"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_xwXItVRlEeCTlL5DB5HDtg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_xwXItlRlEeCTlL5DB5HDtg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_xwXIt1RlEeCTlL5DB5HDtg"/>
