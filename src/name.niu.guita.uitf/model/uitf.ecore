@@ -4,5 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uitf"
     nsURI="http://www.niu.name/guita/uitf/1.0" nsPrefix="UITF_">
   <eClassifiers xsi:type="ecore:EClass" name="TestCase"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TestSuite"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestSuite">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsTestCase" upperBound="-1"
+        eType="#//TestCase" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

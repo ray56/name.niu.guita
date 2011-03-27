@@ -15,7 +15,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_XgX_6VhZEeCpZYKr4oI5_Q"/>
     </children>
     <element xmi:type="ecore:EClass" href="uitf.ecore#//TestCase"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XgO18VhZEeCpZYKr4oI5_Q" x="110" y="82" width="96" height="69"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XgO18VhZEeCpZYKr4oI5_Q" x="200" y="95" width="96" height="69"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_ZGTb4FhZEeCpZYKr4oI5_Q" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_ZGTb4lhZEeCpZYKr4oI5_Q" type="5001"/>
@@ -36,4 +36,15 @@
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_qRzJclhXEeCpZYKr4oI5_Q"/>
   <element xmi:type="ecore:EPackage" href="uitf.ecore#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_gZTIYFhZEeCpZYKr4oI5_Q" type="4003" source="_ZGTb4FhZEeCpZYKr4oI5_Q" target="_XgO18FhZEeCpZYKr4oI5_Q">
+    <children xmi:type="notation:DecorationNode" xmi:id="_gZTIY1hZEeCpZYKr4oI5_Q" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gZTIZFhZEeCpZYKr4oI5_Q" x="25" y="-22"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_gZTIZVhZEeCpZYKr4oI5_Q" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gZTIZlhZEeCpZYKr4oI5_Q" x="-1" y="18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_gZTIYVhZEeCpZYKr4oI5_Q"/>
+    <element xmi:type="ecore:EReference" href="uitf.ecore#//TestSuite/itsTestCase"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_gZTIYlhZEeCpZYKr4oI5_Q" points="[36, 3, -166, -5]$[205, 43, 3, 35]"/>
+  </edges>
 </notation:Diagram>
