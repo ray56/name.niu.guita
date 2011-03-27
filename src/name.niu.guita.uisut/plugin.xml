@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.niu.name/guita/uisut/1.0"
-            class="UISUTModel.UISUTModelPackage"
+            class="name.niu.guita.uisut.uisutPackage"
             genModel="model/uisut.genmodel"/>
    </extension>
 
