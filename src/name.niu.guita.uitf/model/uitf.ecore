@@ -3,9 +3,22 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uitf"
     nsURI="http://www.niu.name/guita/uitf/1.0" nsPrefix="UITF_">
-  <eClassifiers xsi:type="ecore:EClass" name="TestCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISUT" lowerBound="1"
+        eType="#//UISUT" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statements" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestSuite">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTestCase" upperBound="-1"
         eType="#//TestCase" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UIVariable" eSuperTypes="#//Variable"/>
 </ecore:EPackage>
