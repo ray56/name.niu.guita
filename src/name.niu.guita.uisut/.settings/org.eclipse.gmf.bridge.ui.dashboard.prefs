@@ -1,0 +1,9 @@
+#Sun Mar 27 15:36:34 CST 2011
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/name.niu.guita.uisut/model/uisut.genmodel
+gmf_dashboard/domainModel=platform\:/resource/name.niu.guita.uisut/model/uisut.ecore
+gmf_dashboard/generationModel=platform\:/resource/name.niu.guita.uisut/model/uisut.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/name.niu.guita.uisut/model/uisut.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/name.niu.guita.uisut/model/uisut.gmfmap
+gmf_dashboard/option_rcp=*
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/name.niu.guita.uisut/model/uisut.gmftool

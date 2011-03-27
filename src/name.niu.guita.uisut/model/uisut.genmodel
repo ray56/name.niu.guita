@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/name.niu.guita.uisut.model/src"
-    modelPluginID="name.niu.guita.uisut.model" modelName="Uisut" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/name.niu.guita.uisut/src"
+    modelPluginID="name.niu.guita.uisut" modelName="UISUT" editPluginClass="name.niu.guita.uisut.edit.provider.UISUTEditPlugin"
+    editorPluginClass="name.niu.guita.uisut.editor.presentation.UISUTEditorPlugin"
+    rootExtendsInterface="org.eclipse.emf.cdo.CDOObject" rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl"
+    reflectiveDelegation="true" testSuiteClass="name.niu.guita.uisut.tests.UISUTAllTests"
+    importerID="org.eclipse.emf.importer.cdo" featureDelegation="Reflective" complianceLevel="6.0"
+    copyrightFields="false">
   <foreignModel>uisut.ecore</foreignModel>
-  <genPackages prefix="UISUTModel" disposableProviderFactory="true" ecorePackage="uisut.ecore#/">
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="uisut" basePackage="name.niu.guita" disposableProviderFactory="true"
+      ecorePackage="uisut.ecore#/">
     <genClasses ecoreClass="uisut.ecore#//UISUT">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISUT/itsSTM"/>
     </genClasses>
@@ -28,6 +34,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsAction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/triggerStr"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/guardStr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/actionStr"/>
     </genClasses>
     <genClasses image="false" ecoreClass="uisut.ecore#//UITrigger"/>
     <genClasses ecoreClass="uisut.ecore#//UserTrigger"/>
@@ -37,12 +44,15 @@
     <genClasses ecoreClass="uisut.ecore#//UIControl">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIControl/itsInputDaa"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIControl/itsOutputData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIControl/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIControl/valueExpression"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UIDataVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIDataVariable/constraintRE"/>
     </genClasses>
     <genClasses image="false" ecoreClass="uisut.ecore#//UISUTElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UISUTElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UISUTElement/description"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//InitialState"/>
     <genClasses ecoreClass="uisut.ecore#//FinalState"/>
