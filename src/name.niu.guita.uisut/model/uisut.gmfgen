@@ -19,7 +19,7 @@
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
     <domainDiagramElement
-        href="uisut.genmodel#//UISUTModel/UIStatemachine"/>
+        href="uisut.genmodel#//uisut/UIStatemachine"/>
     <topLevelNodes
         visualID="2001"
         editPartClassName="UIStateEditPart"
@@ -44,11 +44,11 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="uisut.genmodel#//UISUTModel/UIState"/>
+            href="uisut.genmodel#//uisut/UIState"/>
         <containmentMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
         <childMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
       </modelFacet>
       <labels
           visualID="5001"
@@ -66,9 +66,9 @@
             parser="//@labelParsers/@implementations.0"
             editorPattern="">
           <metaFeatures
-              href="uisut.genmodel#//UISUTModel/UISUTElement/name"/>
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
           <editableMetaFeatures
-              href="uisut.genmodel#//UISUTModel/UISUTElement/name"/>
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -101,11 +101,11 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="uisut.genmodel#//UISUTModel/InitialState"/>
+            href="uisut.genmodel#//uisut/InitialState"/>
         <containmentMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
         <childMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
@@ -137,11 +137,11 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="uisut.genmodel#//UISUTModel/FinalState"/>
+            href="uisut.genmodel#//uisut/FinalState"/>
         <containmentMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
         <childMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsState"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
       </modelFacet>
     </topLevelNodes>
     <links
@@ -164,15 +164,15 @@
       <modelFacet
           xsi:type="gmfgen:TypeLinkModelFacet">
         <metaClass
-            href="uisut.genmodel#//UISUTModel/UITransition"/>
+            href="uisut.genmodel#//uisut/UITransition"/>
         <containmentMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsTransition"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsTransition"/>
         <childMetaFeature
-            href="uisut.genmodel#//UISUTModel/UIStatemachine/itsTransition"/>
+            href="uisut.genmodel#//uisut/UIStatemachine/itsTransition"/>
         <sourceMetaFeature
-            href="uisut.genmodel#//UISUTModel/UITransition/itsSrcState"/>
+            href="uisut.genmodel#//uisut/UITransition/itsSrcState"/>
         <targetMetaFeature
-            href="uisut.genmodel#//UISUTModel/UITransition/itsTrgtState"/>
+            href="uisut.genmodel#//uisut/UITransition/itsTrgtState"/>
       </modelFacet>
       <labels
           visualID="6001"
@@ -196,13 +196,13 @@
             editorPattern="{0}:{1}[{2}]"
             editPattern="{0}:{1}[{2}]">
           <metaFeatures
-              href="uisut.genmodel#//UISUTModel/UISUTElement/name"/>
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
           <metaFeatures
-              href="uisut.genmodel#//UISUTModel/UITransition/triggerStr"/>
+              href="uisut.genmodel#//uisut/UITransition/triggerStr"/>
           <metaFeatures
-              href="uisut.genmodel#//UISUTModel/UITransition/guardStr"/>
+              href="uisut.genmodel#//uisut/UITransition/guardStr"/>
           <editableMetaFeatures
-              href="uisut.genmodel#//UISUTModel/UISUTElement/name"/>
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
         </modelFacet>
       </labels>
     </links>
