@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmftool:ToolRegistry xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
+  <palette
+      title="UISUTModelPalette">
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="UISUTModel">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="UIState"
+          description="Create new UIState">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/niu/State16.png"
+            bundle="name.niu.guita.uisut.model.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/niu/State32.png"
+            bundle="name.niu.guita.uisut.model.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="UITransition"
+          description="Create new UITransition">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/niu/Tran16.png"
+            bundle="name.niu.guita.uisut.model.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/niu/Tran32.png"
+            bundle="name.niu.guita.uisut.model.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="InitialState"
+          description="Create new InitialState">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="FinalState"
+          description="Create new FinalState">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
+  </palette>
+</gmftool:ToolRegistry>
