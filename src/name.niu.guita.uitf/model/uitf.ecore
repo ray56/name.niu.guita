@@ -4,12 +4,18 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uitf"
     nsURI="http://www.niu.name/guita/uitf/1.0" nsPrefix="UITF_">
   <eClassifiers xsi:type="ecore:EClass" name="TestCase">
+    <eOperations name="start"/>
+    <eOperations name="stop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISUT" lowerBound="1"
         eType="#//UISUT" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="statements" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsStatement" upperBound="-1"
+        eType="#//Statement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestSuite">
+    <eOperations name="start"/>
+    <eOperations name="stop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTestCase" upperBound="-1"
         eType="#//TestCase" containment="true"/>
   </eClassifiers>
@@ -21,4 +27,15 @@
         eType="#//Variable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UIVariable" eSuperTypes="#//Variable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserInstructionEnum">
+    <eLiterals name="SetUIValue"/>
+    <eLiterals name="SendUITrigger"/>
+    <eLiterals name="ManipulateUIControl"/>
+    <eLiterals name="AssertUIValue"/>
+    <eLiterals name="AssertUIState"/>
+    <eLiterals name="InstantiateUISUT"/>
+  </eClassifiers>
 </ecore:EPackage>
