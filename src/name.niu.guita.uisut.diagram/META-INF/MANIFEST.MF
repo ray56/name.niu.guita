@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: name.niu.guita.uisut.diagram; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: name.niu.guita.uisut.diagram.part.UISUTDiagramEditorPlugin
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: 
+ name.niu.guita.uisut.diagram.edit.parts,
+ name.niu.guita.uisut.diagram.part,
+ name.niu.guita.uisut.diagram.providers
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.ui.views,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.gmf.runtime.emf.core,
+ org.eclipse.gmf.runtime.emf.commands.core,
+ org.eclipse.gmf.runtime.emf.ui.properties,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.gmf.runtime.diagram.ui.properties,
+ org.eclipse.gmf.runtime.diagram.ui.providers,
+ org.eclipse.gmf.runtime.diagram.ui.render,
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor,
+ org.eclipse.draw2d;visibility:=reexport,
+ org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
+ org.eclipse.gef;visibility:=reexport,
+ org.eclipse.ui,
+ org.eclipse.core.resources,
+ name.niu.guita.uisut;visibility:=reexport,
+ name.niu.guita.uisut.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

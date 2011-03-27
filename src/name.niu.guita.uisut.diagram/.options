@@ -1,0 +1,7 @@
+# Tracing options for the name.niu.guita.uisut.diagram plug-in
+
+# Common issues
+name.niu.guita.uisut.diagram/debug=false
+
+# Visual IDs
+name.niu.guita.uisut.diagram/debug/visualID=false
