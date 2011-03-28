@@ -24,6 +24,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//Variable">
     <eOperations name="onUITrigger"/>
+    <eOperations name="manipulateUIControl"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" upperBound="-1"
         eType="#//Variable" containment="true"/>
   </eClassifiers>

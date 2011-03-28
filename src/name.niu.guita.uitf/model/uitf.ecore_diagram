@@ -90,6 +90,10 @@
         <element xmi:type="ecore:EOperation" href="uitf.ecore#//UISUT/onUITrigger"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_GQeG4VhwEeCpZYKr4oI5_Q"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_wIJNsVlHEeC25JyzWWXOTw" type="3002">
+        <element xmi:type="ecore:EOperation" href="uitf.ecore#//UISUT/manipulateUIControl"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wIJNsllHEeC25JyzWWXOTw"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_TeWqB1hbEeCpZYKr4oI5_Q"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_TeWqCFhbEeCpZYKr4oI5_Q"/>
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_scNccVhgEeCpZYKr4oI5_Q" value="0.2222222222222222"/>
@@ -100,7 +104,7 @@
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_scNcclhgEeCpZYKr4oI5_Q" value="0.2222222222222222"/>
     </children>
     <element xmi:type="ecore:EClass" href="uitf.ecore#//UISUT"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TeWqAVhbEeCpZYKr4oI5_Q" x="415" y="460" width="136" height="76"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TeWqAVhbEeCpZYKr4oI5_Q" x="415" y="460" width="156" height="126"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_b5xXIFhbEeCpZYKr4oI5_Q" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_b5xXIlhbEeCpZYKr4oI5_Q" type="5001"/>
@@ -233,7 +237,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_uRn4MVhbEeCpZYKr4oI5_Q"/>
     <element xmi:type="ecore:EReference" href="uitf.ecore#//TestCase/itsUISUT"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uRn4MlhbEeCpZYKr4oI5_Q" points="[73, 74, -396, -5]$[442, 74, -27, -5]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uRn4MlhbEeCpZYKr4oI5_Q" points="[73, 83, -207, -13]$[242, 83, -38, -13]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uRxpNFhbEeCpZYKr4oI5_Q" id="(0.28125,0.8148148148148148)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_HefzgFhgEeCpZYKr4oI5_Q" type="4003" source="_XgO18FhZEeCpZYKr4oI5_Q" target="_EYUFsFhgEeCpZYKr4oI5_Q" routing="Rectilinear">
