@@ -91,7 +91,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_GQeG4VhwEeCpZYKr4oI5_Q"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_wIJNsVlHEeC25JyzWWXOTw" type="3002">
-        <element xmi:type="ecore:EOperation" href="uitf.ecore#//UISUT/manipulateUIControl"/>
+        <element xmi:type="ecore:EOperation" href="uitf.ecore#//UISUT/onManipulateUIControl"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_wIJNsllHEeC25JyzWWXOTw"/>
       </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_TeWqB1hbEeCpZYKr4oI5_Q"/>
