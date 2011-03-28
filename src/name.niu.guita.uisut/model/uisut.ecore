@@ -22,6 +22,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="UIState" eSuperTypes="#//AbstractState">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUIControl" upperBound="-1"
         eType="#//UIControl" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitial" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UISUTElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTrgtState" lowerBound="1"

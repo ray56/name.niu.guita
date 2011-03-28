@@ -57,6 +57,10 @@
   <children xmi:type="notation:Shape" xmi:id="_jGdi8EwIEeClcP_ts0gcDw" type="2001" fillColor="8047085">
     <children xmi:type="notation:DecorationNode" xmi:id="_jGdi8kwIEeClcP_ts0gcDw" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_jGdi80wIEeClcP_ts0gcDw" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_L2bSoFlIEeC25JyzWWXOTw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="uisut.ecore#//UIState/isInitial"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_L2bSoVlIEeC25JyzWWXOTw"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_jGdi9EwIEeClcP_ts0gcDw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_jGdi9UwIEeClcP_ts0gcDw"/>
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_Gy9boEwJEeClcP_ts0gcDw" value="0.18181818181818182"/>
@@ -72,7 +76,7 @@
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_Gy9bokwJEeClcP_ts0gcDw" value="0.18181818181818182"/>
     </children>
     <element xmi:type="ecore:EClass" href="uisut.ecore#//UIState"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jGdi8UwIEeClcP_ts0gcDw" x="915" y="-30" width="112" height="56"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jGdi8UwIEeClcP_ts0gcDw" x="915" y="-30" width="131" height="66"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_k7JMoEwIEeClcP_ts0gcDw" type="2001" fillColor="8047085">
     <children xmi:type="notation:DecorationNode" xmi:id="_k7JMokwIEeClcP_ts0gcDw" type="5001"/>
