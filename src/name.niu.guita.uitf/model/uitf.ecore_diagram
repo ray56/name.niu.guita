@@ -129,6 +129,10 @@
   <children xmi:type="notation:Shape" xmi:id="_EYUFsFhgEeCpZYKr4oI5_Q" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_EYUFslhgEeCpZYKr4oI5_Q" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_EYUFs1hgEeCpZYKr4oI5_Q" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_fUUOsFlIEeC25JyzWWXOTw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="uitf.ecore#//Statement/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fUUOsVlIEeC25JyzWWXOTw"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_EYUFtFhgEeCpZYKr4oI5_Q"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_EYUFtVhgEeCpZYKr4oI5_Q"/>
     </children>
@@ -141,7 +145,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_EYUFu1hgEeCpZYKr4oI5_Q"/>
     </children>
     <element xmi:type="ecore:EClass" href="uitf.ecore#//Statement"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYUFsVhgEeCpZYKr4oI5_Q" x="355" y="350" width="106" height="58"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYUFsVhgEeCpZYKr4oI5_Q" x="335" y="340" width="156" height="71"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_UdYr0FhgEeCpZYKr4oI5_Q" type="2005">
     <children xmi:type="notation:DecorationNode" xmi:id="_UdYr0lhgEeCpZYKr4oI5_Q" type="5005"/>

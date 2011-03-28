@@ -31,6 +31,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="UIVariable" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="UserInstructionEnum">
     <eLiterals name="SetUIValue"/>
