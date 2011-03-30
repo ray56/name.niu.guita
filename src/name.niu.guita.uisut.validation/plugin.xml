@@ -2,16 +2,56 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.handlers">
+   </extension>
+   <extension
          point="org.eclipse.ui.commands">
+      <command
+            description="validate the model"
+            id="name.niu.guita.uisut.validation.CMD_Validate"
+            name="validate">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="name.niu.guita.uisut.validation.ui.toolbar_Validate"
+               label="Validate(lll)">
+            <command
+                  commandId="name.niu.guita.uisut.validation.CMD_Validate"
+                  label="X_Vali"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Validate(lll)">
+            <command
+                  commandId="name.niu.guita.uisut.validation.CMD_Validate"
+                  label="X_menuVali"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.editorActions">
       <editorContribution
-            id="name.niu.guita.uisut.validation.editorContribution1"
-            targetID="name.niu.guita.uisut.validation.editorContribution1">
+            id="name.niu.guita.uisut.validation.editorContribution"
+            targetID="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+         <action
+               class="name.niu.guita.uisut.validation.actions.BatchValidationDelegate"
+               definitionId="name.niu.guita.uisut.validation.CMD_Validate"
+               id="name.niu.guita.uisut.validation.ACTION_validation"
+               label="XR_V1"
+               style="push">
+         </action>
       </editorContribution>
    </extension>
    <extension
