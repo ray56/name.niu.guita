@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.niu.name/guita/uisut/1.0"
-            class="name.niu.guita.uisut.provider.uisutItemProviderAdapterFactory"
+            class="name.niu.guita.uisut.edit.provider.uisutItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
