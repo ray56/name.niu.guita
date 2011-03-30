@@ -57,5 +57,46 @@
    <extension
          point="org.eclipse.ui.popupMenus">
    </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true">
+         <package
+               namespaceUri="http://www.niu.name/guita/uisut/1.0">
+         </package>
+         <constraints>
+            <constraint
+                  class="name.niu.guita.uisut.validation.constraints.NonEmptyNamesConstraint"
+                  id="name.niu.guita.uisut.validation.ui.NameNotEmpty"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="NonEmptyName"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  message body text
+               </message>
+               <description>
+                  description body text
+               </description>
+               <target class="UIState"/>
+               <target class="UIStatemachine"/>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+     <clientContext
+            default="false"
+            id="name.niu.guita.uisut.validation.stmContext">
+         <selector class="name.niu.guita.uisut.validation.constraints.ValidationDelegateClientSelector"/>
+      </clientContext>
+     <binding
+           context="name.niu.guita.uisut.validation.stmContext"
+           constraint="name.niu.guita.uisut.validation.ui.NameNotEmpty">
+     </binding>
+   </extension>
 
 </plugin>

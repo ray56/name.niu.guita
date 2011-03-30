@@ -1,9 +1,13 @@
 package name.niu.guita.uisut.validation.actions;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import name.niu.guita.uisut.UIState;
+import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.part.UISUTDiagramEditor;
 import name.niu.guita.uisut.validation.Activator;
 
@@ -15,6 +19,8 @@ import org.eclipse.emf.validation.model.EvaluationMode;
 import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -34,6 +40,7 @@ public class BatchValidationDelegate
 	implements IEditorActionDelegate, IActionDelegate2 {
 
 	protected Collection<EObject> selectedEObjects = null;
+	protected Collection<EditPart> selectedEditParts = null;
 	protected UISUTDiagramEditor editor;
 	protected Shell shell = null;
 	private final String title = "Batch Validation";
@@ -116,10 +123,11 @@ public class BatchValidationDelegate
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		this.selectedEObjects = null;
+		this.selectedEditParts = null ;
 		try {
 			if (selection instanceof IStructuredSelection) {
 				IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-				this.selectedEObjects = structuredSelection.toList();
+				this.selectedEditParts = structuredSelection.toList();
 			}
 		} catch (Exception e) {
 			// Exceptions are not expected
@@ -127,7 +135,17 @@ public class BatchValidationDelegate
 			// throw new RuntimeException(e);
 			e.printStackTrace() ;
 		} finally {
-			action.setEnabled((null != selectedEObjects));
+			action.setEnabled((null != selectedEditParts));
+		}
+		
+		this.selectedEObjects = new ArrayList<EObject>() ;
+		for(Object next:selectedEditParts){
+			if ( next instanceof UIStateEditPart ){
+				UIStateEditPart ep = ((UIStateEditPart)next);
+				Shape sh =(Shape) ep.getModel() ;
+				EObject eo = sh.getElement() ;
+				this.selectedEObjects.add(eo) ;
+			}
 		}
 		
 		for (Object next : selectedEObjects) {
