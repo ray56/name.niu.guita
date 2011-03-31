@@ -2,17 +2,31 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
+          name="&amp;Gen Excel" >
+            
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+G">
+      </key>
+   </extension>
+   <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               commandId="name.niu.guita.uitf.xlsgen.command1"
-               id="genExcel"
-               label="LetGen">
+               label="&amp;TestCase">
             <command
-                  commandId="name.niu.guita.uitf.xlsgen.command1"
-                  label="X_GenXLS"
+                  commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
                   style="push">
             </command>
          </menu>
@@ -25,20 +39,21 @@
             label="Generate"
             visible="true">
          <menu
-               id="sampleMenu"
-               label="&amp;GenXLSMenu">
+               id="another_xls_gen_menu"
+               label="XLSG">
             <separator
-                  name="sampleGroup">
+                  name="a_group">
             </separator>
          </menu>
          <action
                class="name.niu.guita.uitf.xlsgen.actions.SampleAction"
+               definitionId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
                icon="icons/sample.gif"
                id="name.niu.guita.uitf.xlsgen.actions.SampleAction"
                label="GenIttion"
-               menubarPath="sampleMenu/sampleGroup"
-               toolbarPath="sampleGroup"
-               tooltip="Hello, Eclipse world">
+               menubarPath="another_xls_gen_menu/a_group"
+               toolbarPath="some_toolbar"
+               tooltip="generate xls!">
          </action>
       </actionSet>
    </extension>
