@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               commandId="name.niu.guita.uitf.xlsgen.command1"
+               id="genExcel"
+               label="LetGen">
+            <command
+                  commandId="name.niu.guita.uitf.xlsgen.command1"
+                  label="X_GenXLS"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="name.niu.guita.uitf.xlsgen.actionSet"
+            label="Generate"
+            visible="true">
+         <menu
+               id="sampleMenu"
+               label="&amp;GenXLSMenu">
+            <separator
+                  name="sampleGroup">
+            </separator>
+         </menu>
+         <action
+               class="name.niu.guita.uitf.xlsgen.actions.SampleAction"
+               icon="icons/sample.gif"
+               id="name.niu.guita.uitf.xlsgen.actions.SampleAction"
+               label="GenIttion"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               tooltip="Hello, Eclipse world">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>

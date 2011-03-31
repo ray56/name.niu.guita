@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Xlsgen
-Bundle-SymbolicName: name.niu.guita.uitf.xlsgen
+Bundle-SymbolicName: name.niu.guita.uitf.xlsgen;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: name.niu.guita.uitf.xlsgen.Activator
 Require-Bundle: org.eclipse.ui,
