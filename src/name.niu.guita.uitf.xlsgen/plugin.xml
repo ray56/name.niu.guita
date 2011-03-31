@@ -47,7 +47,6 @@
          </menu>
          <action
                class="name.niu.guita.uitf.xlsgen.actions.SampleAction"
-               definitionId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
                icon="icons/sample.gif"
                id="name.niu.guita.uitf.xlsgen.actions.SampleAction"
                label="GenIttion"
@@ -56,6 +55,13 @@
                tooltip="generate xls!">
          </action>
       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="name.niu.guita.uitf.xlsgen.actions.ExportExcelAction"
+            commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS">
+      </handler>
    </extension>
 
 </plugin>

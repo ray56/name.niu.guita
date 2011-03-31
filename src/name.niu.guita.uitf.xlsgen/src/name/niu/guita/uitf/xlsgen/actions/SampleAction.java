@@ -41,10 +41,10 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		MessageDialog.openInformation(
-			window.getShell(),
-			"Xlsgen",
-			"Hello, Eclipse world");
+//		MessageDialog.openInformation(
+//			window.getShell(),
+//			"Xlsgen",
+//			"Hello, Eclipse world");
 		
 		// Test TestCaseDescription
 

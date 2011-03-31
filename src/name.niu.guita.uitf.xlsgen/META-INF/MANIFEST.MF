@@ -5,7 +5,10 @@ Bundle-SymbolicName: name.niu.guita.uitf.xlsgen;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: name.niu.guita.uitf.xlsgen.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;bundle-version="2.6.1",
+ org.eclipse.gef;bundle-version="3.6.2",
+ org.eclipse.gmf.runtime.notation;bundle-version="1.4.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
