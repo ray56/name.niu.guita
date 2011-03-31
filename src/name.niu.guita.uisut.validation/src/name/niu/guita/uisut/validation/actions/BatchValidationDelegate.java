@@ -106,6 +106,21 @@ public class BatchValidationDelegate
 						errorSelections.add(cstatus.getTarget());
 					}
 				}
+				
+				// select the error object
+				for(EditPart next:selectedEditParts){
+					if ( next instanceof UIStateEditPart ){
+						UIStateEditPart ep = ((UIStateEditPart)next);
+						Shape sh =(Shape) ep.getModel() ;
+						EObject eo = sh.getElement() ;
+						if ( errorSelections.contains(eo) ){
+							ep.setSelected(org.eclipse.gef.EditPart.SELECTED) ;
+						} else {
+							ep.setSelected(org.eclipse.gef.EditPart.SELECTED_NONE);
+						}
+						
+					}
+				}
 				// editor.setSelectionToViewer(errorSelections);
 			}
 		}

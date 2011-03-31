@@ -74,12 +74,12 @@
                   name="NonEmptyName"
                   severity="ERROR"
                   statusCode="1">
-               <message>
-                  message body text
-               </message>
                <description>
-                  description body text
+                  All items in an EXT library model should have some unique identifier or name.
                </description>
+               <message>
+                  A {0} has been found to have no unique identifier (name or title).                  
+               </message>
                <target class="UIState"/>
                <target class="UIStatemachine"/>
             </constraint>
