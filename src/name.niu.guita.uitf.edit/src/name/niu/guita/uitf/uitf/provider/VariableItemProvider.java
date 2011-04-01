@@ -64,25 +64,25 @@ public class VariableItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Variable_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Variable_name_feature", "_UI_Variable_type"),
-				 UitfPackage.Literals.VARIABLE__NAME,
+				 getString("_UI_Variable_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Variable_id_feature", "_UI_Variable_type"),
+				 UitfPackage.Literals.VARIABLE__ID,
 				 true,
 				 false,
 				 false,
@@ -110,7 +110,7 @@ public class VariableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Variable)object).getName();
+		String label = ((Variable)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Variable_type") :
 			getString("_UI_Variable_type") + " " + label;
@@ -128,7 +128,7 @@ public class VariableItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Variable.class)) {
-			case UitfPackage.VARIABLE__NAME:
+			case UitfPackage.VARIABLE__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

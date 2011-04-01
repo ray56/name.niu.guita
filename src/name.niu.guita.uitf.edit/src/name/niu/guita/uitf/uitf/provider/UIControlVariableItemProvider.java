@@ -80,7 +80,7 @@ public class UIControlVariableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((UIControlVariable)object).getName();
+		String label = ((UIControlVariable)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_UIControlVariable_type") :
 			getString("_UI_UIControlVariable_type") + " " + label;

@@ -24,7 +24,8 @@
       <eParameters name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="assertValue"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//Variable">
     <eOperations name="onUITrigger">
@@ -39,8 +40,12 @@
       <eParameters name="controlPropertyKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="controlPropertyVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="assertInState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" upperBound="-1"
         eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUICtrl" upperBound="-1"
+        eType="#//UIControl" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UIControlVariable" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
@@ -55,5 +60,9 @@
     <eLiterals name="AssertUIValue"/>
     <eLiterals name="AssertUIState"/>
     <eLiterals name="InstantiateUISUT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UIControl">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
