@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="name.niu.guita.uitf.uitf.presentation.UitfModelWizardID"
+            name="%_UI_UitfModelWizard_label"
+            class="name.niu.guita.uitf.uitf.presentation.UitfModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/UitfModelFile.gif">
+         <description>%_UI_UitfModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="name.niu.guita.uitf.uitf.presentation.UitfEditorID"
+            name="%_UI_UitfEditor_label"
+            icon="icons/full/obj16/UitfModelFile.gif"
+            extensions="uitf"
+            class="name.niu.guita.uitf.uitf.presentation.UitfEditor"
+            contributorClass="name.niu.guita.uitf.uitf.presentation.UitfActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
