@@ -8,30 +8,45 @@
     <eOperations name="stop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISUT" lowerBound="1"
         eType="#//UISUT" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statements" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsStatement" upperBound="-1"
         eType="#//Statement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestSuite">
     <eOperations name="start"/>
     <eOperations name="stop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTestCase" upperBound="-1"
         eType="#//TestCase" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eOperations name="setValue">
+      <eParameters name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//Variable">
-    <eOperations name="onUITrigger"/>
-    <eOperations name="onManipulateUIControl"/>
+    <eOperations name="onUITrigger">
+      <eParameters name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="onManipulateUIControl">
+      <eParameters name="controlPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="manipulationKind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="onManipulateUIControlData">
+      <eParameters name="controlPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="controlPropertyKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="controlPropertyVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" upperBound="-1"
         eType="#//Variable" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UIVariable" eSuperTypes="#//Variable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UIControlVariable" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsVariable" eType="#//Variable"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//UserInstructionEnum"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="UserInstructionEnum">
     <eLiterals name="SetUIValue"/>

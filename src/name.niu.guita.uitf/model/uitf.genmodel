@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/name.niu.guita.uitf/src"
+    modelPluginID="name.niu.guita.uitf" modelName="Uitf" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>uitf.ecore</foreignModel>
+  <genPackages prefix="Uitf" disposableProviderFactory="true" ecorePackage="uitf.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="uitf.ecore#//UserInstructionEnum">
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/SetUIValue"/>
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/SendUITrigger"/>
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/ManipulateUIControl"/>
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/AssertUIValue"/>
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/AssertUIState"/>
+      <genEnumLiterals ecoreEnumLiteral="uitf.ecore#//UserInstructionEnum/InstantiateUISUT"/>
+    </genEnums>
+    <genClasses ecoreClass="uitf.ecore#//TestCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//TestCase/itsUISUT"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//TestCase/itsStatement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TestCase/id"/>
+      <genOperations ecoreOperation="uitf.ecore#//TestCase/start"/>
+      <genOperations ecoreOperation="uitf.ecore#//TestCase/stop"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//TestSuite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//TestSuite/itsTestCase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TestSuite/id"/>
+      <genOperations ecoreOperation="uitf.ecore#//TestSuite/start"/>
+      <genOperations ecoreOperation="uitf.ecore#//TestSuite/stop"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Variable/name"/>
+      <genOperations ecoreOperation="uitf.ecore#//Variable/setValue">
+        <genParameters ecoreParameter="uitf.ecore#//Variable/setValue/val"/>
+      </genOperations>
+      <genOperations ecoreOperation="uitf.ecore#//Variable/getValue"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//UISUT">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//UISUT/itsVariable"/>
+      <genOperations ecoreOperation="uitf.ecore#//UISUT/onUITrigger">
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onUITrigger/trigger"/>
+      </genOperations>
+      <genOperations ecoreOperation="uitf.ecore#//UISUT/onManipulateUIControl">
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControl/controlPath"/>
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControl/manipulationKind"/>
+      </genOperations>
+      <genOperations ecoreOperation="uitf.ecore#//UISUT/onManipulateUIControlData">
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControlData/controlPath"/>
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControlData/controlPropertyKey"/>
+        <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControlData/controlPropertyVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//UIControlVariable"/>
+    <genClasses ecoreClass="uitf.ecore#//Statement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uitf.ecore#//Statement/itsVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/kind"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
