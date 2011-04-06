@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guita.uisut.tcgen.CMD_GEN_TC"
+            name="Generate TestCase">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main">
+         <menu
+               label="Generate TestCase">
+            <command
+                  commandId="name.niu.guita.uisut.tcgen.CMD_GEN_TC"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="name.niu.guita.uisut.tcgen.actions.GenerateTestCaseAction"
+            commandId="name.niu.guita.uisut.tcgen.CMD_GEN_TC">
+      </handler>
+   </extension>
+
+</plugin>

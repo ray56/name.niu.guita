@@ -1,10 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tcgen
-Bundle-SymbolicName: name.niu.guita.uisut.tcgen
+Bundle-SymbolicName: name.niu.guita.uisut.tcgen;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: name.niu.guita.uisut.tcgen.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
+ name.niu.guita.uisut;bundle-version="1.0.0",
+ name.niu.guita.uitf;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
