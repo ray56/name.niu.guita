@@ -8,7 +8,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.6.1",
  org.eclipse.gef;bundle-version="3.6.2",
- org.eclipse.gmf.runtime.notation;bundle-version="1.4.1"
+ org.eclipse.gmf.runtime.notation;bundle-version="1.4.1",
+ name.niu.guita.uitf;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.5.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,

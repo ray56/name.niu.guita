@@ -8,6 +8,10 @@
           name="&amp;Gen Excel" >
             
       </command>
+      <command
+            id="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE"
+            name="Gen Excel From File">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
@@ -27,6 +31,10 @@
                label="&amp;TestCase">
             <command
                   commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
+                  style="push">
+            </command>
+            <command
+                  commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE"
                   style="push">
             </command>
          </menu>
@@ -61,6 +69,10 @@
       <handler
             class="name.niu.guita.uitf.xlsgen.actions.ExportExcelAction"
             commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS">
+      </handler>
+      <handler
+            class="name.niu.guita.uitf.xlsgen.actions.ExportExcelFromFileAction"
+            commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE">
       </handler>
    </extension>
 
