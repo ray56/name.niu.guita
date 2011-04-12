@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+      id="id1"
+      point="org.eclipse.core.runtime.applications">
+   <application
+         cardinality="singleton-global"
+         thread="main"
+         visible="true">
+      <run
+            class="name.niu.guita.project.Application">
+      </run>
+   </application>
+</extension>
+<extension
+      point = "org.eclipse.ui.newWizards">
+	<category
+	   id = "org.eclipse.ui.examples.readmetool.new"
+	   parentCategory="org.eclipse.ui.Examples"
+	   name="Custom Category">
+	</category>
+ 	<wizard
+        category="org.eclipse.ui.Examples/org.eclipse.ui.examples.readmetool.new"
+        class="name.niu.guita.project.CustomProjectNewWizard"
+        id="org.eclipse.ui.examples.readmetool.wizards.new.file"
+        name="Custome Project"
+        project="true">
+    	   <description>custome...</description>
+	</wizard>
+</extension>
+<extension
+      point="org.eclipse.ui.perspectives">
+   <perspective
+         class="name.niu.guita.project.Perspective"
+         id="name.niu.guita.project.perspective"
+         name="Guita Perspective">
+   </perspective>
+</extension>
+<extension
+      point="org.eclipse.ui.views">
+   <view
+         allowMultiple="false"
+         class="org.eclipse.ui.views.navigator.ResourceNavigator"
+         id="name.niu.guita.project.view1"
+         name="guitaView"
+         restorable="true">
+   </view>
+</extension>
+
+</plugin>
