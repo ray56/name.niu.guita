@@ -58,6 +58,7 @@ public class CustomProjectNewWizard extends Wizard implements INewWizard {
 		IProjectDescription descr = ws.newProjectDescription(projectName);
 		try {
 			project.create(descr, null);
+			project.open(null) ;
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}

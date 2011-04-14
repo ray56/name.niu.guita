@@ -15,7 +15,7 @@ public class Perspective implements IPerspectiveFactory {
 		// add navigation windows
 		IFolderLayout left = layout.createFolder(
 				"left", IPageLayout.LEFT, 0.2f, layout.getEditorArea());
-		left.addView( "name.niu.guita.project.view1") ;
+		left.addView( "name.niu.guita.guitaNavigatorView") ;
 		
 		
 		

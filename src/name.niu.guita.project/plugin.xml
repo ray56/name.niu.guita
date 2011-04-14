@@ -16,36 +16,104 @@
 <extension
       point = "org.eclipse.ui.newWizards">
 	<category
-	   id = "org.eclipse.ui.examples.readmetool.new"
-	   parentCategory="org.eclipse.ui.Examples"
-	   name="Custom Category">
+	   id = "name.niu.guita.guitaCategory"
+	   name="Guita">
 	</category>
  	<wizard
-        category="org.eclipse.ui.Examples/org.eclipse.ui.examples.readmetool.new"
+        category="name.niu.guita.guitaCategory"
         class="name.niu.guita.project.CustomProjectNewWizard"
-        id="org.eclipse.ui.examples.readmetool.wizards.new.file"
-        name="Custome Project"
+        icon="icons/guitar.bmp"
+        id="name.niu.guita.guitaProject"
+        name="Guita  Project"
         project="true">
-    	   <description>custome...</description>
+    	   <description>Create a Guita Project...</description>
 	</wizard>
 </extension>
 <extension
       point="org.eclipse.ui.perspectives">
    <perspective
          class="name.niu.guita.project.Perspective"
-         id="name.niu.guita.project.perspective"
-         name="Guita Perspective">
+         id="name.niu.guita.guitaPerspective1"
+         name="UISUT Edit Perspective">
+   </perspective>
+   <perspective
+         class="name.niu.guita.project.Perspective2"
+         id="name.niu.guita.guitaPerspective2"
+         name="UISUT Edit Perspective2">
    </perspective>
 </extension>
 <extension
       point="org.eclipse.ui.views">
    <view
          allowMultiple="false"
-         class="org.eclipse.ui.views.navigator.ResourceNavigator"
-         id="name.niu.guita.project.view1"
-         name="guitaView"
+         class="org.eclipse.ui.navigator.CommonNavigator"
+         icon="icons/guitar.bmp"
+         id="name.niu.guita.guitaNavigatorView"
+         name="Guita Navigator View"
          restorable="true">
    </view>
+</extension>
+<extension
+      point="org.eclipse.ui.navigator.viewer">
+   <viewer
+         viewerId="name.niu.guita.guitaNavigatorView">
+   </viewer>
+   <viewerContentBinding
+         viewerId="name.niu.guita.guitaNavigatorView">
+      <includes>
+         <contentExtension
+               pattern="org.eclipse.ui.navigator.resourceContent">
+         </contentExtension>
+         <contentExtension
+               pattern="org.eclipse.ui.navigator.resources.filters.*">
+         </contentExtension>
+         <contentExtension
+               pattern="name.niu.guita.guitaPropertiesContent">
+         </contentExtension></includes>
+   </viewerContentBinding>
+   <viewerActionBinding
+         viewerId="name.niu.guita.guitaNavigatorView">
+      <includes>
+         <actionExtension
+               pattern="org.eclipse.ui.navigator.resources.*">
+         </actionExtension>
+      </includes>
+   </viewerActionBinding>
+</extension>
+<extension
+      point="org.eclipse.ui.navigator.navigatorContent">
+   <navigatorContent
+         activeByDefault="true"
+         contentProvider="name.niu.guita.project.PropertiesContentProvider"
+         icon="icons/prop_ps.gif"
+         id="name.niu.guita.guitaPropertiesContent"
+         labelProvider="name.niu.guita.project.PropertiesLabelProvider"
+         name="Guita Properties Content"
+         priority="normal">
+      <triggerPoints>
+         <or>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IResource">
+               </instanceof>
+               <test
+                     property="org.eclipse.core.resources.extension"
+                     value="properties">
+               </test>
+            </and>
+            <instanceof
+                  value="name.niu.guita.project.PropertiesTreeData">
+            </instanceof>
+         </or>
+      </triggerPoints>
+      <possibleChildren>
+         <or>
+            <instanceof
+                  value="name.niu.guita.project.PropertiesTreeData">
+            </instanceof>
+         </or>
+      </possibleChildren>
+   </navigatorContent>
 </extension>
 
 </plugin>
