@@ -1,4 +1,5 @@
-package name.niu.guita.project;
+package name.niu.guita.properties;
+
 
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;

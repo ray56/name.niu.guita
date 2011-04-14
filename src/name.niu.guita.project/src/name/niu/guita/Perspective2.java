@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;

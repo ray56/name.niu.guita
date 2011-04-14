@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;

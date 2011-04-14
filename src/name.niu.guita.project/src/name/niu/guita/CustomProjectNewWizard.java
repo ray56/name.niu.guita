@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;

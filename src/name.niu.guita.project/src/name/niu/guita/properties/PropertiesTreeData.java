@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita.properties;
 
 import org.eclipse.core.resources.IFile;
 

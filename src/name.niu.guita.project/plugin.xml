@@ -9,7 +9,7 @@
          thread="main"
          visible="true">
       <run
-            class="name.niu.guita.project.Application">
+            class="name.niu.guita.Application">
       </run>
    </application>
 </extension>
@@ -21,7 +21,7 @@
 	</category>
  	<wizard
         category="name.niu.guita.guitaCategory"
-        class="name.niu.guita.project.CustomProjectNewWizard"
+        class="name.niu.guita.CustomProjectNewWizard"
         icon="icons/guitar.bmp"
         id="name.niu.guita.guitaProject"
         name="Guita  Project"
@@ -32,12 +32,12 @@
 <extension
       point="org.eclipse.ui.perspectives">
    <perspective
-         class="name.niu.guita.project.Perspective"
+         class="name.niu.guita.Perspective"
          id="name.niu.guita.guitaPerspective1"
          name="UISUT Edit Perspective">
    </perspective>
    <perspective
-         class="name.niu.guita.project.Perspective2"
+         class="name.niu.guita.Perspective2"
          id="name.niu.guita.guitaPerspective2"
          name="UISUT Edit Perspective2">
    </perspective>
@@ -84,10 +84,10 @@
       point="org.eclipse.ui.navigator.navigatorContent">
    <navigatorContent
          activeByDefault="true"
-         contentProvider="name.niu.guita.project.PropertiesContentProvider"
+         contentProvider="name.niu.guita.properties.PropertiesContentProvider"
          icon="icons/prop_ps.gif"
          id="name.niu.guita.guitaPropertiesContent"
-         labelProvider="name.niu.guita.project.PropertiesLabelProvider"
+         labelProvider="name.niu.guita.properties.PropertiesLabelProvider"
          name="Guita Properties Content"
          priority="normal">
       <triggerPoints>
@@ -102,14 +102,14 @@
                </test>
             </and>
             <instanceof
-                  value="name.niu.guita.project.PropertiesTreeData">
+                  value="name.niu.guita.properties.PropertiesTreeData">
             </instanceof>
          </or>
       </triggerPoints>
       <possibleChildren>
          <or>
             <instanceof
-                  value="name.niu.guita.project.PropertiesTreeData">
+                  value="name.niu.guita.properties.PropertiesTreeData">
             </instanceof>
          </or>
       </possibleChildren>

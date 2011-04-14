@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

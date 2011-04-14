@@ -1,4 +1,4 @@
-package name.niu.guita.project;
+package name.niu.guita.properties;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
