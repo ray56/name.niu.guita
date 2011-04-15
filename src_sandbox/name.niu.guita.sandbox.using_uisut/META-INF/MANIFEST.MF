@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Using_uisut
+Bundle-SymbolicName: name.niu.guita.sandbox.using_uisut; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: name.niu.guita.sandbox.using_uisut.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ name.niu.guita.uisut;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
