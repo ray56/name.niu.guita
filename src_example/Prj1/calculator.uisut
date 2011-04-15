@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UISUT_:UIStatemachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UISUT_="http://www.niu.name/guita/uisut/1.0">
+  <itsState xsi:type="UISUT_:UIState" itsOutTransition="//@itsTransition.0"/>
+  <itsState xsi:type="UISUT_:UIState" itsInTransition="//@itsTransition.0"/>
+  <itsTransition itsTrgtState="//@itsState.1" itsSrcState="//@itsState.0"/>
+</UISUT_:UIStatemachine>
