@@ -41,6 +41,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * @generated
@@ -49,11 +50,13 @@ public class UISUTDocumentProvider extends AbstractDocumentProvider implements
 		IDiagramDocumentProvider {
 
 	/**
-	 * @generated
+	 * not generated
 	 */
 	protected ElementInfo createElementInfo(Object element)
 			throws CoreException {
-		if (false == element instanceof URIEditorInput) {
+
+		if (false == element instanceof URIEditorInput && 
+				false == element instanceof FileEditorInput ) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -65,7 +68,17 @@ public class UISUTDocumentProvider extends AbstractDocumentProvider implements
 											"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 							null));
 		}
-		IEditorInput editorInput = (IEditorInput) element;
+		
+		//URIEditorInput(fileURI),
+		IEditorInput editorInput = null ;
+		if (  element instanceof FileEditorInput ) {
+			
+			URI fileURI = URI.createURI( ((FileEditorInput)element).getURI().toString() );
+			editorInput = new URIEditorInput(fileURI);
+		} else {
+			editorInput = (IEditorInput) element;
+		}
+		//IEditorInput editorInput = (IEditorInput) element;
 		IDiagramDocument document = (IDiagramDocument) createDocument(editorInput);
 
 		ResourceSetInfo info = new ResourceSetInfo(document, editorInput);
