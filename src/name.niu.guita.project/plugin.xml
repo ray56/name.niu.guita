@@ -21,7 +21,7 @@
 	</category>
  	<wizard
         category="name.niu.guita.guitaCategory"
-        class="name.niu.guita.CustomProjectNewWizard"
+        class="name.niu.guita.wizards.GuitaProjectNewWizard"
         icon="icons/guitar.bmp"
         id="name.niu.guita.guitaProject"
         name="Guita  Project"

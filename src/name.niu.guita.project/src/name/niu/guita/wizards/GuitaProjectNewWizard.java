@@ -1,4 +1,4 @@
-package name.niu.guita;
+package name.niu.guita.wizards;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -11,36 +11,30 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 
-public class CustomProjectNewWizard extends Wizard implements INewWizard {
+public class GuitaProjectNewWizard extends Wizard implements INewWizard {
 
 	private WizardNewProjectCreationPage page; 
 	
 	 @Override 
 	 public void addPages() 
 	 { 
-	  // TODO Auto-generated method stub 
 	  super.addPages(); 
-	  page = new WizardNewProjectCreationPage("ACU Service Project"); 
-	  page.setTitle("ACU Service Project"); 
-	  page.setDescription("创建一个新项目，使用构件开发业务"); 
+	  page = new WizardNewProjectCreationPage("New Guita Project Page 1 Name"); 
+	  page.setTitle("New Guita Project Page 1 Title"); 
+	  page.setDescription("Input Project Name"); 
 	  addPage(page); 
 	 } 
 	 
 	
-	public CustomProjectNewWizard() {
+	public GuitaProjectNewWizard() {
 
 	}
 
 	@Override 
 	 public void init(IWorkbench workbench, IStructuredSelection selection) 
-	 { 
-	  // TODO Auto-generated method stub 
-	    //this._workbench = workbench; 
-	    //下面这个方法不知道作用 
-
-		 
+	 { 		 
 	    setNeedsProgressMonitor(true); 
-	    setWindowTitle("New ACU Service Project"); 
+	    setWindowTitle("New Guita Project"); 
 	 } 
 
 	@Override
