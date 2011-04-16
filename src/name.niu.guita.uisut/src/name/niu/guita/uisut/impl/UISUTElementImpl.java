@@ -22,6 +22,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  * <ul>
  *   <li>{@link name.niu.guita.uisut.impl.UISUTElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link name.niu.guita.uisut.impl.UISUTElementImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.impl.UISUTElementImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,6 +92,24 @@ public abstract class UISUTElementImpl extends CDOObjectImpl implements UISUTEle
 	 */
 	public void setDescription(String newDescription) {
 		eSet(uisutPackage.Literals.UISUT_ELEMENT__DESCRIPTION, newDescription);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		return (String)eGet(uisutPackage.Literals.UISUT_ELEMENT__ID, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		eSet(uisutPackage.Literals.UISUT_ELEMENT__ID, newId);
 	}
 
 } //UISUTElementImpl

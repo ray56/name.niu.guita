@@ -9,10 +9,12 @@ package name.niu.guita.uisut.impl;
 import name.niu.guita.uisut.AbstractState;
 import name.niu.guita.uisut.Action;
 import name.niu.guita.uisut.UICondition;
+import name.niu.guita.uisut.UIDataVariable;
 import name.niu.guita.uisut.UITransition;
 import name.niu.guita.uisut.UITrigger;
 import name.niu.guita.uisut.uisutPackage;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -30,6 +32,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link name.niu.guita.uisut.impl.UITransitionImpl#getTriggerStr <em>Trigger Str</em>}</li>
  *   <li>{@link name.niu.guita.uisut.impl.UITransitionImpl#getGuardStr <em>Guard Str</em>}</li>
  *   <li>{@link name.niu.guita.uisut.impl.UITransitionImpl#getActionStr <em>Action Str</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.impl.UITransitionImpl#getGuardedDataVariable <em>Guarded Data Variable</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.impl.UITransitionImpl#getScriptStr <em>Script Str</em>}</li>
  * </ul>
  * </p>
  *
@@ -197,6 +201,34 @@ public class UITransitionImpl extends UISUTElementImpl implements UITransition {
 	 */
 	public void setActionStr(String newActionStr) {
 		eSet(uisutPackage.Literals.UI_TRANSITION__ACTION_STR, newActionStr);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<UIDataVariable> getGuardedDataVariable() {
+		return (EList<UIDataVariable>)eGet(uisutPackage.Literals.UI_TRANSITION__GUARDED_DATA_VARIABLE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getScriptStr() {
+		return (String)eGet(uisutPackage.Literals.UI_TRANSITION__SCRIPT_STR, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScriptStr(String newScriptStr) {
+		eSet(uisutPackage.Literals.UI_TRANSITION__SCRIPT_STR, newScriptStr);
 	}
 
 } //UITransitionImpl

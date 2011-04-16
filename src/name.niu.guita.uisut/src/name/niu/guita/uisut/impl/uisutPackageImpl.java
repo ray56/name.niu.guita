@@ -306,6 +306,33 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getUIState_IsInitial() {
+		return (EAttribute)uiStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUIState_AddedDataVariable() {
+		return (EReference)uiStateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUIState_DeletedDataVariable() {
+		return (EReference)uiStateEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUITransition() {
 		return uiTransitionEClass;
 	}
@@ -380,6 +407,24 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 	 */
 	public EAttribute getUITransition_ActionStr() {
 		return (EAttribute)uiTransitionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUITransition_GuardedDataVariable() {
+		return (EReference)uiTransitionEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUITransition_ScriptStr() {
+		return (EAttribute)uiTransitionEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -522,6 +567,15 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getUISUTElement_Id() {
+		return (EAttribute)uisutElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInitialState() {
 		return initialStateEClass;
 	}
@@ -603,6 +657,9 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 
 		uiStateEClass = createEClass(UI_STATE);
 		createEReference(uiStateEClass, UI_STATE__ITS_UI_CONTROL);
+		createEAttribute(uiStateEClass, UI_STATE__IS_INITIAL);
+		createEReference(uiStateEClass, UI_STATE__ADDED_DATA_VARIABLE);
+		createEReference(uiStateEClass, UI_STATE__DELETED_DATA_VARIABLE);
 
 		uiTransitionEClass = createEClass(UI_TRANSITION);
 		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_TRGT_STATE);
@@ -613,6 +670,8 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		createEAttribute(uiTransitionEClass, UI_TRANSITION__TRIGGER_STR);
 		createEAttribute(uiTransitionEClass, UI_TRANSITION__GUARD_STR);
 		createEAttribute(uiTransitionEClass, UI_TRANSITION__ACTION_STR);
+		createEReference(uiTransitionEClass, UI_TRANSITION__GUARDED_DATA_VARIABLE);
+		createEAttribute(uiTransitionEClass, UI_TRANSITION__SCRIPT_STR);
 
 		uiTriggerEClass = createEClass(UI_TRIGGER);
 
@@ -636,6 +695,7 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		uisutElementEClass = createEClass(UISUT_ELEMENT);
 		createEAttribute(uisutElementEClass, UISUT_ELEMENT__NAME);
 		createEAttribute(uisutElementEClass, UISUT_ELEMENT__DESCRIPTION);
+		createEAttribute(uisutElementEClass, UISUT_ELEMENT__ID);
 
 		initialStateEClass = createEClass(INITIAL_STATE);
 
@@ -704,6 +764,9 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 
 		initEClass(uiStateEClass, UIState.class, "UIState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIState_ItsUIControl(), this.getUIControl(), null, "itsUIControl", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUIState_IsInitial(), ecorePackage.getEBoolean(), "isInitial", null, 0, 1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIState_AddedDataVariable(), this.getUIDataVariable(), null, "addedDataVariable", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIState_DeletedDataVariable(), this.getUIDataVariable(), null, "deletedDataVariable", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiTransitionEClass, UITransition.class, "UITransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUITransition_ItsTrgtState(), this.getAbstractState(), this.getAbstractState_ItsInTransition(), "itsTrgtState", null, 1, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -714,6 +777,8 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		initEAttribute(getUITransition_TriggerStr(), ecorePackage.getEString(), "triggerStr", null, 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUITransition_GuardStr(), ecorePackage.getEString(), "guardStr", "", 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUITransition_ActionStr(), ecorePackage.getEString(), "actionStr", null, 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUITransition_GuardedDataVariable(), this.getUIDataVariable(), null, "guardedDataVariable", null, 0, -1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUITransition_ScriptStr(), ecorePackage.getEString(), "scriptStr", null, 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiTriggerEClass, UITrigger.class, "UITrigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -737,6 +802,7 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		initEClass(uisutElementEClass, UISUTElement.class, "UISUTElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUISUTElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, UISUTElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUISUTElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, UISUTElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUISUTElement_Id(), ecorePackage.getEString(), "id", null, 0, 1, UISUTElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(initialStateEClass, InitialState.class, "InitialState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
