@@ -100,6 +100,14 @@ public class UitfAdapterFactory extends AdapterFactoryImpl {
 				return createUIControlAdapter();
 			}
 			@Override
+			public Adapter caseAssertInState(AssertInState object) {
+				return createAssertInStateAdapter();
+			}
+			@Override
+			public Adapter caseTriggeredTransition(TriggeredTransition object) {
+				return createTriggeredTransitionAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -214,6 +222,34 @@ public class UitfAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUIControlAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link name.niu.guita.uitf.uitf.AssertInState <em>Assert In State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see name.niu.guita.uitf.uitf.AssertInState
+	 * @generated
+	 */
+	public Adapter createAssertInStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link name.niu.guita.uitf.uitf.TriggeredTransition <em>Triggered Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see name.niu.guita.uitf.uitf.TriggeredTransition
+	 * @generated
+	 */
+	public Adapter createTriggeredTransitionAdapter() {
 		return null;
 	}
 

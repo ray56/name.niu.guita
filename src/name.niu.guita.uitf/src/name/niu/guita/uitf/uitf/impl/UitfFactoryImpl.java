@@ -68,6 +68,8 @@ public class UitfFactoryImpl extends EFactoryImpl implements UitfFactory {
 			case UitfPackage.UI_CONTROL_VARIABLE: return createUIControlVariable();
 			case UitfPackage.STATEMENT: return createStatement();
 			case UitfPackage.UI_CONTROL: return createUIControl();
+			case UitfPackage.ASSERT_IN_STATE: return createAssertInState();
+			case UitfPackage.TRIGGERED_TRANSITION: return createTriggeredTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -171,6 +173,26 @@ public class UitfFactoryImpl extends EFactoryImpl implements UitfFactory {
 	public UIControl createUIControl() {
 		UIControlImpl uiControl = new UIControlImpl();
 		return uiControl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssertInState createAssertInState() {
+		AssertInStateImpl assertInState = new AssertInStateImpl();
+		return assertInState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TriggeredTransition createTriggeredTransition() {
+		TriggeredTransitionImpl triggeredTransition = new TriggeredTransitionImpl();
+		return triggeredTransition;
 	}
 
 	/**

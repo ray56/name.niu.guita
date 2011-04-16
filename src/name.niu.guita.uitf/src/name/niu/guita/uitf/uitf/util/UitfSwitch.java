@@ -131,6 +131,20 @@ public class UitfSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UitfPackage.ASSERT_IN_STATE: {
+				AssertInState assertInState = (AssertInState)theEObject;
+				T result = caseAssertInState(assertInState);
+				if (result == null) result = caseStatement(assertInState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UitfPackage.TRIGGERED_TRANSITION: {
+				TriggeredTransition triggeredTransition = (TriggeredTransition)theEObject;
+				T result = caseTriggeredTransition(triggeredTransition);
+				if (result == null) result = caseStatement(triggeredTransition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -237,6 +251,36 @@ public class UitfSwitch<T> {
 	 * @generated
 	 */
 	public T caseUIControl(UIControl object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assert In State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assert In State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssertInState(AssertInState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Triggered Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Triggered Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTriggeredTransition(TriggeredTransition object) {
 		return null;
 	}
 

@@ -34,6 +34,7 @@
         <genParameters ecoreParameter="uitf.ecore#//Variable/setValue/val"/>
       </genOperations>
       <genOperations ecoreOperation="uitf.ecore#//Variable/getValue"/>
+      <genOperations ecoreOperation="uitf.ecore#//Variable/assertValue"/>
     </genClasses>
     <genClasses ecoreClass="uitf.ecore#//UISUT">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//UISUT/itsVariable"/>
@@ -51,6 +52,7 @@
         <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControlData/controlPropertyKey"/>
         <genParameters ecoreParameter="uitf.ecore#//UISUT/onManipulateUIControlData/controlPropertyVal"/>
       </genOperations>
+      <genOperations ecoreOperation="uitf.ecore#//UISUT/assertInState"/>
     </genClasses>
     <genClasses ecoreClass="uitf.ecore#//UIControlVariable"/>
     <genClasses ecoreClass="uitf.ecore#//Statement">
@@ -61,6 +63,13 @@
     <genClasses ecoreClass="uitf.ecore#//UIControl">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uitf.ecore#//UIControl/itsVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//UIControl/id"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//AssertInState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//AssertInState/stateId"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//TriggeredTransition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TriggeredTransition/scriptStr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TriggeredTransition/transitionId"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -67,4 +67,12 @@ public interface Variable extends EObject {
 	 */
 	String getValue();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void assertValue();
+
 } // Variable

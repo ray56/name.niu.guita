@@ -338,6 +338,125 @@ public interface UitfPackage extends EPackage {
 	int UI_CONTROL_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link name.niu.guita.uitf.uitf.impl.AssertInStateImpl <em>Assert In State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see name.niu.guita.uitf.uitf.impl.AssertInStateImpl
+	 * @see name.niu.guita.uitf.uitf.impl.UitfPackageImpl#getAssertInState()
+	 * @generated
+	 */
+	int ASSERT_IN_STATE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Its Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_IN_STATE__ITS_VARIABLE = STATEMENT__ITS_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_IN_STATE__DESCRIPTION = STATEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_IN_STATE__KIND = STATEMENT__KIND;
+
+	/**
+	 * The feature id for the '<em><b>State Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_IN_STATE__STATE_ID = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Assert In State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_IN_STATE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link name.niu.guita.uitf.uitf.impl.TriggeredTransitionImpl <em>Triggered Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see name.niu.guita.uitf.uitf.impl.TriggeredTransitionImpl
+	 * @see name.niu.guita.uitf.uitf.impl.UitfPackageImpl#getTriggeredTransition()
+	 * @generated
+	 */
+	int TRIGGERED_TRANSITION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Its Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION__ITS_VARIABLE = STATEMENT__ITS_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION__DESCRIPTION = STATEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION__KIND = STATEMENT__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Script Str</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION__SCRIPT_STR = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Transition Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION__TRANSITION_ID = STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Triggered Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGERED_TRANSITION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link name.niu.guita.uitf.uitf.UserInstructionEnum <em>User Instruction Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,7 +464,7 @@ public interface UitfPackage extends EPackage {
 	 * @see name.niu.guita.uitf.uitf.impl.UitfPackageImpl#getUserInstructionEnum()
 	 * @generated
 	 */
-	int USER_INSTRUCTION_ENUM = 7;
+	int USER_INSTRUCTION_ENUM = 9;
 
 
 	/**
@@ -573,6 +692,59 @@ public interface UitfPackage extends EPackage {
 	EAttribute getUIControl_Id();
 
 	/**
+	 * Returns the meta object for class '{@link name.niu.guita.uitf.uitf.AssertInState <em>Assert In State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assert In State</em>'.
+	 * @see name.niu.guita.uitf.uitf.AssertInState
+	 * @generated
+	 */
+	EClass getAssertInState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uitf.uitf.AssertInState#getStateId <em>State Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State Id</em>'.
+	 * @see name.niu.guita.uitf.uitf.AssertInState#getStateId()
+	 * @see #getAssertInState()
+	 * @generated
+	 */
+	EAttribute getAssertInState_StateId();
+
+	/**
+	 * Returns the meta object for class '{@link name.niu.guita.uitf.uitf.TriggeredTransition <em>Triggered Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Triggered Transition</em>'.
+	 * @see name.niu.guita.uitf.uitf.TriggeredTransition
+	 * @generated
+	 */
+	EClass getTriggeredTransition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uitf.uitf.TriggeredTransition#getScriptStr <em>Script Str</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Script Str</em>'.
+	 * @see name.niu.guita.uitf.uitf.TriggeredTransition#getScriptStr()
+	 * @see #getTriggeredTransition()
+	 * @generated
+	 */
+	EAttribute getTriggeredTransition_ScriptStr();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uitf.uitf.TriggeredTransition#getTransitionId <em>Transition Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transition Id</em>'.
+	 * @see name.niu.guita.uitf.uitf.TriggeredTransition#getTransitionId()
+	 * @see #getTriggeredTransition()
+	 * @generated
+	 */
+	EAttribute getTriggeredTransition_TransitionId();
+
+	/**
 	 * Returns the meta object for enum '{@link name.niu.guita.uitf.uitf.UserInstructionEnum <em>User Instruction Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -785,6 +957,50 @@ public interface UitfPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UI_CONTROL__ID = eINSTANCE.getUIControl_Id();
+
+		/**
+		 * The meta object literal for the '{@link name.niu.guita.uitf.uitf.impl.AssertInStateImpl <em>Assert In State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see name.niu.guita.uitf.uitf.impl.AssertInStateImpl
+		 * @see name.niu.guita.uitf.uitf.impl.UitfPackageImpl#getAssertInState()
+		 * @generated
+		 */
+		EClass ASSERT_IN_STATE = eINSTANCE.getAssertInState();
+
+		/**
+		 * The meta object literal for the '<em><b>State Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_IN_STATE__STATE_ID = eINSTANCE.getAssertInState_StateId();
+
+		/**
+		 * The meta object literal for the '{@link name.niu.guita.uitf.uitf.impl.TriggeredTransitionImpl <em>Triggered Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see name.niu.guita.uitf.uitf.impl.TriggeredTransitionImpl
+		 * @see name.niu.guita.uitf.uitf.impl.UitfPackageImpl#getTriggeredTransition()
+		 * @generated
+		 */
+		EClass TRIGGERED_TRANSITION = eINSTANCE.getTriggeredTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Script Str</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIGGERED_TRANSITION__SCRIPT_STR = eINSTANCE.getTriggeredTransition_ScriptStr();
+
+		/**
+		 * The meta object literal for the '<em><b>Transition Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIGGERED_TRANSITION__TRANSITION_ID = eINSTANCE.getTriggeredTransition_TransitionId();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guita.uitf.uitf.UserInstructionEnum <em>User Instruction Enum</em>}' enum.

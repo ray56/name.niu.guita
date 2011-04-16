@@ -6,9 +6,11 @@
  */
 package name.niu.guita.uitf.uitf.impl;
 
+import name.niu.guita.uitf.uitf.AssertInState;
 import name.niu.guita.uitf.uitf.Statement;
 import name.niu.guita.uitf.uitf.TestCase;
 import name.niu.guita.uitf.uitf.TestSuite;
+import name.niu.guita.uitf.uitf.TriggeredTransition;
 import name.niu.guita.uitf.uitf.UIControl;
 import name.niu.guita.uitf.uitf.UIControlVariable;
 import name.niu.guita.uitf.uitf.UitfFactory;
@@ -80,6 +82,20 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 	 * @generated
 	 */
 	private EClass uiControlEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assertInStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass triggeredTransitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -343,6 +359,51 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssertInState() {
+		return assertInStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertInState_StateId() {
+		return (EAttribute)assertInStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTriggeredTransition() {
+		return triggeredTransitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTriggeredTransition_ScriptStr() {
+		return (EAttribute)triggeredTransitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTriggeredTransition_TransitionId() {
+		return (EAttribute)triggeredTransitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getUserInstructionEnum() {
 		return userInstructionEnumEEnum;
 	}
@@ -403,6 +464,13 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		createEReference(uiControlEClass, UI_CONTROL__ITS_VARIABLE);
 		createEAttribute(uiControlEClass, UI_CONTROL__ID);
 
+		assertInStateEClass = createEClass(ASSERT_IN_STATE);
+		createEAttribute(assertInStateEClass, ASSERT_IN_STATE__STATE_ID);
+
+		triggeredTransitionEClass = createEClass(TRIGGERED_TRANSITION);
+		createEAttribute(triggeredTransitionEClass, TRIGGERED_TRANSITION__SCRIPT_STR);
+		createEAttribute(triggeredTransitionEClass, TRIGGERED_TRANSITION__TRANSITION_ID);
+
 		// Create enums
 		userInstructionEnumEEnum = createEEnum(USER_INSTRUCTION_ENUM);
 	}
@@ -437,6 +505,8 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		// Add supertypes to classes
 		uisutEClass.getESuperTypes().add(this.getVariable());
 		uiControlVariableEClass.getESuperTypes().add(this.getVariable());
+		assertInStateEClass.getESuperTypes().add(this.getStatement());
+		triggeredTransitionEClass.getESuperTypes().add(this.getStatement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(testCaseEClass, TestCase.class, "TestCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -464,6 +534,8 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 
 		addEOperation(variableEClass, ecorePackage.getEString(), "getValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(variableEClass, null, "assertValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(uisutEClass, name.niu.guita.uitf.uitf.UISUT.class, "UISUT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUISUT_ItsVariable(), this.getVariable(), null, "itsVariable", null, 0, -1, name.niu.guita.uitf.uitf.UISUT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUISUT_ItsUICtrl(), this.getUIControl(), null, "itsUICtrl", null, 0, -1, name.niu.guita.uitf.uitf.UISUT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -481,6 +553,8 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		addEParameter(op, ecorePackage.getEString(), "controlPropertyKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "controlPropertyVal", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(uisutEClass, null, "assertInState", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(uiControlVariableEClass, UIControlVariable.class, "UIControlVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -491,6 +565,13 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		initEClass(uiControlEClass, UIControl.class, "UIControl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIControl_ItsVariable(), this.getVariable(), null, "itsVariable", null, 0, 1, UIControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUIControl_Id(), ecorePackage.getEString(), "id", null, 0, 1, UIControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assertInStateEClass, AssertInState.class, "AssertInState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssertInState_StateId(), ecorePackage.getEString(), "stateId", null, 0, 1, AssertInState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(triggeredTransitionEClass, TriggeredTransition.class, "TriggeredTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTriggeredTransition_ScriptStr(), ecorePackage.getEString(), "scriptStr", null, 0, 1, TriggeredTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTriggeredTransition_TransitionId(), ecorePackage.getEString(), "transitionId", null, 0, 1, TriggeredTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(userInstructionEnumEEnum, UserInstructionEnum.class, "UserInstructionEnum");
