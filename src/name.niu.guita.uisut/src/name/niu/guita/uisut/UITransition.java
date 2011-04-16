@@ -6,6 +6,8 @@
  */
 package name.niu.guita.uisut;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +25,8 @@ package name.niu.guita.uisut;
  *   <li>{@link name.niu.guita.uisut.UITransition#getTriggerStr <em>Trigger Str</em>}</li>
  *   <li>{@link name.niu.guita.uisut.UITransition#getGuardStr <em>Guard Str</em>}</li>
  *   <li>{@link name.niu.guita.uisut.UITransition#getActionStr <em>Action Str</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.UITransition#getGuardedDataVariable <em>Guarded Data Variable</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.UITransition#getScriptStr <em>Script Str</em>}</li>
  * </ul>
  * </p>
  *
@@ -243,5 +247,47 @@ public interface UITransition extends UISUTElement {
 	 * @generated
 	 */
 	void setActionStr(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Guarded Data Variable</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guita.uisut.UIDataVariable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Guarded Data Variable</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Guarded Data Variable</em>' reference list.
+	 * @see name.niu.guita.uisut.uisutPackage#getUITransition_GuardedDataVariable()
+	 * @model
+	 * @generated
+	 */
+	EList<UIDataVariable> getGuardedDataVariable();
+
+	/**
+	 * Returns the value of the '<em><b>Script Str</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Script Str</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Script Str</em>' attribute.
+	 * @see #setScriptStr(String)
+	 * @see name.niu.guita.uisut.uisutPackage#getUITransition_ScriptStr()
+	 * @model
+	 * @generated
+	 */
+	String getScriptStr();
+
+	/**
+	 * Sets the value of the '{@link name.niu.guita.uisut.UITransition#getScriptStr <em>Script Str</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Script Str</em>' attribute.
+	 * @see #getScriptStr()
+	 * @generated
+	 */
+	void setScriptStr(String value);
 
 } // UITransition

@@ -23,6 +23,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUIControl" upperBound="-1"
         eType="#//UIControl" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitial" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addedDataVariable" upperBound="-1"
+        eType="#//UIDataVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deletedDataVariable" upperBound="-1"
+        eType="#//UIDataVariable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UISUTElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTrgtState" lowerBound="1"
@@ -39,6 +43,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="guardStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guardedDataVariable" upperBound="-1"
+        eType="#//UIDataVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITrigger" abstract="true" eSuperTypes="#//UISUTElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="UserTrigger" eSuperTypes="#//UITrigger"/>
@@ -57,6 +64,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="UISUTElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//AbstractState"/>
   <eClassifiers xsi:type="ecore:EClass" name="FinalState" eSuperTypes="#//AbstractState"/>

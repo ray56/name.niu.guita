@@ -88,13 +88,22 @@ public interface uisutPackage extends EPackage {
 	int UISUT_ELEMENT__DESCRIPTION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UISUT_ELEMENT__ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>UISUT Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UISUT_ELEMENT_FEATURE_COUNT = 2;
+	int UISUT_ELEMENT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guita.uisut.impl.UISUTImpl <em>UISUT</em>}' class.
@@ -123,6 +132,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UISUT__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UISUT__ID = UISUT_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its STM</b></em>' containment reference.
@@ -171,6 +189,15 @@ public interface uisutPackage extends EPackage {
 	int APPLICATION_SYSTEM__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_SYSTEM__ID = UISUT_ELEMENT__ID;
+
+	/**
 	 * The feature id for the '<em><b>Its UISUT</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,6 +242,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_STATEMACHINE__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ID = UISUT_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its State</b></em>' containment reference list.
@@ -281,6 +317,15 @@ public interface uisutPackage extends EPackage {
 	int ABSTRACT_STATE__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__ID = UISUT_ELEMENT__ID;
+
+	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -336,6 +381,15 @@ public interface uisutPackage extends EPackage {
 	int UI_STATE__DESCRIPTION = ABSTRACT_STATE__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATE__ID = ABSTRACT_STATE__ID;
+
+	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -363,13 +417,40 @@ public interface uisutPackage extends EPackage {
 	int UI_STATE__ITS_UI_CONTROL = ABSTRACT_STATE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Is Initial</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATE__IS_INITIAL = ABSTRACT_STATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Added Data Variable</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATE__ADDED_DATA_VARIABLE = ABSTRACT_STATE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Deleted Data Variable</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATE__DELETED_DATA_VARIABLE = ABSTRACT_STATE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>UI State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 1;
+	int UI_STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guita.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
@@ -398,6 +479,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_TRANSITION__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__ID = UISUT_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its Trgt State</b></em>' reference.
@@ -472,13 +562,31 @@ public interface uisutPackage extends EPackage {
 	int UI_TRANSITION__ACTION_STR = UISUT_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Guarded Data Variable</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__GUARDED_DATA_VARIABLE = UISUT_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Script Str</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__SCRIPT_STR = UISUT_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>UI Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION_FEATURE_COUNT = UISUT_ELEMENT_FEATURE_COUNT + 8;
+	int UI_TRANSITION_FEATURE_COUNT = UISUT_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guita.uisut.impl.UITriggerImpl <em>UI Trigger</em>}' class.
@@ -507,6 +615,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_TRIGGER__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRIGGER__ID = UISUT_ELEMENT__ID;
 
 	/**
 	 * The number of structural features of the '<em>UI Trigger</em>' class.
@@ -546,6 +663,15 @@ public interface uisutPackage extends EPackage {
 	int USER_TRIGGER__DESCRIPTION = UI_TRIGGER__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_TRIGGER__ID = UI_TRIGGER__ID;
+
+	/**
 	 * The number of structural features of the '<em>User Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -581,6 +707,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_TRIGGER__DESCRIPTION = UI_TRIGGER__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_TRIGGER__ID = UI_TRIGGER__ID;
 
 	/**
 	 * The number of structural features of the '<em>Component Trigger</em>' class.
@@ -620,6 +755,15 @@ public interface uisutPackage extends EPackage {
 	int UI_CONDITION__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_CONDITION__ID = UISUT_ELEMENT__ID;
+
+	/**
 	 * The number of structural features of the '<em>UI Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -657,6 +801,15 @@ public interface uisutPackage extends EPackage {
 	int ACTION__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__ID = UISUT_ELEMENT__ID;
+
+	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -692,6 +845,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_CONTROL__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_CONTROL__ID = UISUT_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its Input Daa</b></em>' reference.
@@ -767,6 +929,15 @@ public interface uisutPackage extends EPackage {
 	int UI_DATA_VARIABLE__DESCRIPTION = UISUT_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_DATA_VARIABLE__ID = UISUT_ELEMENT__ID;
+
+	/**
 	 * The feature id for the '<em><b>Constraint RE</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -811,6 +982,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int INITIAL_STATE__DESCRIPTION = ABSTRACT_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__ID = ABSTRACT_STATE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -866,6 +1046,15 @@ public interface uisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_STATE__DESCRIPTION = ABSTRACT_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__ID = ABSTRACT_STATE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -1002,6 +1191,39 @@ public interface uisutPackage extends EPackage {
 	EReference getUIState_ItsUIControl();
 
 	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uisut.UIState#isIsInitial <em>Is Initial</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Initial</em>'.
+	 * @see name.niu.guita.uisut.UIState#isIsInitial()
+	 * @see #getUIState()
+	 * @generated
+	 */
+	EAttribute getUIState_IsInitial();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guita.uisut.UIState#getAddedDataVariable <em>Added Data Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Added Data Variable</em>'.
+	 * @see name.niu.guita.uisut.UIState#getAddedDataVariable()
+	 * @see #getUIState()
+	 * @generated
+	 */
+	EReference getUIState_AddedDataVariable();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guita.uisut.UIState#getDeletedDataVariable <em>Deleted Data Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Deleted Data Variable</em>'.
+	 * @see name.niu.guita.uisut.UIState#getDeletedDataVariable()
+	 * @see #getUIState()
+	 * @generated
+	 */
+	EReference getUIState_DeletedDataVariable();
+
+	/**
 	 * Returns the meta object for class '{@link name.niu.guita.uisut.UITransition <em>UI Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1098,6 +1320,28 @@ public interface uisutPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUITransition_ActionStr();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guita.uisut.UITransition#getGuardedDataVariable <em>Guarded Data Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Guarded Data Variable</em>'.
+	 * @see name.niu.guita.uisut.UITransition#getGuardedDataVariable()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EReference getUITransition_GuardedDataVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uisut.UITransition#getScriptStr <em>Script Str</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Script Str</em>'.
+	 * @see name.niu.guita.uisut.UITransition#getScriptStr()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EAttribute getUITransition_ScriptStr();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guita.uisut.UITrigger <em>UI Trigger</em>}'.
@@ -1255,6 +1499,17 @@ public interface uisutPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUISUTElement_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uisut.UISUTElement#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see name.niu.guita.uisut.UISUTElement#getId()
+	 * @see #getUISUTElement()
+	 * @generated
+	 */
+	EAttribute getUISUTElement_Id();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guita.uisut.InitialState <em>Initial State</em>}'.
@@ -1419,6 +1674,30 @@ public interface uisutPackage extends EPackage {
 		EReference UI_STATE__ITS_UI_CONTROL = eINSTANCE.getUIState_ItsUIControl();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Initial</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI_STATE__IS_INITIAL = eINSTANCE.getUIState_IsInitial();
+
+		/**
+		 * The meta object literal for the '<em><b>Added Data Variable</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATE__ADDED_DATA_VARIABLE = eINSTANCE.getUIState_AddedDataVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Deleted Data Variable</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATE__DELETED_DATA_VARIABLE = eINSTANCE.getUIState_DeletedDataVariable();
+
+		/**
 		 * The meta object literal for the '{@link name.niu.guita.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1491,6 +1770,22 @@ public interface uisutPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UI_TRANSITION__ACTION_STR = eINSTANCE.getUITransition_ActionStr();
+
+		/**
+		 * The meta object literal for the '<em><b>Guarded Data Variable</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_TRANSITION__GUARDED_DATA_VARIABLE = eINSTANCE.getUITransition_GuardedDataVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Script Str</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI_TRANSITION__SCRIPT_STR = eINSTANCE.getUITransition_ScriptStr();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guita.uisut.impl.UITriggerImpl <em>UI Trigger</em>}' class.
@@ -1627,6 +1922,14 @@ public interface uisutPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UISUT_ELEMENT__DESCRIPTION = eINSTANCE.getUISUTElement_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UISUT_ELEMENT__ID = eINSTANCE.getUISUTElement_Id();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guita.uisut.impl.InitialStateImpl <em>Initial State</em>}' class.

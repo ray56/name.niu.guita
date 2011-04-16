@@ -89,6 +89,24 @@ public interface UitfFactory extends EFactory {
 	UIControl createUIControl();
 
 	/**
+	 * Returns a new object of class '<em>Assert In State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assert In State</em>'.
+	 * @generated
+	 */
+	AssertInState createAssertInState();
+
+	/**
+	 * Returns a new object of class '<em>Triggered Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Triggered Transition</em>'.
+	 * @generated
+	 */
+	TriggeredTransition createTriggeredTransition();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

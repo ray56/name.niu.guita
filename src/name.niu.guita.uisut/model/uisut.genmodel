@@ -6,7 +6,7 @@
     editorPluginClass="name.niu.guita.uisut.editor.presentation.UISUTEditorPlugin"
     rootExtendsInterface="org.eclipse.emf.cdo.CDOObject" rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl"
     reflectiveDelegation="true" testSuiteClass="name.niu.guita.uisut.tests.UISUTAllTests"
-    importerID="org.eclipse.emf.importer.cdo" featureDelegation="Reflective" complianceLevel="6.0"
+    importerID="org.eclipse.emf.importer.ecore" featureDelegation="Reflective" complianceLevel="6.0"
     copyrightFields="false" editPluginID="name.niu.guita.uisut.edit.provider">
   <foreignModel>uisut.ecore</foreignModel>
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
@@ -25,6 +25,9 @@
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UIState">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIState/itsUIControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIState/isInitial"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIState/addedDataVariable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIState/deletedDataVariable"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UITransition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTrgtState"/>
@@ -35,6 +38,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/triggerStr"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/guardStr"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/actionStr"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/guardedDataVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/scriptStr"/>
     </genClasses>
     <genClasses image="false" ecoreClass="uisut.ecore#//UITrigger"/>
     <genClasses ecoreClass="uisut.ecore#//UserTrigger"/>
@@ -53,6 +58,7 @@
     <genClasses image="false" ecoreClass="uisut.ecore#//UISUTElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UISUTElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UISUTElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UISUTElement/id"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//InitialState"/>
     <genClasses ecoreClass="uisut.ecore#//FinalState"/>

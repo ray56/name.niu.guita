@@ -109,4 +109,12 @@ public interface UISUT extends Variable {
 	 */
 	void onManipulateUIControlData(String controlPath, String controlPropertyKey, String controlPropertyVal);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void assertInState();
+
 } // UISUT
