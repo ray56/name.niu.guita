@@ -19,10 +19,10 @@
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
                id="name.niu.guita.uisut.validation.ui.toolbar_Validate"
-               label="Validate(lll)">
+               label="Guita_Validation">
             <command
                   commandId="name.niu.guita.uisut.validation.CMD_Validate"
-                  label="X_Vali"
+                  label="Validate"
                   style="push">
             </command>
          </toolbar>
@@ -31,10 +31,10 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="Validate(lll)">
+               label="Guita_Validation">
             <command
                   commandId="name.niu.guita.uisut.validation.CMD_Validate"
-                  label="X_menuVali"
+                  label="Validate"
                   style="push">
             </command>
          </menu>

@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_DYkH8U0zEeCjbvczk18TRg" type="Ecore" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_EXJ3IE0zEeCjbvczk18TRg" type="2001" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXTBEE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyEE0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyEU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyEk0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_VLdh0E0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyE00zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyFE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyFU0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_VLdh0U0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyFk0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyF00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyGE0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_VLdh0k0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolRegistry"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXJ3IU0zEeCjbvczk18TRg" x="775" y="565"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXcyGU0zEeCjbvczk18TRg" type="2001" lineColor="4210816">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXcyG00zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyHE0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyHU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyHk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyH00zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyIE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyIU0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyIk0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyI00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyJE0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//AbstractTool"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXcyGk0zEeCjbvczk18TRg" x="355" y="40"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXcyJU0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXcyJ00zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyKE0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyKU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyKk0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_wuRWkE0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyK00zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyLE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyLU0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_wuRWkU0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyLk0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyL00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyME0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_wuRWkk0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolContainer"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXcyJk0zEeCjbvczk18TRg" x="190" y="295"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXcyMU0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXcyM00zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXcyNE0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXcyNU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXcyNk0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_JObvIE0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8AE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8AU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8Ak0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_JObvIU0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8A00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8BE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8BU0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_JObvIk0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//PaletteSeparator"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXcyMk0zEeCjbvczk18TRg" x="505" y="295"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXl8Bk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXl8CE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8CU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8Ck0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8C00zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_QLPJME0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8DE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8DU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8Dk0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_QLPJMU0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8D00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8EE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8EU0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_QLPJMk0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolGroup"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXl8B00zEeCjbvczk18TRg" x="120" y="410"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXl8Ek0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXl8FE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8FU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8Fk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8F00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8GE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8GU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8Gk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8G00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8HE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8HU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Palette"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXl8E00zEeCjbvczk18TRg" x="315" y="400"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXl8Hk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXl8IE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8IU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8Ik0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8I00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8JE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8JU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8Jk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXl8J00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXl8KE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXl8KU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//StandardTool"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXl8H00zEeCjbvczk18TRg" x="420" y="230"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXl8Kk0zEeCjbvczk18TRg" type="2005">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXl8LE0zEeCjbvczk18TRg" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtAE0zEeCjbvczk18TRg" type="7011">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtAU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtAk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtA00zEeCjbvczk18TRg" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtBE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtBU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//StandardToolKind"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXl8K00zEeCjbvczk18TRg" x="2"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXvtBk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXvtCE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtCU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtCk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtC00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtDE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtDU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtDk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtD00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtEE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtEU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//CreationTool"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXvtB00zEeCjbvczk18TRg" x="450" y="245"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXvtEk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXvtFE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtFU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtFk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtF00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtGE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtGU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtGk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtG00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtHE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtHU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//GenericTool"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXvtE00zEeCjbvczk18TRg" x="480" y="265"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXvtHk0zEeCjbvczk18TRg" type="2001" lineColor="4210816">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXvtIE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtIU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtIk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtI00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtJE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtJU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtJk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtJ00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtKE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtKU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ItemBase"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXvtH00zEeCjbvczk18TRg" x="1140" y="20"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXvtKk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EXvtLE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtLU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtLk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtL00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtME0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtMU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtMk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EXvtM00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EXvtNE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EXvtNU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Menu"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXvtK00zEeCjbvczk18TRg" x="1285" y="215"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EXvtNk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5eAE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eAU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eAk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eA00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eBE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eBU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eBk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eB00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eCE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eCU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Separator"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EXvtN00zEeCjbvczk18TRg" x="1083" y="224"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EX5eCk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5eDE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eDU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eDk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eD00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eEE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eEU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eEk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eE00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eFE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eFU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//PredefinedItem"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EX5eC00zEeCjbvczk18TRg" x="1355" y="215"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EX5eFk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5eGE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eGU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eGk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eG00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eHE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eHU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eHk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eH00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eIE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eIU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//PredefinedMenu"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EX5eF00zEeCjbvczk18TRg" x="1447" y="366"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EX5eIk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5eJE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eJU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eJk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eJ00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eKE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eKU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eKk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eK00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eLE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eLU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ContributionItem"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EX5eI00zEeCjbvczk18TRg" x="885" y="210"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EX5eLk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5eME0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eMU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eMk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eM00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eNE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eNU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eNk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eN00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eOE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eOU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//MenuAction"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EX5eL00zEeCjbvczk18TRg" x="815" y="345"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EX5eOk0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EX5ePE0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5ePU0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5ePk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eP00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eQE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eQU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eQk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EX5eQ00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EX5eRE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EX5eRU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ItemRef"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EX5eO00zEeCjbvczk18TRg" x="1195" y="215"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYCn8E0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYCn8k0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCn800zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCn9E0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCn9U0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCn9k0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCn900zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCn-E0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCn-U0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCn-k0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCn-00zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ContextMenu"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYCn8U0zEeCjbvczk18TRg" x="1171" y="379"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYCn_E0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYCn_k0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCn_00zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoAE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoAU0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_fKRUUE0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoAk0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoA00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoBE0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_fKRUUU0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoBU0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoBk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoB00zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_fKRUUk0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//PopupMenu"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYCn_U0zEeCjbvczk18TRg" x="1045" y="315"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYCoCE0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYCoCk0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoC00zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoDE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoDU0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoDk0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoD00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoEE0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoEU0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoEk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoE00zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//MainMenu"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYCoCU0zEeCjbvczk18TRg" x="1277" y="374"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYCoFE0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYCoFk0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoF00zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoGE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoGU0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoGk0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoG00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoHE0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoHU0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoHk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoH00zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Toolbar"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYCoFU0zEeCjbvczk18TRg" x="1375" y="375"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYCoIE0zEeCjbvczk18TRg" type="2005">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYCoIk0zEeCjbvczk18TRg" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYCoI00zEeCjbvczk18TRg" type="7011">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYCoJE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYCoJU0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMY8E0zEeCjbvczk18TRg" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMY8U0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMY8k0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ActionKind"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYCoIU0zEeCjbvczk18TRg" x="10" y="45"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYMY800zEeCjbvczk18TRg" type="2001" lineColor="4210816">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYMY9U0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMY9k0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMY900zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMY-E0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMY-U0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMY-k0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMY-00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMY_E0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMY_U0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMY_k0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Image"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYMY9E0zEeCjbvczk18TRg" x="640" y="75"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYMY_00zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYMZAU0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZAk0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZA00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZBE0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_teirME0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZBU0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZBk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZB00zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_teirMU0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZCE0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZCU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZCk0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_teirMk0zEeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//DefaultImage"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYMZAE0zEeCjbvczk18TRg" x="695" y="175"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYMZC00zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYMZDU0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZDk0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZD00zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZEE0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZEU0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZEk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZE00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYMZFE0zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYMZFU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYMZFk0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//BundleImage"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYMZDE0zEeCjbvczk18TRg" x="590" y="170"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYMZF00zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYWJ8E0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWJ8U0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWJ8k0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWJ800zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_w8dHEE00EeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWJ9E0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWJ9U0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWJ9k0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_w8dHEU00EeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWJ900zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWJ-E0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWJ-U0zEeCjbvczk18TRg"/>
+      <layoutConstraint xmi:type="notation:Ratio" xmi:id="_w8dHEk00EeCjbvczk18TRg" value="0.23076923076923078"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//StyleSelector"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYMZGE0zEeCjbvczk18TRg" x="163" y="-15"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYWJ-k0zEeCjbvczk18TRg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYWJ_E0zEeCjbvczk18TRg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWJ_U0zEeCjbvczk18TRg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWJ_k0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWJ_00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWKAE0zEeCjbvczk18TRg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWKAU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWKAk0zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWKA00zEeCjbvczk18TRg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWKBE0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWKBU0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//GenericStyleSelector"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYWJ-00zEeCjbvczk18TRg" x="145" y="65"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EYWKBk0zEeCjbvczk18TRg" type="2005">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EYWKCE0zEeCjbvczk18TRg" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWKCU0zEeCjbvczk18TRg" type="7011">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWKCk0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWKC00zEeCjbvczk18TRg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EYWKDE0zEeCjbvczk18TRg" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_EYWKDU0zEeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_EYWKDk0zEeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//AppearanceStyle"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EYWKB00zEeCjbvczk18TRg" x="15" y="110"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_6eNxME00EeCjbvczk18TRg" type="2003" fontHeight="16" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_6eNxMk00EeCjbvczk18TRg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_6eNxM000EeCjbvczk18TRg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6eNxNE00EeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6eNxNU00EeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//%Green%20line%20for%20Composition%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6eNxMU00EeCjbvczk18TRg" x="15" y="495" width="316" height="35"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_B-edoE01EeCjbvczk18TRg" type="2003" fontHeight="16" lineColor="4210816">
+    <children xmi:type="notation:DecorationNode" xmi:id="_B-edok01EeCjbvczk18TRg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_B-edo001EeCjbvczk18TRg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_B-edpE01EeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_B-edpU01EeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//%Red%20line%20for%20Generalization%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B-edoU01EeCjbvczk18TRg" x="15" y="600" width="310"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_G8eBoE01EeCjbvczk18TRg" type="2003" fontHeight="16" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_G8eBok01EeCjbvczk18TRg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_G8eBo001EeCjbvczk18TRg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_G8eBpE01EeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_G8eBpU01EeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//%Green%20node%20for%20Top%20Container%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G8eBoU01EeCjbvczk18TRg" x="15" y="545" width="315"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_dKos8E01EeCjbvczk18TRg" type="2003" fontHeight="16" lineColor="4210816">
+    <children xmi:type="notation:DecorationNode" xmi:id="_dKos8k01EeCjbvczk18TRg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_dKos8001EeCjbvczk18TRg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_dKos9E01EeCjbvczk18TRg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_dKos9U01EeCjbvczk18TRg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//%Red%20Node%20for%20Top%20Super%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dKos8U01EeCjbvczk18TRg" x="15" y="650" width="306"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_DYkH8k0zEeCjbvczk18TRg"/>
+  <element xmi:type="ecore:EPackage" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_E5RswE0zEeCjbvczk18TRg" type="4003" source="_EXJ3IE0zEeCjbvczk18TRg" target="_EX5eLk0zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E5a2sE0zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E5a2sU0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E5a2sk0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E5a2s00zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E5RswU0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolRegistry/sharedActions"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E5Rswk0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Lk0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5L00zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E7qSYE0zEeCjbvczk18TRg" type="4003" source="_EXJ3IE0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E7qSY00zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E7qSZE0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E7qSZU0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E7zcUE0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E7qSYU0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolRegistry/allMenus"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E7qSYk0zEeCjbvczk18TRg" points="[0, 0, -500, 283]$[226, -120, -274, 163]$[500, -283, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqO00zEeCjbvczk18TRg" id="(0.7441860465116279,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqPE0zEeCjbvczk18TRg" id="(0.2857142857142857,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E7zcUU0zEeCjbvczk18TRg" type="4003" source="_EXJ3IE0zEeCjbvczk18TRg" target="_EXl8Ek0zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E7zcVE0zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E7zcVU0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E7zcVk0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E7zcV00zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E7zcUk0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolRegistry/palette"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E7zcU00zEeCjbvczk18TRg" points="[0, 0, 699, 60]$[-699, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5ME0zEeCjbvczk18TRg" id="(0.2441860465116279,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5MU0zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E79NUE0zEeCjbvczk18TRg" type="4003" source="_EXcyGU0zEeCjbvczk18TRg" target="_EYMY800zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E79NU00zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E79NVE0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E79NVU0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E79NVk0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E79NUU0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//AbstractTool/smallIcon"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E79NUk0zEeCjbvczk18TRg" points="[-45, 31, 274, -71]$[-146, 102, 173, 0]$[-292, 102, 27, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5RE0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqIE0zEeCjbvczk18TRg" id="(0.49056603773584906,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E79NV00zEeCjbvczk18TRg" type="4003" source="_EXcyGU0zEeCjbvczk18TRg" target="_EYMY800zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E79NWk0zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E79NW00zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E79NXE0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E79NXU0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E79NWE0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//AbstractTool/largeIcon"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E79NWU0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqIU0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqIk0zEeCjbvczk18TRg" id="(0.49056603773584906,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8G-UE0zEeCjbvczk18TRg" type="4003" source="_EXcyJU0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8G-U00zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8G-VE0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8G-VU0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8G-Vk0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8G-UU0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolContainer/tools"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8G-Uk0zEeCjbvczk18TRg" points="[0, 0, -153, 193]$[91, -76, -62, 117]$[153, -193, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqM00zEeCjbvczk18TRg" id="(0.6666666666666666,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqNE0zEeCjbvczk18TRg" id="(0.3,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8G-V00zEeCjbvczk18TRg" type="4004" source="_EXcyJU0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8G-WE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8G-WU0zEeCjbvczk18TRg" points="[0, 0, -184, 60]$[184, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqMU0zEeCjbvczk18TRg" id="(0.3333333333333333,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqMk0zEeCjbvczk18TRg" id="(0.2,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8QIQE0zEeCjbvczk18TRg" type="4004" source="_EXcyMU0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8QIQU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8QIQk0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5IE0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5IU0zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8QIQ00zEeCjbvczk18TRg" type="4002" source="_EXl8Bk0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8QIRk0zEeCjbvczk18TRg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8QIR00zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8QISE0zEeCjbvczk18TRg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8QISU0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8QIRE0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ToolGroup/active"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8QIRU0zEeCjbvczk18TRg" points="[0, 0, -200, 293]$[39, -116, -161, 177]$[100, -196, -100, 97]$[122, -249, -78, 44]$[200, -293, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqNU0zEeCjbvczk18TRg" id="(0.5131578947368421,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqNk0zEeCjbvczk18TRg" id="(0.1,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8jDME0zEeCjbvczk18TRg" type="4004" source="_EXl8Bk0zEeCjbvczk18TRg" target="_EXcyJU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8jDMU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8jDMk0zEeCjbvczk18TRg" points="[0, 0, -58, 60]$[58, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Kk0zEeCjbvczk18TRg" id="(0.7631578947368421,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5K00zEeCjbvczk18TRg" id="(0.3333333333333333,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8s0ME0zEeCjbvczk18TRg" type="4002" source="_EXl8Ek0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8s0M00zEeCjbvczk18TRg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8s0NE0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E8s0NU0zEeCjbvczk18TRg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E8s0Nk0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8s0MU0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Palette/default"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8s0Mk0zEeCjbvczk18TRg" points="[0, 0, -116, 178]$[116, -178, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqN00zEeCjbvczk18TRg" id="(0.5172413793103449,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqOE0zEeCjbvczk18TRg" id="(0.4,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8s0N00zEeCjbvczk18TRg" type="4004" source="_EXl8Ek0zEeCjbvczk18TRg" target="_EXcyJU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8s0OE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8s0OU0zEeCjbvczk18TRg" points="[0, 0, 63, 60]$[-63, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Mk0zEeCjbvczk18TRg" id="(0.25862068965517243,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5M00zEeCjbvczk18TRg" id="(0.6666666666666666,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8s0Ok0zEeCjbvczk18TRg" type="4004" source="_EXl8Hk0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8s0O00zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8s0PE0zEeCjbvczk18TRg" points="[0, 0, 151, 60]$[-151, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5JE0zEeCjbvczk18TRg" id="(0.4946236559139785,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5JU0zEeCjbvczk18TRg" id="(0.6222222222222222,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E82lME0zEeCjbvczk18TRg" type="4004" source="_EXvtBk0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E82lMU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E82lMk0zEeCjbvczk18TRg" points="[0, 0, 291, 60]$[-291, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqLU0zEeCjbvczk18TRg" id="(0.4943820224719101,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqLk0zEeCjbvczk18TRg" id="(0.7444444444444445,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E82lM00zEeCjbvczk18TRg" type="4004" source="_EXvtEk0zEeCjbvczk18TRg" target="_EXcyGU0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E82lNE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E82lNU0zEeCjbvczk18TRg" points="[0, 0, 427, 60]$[-427, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqKU0zEeCjbvczk18TRg" id="(0.49411764705882355,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqKk0zEeCjbvczk18TRg" id="(0.8666666666666667,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E82lNk0zEeCjbvczk18TRg" type="4003" source="_EXvtKk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E82lOU0zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E82lOk0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E82lO00zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E82lPE0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E82lN00zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//Menu/items"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E82lOE0zEeCjbvczk18TRg" points="[0, 0, 105, 60]$[-105, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqL00zEeCjbvczk18TRg" id="(0.4897959183673469,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqME0zEeCjbvczk18TRg" id="(0.6571428571428571,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8_vIE0zEeCjbvczk18TRg" type="4004" source="_EXvtNk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8_vIU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8_vIk0zEeCjbvczk18TRg" points="[0, 0, -116, 60]$[116, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqI00zEeCjbvczk18TRg" id="(0.4931506849315068,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqJE0zEeCjbvczk18TRg" id="(0.32857142857142857,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8_vI00zEeCjbvczk18TRg" type="4004" source="_EX5eCk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8_vJE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8_vJU0zEeCjbvczk18TRg" points="[0, 0, 230, 60]$[-230, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Qk0zEeCjbvczk18TRg" id="(0.49523809523809526,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Q00zEeCjbvczk18TRg" id="(0.8285714285714286,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E8_vJk0zEeCjbvczk18TRg" type="4004" source="_EX5eFk0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E8_vJ00zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E8_vKE0zEeCjbvczk18TRg" points="[0, 0, 183, 60]$[-183, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5OE0zEeCjbvczk18TRg" id="(0.3333333333333333,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5OU0zEeCjbvczk18TRg" id="(0.8571428571428571,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9JgIE0zEeCjbvczk18TRg" type="4004" source="_EX5eFk0zEeCjbvczk18TRg" target="_EX5eCk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9JgIU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9JgIk0zEeCjbvczk18TRg" points="[0, 0, 100, 60]$[-100, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Nk0zEeCjbvczk18TRg" id="(0.6666666666666666,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5N00zEeCjbvczk18TRg" id="(0.49523809523809526,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9JgI00zEeCjbvczk18TRg" type="4003" source="_EX5eIk0zEeCjbvczk18TRg" target="_EYMY800zEeCjbvczk18TRg" lineColor="4227072">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9JgJk0zEeCjbvczk18TRg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9JgJ00zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9JgKE0zEeCjbvczk18TRg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9JgKU0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9JgJE0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ContributionItem/icon"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9JgJU0zEeCjbvczk18TRg" points="[0, 0, 587, 172]$[-587, -172, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqPU0zEeCjbvczk18TRg" id="(0.3274336283185841,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqPk0zEeCjbvczk18TRg" id="(0.7358490566037735,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9TRIE0zEeCjbvczk18TRg" type="4004" source="_EX5eIk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9TRIU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9TRIk0zEeCjbvczk18TRg" points="[0, 0, -238, 60]$[238, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5NE0zEeCjbvczk18TRg" id="(0.6637168141592921,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5NU0zEeCjbvczk18TRg" id="(0.15714285714285714,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9TRI00zEeCjbvczk18TRg" type="4004" source="_EX5eLk0zEeCjbvczk18TRg" target="_EX5eIk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9TRJE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9TRJU0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5QE0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5QU0zEeCjbvczk18TRg" id="(0.49557522123893805,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9TRJk0zEeCjbvczk18TRg" type="4002" source="_EX5eOk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9TRKU0zEeCjbvczk18TRg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9TRKk0zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9TRK00zEeCjbvczk18TRg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9TRLE0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9TRJ00zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ItemRef/item"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9TRKE0zEeCjbvczk18TRg" points="[0, 0, 51, 143]$[-51, -26, 0, 117]$[-57, -35, -6, 108]$[-57, -143, -6, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Jk0zEeCjbvczk18TRg" id="(0.49206349206349204,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5J00zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9cbEE0zEeCjbvczk18TRg" type="4004" source="_EX5eOk0zEeCjbvczk18TRg" target="_EXvtHk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9cbEU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9cbEk0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5KE0zEeCjbvczk18TRg" id="(0.49206349206349204,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5KU0zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9cbE00zEeCjbvczk18TRg" type="4002" source="_EYCn8E0zEeCjbvczk18TRg" target="_EX5eLk0zEeCjbvczk18TRg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9cbFk0zEeCjbvczk18TRg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9cbF00zEeCjbvczk18TRg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E9cbGE0zEeCjbvczk18TRg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E9cbGU0zEeCjbvczk18TRg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9cbFE0zEeCjbvczk18TRg"/>
+    <element xmi:type="ecore:EReference" href="org.eclipse.gmf.tooldef.jar_models.tooldef.ecore#//ContextMenu/default"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9cbFU0zEeCjbvczk18TRg" points="[0, 0, 219, 60]$[-219, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5LE0zEeCjbvczk18TRg" id="(0.25806451612903225,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5LU0zEeCjbvczk18TRg" id="(0.75,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9cbGk0zEeCjbvczk18TRg" type="4004" source="_EYCn8E0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9cbG00zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9cbHE0zEeCjbvczk18TRg" points="[0, 0, -249, 88]$[249, -88, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqOU0zEeCjbvczk18TRg" id="(0.5053763440860215,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqOk0zEeCjbvczk18TRg" id="(0.42857142857142855,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9mMEE0zEeCjbvczk18TRg" type="4004" source="_EYCn_E0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9mMEU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9mMEk0zEeCjbvczk18TRg" points="[0, 0, -222, 60]$[222, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Pk0zEeCjbvczk18TRg" id="(0.6666666666666666,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5P00zEeCjbvczk18TRg" id="(0.14285714285714285,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9mME00zEeCjbvczk18TRg" type="4004" source="_EYCn_E0zEeCjbvczk18TRg" target="_EX5eIk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9mMFE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9mMFU0zEeCjbvczk18TRg" points="[0, 0, 102, 60]$[-102, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5PE0zEeCjbvczk18TRg" id="(0.3333333333333333,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5PU0zEeCjbvczk18TRg" id="(0.7433628318584071,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9mMFk0zEeCjbvczk18TRg" type="4004" source="_EYCoCE0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9mMF00zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9mMGE0zEeCjbvczk18TRg" points="[0, 0, -57, 60]$[57, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Ok0zEeCjbvczk18TRg" id="(0.4931506849315068,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5O00zEeCjbvczk18TRg" id="(0.5714285714285714,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9vWAE0zEeCjbvczk18TRg" type="4004" source="_EYCoFE0zEeCjbvczk18TRg" target="_EXvtKk0zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9vWAU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9vWAk0zEeCjbvczk18TRg" points="[0, 0, 63, 60]$[-63, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqK00zEeCjbvczk18TRg" id="(0.4918032786885246,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqLE0zEeCjbvczk18TRg" id="(0.7142857142857143,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9vWA00zEeCjbvczk18TRg" type="4004" source="_EYMY_00zEeCjbvczk18TRg" target="_EYMY800zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9vWBE0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9vWBU0zEeCjbvczk18TRg" points="[0, 0, -283, 60]$[283, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqJ00zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqKE0zEeCjbvczk18TRg" id="(0.1509433962264151,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E9vWBk0zEeCjbvczk18TRg" type="4004" source="_EYMZC00zEeCjbvczk18TRg" target="_EYMY800zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E9vWB00zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E9vWCE0zEeCjbvczk18TRg" points="[0, 0, -141, 60]$[141, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqJU0zEeCjbvczk18TRg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDjqJk0zEeCjbvczk18TRg" id="(0.32075471698113206,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_E95HAE0zEeCjbvczk18TRg" type="4004" source="_EYWJ-k0zEeCjbvczk18TRg" target="_EYMZF00zEeCjbvczk18TRg" lineColor="4210816">
+    <styles xmi:type="notation:FontStyle" xmi:id="_E95HAU0zEeCjbvczk18TRg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E95HAk0zEeCjbvczk18TRg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5Ik0zEeCjbvczk18TRg" id="(0.49624060150375937,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FDZ5I00zEeCjbvczk18TRg" id="(0.5,1.0)"/>
+  </edges>
+</notation:Diagram>

@@ -1,19 +1,23 @@
-package name.niu.guita.uisut.diagram.application;
+package name.niu.guita;
+
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-/**
- * @generated
- */
-public class DiagramEditorPerspective implements IPerspectiveFactory {
-	/**
-	 * @generated
-	 */
+public class Perspective implements IPerspectiveFactory {
+
+	@Override
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(true);
-		layout.addPerspectiveShortcut(DiagramEditorWorkbenchAdvisor.PERSPECTIVE_ID);
+		layout.addPerspectiveShortcut(ApplicationWorkbenchAdvisor.PERSPECTIVE_ID);
+		
+		// add navigation windows
+		IFolderLayout left = layout.createFolder(
+				"left", IPageLayout.LEFT, 0.2f, layout.getEditorArea());
+		left.addView( "name.niu.guita.guitaNavigatorView") ;
+		
+		
 		
 		IFolderLayout right = layout.createFolder(
 				"right", IPageLayout.RIGHT, 0.6f, layout.getEditorArea()); //$NON-NLS-1$
@@ -23,10 +27,7 @@ public class DiagramEditorPerspective implements IPerspectiveFactory {
 				"bottomRight", IPageLayout.BOTTOM, 0.6f, "right"); //$NON-NLS-1$	 //$NON-NLS-2$
 		bottomRight.addView(IPageLayout.ID_PROP_SHEET);
 		
-		// add navigation windows
-		IFolderLayout left = layout.createFolder(
-				"left", IPageLayout.LEFT, 0.2f, layout.getEditorArea());
-		left.addView( IPageLayout.ID_RES_NAV) ;
+
 		
 		
 		// Add "new wizards".
@@ -39,6 +40,6 @@ public class DiagramEditorPerspective implements IPerspectiveFactory {
 		layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
 		layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
 		layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
-		
 	}
+
 }

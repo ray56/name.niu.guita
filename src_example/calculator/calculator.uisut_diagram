@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:UISUT_="http://www.niu.name/guita/uisut/1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_PqZaMWaTEeC8oZWEpHceCw" type="UISUT" name="calculator.uisut_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_VKgz0GaTEeC8oZWEpHceCw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_VKqk0GaTEeC8oZWEpHceCw" type="5001"/>
+    <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VKgz0WaTEeC8oZWEpHceCw" x="220" y="125" width="131" height="121"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Vv6m8GaTEeC8oZWEpHceCw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Vv6m8maTEeC8oZWEpHceCw" type="5001"/>
+    <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vv6m8WaTEeC8oZWEpHceCw" x="360" y="255" width="166" height="161"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_PqZaMmaTEeC8oZWEpHceCw"/>
+  <element xmi:type="UISUT_:UIStatemachine" href="calculator.uisut#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_WstmYGaTEeC8oZWEpHceCw" type="4001" source="_VKgz0GaTEeC8oZWEpHceCw" target="_Vv6m8GaTEeC8oZWEpHceCw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WstmY2aTEeC8oZWEpHceCw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_WstmZGaTEeC8oZWEpHceCw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_WstmYWaTEeC8oZWEpHceCw"/>
+    <element xmi:type="UISUT_:UITransition" href="calculator.uisut#//@itsTransition.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WstmYmaTEeC8oZWEpHceCw" points="[0, 0, -57, -159]$[106, 79, 49, -80]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WuzREGaTEeC8oZWEpHceCw" id="(1.0,0.8760330578512396)"/>
+  </edges>
+</notation:Diagram>

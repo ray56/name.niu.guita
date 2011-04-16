@@ -28,7 +28,7 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="&amp;TestCase">
+               label="&amp;Guita_GenXLSCase">
             <command
                   commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
                   style="push">

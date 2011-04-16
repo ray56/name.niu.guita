@@ -7,7 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import name.niu.guita.uisut.UIState;
+import name.niu.guita.uisut.UIStatemachine;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guita.uisut.diagram.part.UISUTDiagramEditor;
 import name.niu.guita.uisut.validation.Activator;
 
@@ -21,6 +23,7 @@ import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -35,6 +38,7 @@ import org.eclipse.ui.IActionDelegate2;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.dialogs.ListDialog;
+import org.eclipse.ui.handlers.HandlerUtil;
 
 public class BatchValidationDelegate 
 	implements IEditorActionDelegate, IActionDelegate2 {
@@ -108,19 +112,23 @@ public class BatchValidationDelegate
 				}
 				
 				// select the error object
-				for(EditPart next:selectedEditParts){
-					if ( next instanceof UIStateEditPart ){
-						UIStateEditPart ep = ((UIStateEditPart)next);
-						Shape sh =(Shape) ep.getModel() ;
-						EObject eo = sh.getElement() ;
-						if ( errorSelections.contains(eo) ){
-							ep.setSelected(org.eclipse.gef.EditPart.SELECTED) ;
-						} else {
-							ep.setSelected(org.eclipse.gef.EditPart.SELECTED_NONE);
-						}
-						
-					}
-				}
+//				for(EditPart next:selectedEditParts){
+//					if ( next instanceof UIStateEditPart ){
+//						UIStateEditPart ep = ((UIStateEditPart)next);
+//						View sh =(View) ep.getModel() ;
+//						EObject eo = sh.getElement() ;
+//						if ( errorSelections.contains(eo) ){
+//							ep.setSelected(org.eclipse.gef.EditPart.SELECTED) ;
+//						} else {
+//							ep.setSelected(org.eclipse.gef.EditPart.SELECTED_NONE);
+//						}
+//						
+//					} else if ( next instanceof UIStatemachineEditPart ) {
+//						for ( EObject err : errorSelections ) {
+//							
+//						}
+//					}
+//				}
 				// editor.setSelectionToViewer(errorSelections);
 			}
 		}
@@ -160,6 +168,12 @@ public class BatchValidationDelegate
 				Shape sh =(Shape) ep.getModel() ;
 				EObject eo = sh.getElement() ;
 				this.selectedEObjects.add(eo) ;
+			} else if ( next instanceof UIStatemachineEditPart ) {
+				UIStatemachineEditPart ep = ( (UIStatemachineEditPart)next);
+				View v = (View) ep.getModel() ; //ep.getAdapter(UIStatemachine.class);
+				UIStatemachine eo = (UIStatemachine) v.getElement();
+				this.selectedEObjects.add(eo);
+				this.selectedEObjects.addAll( eo.getItsState() ) ;				
 			}
 		}
 		
