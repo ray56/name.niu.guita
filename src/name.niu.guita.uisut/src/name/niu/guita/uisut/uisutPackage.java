@@ -271,7 +271,7 @@ public interface uisutPackage extends EPackage {
 	int UI_STATEMACHINE__ITS_TRANSITION = UISUT_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Its Data Variable</b></em>' containment reference.
+	 * The feature id for the '<em><b>Its Data Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1159,10 +1159,10 @@ public interface uisutPackage extends EPackage {
 	EReference getUIStatemachine_ItsTransition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link name.niu.guita.uisut.UIStatemachine#getItsDataVariable <em>Its Data Variable</em>}'.
+	 * Returns the meta object for the containment reference list '{@link name.niu.guita.uisut.UIStatemachine#getItsDataVariable <em>Its Data Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Its Data Variable</em>'.
+	 * @return the meta object for the containment reference list '<em>Its Data Variable</em>'.
 	 * @see name.niu.guita.uisut.UIStatemachine#getItsDataVariable()
 	 * @see #getUIStatemachine()
 	 * @generated
@@ -1648,7 +1648,7 @@ public interface uisutPackage extends EPackage {
 		EReference UI_STATEMACHINE__ITS_TRANSITION = eINSTANCE.getUIStatemachine_ItsTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Data Variable</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Its Data Variable</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

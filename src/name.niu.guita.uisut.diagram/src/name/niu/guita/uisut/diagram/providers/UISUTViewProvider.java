@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
@@ -145,6 +147,7 @@ public class UISUTViewProvider extends AbstractProvider implements
 				case UIStateEditPart.VISUAL_ID:
 				case InitialStateEditPart.VISUAL_ID:
 				case FinalStateEditPart.VISUAL_ID:
+				case UIDataVariableEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != UISUTVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -159,7 +162,8 @@ public class UISUTViewProvider extends AbstractProvider implements
 		}
 		return UIStateEditPart.VISUAL_ID == visualID
 				|| InitialStateEditPart.VISUAL_ID == visualID
-				|| FinalStateEditPart.VISUAL_ID == visualID;
+				|| FinalStateEditPart.VISUAL_ID == visualID
+				|| UIDataVariableEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -225,6 +229,9 @@ public class UISUTViewProvider extends AbstractProvider implements
 		case FinalStateEditPart.VISUAL_ID:
 			return createFinalState_2003(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case UIDataVariableEditPart.VISUAL_ID:
+			return createUIDataVariable_2004(domainElement, containerView,
+					index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -373,6 +380,53 @@ public class UISUTViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createUIDataVariable_2004(EObject domainElement,
+			View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(UISUTVisualIDRegistry
+				.getType(UIDataVariableEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5002 = createLabel(node,
+				UISUTVisualIDRegistry
+						.getType(UIDataVariableNameEditPart.VISUAL_ID));
 		return node;
 	}
 

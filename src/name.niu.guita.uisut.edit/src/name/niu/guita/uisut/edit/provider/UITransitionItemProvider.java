@@ -69,6 +69,8 @@ public class UITransitionItemProvider
 			addTriggerStrPropertyDescriptor(object);
 			addGuardStrPropertyDescriptor(object);
 			addActionStrPropertyDescriptor(object);
+			addGuardedDataVariablePropertyDescriptor(object);
+			addScriptStrPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -184,6 +186,50 @@ public class UITransitionItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Guarded Data Variable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGuardedDataVariablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_guardedDataVariable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_guardedDataVariable_feature", "_UI_UITransition_type"),
+				 uisutPackage.Literals.UI_TRANSITION__GUARDED_DATA_VARIABLE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Script Str feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addScriptStrPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_scriptStr_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_scriptStr_feature", "_UI_UITransition_type"),
+				 uisutPackage.Literals.UI_TRANSITION__SCRIPT_STR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,6 +301,7 @@ public class UITransitionItemProvider
 			case uisutPackage.UI_TRANSITION__TRIGGER_STR:
 			case uisutPackage.UI_TRANSITION__GUARD_STR:
 			case uisutPackage.UI_TRANSITION__ACTION_STR:
+			case uisutPackage.UI_TRANSITION__SCRIPT_STR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case uisutPackage.UI_TRANSITION__ITS_TRIGGER:

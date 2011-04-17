@@ -144,6 +144,53 @@
             href="uisut.genmodel#//uisut/UIStatemachine/itsState"/>
       </modelFacet>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2004"
+        editPartClassName="UIDataVariableEditPart"
+        itemSemanticEditPolicyClassName="UIDataVariableItemSemanticEditPolicy"
+        notationViewFactoryClassName="UIDataVariableViewFactory"
+        canonicalEditPolicyClassName="UIDataVariableCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="UIDataVariableGraphicalNodeEditPolicy"
+        createCommandClassName="UIDataVariableCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="UIDataVariableEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="FigureDescriptor_DataVariable"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class FigureDescriptor_DataVariable extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fAccessor_getDataVariableLable; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public FigureDescriptor_DataVariable() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutThis = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutThis.numColumns = 1;&#xA;&#x9;layoutThis.makeColumnsEqualWidth = true;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fAccessor_getDataVariableLable = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fAccessor_getDataVariableLable.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFAccessor_getDataVariableLable = new org.eclipse.draw2d.GridData();&#xA;constraintFAccessor_getDataVariableLable.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFAccessor_getDataVariableLable.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFAccessor_getDataVariableLable.horizontalIndent = 0;&#xA;constraintFAccessor_getDataVariableLable.horizontalSpan = 1;&#xA;constraintFAccessor_getDataVariableLable.verticalSpan = 1;&#xA;constraintFAccessor_getDataVariableLable.grabExcessHorizontalSpace = false;&#xA;constraintFAccessor_getDataVariableLable.grabExcessVerticalSpace = false;&#xA;this.add(fAccessor_getDataVariableLable, constraintFAccessor_getDataVariableLable);&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel Accessor_getDataVariableLable() {&#xA;&#x9;&#x9;return fAccessor_getDataVariableLable;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass
+            href="uisut.genmodel#//uisut/UIDataVariable"/>
+        <containmentMetaFeature
+            href="uisut.genmodel#//uisut/UIStatemachine/itsDataVariable"/>
+        <childMetaFeature
+            href="uisut.genmodel#//uisut/UIStatemachine/itsDataVariable"/>
+      </modelFacet>
+      <labels
+          visualID="5002"
+          editPartClassName="UIDataVariableNameEditPart"
+          itemSemanticEditPolicyClassName="UIDataVariableNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="UIDataVariableNameViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="Accessor_getDataVariableLable"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
+          <editableMetaFeatures
+              href="uisut.genmodel#//uisut/UISUTElement/name"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="UITransitionEditPart"
@@ -233,6 +280,12 @@
             title="FinalState"
             description="Create new FinalState"
             genNodes="//@diagram/@topLevelNodes.2"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Data Variable"
+            description="Create new Data Variable"
+            smallIconPath="/name.niu.guita.uisut.model.edit/icons/full/ctool16/data.gif"
+            genNodes="//@diagram/@topLevelNodes.3"/>
       </groups>
     </palette>
     <preferencePages
@@ -522,7 +575,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"/>
+        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

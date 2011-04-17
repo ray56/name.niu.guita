@@ -76,17 +76,9 @@ public class UIStatemachineImpl extends UISUTElementImpl implements UIStatemachi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UIDataVariable getItsDataVariable() {
-		return (UIDataVariable)eGet(uisutPackage.Literals.UI_STATEMACHINE__ITS_DATA_VARIABLE, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setItsDataVariable(UIDataVariable newItsDataVariable) {
-		eSet(uisutPackage.Literals.UI_STATEMACHINE__ITS_DATA_VARIABLE, newItsDataVariable);
+	@SuppressWarnings("unchecked")
+	public EList<UIDataVariable> getItsDataVariable() {
+		return (EList<UIDataVariable>)eGet(uisutPackage.Literals.UI_STATEMACHINE__ITS_DATA_VARIABLE, true);
 	}
 
 } //UIStatemachineImpl

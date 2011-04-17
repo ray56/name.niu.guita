@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guita.uitf.scriptgen.CMD_GEN_SCRIPT"
+            name="gen script">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:name.niu.guita.guitaMainMenu?after=separator3">
+         <command
+               commandId="name.niu.guita.uitf.scriptgen.CMD_GEN_SCRIPT"
+               label="Generate Test Case Script"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="name.niu.guita.uitf.scriptgen.actions.GenerateScriptAction"
+            commandId="name.niu.guita.uitf.scriptgen.CMD_GEN_SCRIPT">
+      </handler>
+   </extension>
+
+</plugin>

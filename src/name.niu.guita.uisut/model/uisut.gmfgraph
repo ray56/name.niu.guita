@@ -124,6 +124,26 @@
         </children>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="FigureDescriptor_DataVariable">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="Rectangle_DataVariableRectangle">
+        <layout
+            xsi:type="gmfgraph:GridLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="Lable_DataVariable"
+            text="">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              horizontalAlignment="BEGINNING"/>
+        </children>
+      </actualFigure>
+      <accessors
+          accessor="Accessor_getDataVariableLable"
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+    </descriptors>
   </figures>
   <nodes
       name="ggNode_UIState"
@@ -142,8 +162,11 @@
       name="FinalState"
       figure="FinalStateFigure"
       resizeConstraint="NONE"/>
+  <nodes
+      name="Node_DataVariable"
+      figure="FigureDescriptor_DataVariable"/>
   <connections
-      name="ggConnection_UITransition"
+      name="gggConnection_UITransition"
       figure="ggFigureDescriptor_UITransitionFigure"/>
   <labels
       name="ggDiagramLable_UIStateName"
@@ -165,4 +188,8 @@
       figure="UITransitionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels
+      name="DiagramLable_DataVariable"
+      figure="FigureDescriptor_DataVariable"
+      accessor="//@figures.0/@descriptors.6/@accessors.0"/>
 </gmfgraph:Canvas>

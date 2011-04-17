@@ -2,6 +2,7 @@ package name.niu.guita.uisut.diagram.edit.policies;
 
 import name.niu.guita.uisut.diagram.edit.commands.FinalStateCreateCommand;
 import name.niu.guita.uisut.diagram.edit.commands.InitialStateCreateCommand;
+import name.niu.guita.uisut.diagram.edit.commands.UIDataVariableCreateCommand;
 import name.niu.guita.uisut.diagram.edit.commands.UIStateCreateCommand;
 import name.niu.guita.uisut.diagram.providers.UISUTElementTypes;
 
@@ -37,6 +38,9 @@ public class UIStatemachineItemSemanticEditPolicy extends
 		}
 		if (UISUTElementTypes.FinalState_2003 == req.getElementType()) {
 			return getGEFWrapper(new FinalStateCreateCommand(req));
+		}
+		if (UISUTElementTypes.UIDataVariable_2004 == req.getElementType()) {
+			return getGEFWrapper(new UIDataVariableCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

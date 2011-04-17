@@ -115,5 +115,28 @@
       </possibleChildren>
    </navigatorContent>
 </extension>
+<extension
+      point="org.eclipse.ui.menus">
+   <menuContribution
+         allPopups="false"
+         locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+      <menu
+            id="name.niu.guita.guitaMainMenu"
+            label="Guita">
+         <separator
+               name="separator1"
+               visible="false">
+         </separator>
+         <separator
+               name="separator2"
+               visible="true">
+         </separator>
+         <separator
+               name="separator3"
+               visible="true">
+         </separator>
+      </menu>
+   </menuContribution>
+</extension>
 
 </plugin>

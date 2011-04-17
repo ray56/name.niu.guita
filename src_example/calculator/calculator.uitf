@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<UITF_:TestSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:UITF_="http://www.niu.name/guita/uitf/1.0" id="TS_001">
+  <itsTestCase id="TC_000"/>
+  <itsTestCase id="TC_001"/>
+  <itsTestCase id="TC_002"/>
+</UITF_:TestSuite>

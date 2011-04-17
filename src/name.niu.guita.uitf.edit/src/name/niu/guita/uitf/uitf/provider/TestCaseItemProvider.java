@@ -193,6 +193,16 @@ public class TestCaseItemProvider
 			(createChildParameter
 				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
 				 UitfFactory.eINSTANCE.createStatement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
+				 UitfFactory.eINSTANCE.createAssertInState()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
+				 UitfFactory.eINSTANCE.createTriggeredTransition()));
 	}
 
 	/**

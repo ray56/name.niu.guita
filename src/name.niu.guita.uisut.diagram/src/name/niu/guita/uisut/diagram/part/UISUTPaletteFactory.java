@@ -38,6 +38,7 @@ public class UISUTPaletteFactory {
 		paletteContainer.add(createUITransition2CreationTool());
 		paletteContainer.add(createInitialState3CreationTool());
 		paletteContainer.add(createFinalState4CreationTool());
+		paletteContainer.add(createDataVariable5CreationTool());
 		return paletteContainer;
 	}
 
@@ -99,6 +100,22 @@ public class UISUTPaletteFactory {
 		entry.setId("createFinalState4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(UISUTElementTypes
 				.getImageDescriptor(UISUTElementTypes.FinalState_2003));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createDataVariable5CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				Messages.DataVariable5CreationTool_title,
+				Messages.DataVariable5CreationTool_desc,
+				Collections
+						.singletonList(UISUTElementTypes.UIDataVariable_2004));
+		entry.setId("createDataVariable5CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(UISUTDiagramEditorPlugin
+				.findImageDescriptor("/name.niu.guita.uisut.model.edit/icons/full/ctool16/data.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

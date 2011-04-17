@@ -328,6 +328,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String DataVariable5CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String DataVariable5CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String DiagramEditorActionBarAdvisor_DefaultFileEditorTitle;
 
 	/**

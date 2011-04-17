@@ -172,7 +172,7 @@
       <viewProvider class="name.niu.guita.uisut.diagram.providers.UISUTViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="UISUT"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -185,13 +185,13 @@
             <method name="getType()" value="UISUT"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003"/>
+            <method name="getType()" value="2001,2002,2003,2004"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001"/>
+            <method name="getType()" value="5001,5002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -245,7 +245,8 @@
          <object class="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart" id="UIState_2001"/>
          <object class="name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart" id="InitialState_2002"/>
          <object class="name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart" id="FinalState_2003"/>
-         <context elements="UIStatemachine_1000,UIState_2001,InitialState_2002,FinalState_2003"/>
+         <object class="name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart" id="UIDataVariable_2004"/>
+         <context elements="UIStatemachine_1000,UIState_2001,InitialState_2002,FinalState_2003,UIDataVariable_2004"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -307,6 +308,16 @@
       </metamodel>
       <metamodel nsURI="http://www.niu.name/guita/uisut/1.0">
          <metamodelType
+               id="name.niu.guita.uisut.diagram.UIDataVariable_2004"
+               name="%metatype.name.UIDataVariable_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="UIDataVariable"
+               edithelper="name.niu.guita.uisut.diagram.edit.helpers.UIDataVariableEditHelper">
+            <param name="semanticHint" value="2004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.niu.name/guita/uisut/1.0">
+         <metamodelType
                id="name.niu.guita.uisut.diagram.UITransition_4001"
                name="%metatype.name.UITransition_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -331,6 +342,7 @@
          <elementType ref="name.niu.guita.uisut.diagram.UIState_2001"/>
          <elementType ref="name.niu.guita.uisut.diagram.InitialState_2002"/>
          <elementType ref="name.niu.guita.uisut.diagram.FinalState_2003"/>
+         <elementType ref="name.niu.guita.uisut.diagram.UIDataVariable_2004"/>
          <elementType ref="name.niu.guita.uisut.diagram.UITransition_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>

@@ -237,6 +237,52 @@ public class UitfItemProviderAdapterFactory extends UitfAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link name.niu.guita.uitf.uitf.AssertInState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssertInStateItemProvider assertInStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link name.niu.guita.uitf.uitf.AssertInState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssertInStateAdapter() {
+		if (assertInStateItemProvider == null) {
+			assertInStateItemProvider = new AssertInStateItemProvider(this);
+		}
+
+		return assertInStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link name.niu.guita.uitf.uitf.TriggeredTransition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TriggeredTransitionItemProvider triggeredTransitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link name.niu.guita.uitf.uitf.TriggeredTransition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTriggeredTransitionAdapter() {
+		if (triggeredTransitionItemProvider == null) {
+			triggeredTransitionItemProvider = new TriggeredTransitionItemProvider(this);
+		}
+
+		return triggeredTransitionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,6 +388,8 @@ public class UitfItemProviderAdapterFactory extends UitfAdapterFactory implement
 		if (uiControlVariableItemProvider != null) uiControlVariableItemProvider.dispose();
 		if (statementItemProvider != null) statementItemProvider.dispose();
 		if (uiControlItemProvider != null) uiControlItemProvider.dispose();
+		if (assertInStateItemProvider != null) assertInStateItemProvider.dispose();
+		if (triggeredTransitionItemProvider != null) triggeredTransitionItemProvider.dispose();
 	}
 
 }

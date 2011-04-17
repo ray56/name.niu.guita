@@ -1,5 +1,6 @@
 package name.niu.guita.uisut.diagram.providers;
 
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UITransitionNameEditPart;
 import name.niu.guita.uisut.diagram.parsers.MessageFormatParser;
@@ -48,6 +49,27 @@ public class UISUTParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser uIDataVariableName_5002Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getUIDataVariableName_5002Parser() {
+		if (uIDataVariableName_5002Parser == null) {
+			EAttribute[] features = new EAttribute[] { name.niu.guita.uisut.uisutPackage.eINSTANCE
+					.getUISUTElement_Name() };
+			EAttribute[] editableFeatures = new EAttribute[] { name.niu.guita.uisut.uisutPackage.eINSTANCE
+					.getUISUTElement_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features,
+					editableFeatures);
+			uIDataVariableName_5002Parser = parser;
+		}
+		return uIDataVariableName_5002Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser uITransitionNameTriggerStrGuardStr_6001Parser;
 
 	/**
@@ -81,6 +103,8 @@ public class UISUTParserProvider extends AbstractProvider implements
 		switch (visualID) {
 		case UIStateNameEditPart.VISUAL_ID:
 			return getUIStateName_5001Parser();
+		case UIDataVariableNameEditPart.VISUAL_ID:
+			return getUIDataVariableName_5002Parser();
 		case UITransitionNameEditPart.VISUAL_ID:
 			return getUITransitionNameTriggerStrGuardStr_6001Parser();
 		}

@@ -60,29 +60,19 @@ public interface UIStatemachine extends UISUTElement {
 	EList<UITransition> getItsTransition();
 
 	/**
-	 * Returns the value of the '<em><b>Its Data Variable</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Its Data Variable</b></em>' containment reference list.
+	 * The list contents are of type {@link name.niu.guita.uisut.UIDataVariable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Its Data Variable</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Data Variable</em>' containment reference.
-	 * @see #setItsDataVariable(UIDataVariable)
+	 * @return the value of the '<em>Its Data Variable</em>' containment reference list.
 	 * @see name.niu.guita.uisut.uisutPackage#getUIStatemachine_ItsDataVariable()
 	 * @model containment="true"
 	 * @generated
 	 */
-	UIDataVariable getItsDataVariable();
-
-	/**
-	 * Sets the value of the '{@link name.niu.guita.uisut.UIStatemachine#getItsDataVariable <em>Its Data Variable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Its Data Variable</em>' containment reference.
-	 * @see #getItsDataVariable()
-	 * @generated
-	 */
-	void setItsDataVariable(UIDataVariable value);
+	EList<UIDataVariable> getItsDataVariable();
 
 } // UIStatemachine

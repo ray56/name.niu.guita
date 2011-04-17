@@ -7,8 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: name.niu.guita.uisut.diagram.part.UISUTDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: 
- name.niu.guita.uisut.diagram.edit.parts,
+Export-Package: name.niu.guita.uisut.diagram.edit.parts,
  name.niu.guita.uisut.diagram.part,
  name.niu.guita.uisut.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
