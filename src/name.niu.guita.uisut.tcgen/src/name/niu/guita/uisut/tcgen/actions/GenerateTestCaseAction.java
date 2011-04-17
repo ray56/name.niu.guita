@@ -20,7 +20,7 @@ public class GenerateTestCaseAction extends AbstractHandler {
 		String source_uisut_file = fileDialog.open();
 		System.out.println(source_uisut_file);
 		String target_uitf_file = URI.createFileURI( source_uisut_file ).
-				trimFileExtension().appendFileExtension("xls").toFileString();
+				trimFileExtension().appendFileExtension("uitf").toFileString();
 		GenerationTestCaseAlgorithm.gen_algorithm1(source_uisut_file, target_uitf_file) ;
 		
 		return null;

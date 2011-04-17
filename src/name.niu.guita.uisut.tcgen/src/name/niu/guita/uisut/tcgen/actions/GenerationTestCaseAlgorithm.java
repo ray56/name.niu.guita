@@ -59,7 +59,7 @@ public class GenerationTestCaseAlgorithm {
 				statement.setDescription( String.format( "[Pre]\n assert in %s\n",st.getName() ) ) ;
 				
 				for( int ii = 0 ; ii < st.getItsOutTransition().size() ; ii ++ ) {
-					UITransition transition = st.getItsInTransition().get(ii) ;
+					UITransition transition = st.getItsOutTransition().get(ii) ;
 					Statement step_statement = UitfFactory.eINSTANCE.createStatement() ;
 					step_statement.setDescription( String.format("trigger %s \n", transition.getTriggerStr() ) ) ;
 					Statement stepAssert_statement = UitfFactory.eINSTANCE.createStatement() ;
