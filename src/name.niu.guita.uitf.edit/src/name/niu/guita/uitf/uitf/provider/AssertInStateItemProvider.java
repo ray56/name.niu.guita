@@ -10,16 +10,11 @@ package name.niu.guita.uitf.uitf.provider;
 import java.util.Collection;
 import java.util.List;
 
-import name.niu.guita.uitf.uitf.TestCase;
-import name.niu.guita.uitf.uitf.UitfFactory;
+import name.niu.guita.uitf.uitf.AssertInState;
 import name.niu.guita.uitf.uitf.UitfPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -29,17 +24,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link name.niu.guita.uitf.uitf.TestCase} object.
+ * This is the item provider adapter for a {@link name.niu.guita.uitf.uitf.AssertInState} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TestCaseItemProvider
-	extends ItemProviderAdapter
+public class AssertInStateItemProvider
+	extends StatementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -52,7 +46,7 @@ public class TestCaseItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestCaseItemProvider(AdapterFactory adapterFactory) {
+	public AssertInStateItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -67,25 +61,25 @@ public class TestCaseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIdPropertyDescriptor(object);
+			addStateIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
+	 * This adds a property descriptor for the State Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIdPropertyDescriptor(Object object) {
+	protected void addStateIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TestCase_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TestCase_id_feature", "_UI_TestCase_type"),
-				 UitfPackage.Literals.TEST_CASE__ID,
+				 getString("_UI_AssertInState_stateId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AssertInState_stateId_feature", "_UI_AssertInState_type"),
+				 UitfPackage.Literals.ASSERT_IN_STATE__STATE_ID,
 				 true,
 				 false,
 				 false,
@@ -95,45 +89,14 @@ public class TestCaseItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(UitfPackage.Literals.TEST_CASE__ITS_UISUT);
-			childrenFeatures.add(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns TestCase.gif.
+	 * This returns AssertInState.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TestCase"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AssertInState"));
 	}
 
 	/**
@@ -144,10 +107,10 @@ public class TestCaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TestCase)object).getId();
+		String label = ((AssertInState)object).getDescription();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TestCase_type") :
-			getString("_UI_TestCase_type") + " " + label;
+			getString("_UI_AssertInState_type") :
+			getString("_UI_AssertInState_type") + " " + label;
 	}
 
 	/**
@@ -161,13 +124,9 @@ public class TestCaseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TestCase.class)) {
-			case UitfPackage.TEST_CASE__ID:
+		switch (notification.getFeatureID(AssertInState.class)) {
+			case UitfPackage.ASSERT_IN_STATE__STATE_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case UitfPackage.TEST_CASE__ITS_UISUT:
-			case UitfPackage.TEST_CASE__ITS_STATEMENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -183,37 +142,6 @@ public class TestCaseItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_UISUT,
-				 UitfFactory.eINSTANCE.createUISUT()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createStatement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createAssertInState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createTriggeredTransition()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UitfEditPlugin.INSTANCE;
 	}
 
 }

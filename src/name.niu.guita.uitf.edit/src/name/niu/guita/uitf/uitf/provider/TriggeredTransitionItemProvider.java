@@ -10,16 +10,11 @@ package name.niu.guita.uitf.uitf.provider;
 import java.util.Collection;
 import java.util.List;
 
-import name.niu.guita.uitf.uitf.TestCase;
-import name.niu.guita.uitf.uitf.UitfFactory;
+import name.niu.guita.uitf.uitf.TriggeredTransition;
 import name.niu.guita.uitf.uitf.UitfPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -29,17 +24,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link name.niu.guita.uitf.uitf.TestCase} object.
+ * This is the item provider adapter for a {@link name.niu.guita.uitf.uitf.TriggeredTransition} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TestCaseItemProvider
-	extends ItemProviderAdapter
+public class TriggeredTransitionItemProvider
+	extends StatementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -52,7 +46,7 @@ public class TestCaseItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestCaseItemProvider(AdapterFactory adapterFactory) {
+	public TriggeredTransitionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -67,25 +61,26 @@ public class TestCaseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIdPropertyDescriptor(object);
+			addScriptStrPropertyDescriptor(object);
+			addTransitionIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
+	 * This adds a property descriptor for the Script Str feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIdPropertyDescriptor(Object object) {
+	protected void addScriptStrPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TestCase_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TestCase_id_feature", "_UI_TestCase_type"),
-				 UitfPackage.Literals.TEST_CASE__ID,
+				 getString("_UI_TriggeredTransition_scriptStr_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TriggeredTransition_scriptStr_feature", "_UI_TriggeredTransition_type"),
+				 UitfPackage.Literals.TRIGGERED_TRANSITION__SCRIPT_STR,
 				 true,
 				 false,
 				 false,
@@ -95,45 +90,36 @@ public class TestCaseItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Transition Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(UitfPackage.Literals.TEST_CASE__ITS_UISUT);
-			childrenFeatures.add(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT);
-		}
-		return childrenFeatures;
+	protected void addTransitionIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TriggeredTransition_transitionId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TriggeredTransition_transitionId_feature", "_UI_TriggeredTransition_type"),
+				 UitfPackage.Literals.TRIGGERED_TRANSITION__TRANSITION_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns TestCase.gif.
+	 * This returns TriggeredTransition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TestCase"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TriggeredTransition"));
 	}
 
 	/**
@@ -144,10 +130,10 @@ public class TestCaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TestCase)object).getId();
+		String label = ((TriggeredTransition)object).getDescription();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TestCase_type") :
-			getString("_UI_TestCase_type") + " " + label;
+			getString("_UI_TriggeredTransition_type") :
+			getString("_UI_TriggeredTransition_type") + " " + label;
 	}
 
 	/**
@@ -161,13 +147,10 @@ public class TestCaseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TestCase.class)) {
-			case UitfPackage.TEST_CASE__ID:
+		switch (notification.getFeatureID(TriggeredTransition.class)) {
+			case UitfPackage.TRIGGERED_TRANSITION__SCRIPT_STR:
+			case UitfPackage.TRIGGERED_TRANSITION__TRANSITION_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case UitfPackage.TEST_CASE__ITS_UISUT:
-			case UitfPackage.TEST_CASE__ITS_STATEMENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -183,37 +166,6 @@ public class TestCaseItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_UISUT,
-				 UitfFactory.eINSTANCE.createUISUT()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createStatement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createAssertInState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UitfPackage.Literals.TEST_CASE__ITS_STATEMENT,
-				 UitfFactory.eINSTANCE.createTriggeredTransition()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UitfEditPlugin.INSTANCE;
 	}
 
 }
