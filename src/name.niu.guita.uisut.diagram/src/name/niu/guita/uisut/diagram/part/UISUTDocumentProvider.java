@@ -55,8 +55,8 @@ public class UISUTDocumentProvider extends AbstractDocumentProvider implements
 	protected ElementInfo createElementInfo(Object element)
 			throws CoreException {
 
-		if (false == element instanceof URIEditorInput && 
-				false == element instanceof FileEditorInput ) {
+		if (false == element instanceof URIEditorInput
+				&& false == element instanceof FileEditorInput) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -68,12 +68,13 @@ public class UISUTDocumentProvider extends AbstractDocumentProvider implements
 											"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 							null));
 		}
-		
+
 		//URIEditorInput(fileURI),
-		IEditorInput editorInput = null ;
-		if (  element instanceof FileEditorInput ) {
-			
-			URI fileURI = URI.createURI( ((FileEditorInput)element).getURI().toString() );
+		IEditorInput editorInput = null;
+		if (element instanceof FileEditorInput) {
+
+			URI fileURI = URI.createURI(((FileEditorInput) element).getURI()
+					.toString());
 			editorInput = new URIEditorInput(fileURI);
 		} else {
 			editorInput = (IEditorInput) element;

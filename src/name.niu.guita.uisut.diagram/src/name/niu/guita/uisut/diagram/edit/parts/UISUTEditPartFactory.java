@@ -44,6 +44,12 @@ public class UISUTEditPartFactory implements EditPartFactory {
 			case FinalStateEditPart.VISUAL_ID:
 				return new FinalStateEditPart(view);
 
+			case UIDataVariableEditPart.VISUAL_ID:
+				return new UIDataVariableEditPart(view);
+
+			case UIDataVariableNameEditPart.VISUAL_ID:
+				return new UIDataVariableNameEditPart(view);
+
 			case UITransitionEditPart.VISUAL_ID:
 				return new UITransitionEditPart(view);
 

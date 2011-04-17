@@ -3,6 +3,8 @@ package name.niu.guita.uisut.diagram.part;
 import name.niu.guita.uisut.UIStatemachine;
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateNameEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
@@ -135,6 +137,10 @@ public class UISUTVisualIDRegistry {
 					.isSuperTypeOf(domainElement.eClass())) {
 				return FinalStateEditPart.VISUAL_ID;
 			}
+			if (name.niu.guita.uisut.uisutPackage.eINSTANCE.getUIDataVariable()
+					.isSuperTypeOf(domainElement.eClass())) {
+				return UIDataVariableEditPart.VISUAL_ID;
+			}
 			break;
 		}
 		return -1;
@@ -171,9 +177,17 @@ public class UISUTVisualIDRegistry {
 			if (FinalStateEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (UIDataVariableEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case UIStateEditPart.VISUAL_ID:
 			if (UIStateNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case UIDataVariableEditPart.VISUAL_ID:
+			if (UIDataVariableNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

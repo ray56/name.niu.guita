@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Set;
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -47,6 +50,11 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
+	private Set<EStructuralFeature> myFeaturesToSynchronize;
+
+	/**
+	 * @generated
+	 */
 	protected void refreshOnActivate() {
 		// Need to activate editpart children before invoking the canonical refresh for EditParts to add event listeners
 		List<?> c = getHost().getChildren();
@@ -59,9 +67,17 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected EStructuralFeature getFeatureToSynchronize() {
-		return name.niu.guita.uisut.uisutPackage.eINSTANCE
-				.getUIStatemachine_ItsState();
+	protected Set getFeaturesToSynchronize() {
+		if (myFeaturesToSynchronize == null) {
+			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
+			myFeaturesToSynchronize
+					.add(name.niu.guita.uisut.uisutPackage.eINSTANCE
+							.getUIStatemachine_ItsState());
+			myFeaturesToSynchronize
+					.add(name.niu.guita.uisut.uisutPackage.eINSTANCE
+							.getUIStatemachine_ItsDataVariable());
+		}
+		return myFeaturesToSynchronize;
 	}
 
 	/**
@@ -93,9 +109,14 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = UISUTVisualIDRegistry.getVisualID(view);
-		return visualID == UIStateEditPart.VISUAL_ID
-				|| visualID == InitialStateEditPart.VISUAL_ID
-				|| visualID == FinalStateEditPart.VISUAL_ID;
+		switch (visualID) {
+		case UIStateEditPart.VISUAL_ID:
+		case InitialStateEditPart.VISUAL_ID:
+		case FinalStateEditPart.VISUAL_ID:
+		case UIDataVariableEditPart.VISUAL_ID:
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -281,6 +302,17 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(UISUTDiagramUpdater
 						.getFinalState_2003ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
+		case UIDataVariableEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(UISUTDiagramUpdater
+						.getUIDataVariable_2004ContainedLinks(view));
 			}
 			if (!domain2NotationMap.containsKey(view.getElement())
 					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$

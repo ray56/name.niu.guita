@@ -90,14 +90,14 @@ public class UISUTDiagramEditor extends DiagramDocumentEditor {
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
 		setDocumentProvider(UISUTDiagramEditorPlugin.getInstance()
-				.getDocumentProvider());		
-		
-//		if (input instanceof URIEditorInput) {
-//			setDocumentProvider(UISUTDiagramEditorPlugin.getInstance()
-//					.getDocumentProvider());
-//		} else {
-//			super.setDocumentProvider(input);
-//		}
+				.getDocumentProvider());
+
+		//		if (input instanceof URIEditorInput) {
+		//			setDocumentProvider(UISUTDiagramEditorPlugin.getInstance()
+		//					.getDocumentProvider());
+		//		} else {
+		//			super.setDocumentProvider(input);
+		//		}
 
 	}
 

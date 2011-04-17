@@ -16,8 +16,8 @@
         eType="#//AbstractState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTransition" upperBound="-1"
         eType="#//UITransition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsDataVariable" eType="#//UIDataVariable"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsDataVariable" upperBound="-1"
+        eType="#//UIDataVariable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UIState" eSuperTypes="#//AbstractState">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUIControl" upperBound="-1"

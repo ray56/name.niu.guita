@@ -10,11 +10,13 @@ import java.util.Map;
 import name.niu.guita.uisut.AbstractState;
 import name.niu.guita.uisut.FinalState;
 import name.niu.guita.uisut.InitialState;
+import name.niu.guita.uisut.UIDataVariable;
 import name.niu.guita.uisut.UIState;
 import name.niu.guita.uisut.UIStatemachine;
 import name.niu.guita.uisut.UITransition;
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -69,6 +71,14 @@ public class UISUTDiagramUpdater {
 				continue;
 			}
 		}
+		{
+			UIDataVariable childElement = modelElement.getItsDataVariable();
+			int visualID = UISUTVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == UIDataVariableEditPart.VISUAL_ID) {
+				result.add(new UISUTNodeDescriptor(childElement, visualID));
+			}
+		}
 		return result;
 	}
 
@@ -85,6 +95,8 @@ public class UISUTDiagramUpdater {
 			return getInitialState_2002ContainedLinks(view);
 		case FinalStateEditPart.VISUAL_ID:
 			return getFinalState_2003ContainedLinks(view);
+		case UIDataVariableEditPart.VISUAL_ID:
+			return getUIDataVariable_2004ContainedLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001ContainedLinks(view);
 		}
@@ -102,6 +114,8 @@ public class UISUTDiagramUpdater {
 			return getInitialState_2002IncomingLinks(view);
 		case FinalStateEditPart.VISUAL_ID:
 			return getFinalState_2003IncomingLinks(view);
+		case UIDataVariableEditPart.VISUAL_ID:
+			return getUIDataVariable_2004IncomingLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001IncomingLinks(view);
 		}
@@ -119,6 +133,8 @@ public class UISUTDiagramUpdater {
 			return getInitialState_2002OutgoingLinks(view);
 		case FinalStateEditPart.VISUAL_ID:
 			return getFinalState_2003OutgoingLinks(view);
+		case UIDataVariableEditPart.VISUAL_ID:
+			return getUIDataVariable_2004OutgoingLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001OutgoingLinks(view);
 		}
@@ -156,6 +172,14 @@ public class UISUTDiagramUpdater {
 	 * @generated
 	 */
 	public static List<UISUTLinkDescriptor> getFinalState_2003ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<UISUTLinkDescriptor> getUIDataVariable_2004ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -213,6 +237,14 @@ public class UISUTDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<UISUTLinkDescriptor> getUIDataVariable_2004IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<UISUTLinkDescriptor> getUITransition_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -249,6 +281,14 @@ public class UISUTDiagramUpdater {
 		LinkedList<UISUTLinkDescriptor> result = new LinkedList<UISUTLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_UITransition_4001(modelElement));
 		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<UISUTLinkDescriptor> getUIDataVariable_2004OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**

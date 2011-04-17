@@ -54,6 +54,28 @@
           href="uisut.gmfgraph#FinalState"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="uisut.ecore#//UIStatemachine/itsDataVariable"/>
+    <ownedChild>
+      <domainMetaElement
+          href="uisut.ecore#//UIDataVariable"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="uisut.gmfgraph#DiagramLable_DataVariable"/>
+        <features
+            href="uisut.ecore#//UISUTElement/name"/>
+        <editableFeatures
+            href="uisut.ecore#//UISUTElement/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="uisut.gmftool#//@palette/@tools.0/@tools.4"/>
+      <diagramNode
+          href="uisut.gmfgraph#Node_DataVariable"/>
+    </ownedChild>
+  </nodes>
   <links
       relatedDiagrams="//@diagram">
     <domainMetaElement
@@ -80,7 +102,7 @@
         xsi:type="gmftool:CreationTool"
         href="uisut.gmftool#//@palette/@tools.0/@tools.1"/>
     <diagramLink
-        href="uisut.gmfgraph#ggConnection_UITransition"/>
+        href="uisut.gmfgraph#gggConnection_UITransition"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
         href="uisut.ecore#//UITransition/itsSrcState"/>

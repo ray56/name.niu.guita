@@ -52,6 +52,15 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Data Variable"
+          description="Create new Data Variable">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/ctool16/data.gif"
+            bundle="name.niu.guita.uisut.model.edit"/>
+      </tools>
     </tools>
   </palette>
 </gmftool:ToolRegistry>

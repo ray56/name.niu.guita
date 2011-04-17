@@ -7,6 +7,7 @@ import java.util.Set;
 
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guita.uisut.diagram.edit.parts.UIDataVariableEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -65,6 +66,11 @@ public class UISUTElementTypes {
 	 * @generated
 	 */
 	public static final IElementType FinalState_2003 = getElementType("name.niu.guita.uisut.diagram.FinalState_2003"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType UIDataVariable_2004 = getElementType("name.niu.guita.uisut.diagram.UIDataVariable_2004"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -195,6 +201,10 @@ public class UISUTElementTypes {
 			elements.put(FinalState_2003,
 					name.niu.guita.uisut.uisutPackage.eINSTANCE.getFinalState());
 
+			elements.put(UIDataVariable_2004,
+					name.niu.guita.uisut.uisutPackage.eINSTANCE
+							.getUIDataVariable());
+
 			elements.put(UITransition_4001,
 					name.niu.guita.uisut.uisutPackage.eINSTANCE
 							.getUITransition());
@@ -219,6 +229,7 @@ public class UISUTElementTypes {
 			KNOWN_ELEMENT_TYPES.add(UIState_2001);
 			KNOWN_ELEMENT_TYPES.add(InitialState_2002);
 			KNOWN_ELEMENT_TYPES.add(FinalState_2003);
+			KNOWN_ELEMENT_TYPES.add(UIDataVariable_2004);
 			KNOWN_ELEMENT_TYPES.add(UITransition_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -237,6 +248,8 @@ public class UISUTElementTypes {
 			return InitialState_2002;
 		case FinalStateEditPart.VISUAL_ID:
 			return FinalState_2003;
+		case UIDataVariableEditPart.VISUAL_ID:
+			return UIDataVariable_2004;
 		case UITransitionEditPart.VISUAL_ID:
 			return UITransition_4001;
 		}
