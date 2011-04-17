@@ -71,12 +71,14 @@ public class UISUTDiagramUpdater {
 				continue;
 			}
 		}
-		{
-			UIDataVariable childElement = modelElement.getItsDataVariable();
+		for (Iterator<?> it = modelElement.getItsDataVariable().iterator(); it
+				.hasNext();) {
+			UIDataVariable childElement = (UIDataVariable) it.next();
 			int visualID = UISUTVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == UIDataVariableEditPart.VISUAL_ID) {
 				result.add(new UISUTNodeDescriptor(childElement, visualID));
+				continue;
 			}
 		}
 		return result;

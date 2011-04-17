@@ -44,10 +44,6 @@ public class UIDataVariableCreateCommand extends EditElementCommand {
 	 * @generated
 	 */
 	public boolean canExecute() {
-		UIStatemachine container = (UIStatemachine) getElementToEdit();
-		if (container.getItsDataVariable() != null) {
-			return false;
-		}
 		return true;
 
 	}
@@ -61,7 +57,7 @@ public class UIDataVariableCreateCommand extends EditElementCommand {
 				.createUIDataVariable();
 
 		UIStatemachine owner = (UIStatemachine) getElementToEdit();
-		owner.setItsDataVariable(newElement);
+		owner.getItsDataVariable().add(newElement);
 
 		doConfigure(newElement, monitor, info);
 

@@ -760,7 +760,7 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		initEClass(uiStatemachineEClass, UIStatemachine.class, "UIStatemachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIStatemachine_ItsState(), this.getAbstractState(), null, "itsState", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsTransition(), this.getUITransition(), null, "itsTransition", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUIStatemachine_ItsDataVariable(), this.getUIDataVariable(), null, "itsDataVariable", null, 0, 1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsDataVariable(), this.getUIDataVariable(), null, "itsDataVariable", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiStateEClass, UIState.class, "UIState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIState_ItsUIControl(), this.getUIControl(), null, "itsUIControl", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

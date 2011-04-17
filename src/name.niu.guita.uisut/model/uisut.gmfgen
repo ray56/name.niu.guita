@@ -148,6 +148,7 @@
         visualID="2004"
         editPartClassName="UIDataVariableEditPart"
         itemSemanticEditPolicyClassName="UIDataVariableItemSemanticEditPolicy"
+        notationViewFactoryClassName="UIDataVariableViewFactory"
         canonicalEditPolicyClassName="UIDataVariableCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="UIDataVariableGraphicalNodeEditPolicy"
         createCommandClassName="UIDataVariableCreateCommand">
@@ -172,6 +173,7 @@
           visualID="5002"
           editPartClassName="UIDataVariableNameEditPart"
           itemSemanticEditPolicyClassName="UIDataVariableNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="UIDataVariableNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>

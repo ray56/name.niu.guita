@@ -19,12 +19,14 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -62,8 +64,77 @@ public class UIStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsInitialPropertyDescriptor(object);
+			addAddedDataVariablePropertyDescriptor(object);
+			addDeletedDataVariablePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Initial feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsInitialPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UIState_isInitial_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UIState_isInitial_feature", "_UI_UIState_type"),
+				 uisutPackage.Literals.UI_STATE__IS_INITIAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Added Data Variable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAddedDataVariablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UIState_addedDataVariable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UIState_addedDataVariable_feature", "_UI_UIState_type"),
+				 uisutPackage.Literals.UI_STATE__ADDED_DATA_VARIABLE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Deleted Data Variable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDeletedDataVariablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UIState_deletedDataVariable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UIState_deletedDataVariable_feature", "_UI_UIState_type"),
+				 uisutPackage.Literals.UI_STATE__DELETED_DATA_VARIABLE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -133,6 +204,9 @@ public class UIStateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(UIState.class)) {
+			case uisutPackage.UI_STATE__IS_INITIAL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case uisutPackage.UI_STATE__ITS_UI_CONTROL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
