@@ -50,7 +50,7 @@ public class UISUTDocumentProvider extends AbstractDocumentProvider implements
 		IDiagramDocumentProvider {
 
 	/**
-	 * not generated
+	 * @generated NOT
 	 */
 	protected ElementInfo createElementInfo(Object element)
 			throws CoreException {

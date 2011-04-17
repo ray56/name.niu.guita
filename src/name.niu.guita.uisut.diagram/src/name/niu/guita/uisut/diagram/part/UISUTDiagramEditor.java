@@ -86,7 +86,7 @@ public class UISUTDiagramEditor extends DiagramDocumentEditor {
 	}
 
 	/**
-	 * mod: not generated
+	 * @generated NOT
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
 		setDocumentProvider(UISUTDiagramEditorPlugin.getInstance()
