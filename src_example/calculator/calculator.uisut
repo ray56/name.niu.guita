@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UISUT_:UIStatemachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UISUT_="http://www.niu.name/guita/uisut/1.0">
   <itsState xsi:type="UISUT_:UIState" name="S_SelectOperation" itsOutTransition="//@itsTransition.0" addedDataVariable="//@itsDataVariable.0"/>
-  <itsState xsi:type="UISUT_:UIState" name="S_InputFirstNumber" itsInTransition="//@itsTransition.0"/>
-  <itsState xsi:type="UISUT_:UIState" name="S_InputSecondNumber"/>
-  <itsTransition itsTrgtState="//@itsState.1" itsSrcState="//@itsState.0" guardedDataVariable="//@itsDataVariable.0"/>
+  <itsState xsi:type="UISUT_:UIState" name="S_InputFirstNumber" itsInTransition="//@itsTransition.0" itsOutTransition="//@itsTransition.1"/>
+  <itsState xsi:type="UISUT_:UIState" name="S_InputSecondNumber" itsInTransition="//@itsTransition.1"/>
+  <itsTransition itsTrgtState="//@itsState.1" itsSrcState="//@itsState.0" guardedDataVariable="//@itsDataVariable.0" scriptStr="push(10,10)"/>
+  <itsTransition itsTrgtState="//@itsState.2" itsSrcState="//@itsState.1" scriptStr="push(20,20)"/>
   <itsDataVariable name="vHasMP3"/>
   <itsDataVariable name="vIsOk"/>
   <itsDataVariable name="vIsXXX"/>
