@@ -1,6 +1,9 @@
 package name.niu.guita.uitf.scriptgen.actions;
 
 import java.util.Iterator;
+import java.util.Locale;
+
+import javax.swing.JOptionPane;
 
 import name.niu.guita.uitf.scriptgen.algorithms.GenScriptAlgorithm;
 
@@ -29,8 +32,12 @@ public class GenerateScriptAction extends AbstractHandler {
 				Object ele = elements.next() ;
 				if (ele instanceof IAdaptable ) {
 					IAdaptable adaptable = (IAdaptable) ele ;
-					IFile f = (IFile) adaptable.getAdapter(IFile.class);
-					GenScriptAlgorithm.GenScript( f) ;
+					IFile f = (IFile) adaptable.getAdapter(IFile.class);			
+					if ( f.getFileExtension().toLowerCase(Locale.ENGLISH).equals( "uitf" ) ) {
+						GenScriptAlgorithm.GenScript( f) ;
+					} else {
+						JOptionPane.showMessageDialog(null, "Select *.UITF file");
+					}
 				}
 			}
 				
