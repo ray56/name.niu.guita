@@ -3,22 +3,42 @@
   <children xmi:type="notation:Shape" xmi:id="_VKgz0GaTEeC8oZWEpHceCw" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_VKqk0GaTEeC8oZWEpHceCw" type="5001"/>
     <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VKgz0WaTEeC8oZWEpHceCw" x="220" y="125" width="131" height="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VKgz0WaTEeC8oZWEpHceCw" x="35" y="130" width="176" height="146"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_Vv6m8GaTEeC8oZWEpHceCw" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_Vv6m8maTEeC8oZWEpHceCw" type="5001"/>
     <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vv6m8WaTEeC8oZWEpHceCw" x="360" y="255" width="166" height="161"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vv6m8WaTEeC8oZWEpHceCw" x="350" y="125" width="176" height="146"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_KQt9MWirEeCa2diWhwCKRQ" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_KQt9M2irEeCa2diWhwCKRQ" type="5002"/>
+    <element xmi:type="UISUT_:UIDataVariable" href="calculator.uisut#//@itsDataVariable.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KQt9MmirEeCa2diWhwCKRQ" x="40" y="25" width="96" height="21"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M-LB8GirEeCa2diWhwCKRQ" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M-LB8mirEeCa2diWhwCKRQ" type="5002"/>
+    <element xmi:type="UISUT_:UIDataVariable" href="calculator.uisut#//@itsDataVariable.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M-LB8WirEeCa2diWhwCKRQ" x="35" y="50" width="96" height="16"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_wx0rgGirEeCa2diWhwCKRQ" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_wx0rgmirEeCa2diWhwCKRQ" type="5002"/>
+    <element xmi:type="UISUT_:UIDataVariable" href="calculator.uisut#//@itsDataVariable.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wx0rgWirEeCa2diWhwCKRQ" x="40" y="80" width="96" height="21"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_FNGc4GisEeCa2diWhwCKRQ" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_FNGc4misEeCa2diWhwCKRQ" type="5001"/>
+    <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FNGc4WisEeCa2diWhwCKRQ" x="575" y="125" width="176" height="146"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_PqZaMmaTEeC8oZWEpHceCw"/>
   <element xmi:type="UISUT_:UIStatemachine" href="calculator.uisut#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_WstmYGaTEeC8oZWEpHceCw" type="4001" source="_VKgz0GaTEeC8oZWEpHceCw" target="_Vv6m8GaTEeC8oZWEpHceCw">
     <children xmi:type="notation:DecorationNode" xmi:id="_WstmY2aTEeC8oZWEpHceCw" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_WstmZGaTEeC8oZWEpHceCw" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_WstmZGaTEeC8oZWEpHceCw" x="-4" y="-26"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_WstmYWaTEeC8oZWEpHceCw"/>
     <element xmi:type="UISUT_:UITransition" href="calculator.uisut#//@itsTransition.0"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WstmYmaTEeC8oZWEpHceCw" points="[0, 0, -57, -159]$[106, 79, 49, -80]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WuzREGaTEeC8oZWEpHceCw" id="(1.0,0.8760330578512396)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WuzREGaTEeC8oZWEpHceCw" id="(0.9602272727272727,0.4589041095890411)"/>
   </edges>
 </notation:Diagram>
