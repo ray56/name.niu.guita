@@ -4,11 +4,6 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
-          name="&amp;Gen Excel" >
-            
-      </command>
-      <command
             id="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE"
             name="Gen Excel From File">
       </command>
@@ -26,50 +21,16 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               label="&amp;Guita_GenXLSCase">
-            <command
-                  commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS"
-                  style="push">
-            </command>
-            <command
-                  commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE"
-                  style="push">
-            </command>
-         </menu>
+            locationURI="menu:name.niu.guita.guitaMainMenu?after=separator3">
+         <command
+               commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE"
+               label="Generate Test Case Document"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="name.niu.guita.uitf.xlsgen.actionSet"
-            label="Generate"
-            visible="true">
-         <menu
-               id="another_xls_gen_menu"
-               label="XLSG">
-            <separator
-                  name="a_group">
-            </separator>
-         </menu>
-         <action
-               class="name.niu.guita.uitf.xlsgen.actions.SampleAction"
-               icon="icons/sample.gif"
-               id="name.niu.guita.uitf.xlsgen.actions.SampleAction"
-               label="GenIttion"
-               menubarPath="another_xls_gen_menu/a_group"
-               toolbarPath="some_toolbar"
-               tooltip="generate xls!">
-         </action>
-      </actionSet>
-   </extension>
-   <extension
          point="org.eclipse.ui.handlers">
-      <handler
-            class="name.niu.guita.uitf.xlsgen.actions.ExportExcelAction"
-            commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS">
-      </handler>
       <handler
             class="name.niu.guita.uitf.xlsgen.actions.ExportExcelFromFileAction"
             commandId="name.niu.guita.uitf.xlsgen.CMD_GEN_XLS_FROM_FILE">

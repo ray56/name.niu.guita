@@ -12,14 +12,12 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               label="Guita_GenTestCase">
-            <command
-                  commandId="name.niu.guita.uisut.tcgen.CMD_GEN_TC"
-                  style="push">
-            </command>
-         </menu>
+            locationURI="menu:name.niu.guita.guitaMainMenu?after=separator2">
+         <command
+               commandId="name.niu.guita.uisut.tcgen.CMD_GEN_TC"
+               label="Generate Test Case Model Data"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension

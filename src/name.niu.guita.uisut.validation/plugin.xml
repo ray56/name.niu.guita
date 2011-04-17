@@ -29,15 +29,12 @@
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               label="Guita_Validation">
-            <command
-                  commandId="name.niu.guita.uisut.validation.CMD_Validate"
-                  label="Validate"
-                  style="push">
-            </command>
-         </menu>
+            locationURI="menu:name.niu.guita.guitaMainMenu?after=separator1">
+         <command
+               commandId="name.niu.guita.uisut.validation.CMD_Validate"
+               label="Validate UISUT Model Data"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
