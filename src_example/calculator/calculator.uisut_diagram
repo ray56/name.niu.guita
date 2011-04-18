@@ -8,7 +8,7 @@
   <children xmi:type="notation:Shape" xmi:id="_Vv6m8GaTEeC8oZWEpHceCw" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_Vv6m8maTEeC8oZWEpHceCw" type="5001"/>
     <element xmi:type="UISUT_:UIState" href="calculator.uisut#//@itsState.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vv6m8WaTEeC8oZWEpHceCw" x="350" y="125" width="176" height="146"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vv6m8WaTEeC8oZWEpHceCw" x="305" y="130" width="176" height="146"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_KQt9MWirEeCa2diWhwCKRQ" type="2004">
     <children xmi:type="notation:DecorationNode" xmi:id="_KQt9M2irEeCa2diWhwCKRQ" type="5002"/>
@@ -40,5 +40,14 @@
     <element xmi:type="UISUT_:UITransition" href="calculator.uisut#//@itsTransition.0"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WstmYmaTEeC8oZWEpHceCw" points="[0, 0, -57, -159]$[106, 79, 49, -80]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WuzREGaTEeC8oZWEpHceCw" id="(0.9602272727272727,0.4589041095890411)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_K_dB8WjsEeCclL1HVxo09w" type="4001" source="_Vv6m8GaTEeC8oZWEpHceCw" target="_FNGc4GisEeCa2diWhwCKRQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_K_mL4GjsEeCclL1HVxo09w" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_K_mL4WjsEeCclL1HVxo09w" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_K_dB8mjsEeCclL1HVxo09w"/>
+    <element xmi:type="UISUT_:UITransition" href="calculator.uisut#//@itsTransition.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_K_dB82jsEeCclL1HVxo09w" points="[23, -2, -182, -5]$[117, -27, -88, -30]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_K_v84GjsEeCclL1HVxo09w" id="(0.8693181818181818,0.4452054794520548)"/>
   </edges>
 </notation:Diagram>

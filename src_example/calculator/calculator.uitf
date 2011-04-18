@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
-<UITF_:TestSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:UITF_="http://www.niu.name/guita/uitf/1.0" id="TS_001">
-  <itsTestCase id="TC_000"/>
-  <itsTestCase id="TC_001"/>
+<UITF_:TestSuite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UITF_="http://www.niu.name/guita/uitf/1.0" id="TS_001">
+  <itsTestCase id="TC_000">
+    <itsStatement xsi:type="UITF_:AssertInState" description="In XXX"/>
+    <itsStatement xsi:type="UITF_:TriggeredTransition" description="User Click Button1" scriptStr="push(20,19)"/>
+    <itsStatement xsi:type="UITF_:AssertInState" description="In YYY"/>
+    <itsStatement xsi:type="UITF_:TriggeredTransition" description="User Click Button2" scriptStr="push(1,1)"/>
+    <itsStatement xsi:type="UITF_:AssertInState" description="In ZZZ"/>
+  </itsTestCase>
+  <itsTestCase id="TC_001">
+    <itsStatement xsi:type="UITF_:AssertInState"/>
+    <itsStatement xsi:type="UITF_:TriggeredTransition" scriptStr="push(20,19)"/>
+    <itsStatement xsi:type="UITF_:AssertInState"/>
+  </itsTestCase>
   <itsTestCase id="TC_002"/>
 </UITF_:TestSuite>
