@@ -33,9 +33,9 @@ public class GenScriptAlgorithm {
 		// fill target_sb wieh head
 		StringBuffer target_sb = new StringBuffer() ;
 		String headStr = 
-			"#********************************************************\n" +
-			"#*  Copyright     Infomation                             \n" +
-			"#********************************************************\n\n\n";
+			"#********************************************************\r\n" +
+			"#*  Copyright     Infomation                             \r\n" +
+			"#********************************************************\r\n\r\n\r\n";
 		target_sb.append(headStr);
 		
 		
@@ -60,9 +60,9 @@ public class GenScriptAlgorithm {
 		for( TestCase tc: ts.getItsTestCase() ) {
 			// write test case script, maybe a file for a case.
 			String tc_head = 
-				"#********************************************************\n" +
-				"#*  %TEST_CASE_ID%                                       \n" +
-				"#********************************************************\n";
+				"#********************************************************\r\n" +
+				"#*  %TEST_CASE_ID%                                       \r\n" +
+				"#********************************************************\r\n";
 			target_sb.append(tc_head.replace("%TEST_CASE_ID%", tc.getId()));			
 			for ( Statement statement : tc.getItsStatement() ) {
 				if( statement instanceof AssertInState ) {
@@ -71,12 +71,12 @@ public class GenScriptAlgorithm {
 				} else if (statement instanceof TriggeredTransition ) {
 					TriggeredTransition tt = (TriggeredTransition) statement ;
 					if(tt.getScriptStr() == null){
-						target_sb.append( tt.getScriptStr() + "\n");
+						target_sb.append( tt.getScriptStr() + "\r\n");
 					}
 					else{
 						StringTokenizer strtoktt = new StringTokenizer(tt.getScriptStr(),";");
 						for(; strtoktt.hasMoreTokens(); ){
-							target_sb.append( strtoktt.nextToken() + "\n");
+							target_sb.append( strtoktt.nextToken() + "\r\n");
 						}
 					}
 				}
@@ -85,7 +85,7 @@ public class GenScriptAlgorithm {
 
 		// write file
 		InputStream targetFS = new ByteArrayInputStream( target_sb.toString().getBytes()) ;
-		String target = source.getFullPath().removeFileExtension().addFileExtension("script").toFile().getName() ;
+		String target = source.getFullPath().removeFileExtension().addFileExtension("txt").toFile().getName() ;
 		IFile target_file = null ;
 		IContainer parent = source.getParent();
 		if ( parent instanceof IProject ){
