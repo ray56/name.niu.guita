@@ -22,7 +22,7 @@
  	<wizard
         category="name.niu.guita.guitaCategory"
         class="name.niu.guita.wizards.GuitaProjectNewWizard"
-        icon="icons/guitar.bmp"
+        icon="icons/guitar-plus-16.png"
         id="name.niu.guita.guitaProject"
         name="Guita  Project"
         project="true">
@@ -38,6 +38,7 @@
    </perspective>
    <perspective
          class="name.niu.guita.Perspective2"
+         icon="icons/guitar16.png"
          id="name.niu.guita.guitaPerspective2"
          name="UISUT Edit Perspective2">
    </perspective>
@@ -137,6 +138,46 @@
          </separator>
       </menu>
    </menuContribution>
+</extension>
+<extension
+      id="product"
+      point="org.eclipse.core.runtime.products">
+   <product
+         application="org.eclipse.ui.ide.workbench"
+         name="Guita Application">
+      <property
+            name="windowImages"
+            value="icons/product/window128.png">
+      </property>
+      <property
+            name="aboutText"
+            value="Guita Application for  GUI Test Automating">
+      </property>
+      <property
+            name="aboutImage"
+            value="icons/product/about.gif">
+      </property>
+      <property
+            name="startupForegroundColor"
+            value="FFFF00">
+      </property>
+      <property
+            name="startupProgressRect"
+            value="0,165,280,15">
+      </property>
+      <property
+            name="startupMessageRect"
+            value="80,145,200,20">
+      </property>
+      <property
+            name="appName"
+            value="Guita Application">
+      </property>
+      <property
+            name="preferenceCustomization"
+            value="plugin_customization.ini">
+      </property>
+   </product>
 </extension>
 
 </plugin>
