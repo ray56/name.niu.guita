@@ -66,9 +66,9 @@ public class UITransitionItemProvider
 
 			addItsTrgtStatePropertyDescriptor(object);
 			addItsSrcStatePropertyDescriptor(object);
-			addTriggerStrPropertyDescriptor(object);
-			addGuardStrPropertyDescriptor(object);
-			addActionStrPropertyDescriptor(object);
+			//addTriggerStrPropertyDescriptor(object);
+			//addGuardStrPropertyDescriptor(object);
+			//addActionStrPropertyDescriptor(object);
 			addGuardedDataVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
 		}
