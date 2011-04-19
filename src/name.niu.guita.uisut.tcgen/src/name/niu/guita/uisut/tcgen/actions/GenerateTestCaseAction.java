@@ -21,7 +21,7 @@ public class GenerateTestCaseAction extends AbstractHandler {
 		System.out.println(source_uisut_file);
 		String target_uitf_file = URI.createFileURI( source_uisut_file ).
 				trimFileExtension().appendFileExtension("uitf").toFileString();
-		GenerationTestCaseAlgorithm.gen_algorithm1(source_uisut_file, target_uitf_file) ;
+		GenerationTestCaseAlgorithm.genAlgorithm(source_uisut_file, target_uitf_file) ;
 		
 		return null;
 	}
