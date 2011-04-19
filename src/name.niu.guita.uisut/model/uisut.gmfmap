@@ -82,19 +82,15 @@
         href="uisut.ecore#//UITransition"/>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping"
-        viewPattern="{0}:{1}[{2}]"
-        editorPattern="{0}:{1}[{2}]"
-        editPattern="{0}:{1}[{2}]">
+        viewPattern=""
+        editorPattern=""
+        editPattern="">
       <diagramLabel
           href="uisut.gmfgraph#ggDiagramLable_UITransitionName"/>
       <features
-          href="uisut.ecore#//UISUTElement/name"/>
-      <features
-          href="uisut.ecore#//UITransition/triggerStr"/>
-      <features
-          href="uisut.ecore#//UITransition/guardStr"/>
+          href="uisut.ecore#//UISUTElement/description"/>
       <editableFeatures
-          href="uisut.ecore#//UISUTElement/name"/>
+          href="uisut.ecore#//UISUTElement/description"/>
     </labelMappings>
     <containmentFeature
         href="uisut.ecore#//UIStatemachine/itsTransition"/>

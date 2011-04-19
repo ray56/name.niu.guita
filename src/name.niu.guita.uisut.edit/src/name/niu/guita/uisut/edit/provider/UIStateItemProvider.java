@@ -64,7 +64,7 @@ public class UIStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsInitialPropertyDescriptor(object);
+			//addIsInitialPropertyDescriptor(object);
 			addAddedDataVariablePropertyDescriptor(object);
 			addDeletedDataVariablePropertyDescriptor(object);
 		}

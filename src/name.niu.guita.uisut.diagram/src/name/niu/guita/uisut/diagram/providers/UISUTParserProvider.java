@@ -70,30 +70,22 @@ public class UISUTParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser uITransitionNameTriggerStrGuardStr_6001Parser;
+	private IParser uITransitionDescription_6001Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getUITransitionNameTriggerStrGuardStr_6001Parser() {
-		if (uITransitionNameTriggerStrGuardStr_6001Parser == null) {
-			EAttribute[] features = new EAttribute[] {
-					name.niu.guita.uisut.uisutPackage.eINSTANCE
-							.getUISUTElement_Name(),
-					name.niu.guita.uisut.uisutPackage.eINSTANCE
-							.getUITransition_TriggerStr(),
-					name.niu.guita.uisut.uisutPackage.eINSTANCE
-							.getUITransition_GuardStr() };
+	private IParser getUITransitionDescription_6001Parser() {
+		if (uITransitionDescription_6001Parser == null) {
+			EAttribute[] features = new EAttribute[] { name.niu.guita.uisut.uisutPackage.eINSTANCE
+					.getUISUTElement_Description() };
 			EAttribute[] editableFeatures = new EAttribute[] { name.niu.guita.uisut.uisutPackage.eINSTANCE
-					.getUISUTElement_Name() };
+					.getUISUTElement_Description() };
 			MessageFormatParser parser = new MessageFormatParser(features,
 					editableFeatures);
-			parser.setViewPattern("{0}:{1}[{2}]"); //$NON-NLS-1$
-			parser.setEditorPattern("{0}:{1}[{2}]"); //$NON-NLS-1$
-			parser.setEditPattern("{0}:{1}[{2}]"); //$NON-NLS-1$
-			uITransitionNameTriggerStrGuardStr_6001Parser = parser;
+			uITransitionDescription_6001Parser = parser;
 		}
-		return uITransitionNameTriggerStrGuardStr_6001Parser;
+		return uITransitionDescription_6001Parser;
 	}
 
 	/**
@@ -106,7 +98,7 @@ public class UISUTParserProvider extends AbstractProvider implements
 		case UIDataVariableNameEditPart.VISUAL_ID:
 			return getUIDataVariableName_5002Parser();
 		case UITransitionNameEditPart.VISUAL_ID:
-			return getUITransitionNameTriggerStrGuardStr_6001Parser();
+			return getUITransitionDescription_6001Parser();
 		}
 		return null;
 	}

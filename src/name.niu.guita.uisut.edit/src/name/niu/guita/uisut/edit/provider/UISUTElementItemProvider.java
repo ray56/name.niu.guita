@@ -66,7 +66,7 @@ public class UISUTElementItemProvider
 
 			addNamePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
-			addIdPropertyDescriptor(object);
+			//addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
