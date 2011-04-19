@@ -239,17 +239,13 @@
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0"
-            viewPattern="{0}:{1}[{2}]"
-            editorPattern="{0}:{1}[{2}]"
-            editPattern="{0}:{1}[{2}]">
+            viewPattern=""
+            editorPattern=""
+            editPattern="">
           <metaFeatures
-              href="uisut.genmodel#//uisut/UISUTElement/name"/>
-          <metaFeatures
-              href="uisut.genmodel#//uisut/UITransition/triggerStr"/>
-          <metaFeatures
-              href="uisut.genmodel#//uisut/UITransition/guardStr"/>
+              href="uisut.genmodel#//uisut/UISUTElement/description"/>
           <editableMetaFeatures
-              href="uisut.genmodel#//uisut/UISUTElement/name"/>
+              href="uisut.genmodel#//uisut/UISUTElement/description"/>
         </modelFacet>
       </labels>
     </links>
