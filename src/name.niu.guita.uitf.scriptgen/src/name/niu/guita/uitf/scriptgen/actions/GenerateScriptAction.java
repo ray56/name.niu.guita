@@ -34,7 +34,7 @@ public class GenerateScriptAction extends AbstractHandler {
 					IAdaptable adaptable = (IAdaptable) ele ;
 					IFile f = (IFile) adaptable.getAdapter(IFile.class);			
 					if ( f.getFileExtension().toLowerCase(Locale.ENGLISH).equals( "uitf" ) ) {
-						GenScriptAlgorithm.GenScript( f) ;
+						GenScriptAlgorithm.GenScript( f);
 					} else {
 						JOptionPane.showMessageDialog(null, "Select *.UITF file");
 					}

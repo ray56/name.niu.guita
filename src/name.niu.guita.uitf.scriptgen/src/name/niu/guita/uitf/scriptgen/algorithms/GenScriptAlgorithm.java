@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.StringTokenizer;
 import java.net.MalformedURLException;
 
 import org.eclipse.core.resources.IContainer;
@@ -30,11 +31,11 @@ public class GenScriptAlgorithm {
 	public static void GenScript( IFile source){
 		
 		// fill target_sb wieh head
-		StringBuffer target_sb = new StringBuffer() ;		
+		StringBuffer target_sb = new StringBuffer() ;
 		String headStr = 
-			"/*******************************************************************************\n" +
-			" *  Copyright     Infomation                                                    \n" +
-			" ******************************************************************************/\n" ;
+			"#********************************************************\n" +
+			"#*  Copyright     Infomation                             \n" +
+			"#********************************************************\n\n\n";
 		target_sb.append(headStr);
 		
 		
@@ -59,9 +60,9 @@ public class GenScriptAlgorithm {
 		for( TestCase tc: ts.getItsTestCase() ) {
 			// write test case script, maybe a file for a case.
 			String tc_head = 
-				"/********************************************************\n" +
-				" *  %TEST_CASE_ID%                                       \n" +
-				" *******************************************************/\n" ;
+				"#********************************************************\n" +
+				"#*  %TEST_CASE_ID%                                       \n" +
+				"#********************************************************\n";
 			target_sb.append(tc_head.replace("%TEST_CASE_ID%", tc.getId()));			
 			for ( Statement statement : tc.getItsStatement() ) {
 				if( statement instanceof AssertInState ) {
@@ -69,9 +70,17 @@ public class GenScriptAlgorithm {
 					target_sb.append("");					
 				} else if (statement instanceof TriggeredTransition ) {
 					TriggeredTransition tt = (TriggeredTransition) statement ;
-					target_sb.append( tt.getScriptStr()+ "\n") ;
+					if(tt.getScriptStr() == null){
+						target_sb.append( tt.getScriptStr() + "\n");
+					}
+					else{
+						StringTokenizer strtoktt = new StringTokenizer(tt.getScriptStr(),";");
+						for(; strtoktt.hasMoreTokens(); ){
+							target_sb.append( strtoktt.nextToken() + "\n");
+						}
+					}
 				}
-			}			
+			}
 		}
 
 		// write file

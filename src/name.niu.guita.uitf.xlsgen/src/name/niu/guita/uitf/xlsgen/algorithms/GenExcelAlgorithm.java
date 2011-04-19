@@ -71,15 +71,29 @@ public class GenExcelAlgorithm {
 			TestCaseDescription tcDescription ;
 			
 			StringBuffer tc_statements_sb = new StringBuffer() ;
+			StringBuffer tc_statements_exp = new StringBuffer() ;
 			Integer ii = 0 ;
 			for( Statement s : tc.getItsStatement() ){
 				ii ++ ;
-				tc_statements_sb.append(ii).append(". ")
+				if(ii == 1){
+					tc_statements_sb
+					.append( ( s.getDescription()==null )?"":s.getDescription() )
+					.append("\n").append("\n");
+				}
+				else if((ii % 2) == 0){
+					tc_statements_sb.append(ii / 2).append(". ")
 					.append( ( s.getDescription()==null )?"":s.getDescription() )
 					.append("\n");
+				}
+				else{
+					tc_statements_exp.append(ii / 2).append(". ")
+					.append( ( s.getDescription()==null )?"":s.getDescription() )
+					.append("\n");
+				}
+				
 			}
 			tcDescription = new TestCaseDescription(
-					i.toString(), tc.getId() , tc_statements_sb.toString() , "Excepted!");
+					i.toString(), tc.getId() , tc_statements_sb.toString() , tc_statements_exp.toString());
 			eetc_dataset.add(tcDescription);
 		}
 		

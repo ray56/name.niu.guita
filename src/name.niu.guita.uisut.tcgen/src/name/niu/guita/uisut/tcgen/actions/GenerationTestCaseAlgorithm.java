@@ -31,6 +31,7 @@ public class GenerationTestCaseAlgorithm {
 	static int[] arrSUTStateInTran;
 	static int[] arrSUTTrnsVar;
 	static int[] arrSUTTrnsable;
+	static int[] arrSUTTrnsableInit;
 	static int[][] arrSUTRelation;
 	static int iInitial = 0;
 	static int iFinal = 0;
@@ -79,6 +80,7 @@ public class GenerationTestCaseAlgorithm {
 			arrSUTStateInTran = new int[stm.getItsState().size()];
 			arrSUTTrnsVar = new int[stm.getItsTransition().size()];
 			arrSUTTrnsable = new int[stm.getItsTransition().size()];
+			arrSUTTrnsableInit = new int[stm.getItsTransition().size()];
 			arrSUTRelation = new int[stm.getItsState().size()][stm.getItsState().size()];
 			iInitial = 0;
 			iFinal = 0;
@@ -140,7 +142,7 @@ public class GenerationTestCaseAlgorithm {
 					arrSUTRelation[i][j] = hashSUTTransition.get(tran);
 				}
 			}
-			// fill arrSUTTrnsVar
+			// fill arrSUTTrnsVar and arrSUTTrnsable
 			for(int i = 0; i < stm.getItsTransition().size(); i++){
 				UITransition tran = stm.getItsTransition().get(i);
 				
@@ -151,9 +153,11 @@ public class GenerationTestCaseAlgorithm {
 				
 				arrSUTTrnsVar[i] = iguard;
 				if(iguard < 0){
+					arrSUTTrnsableInit[i] = 1;
 					arrSUTTrnsable[i] = 1;
 				}
 				else{
+					arrSUTTrnsableInit[i] = -1;
 					arrSUTTrnsable[i] = -1;
 				}
 			}
@@ -179,8 +183,6 @@ public class GenerationTestCaseAlgorithm {
 						int tempiTran = iTran;
 						int tempiState = hashSUTState.get(stm.getItsTransition().get(iTran).getItsSrcState());
 						for(; tempiState!=iInitial; ){
-							tempiTran = arrSUTStateInTran[tempiState];
-							tempiState = hashSUTState.get(stm.getItsTransition().get(tempiTran).getItsSrcState());
 							// the transition is disable
 							if(arrSUTTrnsable[tempiTran] == -1){
 								findWay(stm, tempiState, hashSUTState.get(stm.getItsTransition().get(tempiTran).getItsTrgtState()), -1);
@@ -189,10 +191,16 @@ public class GenerationTestCaseAlgorithm {
 							else{
 								qTranPath.addFirst(tempiTran);
 							}
+							
+							tempiTran = arrSUTStateInTran[tempiState];
+							tempiState = hashSUTState.get(stm.getItsTransition().get(tempiTran).getItsSrcState());
 						}
+						
+						// add first path
+						qTranPath.addFirst(tempiTran);
 
 						// find a way from leaf to final state
-						findWay(stm, curState, iFinal, 1);
+						findWay(stm, iState, iFinal, 1);
 						
 						// write test case to test case model
 						TestCase tc = UitfFactory.eINSTANCE.createTestCase();
@@ -201,21 +209,28 @@ public class GenerationTestCaseAlgorithm {
 						ts.getItsTestCase().add(tc);
 						AbstractState tempst = stm.getItsState().get(iInitial);
 						Statement preStatement = UitfFactory.eINSTANCE.createStatement();
-						preStatement.setDescription(String.format("[Pre]\n assert in %s\n",tempst.getName()));
+						preStatement.setDescription(String.format("[Preconditions]\n Current Position: %s\n",tempst.getDescription()));
+						tc.getItsStatement().add(preStatement);
 						
 						for(; !qTranPath.isEmpty(); ){
 							// add statement of TriggeredTransition
 							UITransition temptran = stm.getItsTransition().get(qTranPath.remove());
 							TriggeredTransition stepStatement = UitfFactory.eINSTANCE.createTriggeredTransition();
-							stepStatement.setDescription( String.format("trigger %s \n", temptran.getDescription()));
-							stepStatement.setScriptStr( temptran.getTriggerStr() );
+							stepStatement.setDescription( String.format("%s\n", temptran.getDescription()));
+							stepStatement.setScriptStr( temptran.getScriptStr());
 							tc.getItsStatement().add(stepStatement);
 							// add statement of 
 							
 							AssertInState stepAsrStatement = UitfFactory.eINSTANCE.createAssertInState();
-							stepAsrStatement.setDescription( String.format("assert in %s\n", temptran.getItsTrgtState().getName()));
+							stepAsrStatement.setDescription( String.format("Enter: %s\n", temptran.getItsTrgtState().getDescription()));
 							tc.getItsStatement().add(stepAsrStatement);
 						}
+						
+						// initial arrSUTTrnsable
+						for(int ii = 0; ii < stm.getItsTransition().size(); ii++){
+							arrSUTTrnsable[ii] = arrSUTTrnsableInit[ii];
+						}
+						
 					}
 					else{
 						qState.add(iState);
@@ -238,6 +253,10 @@ public class GenerationTestCaseAlgorithm {
 		int flag = 0;
 		
 		ArrayDeque<Integer> tempqTranPath = new ArrayDeque<Integer>();
+		
+		if(iStart == iFinal){
+			return;
+		}
 		
 		// finding way
 		for(; ; ){
@@ -310,6 +329,7 @@ public class GenerationTestCaseAlgorithm {
 			}
 		}
 		
+		return;
 	}
 	
 }
