@@ -217,11 +217,13 @@ public class TestCaseGenWizard extends Wizard
 				label3.setText("scope: ");
 				
 				genScopeList = new List(container, SWT.BORDER | SWT.MULTI | SWT.READ_ONLY | SWT.V_SCROLL) ;
-				for( String scopeItem : genScope ) 
+				if( genScope != null )
 				{
-					genScopeList.add( scopeItem==null ? "<no name>" : scopeItem );
+					for( String scopeItem : genScope ) 
+					{
+						genScopeList.add( scopeItem==null ? "<no name>" : scopeItem );
+					}
 				}
-				
 				GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 				gd.heightHint = 200 ;
 				
