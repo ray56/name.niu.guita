@@ -7,6 +7,22 @@
             id="name.niu.guita.uisut.tcgen.CMD_GEN_TC"
             name="Generate TestCase">
       </command>
+      <command
+            id="name.niu.guita.uisut.tcgen.setGenFrom"
+            name="setGenFrom">
+      </command>
+      <command
+            id="name.niu.guita.uisut.tcgen.setGenTo"
+            name="setGenTo">
+      </command>
+      <command
+            id="name.niu.guita.uisut.tcgen.setGenScope"
+            name="setGenScope">
+      </command>
+      <command
+            id="name.niu.guita.uisut.tcgen.showGenScope"
+            name="showGenScope">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -19,6 +35,97 @@
                style="push">
          </command>
       </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command
+               commandId="name.niu.guita.uisut.tcgen.setGenFrom">
+            <visibleWhen>
+               <and>
+                  <with
+                        variable="activePartId">
+                     <equals
+                           value="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+                     </equals>
+                  </with>
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="name.niu.guita.uisut.tcgen.setGenTo">
+                           <visibleWhen>
+               <and>
+                  <with
+                        variable="activePartId">
+                     <equals
+                           value="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+                     </equals>
+                  </with>
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="name.niu.guita.uisut.tcgen.setGenScope">
+                           <visibleWhen>
+               <and>
+                  <with
+                        variable="activePartId">
+                     <equals
+                           value="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+                     </equals>
+                  </with>
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="name.niu.guita.uisut.tcgen.showGenScope">
+                <visibleWhen>
+               <and>
+                  <with
+                        variable="activePartId">
+                     <equals
+                           value="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+                     </equals>
+                  </with>
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.gef.EditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -26,6 +133,41 @@
             class="name.niu.guita.uisut.tcgen.actions.GenerateTestCaseAction"
             commandId="name.niu.guita.uisut.tcgen.CMD_GEN_TC">
       </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="name.niu.guita.uisut.tcgen.genFrom"
+            targetID="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID">
+         <action
+               class="name.niu.guita.uisut.tcgen.actions.ConfigGenAction"
+               definitionId="name.niu.guita.uisut.tcgen.setGenFrom"
+               id="name.niu.guita.uisut.tcgen.setGenFromAction"
+               label="set gen from"
+               style="push">
+         </action>
+         <action
+               class="name.niu.guita.uisut.tcgen.actions.ConfigGenAction"
+               definitionId="name.niu.guita.uisut.tcgen.setGenTo"
+               id="name.niu.guita.uisut.tcgen.setGenToAction"
+               label="set gen to"
+               style="push">
+         </action>
+         <action
+               class="name.niu.guita.uisut.tcgen.actions.ConfigGenAction"
+               definitionId="name.niu.guita.uisut.tcgen.setGenScope"
+               id="name.niu.guita.uisut.tcgen.setGenScopeAction"
+               label="set gen scope"
+               style="push">
+         </action>
+         <action
+               class="name.niu.guita.uisut.tcgen.actions.ConfigGenAction"
+               definitionId="name.niu.guita.uisut.tcgen.showGenScope"
+               id="name.niu.guita.uisut.tcgen.showGenScopeAction"
+               label="show gen scope"
+               style="push">
+         </action>
+      </editorContribution>
    </extension>
 
 </plugin>

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import name.niu.guita.uisut.*;
 import name.niu.guita.uisut.impl.AbstractStateImpl;
+import name.niu.guita.uisut.tcgen.config.Configuration;
 import name.niu.guita.uitf.uitf.*;
 import name.niu.guita.uitf.uitf.impl.UitfPackageImpl;
 
