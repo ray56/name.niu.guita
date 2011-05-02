@@ -1,10 +1,15 @@
 package name.niu.guita.uisut.tcgen.actions;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 
+
 import javax.swing.JOptionPane;
 
+import name.niu.guita.uisut.UIDataVariable;
+import name.niu.guita.uisut.UIStatemachine;
 import name.niu.guita.uisut.tcgen.config.Configuration;
 import name.niu.guita.uisut.tcgen.ui.TestCaseGenWizard;
 
@@ -15,6 +20,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -59,26 +68,61 @@ public class GenerateTestCaseAction extends AbstractHandler {
 								+ "uitf";
 						
 						TestCaseGenWizard wizard = new TestCaseGenWizard() ;
+						wizard.setSource( source_uisut_file ) ;
+						wizard.setTarget( target_uitf_file );
 						WizardDialog wizardDialog = new WizardDialog(HandlerUtil
 								.getActiveShell(event), wizard) ;
 						wizardDialog.open() ;
 						// print gen configuration ;
-						Configuration.getMaxLoopCount() ;
-						Configuration.getMaxStepCount() ;
-						Configuration.getGenFrom() ;
-						Configuration.getGenTo() ;
-						Configuration.getGenScope() ;
-						/*
-						GenerationTestCaseAlgorithm.genAlgorithm(
-							source_uisut_file, 
-							target_uitf_file, 
-							Configuration.getMaxLoopCount() ,
-							Configuration.getMaxStepCount() ,
-							Configuration.getGenFrom() ,
-							Configuration.getGenTo() ,
-							Configuration.getGenScope() );
-						*/
-						GenerationTestCaseAlgorithm.genAlgorithm(source_uisut_file, target_uitf_file);
+//						Configuration.getMaxLoopCount() ;
+//						Configuration.getMaxStepCount() ;
+//						Configuration.getGenFrom() ;
+//						Configuration.getGenTo() ;
+//						Configuration.getGenScope() ;
+						
+						// test TestCaseGenAlgorithmHelper
+//						{{
+//							ResourceSet resourceSet = new ResourceSetImpl();
+//							resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
+//								put("uisut", new XMIResourceFactoryImpl());
+//							URI srcURI = URI.createFileURI(source_uisut_file);
+//							Resource resource = resourceSet.createResource(srcURI);
+//							try {
+//								resource.load(null ) ;
+//								UIStatemachine stm_t = (UIStatemachine)resource.getContents().get(0);
+//								{{
+//									ArrayList<UIDataVariable> externalDV = 
+//											TestCaseGenAlgorithmHelper.findPrecondition(stm_t);
+//									int j = 0 ;
+//								}}
+//								
+//								UIStatemachine stm3 = TestCaseGenAlgorithmHelper.filterStatemachine(
+//										(UIStatemachine)resource.getContents().get(0), Configuration.getGenScope());
+//								stm3.getName() ;
+//								
+//								int j = 0 ;
+//							} catch (IOException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//							}
+//						}}
+						
+						
+						
+						
+						
+						
+												
+//						GenerationTestCaseAlgorithm.genAlgorithm(
+//							source_uisut_file, 
+//							target_uitf_file, 
+//							Configuration.getMaxLoopCount() ,
+//							Configuration.getMaxStepCount() ,
+//							Configuration.getGenFrom() ,
+//							Configuration.getGenTo() ,
+//							Configuration.getGenScope() );
+						
+						//GenerationTestCaseAlgorithm.genAlgorithm(source_uisut_file, target_uitf_file);
 						
 						try 
 						{	f.getParent().refreshLocal(0, null);

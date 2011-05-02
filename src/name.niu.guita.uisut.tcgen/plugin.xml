@@ -52,7 +52,7 @@
                      <iterate
                            ifEmpty="false">
                         <instanceof
-                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                              value="org.eclipse.gef.EditPart">
                         </instanceof>
                      </iterate>
                   </with>
@@ -74,7 +74,7 @@
                      <iterate
                            ifEmpty="false">
                         <instanceof
-                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                              value="org.eclipse.gef.EditPart">
                         </instanceof>
                      </iterate>
                   </with>
@@ -96,7 +96,7 @@
                      <iterate
                            ifEmpty="false">
                         <instanceof
-                              value="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart">
+                              value="org.eclipse.gef.EditPart">
                         </instanceof>
                      </iterate>
                   </with>

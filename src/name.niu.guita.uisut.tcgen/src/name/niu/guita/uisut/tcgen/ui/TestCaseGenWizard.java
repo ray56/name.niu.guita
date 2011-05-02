@@ -4,6 +4,7 @@ package name.niu.guita.uisut.tcgen.ui;
 
 import java.util.ArrayList;
 
+import name.niu.guita.uisut.tcgen.actions.GenerationTestCaseAlgorithm;
 import name.niu.guita.uisut.tcgen.config.Configuration;
 
 import org.eclipse.jface.wizard.Wizard;
@@ -31,6 +32,22 @@ public class TestCaseGenWizard extends Wizard
 	private String genFrom = Configuration.getGenFrom() ;
 	private String genTo = Configuration.getGenTo() ;
 	private ArrayList<String> genScope = Configuration.getGenScope() ;
+	
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	private String source = null ;
+	private String target = null ;
 
 
 	public TestCaseGenWizard()
@@ -59,6 +76,15 @@ public class TestCaseGenWizard extends Wizard
 		} catch (Exception e) {
 			e.printStackTrace() ;
 		}
+		
+		GenerationTestCaseAlgorithm.genAlgorithm(
+				source, 
+				target, 
+				Configuration.getMaxLoopCount() ,
+				Configuration.getMaxStepCount() ,
+				Configuration.getGenFrom() ,
+				Configuration.getGenTo() ,
+				Configuration.getGenScope() );
 		
 		
 		
