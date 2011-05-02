@@ -475,15 +475,16 @@
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
    </extension>
+   <!--
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
             id="name.niu.guita.uisut.diagram.contribution1"
-            objectClass="UISUTModel.diagram.edit.parts.UIStateEditPart">
+            objectClass="name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart11">
          <menu
                id="name.niu.guita.uisut.diagram.menu1"
-               label="SetAsInitialState"
+               label="SetAs"
                path="additions">
             <separator
                   name="group1">
@@ -496,8 +497,11 @@
                label="SetAsInitialState"
                menubarPath="name.niu.guita.uisut.diagram.menu1/group1">
          </action>
+         <visibility></visibility>
+         <enablement></enablement>
       </objectContribution>
    </extension>
+   -->
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">
