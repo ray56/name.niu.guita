@@ -147,7 +147,7 @@
          name="Guita Application">
       <property
             name="windowImages"
-            value="icons/product/window128.png">
+            value="/name.niu.guita.project/icons/product/window128.png">
       </property>
       <property
             name="aboutText"
@@ -155,11 +155,11 @@
       </property>
       <property
             name="aboutImage"
-            value="icons/product/about.gif">
+            value="/name.niu.guita.project/icons/product/about.gif">
       </property>
       <property
             name="startupForegroundColor"
-            value="FFFF00">
+            value="0080FF">
       </property>
       <property
             name="startupProgressRect"
