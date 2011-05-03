@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import name.niu.guita.uisut.*;
 import name.niu.guita.uitf.uitf.*;
 
@@ -62,7 +64,11 @@ public class GenerationTestCaseAlgorithm {
 
 			// create target resource and set root element of TestSuit
 			TestSuite ts = UitfFactory.eINSTANCE.createTestSuite();
+			ts.setId("TS_001");
 			trgtResource.getContents().add(ts);
+			
+			// get start time
+			long startTime = System.currentTimeMillis();
 			
 			// initial variables
 			initialVariables();
@@ -79,36 +85,32 @@ public class GenerationTestCaseAlgorithm {
 			// set hash maps of userstm
 			setUserHashMaps(userstm);
 			
-			// set iUserStart
-			for(int i = 0; i < userstm.getItsState().size(); i++){
-				AbstractState ast = userstm.getItsState().get(i);
-				if( userStartName == null && ast instanceof InitialState )
-				{
-					iUserStart = i;
-					break ;
-				} else if( userStartName != null && userStartName.equals(ast.getName()) )
-				{
-					iUserStart = i;
-					break ;
-					
-				}
-			}
 			
-			// set iUserEnd
 			for(int i = 0; i < userstm.getItsState().size(); i++){
 				AbstractState ast = userstm.getItsState().get(i);
-				if( userEndName == null && ast instanceof FinalState ){
-					iUserEnd = i;
-					break ;				
+				
+				// set iUserStart
+				if(userStartName == null && ast instanceof InitialState){
+					iUserStart = i;
+					continue;
+				}else if(userStartName != null && userStartName.equals(ast.getName())){
+					iUserStart = i;
+					continue;
 				}
-				else if( userEndName != null && userEndName.equals( ast.getName() )){
+				
+				// set iUserEnd
+				if(userEndName == null && ast instanceof FinalState){
 					iUserEnd = i;
-					break ;				
+					continue;
+				}
+				else if(userEndName != null && userEndName.equals(ast.getName())){
+					iUserEnd = i;
+					continue;
 				}
 			}
 			
 			// find PreCondition
-			findPreCondition(userstm);
+			arrPreCondition = findPreCondition(userstm);
 			
 			// initial arrTranOccur
 			for(int i = 0; i < userstm.getItsTransition().size(); i++){
@@ -120,6 +122,14 @@ public class GenerationTestCaseAlgorithm {
 			
 			// save target resource
 			trgtResource.save(null);
+			
+			// get end time
+			long endTime = System.currentTimeMillis();
+			String generationTime = String.format("cost time:%s ms", endTime - startTime);
+
+			// show message
+			JOptionPane.showMessageDialog(null, "Generate Test Case Model Successfully!\n"+generationTime);
+		
 		}catch(IOException e){
 			e.printStackTrace();
 		}
@@ -313,7 +323,9 @@ public class GenerationTestCaseAlgorithm {
 					continue;
 				}
 				else if(arrPreCondition.contains(tranSysVar)){
-					arrNeedCondition.add(tranSysVar);
+					if(!arrNeedCondition.contains(tranSysVar)){
+						arrNeedCondition.add(tranSysVar);
+					}
 				}
 				else{
 					flag = 1;
@@ -321,18 +333,18 @@ public class GenerationTestCaseAlgorithm {
 				}
 			}
 			
-			// condition is disable
+			// condition is disabled
 			if(flag == 1){
 				continue;
 			}
 			
 			// out of loop
-			if(arrTranOccur.get(icurtran) > iMaxLoop){
+			if(arrTranOccur.get(icurtran) >= iMaxLoop){
 				continue;
 			}
 			
 			// out of step
-			if(qTranPath.size() > iMaxStep){
+			if(qTranPath.size() >= iMaxStep){
 				continue;
 			}
 			
@@ -362,20 +374,27 @@ public class GenerationTestCaseAlgorithm {
 					tc.getItsStatement().add(needCondition);
 				}
 				
+				Statement tchead = UitfFactory.eINSTANCE.createStatement();
+				tchead.setDescription(String.format("test case head\n"));
+				tc.getItsStatement().add(tchead);
+				
 				ArrayDeque<Integer> tempqTranPath = qTranPath.clone();
-				for(; !tempqTranPath.isEmpty(); ){
+				for(int ii = 1; !tempqTranPath.isEmpty(); ii++){
 					// add statement of action
 					UITransition temptran = userstm.getItsTransition().get(tempqTranPath.remove());
 					TriggeredTransition stepStatement = UitfFactory.eINSTANCE.createTriggeredTransition();
-					stepStatement.setDescription( String.format("%s\n", temptran.getDescription()));
+					stepStatement.setDescription( String.format("%d.%s\n", ii, temptran.getDescription()));
 					stepStatement.setScriptStr( temptran.getScriptStr());
 					tc.getItsStatement().add(stepStatement);
 					
 					// add statement of expect
 					AssertInState stepAsrStatement = UitfFactory.eINSTANCE.createAssertInState();
-					stepAsrStatement.setDescription( String.format("Enter: %s\n", temptran.getItsTrgtState().getDescription()));
+					stepAsrStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsTrgtState().getDescription()));
 					tc.getItsStatement().add(stepAsrStatement);
 				}
+				
+				// clear arrNeedCondition
+				arrNeedCondition.clear();
 			}
 			
 			// recursion nextast

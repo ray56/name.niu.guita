@@ -9,19 +9,19 @@
       </command>
       <command
             id="name.niu.guita.uisut.tcgen.setGenFrom"
-            name="setGenFrom">
+            name="set as Start">
       </command>
       <command
             id="name.niu.guita.uisut.tcgen.setGenTo"
-            name="setGenTo">
+            name="set as End">
       </command>
       <command
             id="name.niu.guita.uisut.tcgen.setGenScope"
-            name="setGenScope">
+            name="select Scope">
       </command>
       <command
             id="name.niu.guita.uisut.tcgen.showGenScope"
-            name="showGenScope">
+            name="show selected Scope">
       </command>
    </extension>
    <extension
