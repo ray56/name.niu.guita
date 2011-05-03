@@ -58,7 +58,7 @@ public class GenScriptAlgorithm {
 		}		
 		// write test suite script to target_sb
 		for( TestCase tc: ts.getItsTestCase() ) {
-			// write test case script, maybe a file for a case.
+			// write test case script, maybe a file for a case
 			String tc_head = 
 				"#********************************************************\r\n" +
 				"#*  %TEST_CASE_ID%                                       \r\n" +
