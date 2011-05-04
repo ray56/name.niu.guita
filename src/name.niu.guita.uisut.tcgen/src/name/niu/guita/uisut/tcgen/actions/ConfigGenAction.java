@@ -48,7 +48,9 @@ public class ConfigGenAction implements IEditorActionDelegate {
 		}
 		@Override
 		public void partDeactivated(EditPart editpart) {
-			ConfigGenAction.selectedScope.toList().remove(editpart) ;
+			if ( selectedScope != null ) {
+				ConfigGenAction.selectedScope.toList().remove(editpart) ;
+			}
 		}
 		
 	} ;
