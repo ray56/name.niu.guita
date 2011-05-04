@@ -21,28 +21,61 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class GenerationTestCaseAlgorithm {
 	
-	static int iMaxLoop;
-	static int iMaxStep;
-	static int iUserStart;
-	static int iUserEnd;
-	static int iTCounter;
+	static int flushSize = 1000 ;
 	
-	static HashMap<AbstractState, Integer> hashUserState = new HashMap<AbstractState, Integer>();
-	static HashMap<UITransition, Integer> hashUserTransition = new HashMap<UITransition, Integer>();
-	static HashMap<UIDataVariable, Integer> hashUserSystemVar = new HashMap<UIDataVariable, Integer>();
+	 int iMaxLoop;
+	 int iMaxStep;
+	 int iUserStart;
+	 int iUserEnd;
+	 int iTCounter;
+	 
+	 // ray 2011-05-04 new added:
+	 String trgtFile ;
+	 int flushCount = 0 ;
+	 private void checkAndFlush( TestSuite ts, boolean forceFlush ){
+			// set target resource
+		 	if ( forceFlush == false && ts.getItsTestCase().size() <= GenerationTestCaseAlgorithm.flushSize ) {
+		 		return ;
+		 	}
+		 	flushCount ++ ;
+			ResourceSet trgtResourceSet = new ResourceSetImpl();
+			trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
+				put("uitf", new XMIResourceFactoryImpl());
+			URI trgtURI = URI.createFileURI(trgtFile.replace(".uitf", "_" + String.format("%03d", flushCount) + ".uift" ) );
+			Resource trgtResource = trgtResourceSet.createResource(trgtURI);
+			
+			trgtResource.getContents().add(ts);
+			try {
+				trgtResource.save(null);
+				ts.getItsTestCase().clear() ;
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
+			return ;
+	 }
+	 
+	 public GenerationTestCaseAlgorithm() {
+		
+	}
 	
-	static ArrayList<UIDataVariable> arrCurCondition = new ArrayList<UIDataVariable>();
-	static ArrayList<UIDataVariable> arrPreCondition = new ArrayList<UIDataVariable>();
-	static ArrayList<UIDataVariable> arrNeedCondition = new ArrayList<UIDataVariable>();
+	 HashMap<AbstractState, Integer> hashUserState = new HashMap<AbstractState, Integer>();
+	 HashMap<UITransition, Integer> hashUserTransition = new HashMap<UITransition, Integer>();
+	 HashMap<UIDataVariable, Integer> hashUserSystemVar = new HashMap<UIDataVariable, Integer>();
 	
-	static ArrayList<Integer> arrTranOccur = new ArrayList<Integer>();
-	static ArrayDeque<Integer> qTranPath = new ArrayDeque<Integer>();
+	 ArrayList<UIDataVariable> arrCurCondition = new ArrayList<UIDataVariable>();
+	 ArrayList<UIDataVariable> arrPreCondition = new ArrayList<UIDataVariable>();
+	 ArrayList<UIDataVariable> arrNeedCondition = new ArrayList<UIDataVariable>();
+	
+	 ArrayList<Integer> arrTranOccur = new ArrayList<Integer>();
+	 ArrayDeque<Integer> qTranPath = new ArrayDeque<Integer>();
 	
 	public static void genAlgorithm(String srcFile , String trgtFile, 
 									int maxLoop, int maxStep, 
 									String userStartName, String userEndName, 
 									ArrayList<String> userScopeNames){
 		
+		GenerationTestCaseAlgorithm alg = new GenerationTestCaseAlgorithm() ;
+		alg.trgtFile = trgtFile ;
 		// set source resource
 		ResourceSet srcResourceSet = new ResourceSetImpl();
 		srcResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
@@ -50,40 +83,36 @@ public class GenerationTestCaseAlgorithm {
 		URI srcURI = URI.createFileURI(srcFile);
 		Resource srcResource = srcResourceSet.createResource(srcURI);
 		
-		// set target resource
-		ResourceSet trgtResourceSet = new ResourceSetImpl();
-		trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
-			put("uitf", new XMIResourceFactoryImpl());
-		URI trgtURI = URI.createFileURI(trgtFile);
-		Resource trgtResource = trgtResourceSet.createResource(trgtURI);
+
 		
+		TestSuite ts = null ;
 		try{
 			// load source resource and get root element of UIStatemachine
 			srcResource.load(null);
 			UIStatemachine stm = (UIStatemachine)srcResource.getContents().get(0);
 
 			// create target resource and set root element of TestSuit
-			TestSuite ts = UitfFactory.eINSTANCE.createTestSuite();
+			ts = UitfFactory.eINSTANCE.createTestSuite();
 			ts.setId("TS_001");
-			trgtResource.getContents().add(ts);
+			
 			
 			// get start time
 			long startTime = System.currentTimeMillis();
 			
 			// initial variables
-			initialVariables();
+			alg.initialVariables();
 			
 			// set iMaxLoop
-			iMaxLoop = maxLoop;
+			alg.iMaxLoop = maxLoop;
 			
 			// set iMaxStep
-			iMaxStep = maxStep;
+			alg.iMaxStep = maxStep;
 			
 			// create userstm
-			UIStatemachine userstm = createUserSTM(stm, userScopeNames);
+			UIStatemachine userstm = alg.createUserSTM(stm, userScopeNames);
 			
 			// set hash maps of userstm
-			setUserHashMaps(userstm);
+			alg.setUserHashMaps(userstm);
 			
 			
 			for(int i = 0; i < userstm.getItsState().size(); i++){
@@ -91,37 +120,45 @@ public class GenerationTestCaseAlgorithm {
 				
 				// set iUserStart
 				if(userStartName == null && ast instanceof InitialState){
-					iUserStart = i;
+					alg.iUserStart = i;
 					continue;
 				}else if(userStartName != null && userStartName.equals(ast.getName())){
-					iUserStart = i;
+					alg.iUserStart = i;
 					continue;
 				}
 				
 				// set iUserEnd
 				if(userEndName == null && ast instanceof FinalState){
-					iUserEnd = i;
+					alg.iUserEnd = i;
 					continue;
 				}
 				else if(userEndName != null && userEndName.equals(ast.getName())){
-					iUserEnd = i;
+					alg.iUserEnd = i;
 					continue;
 				}
 			}
 			
 			// find PreCondition
-			arrPreCondition = findPreCondition(userstm);
+			alg.arrPreCondition = alg.findPreCondition(userstm);
 			
 			// initial arrTranOccur
 			for(int i = 0; i < userstm.getItsTransition().size(); i++){
-				arrTranOccur.add(0);
+				alg.arrTranOccur.add(0);
 			}
 			
 			// enumerate path
-			enumeratePath(userstm, ts, iUserStart);
+			alg.enumeratePath(userstm, ts, alg.iUserStart);
 			
 			// save target resource
-			trgtResource.save(null);
+			// set target resource
+//			ResourceSet trgtResourceSet = new ResourceSetImpl();
+//			trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
+//				put("uitf", new XMIResourceFactoryImpl());
+//			URI trgtURI = URI.createFileURI(trgtFile);
+//			Resource trgtResource = trgtResourceSet.createResource(trgtURI);
+//			trgtResource.getContents().add(ts);
+//			trgtResource.save(null);
+			alg.checkAndFlush(ts, true ) ;
 			
 			// get end time
 			long endTime = System.currentTimeMillis();
@@ -136,7 +173,7 @@ public class GenerationTestCaseAlgorithm {
 	}
 	
 	
-	static void initialVariables(){
+	 void initialVariables(){
 		
 		iMaxLoop = 0;
 		iMaxStep = 0;
@@ -157,7 +194,7 @@ public class GenerationTestCaseAlgorithm {
 		
 	}
 	
-	static UIStatemachine createUserSTM(UIStatemachine stm, ArrayList<String> userScopeNames){
+	 UIStatemachine createUserSTM(UIStatemachine stm, ArrayList<String> userScopeNames){
 		
 		// parameter validation
 		if(stm == null){
@@ -237,7 +274,7 @@ public class GenerationTestCaseAlgorithm {
 		return null;
 	}
 	
-	static void setUserHashMaps(UIStatemachine userstm){
+	 void setUserHashMaps(UIStatemachine userstm){
 		
 		// fill hashUserState
 		for(int i = 0; i < userstm.getItsState().size(); i++){
@@ -257,7 +294,7 @@ public class GenerationTestCaseAlgorithm {
 		}
 	}
 	
-	static ArrayList<UIDataVariable> findPreCondition(UIStatemachine userstm){
+	 ArrayList<UIDataVariable> findPreCondition(UIStatemachine userstm){
 		
 		HashSet<UIDataVariable> addedByStates = new HashSet<UIDataVariable>();
 		HashSet<UIDataVariable> needByTransitions = new HashSet<UIDataVariable>();
@@ -280,7 +317,7 @@ public class GenerationTestCaseAlgorithm {
 		return new ArrayList(needByTransitions);
 	}
 	
-	static void enumeratePath(UIStatemachine userstm, TestSuite ts, int icurast){
+	 void enumeratePath(UIStatemachine userstm, TestSuite ts, int icurast){
 		
 		AbstractState curast = userstm.getItsState().get(icurast);
 		
@@ -392,6 +429,14 @@ public class GenerationTestCaseAlgorithm {
 					stepAsrStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsTrgtState().getDescription()));
 					tc.getItsStatement().add(stepAsrStatement);
 				}
+				// TODO: here, a new tc added to ts, try check the size of ts, if >= 5k, output to a file
+				// TODO: a implementation may be:
+				// make all field and function not static,
+				// add a field named targetFile, flushCount,
+				// add a function named checkAndFlush(ts)
+				// rename genAlgorithm to createAndRun
+				// client call createAndRun to instantiate and run.
+				checkAndFlush(ts, false);
 				
 				// clear arrNeedCondition
 				arrNeedCondition.clear();
