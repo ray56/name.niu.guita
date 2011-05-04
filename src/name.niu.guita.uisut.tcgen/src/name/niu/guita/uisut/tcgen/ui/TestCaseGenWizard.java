@@ -100,9 +100,9 @@ public class TestCaseGenWizard extends Wizard
 		
 		public PageOne() 
 		{
-			super("maxLoopCount") ;
-			setTitle("Set max loop count");
-			setDescription("Set max loop count.") ;
+			super("maxCycleCount") ;
+			setTitle("Set max cycle count");
+			setDescription("Set max cycle count.") ;
 		}
 		public String getMaxLoopCountText() {
 			return maxLoopCountText.getText();
@@ -115,7 +115,7 @@ public class TestCaseGenWizard extends Wizard
 			container.setLayout(layout);
 			layout.numColumns = 2;
 			Label label1 = new Label(container, SWT.NULL);
-			label1.setText("Put here a value");
+			label1.setText("max cycle count");
 
 			maxLoopCountText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			// set default value
@@ -165,7 +165,7 @@ public class TestCaseGenWizard extends Wizard
 			container.setLayout(layout);
 			layout.numColumns = 2;
 			Label label1 = new Label(container, SWT.NULL);
-			label1.setText("max loop count");
+			label1.setText("max step count");
 
 			maxStepCountText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			// set default value
@@ -209,7 +209,7 @@ public class TestCaseGenWizard extends Wizard
 		{
 			super("view") ;
 			setTitle("view scope...");
-			setDescription("vier start, end and scope of test case.") ;
+			setDescription("view start, end and scope of test case.") ;
 		}
 		
 		@Override

@@ -75,25 +75,27 @@ public class GenExcelAlgorithm {
 			
 			StringBuffer tc_statements_sb = new StringBuffer() ;
 			StringBuffer tc_statements_exp = new StringBuffer() ;
-			Integer ii = 0 ;
+			int ii = 0 ;
+			int flag = 0;
 			for( Statement s : tc.getItsStatement() ){
-				ii ++ ;
-				if(ii == 1){
-					tc_statements_sb
-					.append( ( s.getDescription()==null )?"":s.getDescription() )
-					.append("\n").append("\n");
+				// find test case head
+				if(s.getDescription().contains("test case head")){
+					flag =1;
+					ii = 1;
+					continue;
 				}
-				else if((ii % 2) == 0){
-					tc_statements_sb.append(ii / 2).append(". ")
-					.append( ( s.getDescription()==null )?"":s.getDescription() )
-					.append("\n");
+				// precondition
+				if(flag == 0){
+					tc_statements_sb.append( ( s.getDescription()==null )?"":s.getDescription() ).append("\n");
+				}
+				else if((ii % 2) == 1){
+					ii++;
+					tc_statements_sb.append( ( s.getDescription()==null )?"":s.getDescription() ).append("\n");
 				}
 				else{
-					tc_statements_exp.append(ii / 2).append(". ")
-					.append( ( s.getDescription()==null )?"":s.getDescription() )
-					.append("\n");
+					ii++;
+					tc_statements_exp.append( ( s.getDescription()==null )?"":s.getDescription() ).append("\n");
 				}
-				
 			}
 			tcDescription = new TestCaseDescription(
 					i.toString(), tc.getId() , tc_statements_sb.toString() , tc_statements_exp.toString());

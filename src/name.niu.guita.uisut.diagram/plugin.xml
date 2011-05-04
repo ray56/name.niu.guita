@@ -44,7 +44,7 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/uisutDiagramFile.gif"
-  	     category="org.eclipse.ui.Examples"
+  	     category="name.niu.guita.guitaCategory"
   	     class="name.niu.guita.uisut.diagram.part.UISUTCreationWizard"
   	     id="name.niu.guita.uisut.diagram.part.UISUTCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
