@@ -219,7 +219,7 @@ public class GenerationTestCaseAlgorithm {
 				}				
 				for(UITransition t2 : si.getItsOutTransition()){
 					removeTranCandidate.add(t2);
-				}				
+				}
 			}
 			for(AbstractState si : removeCandidate){
 				target.getItsState().remove(si);

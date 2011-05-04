@@ -35,99 +35,40 @@ public class GenerateTestCaseAction extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-//		Shell shell = HandlerUtil.getActiveWorkbenchWindow(event).getShell() ;
-//		FileDialog fileDialog = new FileDialog(shell);
-//		fileDialog.setText("Select uisut File");
-//		fileDialog.setFilterExtensions(new String[] { "*.uisut" });
-//		fileDialog.setFilterNames(new String[] { "Uitf files(*.uisut)" });
-//		String source_uisut_file = fileDialog.open();
-//		System.out.println(source_uisut_file);
-//		String target_uitf_file = URI.createFileURI( source_uisut_file ).
-//				trimFileExtension().appendFileExtension("uitf").toFileString();
-//		GenerationTestCaseAlgorithm.genAlgorithm(source_uisut_file, target_uitf_file) ;
-		
-		ISelection sel = HandlerUtil.getCurrentSelectionChecked(event) ;
+
+		ISelection sel = HandlerUtil.getCurrentSelectionChecked(event);
 		if ( sel instanceof IFile ) 
 		{
-			IFile f = (IFile) sel ;
-			System.out.println( f.getFullPath() ) ;
+			IFile f = (IFile) sel;
+			System.out.println( f.getFullPath() );
 		} 
 		else if ( sel instanceof IStructuredSelection ) 
 		{
 			Iterator elements = ((IStructuredSelection) sel).iterator();
 			while ( elements.hasNext())
 			{
-				Object ele = elements.next() ;
+				Object ele = elements.next();
 				if (ele instanceof IAdaptable ) 
-				{	IAdaptable adaptable = (IAdaptable) ele ;
-					IFile f = (IFile) adaptable.getAdapter(IFile.class);			
+				{	IAdaptable adaptable = (IAdaptable) ele;
+					IFile f = (IFile) adaptable.getAdapter(IFile.class);
 					if ( f.getFileExtension().toLowerCase(Locale.ENGLISH).equals( "uisut" ) ) 
-					{	String source_uisut_file = f.getLocation().toString() ;
+					{	String source_uisut_file = f.getLocation().toString();
 						String target_uitf_file = source_uisut_file
 								.substring(0, source_uisut_file.length()-"uisut".length() ) 
 								+ "uitf";
 						
-						TestCaseGenWizard wizard = new TestCaseGenWizard() ;
-						wizard.setSource( source_uisut_file ) ;
+						TestCaseGenWizard wizard = new TestCaseGenWizard();
+						wizard.setSource( source_uisut_file );
 						wizard.setTarget( target_uitf_file );
 						WizardDialog wizardDialog = new WizardDialog(HandlerUtil
-								.getActiveShell(event), wizard) ;
-						wizardDialog.open() ;
-						// print gen configuration ;
-//						Configuration.getMaxLoopCount() ;
-//						Configuration.getMaxStepCount() ;
-//						Configuration.getGenFrom() ;
-//						Configuration.getGenTo() ;
-//						Configuration.getGenScope() ;
-						
-						// test TestCaseGenAlgorithmHelper
-//						{{
-//							ResourceSet resourceSet = new ResourceSetImpl();
-//							resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
-//								put("uisut", new XMIResourceFactoryImpl());
-//							URI srcURI = URI.createFileURI(source_uisut_file);
-//							Resource resource = resourceSet.createResource(srcURI);
-//							try {
-//								resource.load(null ) ;
-//								UIStatemachine stm_t = (UIStatemachine)resource.getContents().get(0);
-//								{{
-//									ArrayList<UIDataVariable> externalDV = 
-//											TestCaseGenAlgorithmHelper.findPrecondition(stm_t);
-//									int j = 0 ;
-//								}}
-//								
-//								UIStatemachine stm3 = TestCaseGenAlgorithmHelper.filterStatemachine(
-//										(UIStatemachine)resource.getContents().get(0), Configuration.getGenScope());
-//								stm3.getName() ;
-//								
-//								int j = 0 ;
-//							} catch (IOException e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//						}}
-						
-						
-						
-						
-						
-						
+								.getActiveShell(event), wizard);
+						wizardDialog.open();
 												
-//						GenerationTestCaseAlgorithm.genAlgorithm(
-//							source_uisut_file, 
-//							target_uitf_file, 
-//							Configuration.getMaxLoopCount() ,
-//							Configuration.getMaxStepCount() ,
-//							Configuration.getGenFrom() ,
-//							Configuration.getGenTo() ,
-//							Configuration.getGenScope() );
-						
-						//GenerationTestCaseAlgorithm.genAlgorithm(source_uisut_file, target_uitf_file);
-						
-						try 
-						{	f.getParent().refreshLocal(0, null);
-						} catch (CoreException e) 
-						{	e.printStackTrace();
+						try {
+							f.getParent().refreshLocal(0, null);
+						}
+						catch (CoreException e) {
+							e.printStackTrace();
 						}
 					} 
 					else 
