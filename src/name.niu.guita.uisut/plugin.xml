@@ -17,4 +17,10 @@
             genModel="model/uisut.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="uisut"
+            class="name.niu.guita.uisut.util.uisutResourceFactoryImpl"/>
+   </extension>
+
 </plugin>

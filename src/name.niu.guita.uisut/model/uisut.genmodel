@@ -10,7 +10,7 @@
     copyrightFields="false" editPluginID="name.niu.guita.uisut.edit.provider">
   <foreignModel>uisut.ecore</foreignModel>
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
-  <genPackages prefix="uisut" basePackage="name.niu.guita" disposableProviderFactory="true"
+  <genPackages prefix="uisut" basePackage="name.niu.guita" resource="XMI" disposableProviderFactory="true"
       providerPackageSuffix="edit.provider" ecorePackage="uisut.ecore#/">
     <genClasses ecoreClass="uisut.ecore#//UISUT">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISUT/itsSTM"/>
