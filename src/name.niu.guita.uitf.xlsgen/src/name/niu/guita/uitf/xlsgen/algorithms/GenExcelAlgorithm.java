@@ -59,6 +59,9 @@ public class GenExcelAlgorithm {
 			e.printStackTrace() ;
 		}
 		String eetc_title = ts.getId() ;
+		if ( eetc_title ==  null || eetc_title.equals("") ) {
+			eetc_title = "no_title" ;
+		}
 		String[] eetc_header = { "No.", "Test Case Id", "Operations",
 				"Excepted Result" };
 		int[]eetc_columnWidth = {1000, 4000, 10000, 10000} ;
