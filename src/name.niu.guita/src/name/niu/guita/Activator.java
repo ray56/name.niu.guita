@@ -25,8 +25,11 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
+		System.out.println( "[START]: " + "name.niu.guita.Activator.start(BundleContext)" ) ;
 		super.start(context);
 		plugin = this;
+		System.out.println( "[END  ]: " + "name.niu.guita.Activator.start(BundleContext)" ) ;
+		
 	}
 
 	/*
@@ -34,8 +37,11 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
+		System.out.println( "[START]: " + "name.niu.guita.Activator.stop(BundleContext)" ) ;
 		plugin = null;
 		super.stop(context);
+		System.out.println( "[END  ]: " + "name.niu.guita.Activator.stop(BundleContext)" ) ;
+		
 	}
 
 	/**

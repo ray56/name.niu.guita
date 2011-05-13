@@ -9,6 +9,7 @@ public class Application implements IApplication {
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
+		System.out.println( "[START]: " + "name.niu.guita.Application.start(IApplicationContext)" ) ;
 		Display display = PlatformUI.createDisplay();
 		try {
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
@@ -18,13 +19,16 @@ public class Application implements IApplication {
 				return IApplication.EXIT_OK;
 		} finally {
 			display.dispose();
+			System.out.println( "[END  ]: " + "name.niu.guita.Application.start(IApplicationContext)" ) ;
 		}
+		
+		
 	}
 
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-
+		System.out.println( "[START]: " + "name.niu.guita.Application.stop()" ) ;
+		System.out.println( "[END  ]: " + "name.niu.guita.Application.stop()" ) ;
 	}
 
 }
