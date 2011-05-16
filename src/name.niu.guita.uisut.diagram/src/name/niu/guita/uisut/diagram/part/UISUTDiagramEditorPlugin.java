@@ -74,23 +74,27 @@ public class UISUTDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	public void start(BundleContext context) throws Exception {
+		System.out.println( "[Start]" + (new Throwable()).getStackTrace()[0].getMethodName() ) ;
 		super.start(context);
 		instance = this;
 		PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT,
 				getPreferenceStore());
 		adapterFactory = createAdapterFactory();
+		System.out.println( "[End  ]" + (new Throwable()).getStackTrace()[0].getMethodName() ) ;
 	}
 
 	/**
 	 * @generated
 	 */
 	public void stop(BundleContext context) throws Exception {
+		System.out.println( "[Start]" + (new Throwable()).getStackTrace()[0].getMethodName() ) ;
 		adapterFactory.dispose();
 		adapterFactory = null;
 		linkConstraints = null;
 		initializers = null;
 		instance = null;
 		super.stop(context);
+		System.out.println( "[End  ]" + (new Throwable()).getStackTrace()[0].getMethodName() ) ;
 	}
 
 	/**
