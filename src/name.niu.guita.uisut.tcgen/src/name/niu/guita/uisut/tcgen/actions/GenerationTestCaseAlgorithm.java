@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class GenerationTestCaseAlgorithm {
 	
-	static int flushSize = 1000 ;
+	static int flushSize = 10000;
 	
 	 int iMaxLoop;
 	 int iMaxStep;
@@ -41,7 +41,7 @@ public class GenerationTestCaseAlgorithm {
 			ResourceSet trgtResourceSet = new ResourceSetImpl();
 			trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
 				put("uitf", new XMIResourceFactoryImpl());
-			URI trgtURI = URI.createFileURI(trgtFile.replace(".uitf", "_" + String.format("%03d", flushCount) + ".uift" ) );
+			URI trgtURI = URI.createFileURI(trgtFile.replace(".uitf", "_" + String.format("%03d", flushCount) + ".uitf" ) );
 			Resource trgtResource = trgtResourceSet.createResource(trgtURI);
 			
 			trgtResource.getContents().add(ts);
