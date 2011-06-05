@@ -86,8 +86,6 @@ public class TestCaseGenWizard extends Wizard
 				Configuration.getGenTo() ,
 				Configuration.getGenScope() );
 		
-		
-		
 		return true;
 	}
 	

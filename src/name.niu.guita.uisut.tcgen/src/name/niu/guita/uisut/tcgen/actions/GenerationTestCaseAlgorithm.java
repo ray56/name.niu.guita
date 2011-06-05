@@ -23,51 +23,51 @@ public class GenerationTestCaseAlgorithm {
 	
 	static int flushSize = 10000;
 	
-	 int iMaxLoop;
-	 int iMaxStep;
-	 int iUserStart;
-	 int iUserEnd;
-	 int iTCounter;
-	 
-	 // ray 2011-05-04 new added:
-	 String trgtFile ;
-	 int flushCount = 0 ;
-	 private void checkAndFlush( TestSuite ts, boolean forceFlush ){
-			// set target resource
-		 	if ( forceFlush == false && ts.getItsTestCase().size() <= GenerationTestCaseAlgorithm.flushSize ) {
-		 		return ;
-		 	}
-		 	flushCount ++ ;
-			ResourceSet trgtResourceSet = new ResourceSetImpl();
-			trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
-				put("uitf", new XMIResourceFactoryImpl());
-			URI trgtURI = URI.createFileURI(trgtFile.replace(".uitf", "_" + String.format("%03d", flushCount) + ".uitf" ) );
-			Resource trgtResource = trgtResourceSet.createResource(trgtURI);
-			
-			trgtResource.getContents().add(ts);
-			try {
-				trgtResource.save(null);
-				ts.getItsTestCase().clear() ;
-			} catch (IOException e) {				
-				e.printStackTrace();
-			}
+	int iMaxLoop;
+	int iMaxStep;
+	int iUserStart;
+	int iUserEnd;
+	int iTCounter;
+	
+	String trgtFile ;
+	int flushCount = 0 ;
+	
+	private void checkAndFlush( TestSuite ts, boolean forceFlush ){
+		// set target resource
+		if ( forceFlush == false && ts.getItsTestCase().size() <= GenerationTestCaseAlgorithm.flushSize ) {
 			return ;
-	 }
-	 
-	 public GenerationTestCaseAlgorithm() {
+		}
+		flushCount ++ ;
+		ResourceSet trgtResourceSet = new ResourceSetImpl();
+		trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
+			put("uitf", new XMIResourceFactoryImpl());
+		URI trgtURI = URI.createFileURI(trgtFile.replace(".uitf", "_" + String.format("%03d", flushCount) + ".uitf" ) );
+		Resource trgtResource = trgtResourceSet.createResource(trgtURI);
+			
+		trgtResource.getContents().add(ts);
+		try {
+			trgtResource.save(null);
+			ts.getItsTestCase().clear() ;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return;
+	}
+	
+	public GenerationTestCaseAlgorithm() {
 		
 	}
 	
-	 HashMap<AbstractState, Integer> hashUserState = new HashMap<AbstractState, Integer>();
-	 HashMap<UITransition, Integer> hashUserTransition = new HashMap<UITransition, Integer>();
-	 HashMap<UIDataVariable, Integer> hashUserSystemVar = new HashMap<UIDataVariable, Integer>();
+	HashMap<AbstractState, Integer> hashUserState = new HashMap<AbstractState, Integer>();
+	HashMap<UITransition, Integer> hashUserTransition = new HashMap<UITransition, Integer>();
+	HashMap<UIDataVariable, Integer> hashUserSystemVar = new HashMap<UIDataVariable, Integer>();
 	
-	 ArrayList<UIDataVariable> arrCurCondition = new ArrayList<UIDataVariable>();
-	 ArrayList<UIDataVariable> arrPreCondition = new ArrayList<UIDataVariable>();
-	 ArrayList<UIDataVariable> arrNeedCondition = new ArrayList<UIDataVariable>();
+	ArrayList<UIDataVariable> arrCurCondition = new ArrayList<UIDataVariable>();
+	ArrayList<UIDataVariable> arrPreCondition = new ArrayList<UIDataVariable>();
+	ArrayList<UIDataVariable> arrNeedCondition = new ArrayList<UIDataVariable>();
 	
-	 ArrayList<Integer> arrTranOccur = new ArrayList<Integer>();
-	 ArrayDeque<Integer> qTranPath = new ArrayDeque<Integer>();
+	ArrayList<Integer> arrTranOccur = new ArrayList<Integer>();
+	ArrayDeque<Integer> qTranPath = new ArrayDeque<Integer>();
 	
 	public static void genAlgorithm(String srcFile , String trgtFile, 
 									int maxLoop, int maxStep, 
@@ -76,14 +76,13 @@ public class GenerationTestCaseAlgorithm {
 		
 		GenerationTestCaseAlgorithm alg = new GenerationTestCaseAlgorithm() ;
 		alg.trgtFile = trgtFile ;
+		
 		// set source resource
 		ResourceSet srcResourceSet = new ResourceSetImpl();
 		srcResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
 			put("uisut", new XMIResourceFactoryImpl());
 		URI srcURI = URI.createFileURI(srcFile);
 		Resource srcResource = srcResourceSet.createResource(srcURI);
-		
-
 		
 		TestSuite ts = null ;
 		try{
@@ -103,9 +102,18 @@ public class GenerationTestCaseAlgorithm {
 			alg.initialVariables();
 			
 			// set iMaxLoop
+			if(maxLoop<0 || maxLoop>10){
+				JOptionPane.showMessageDialog(null, "max cycle count is between 0-10!");
+				return;
+			}
 			alg.iMaxLoop = maxLoop;
 			
+			
 			// set iMaxStep
+			if(maxStep<5 || maxStep>1000){
+				JOptionPane.showMessageDialog(null, "max step is between 5-1000!");
+				return;
+			}
 			alg.iMaxStep = maxStep;
 			
 			// create userstm
@@ -113,7 +121,6 @@ public class GenerationTestCaseAlgorithm {
 			
 			// set hash maps of userstm
 			alg.setUserHashMaps(userstm);
-			
 			
 			for(int i = 0; i < userstm.getItsState().size(); i++){
 				AbstractState ast = userstm.getItsState().get(i);
@@ -138,6 +145,107 @@ public class GenerationTestCaseAlgorithm {
 				}
 			}
 			
+			// isolated validate for userstm
+			ArrayDeque<Integer> qState = new ArrayDeque<Integer>();
+			HashSet<Integer> qStateAdded = new HashSet<Integer>();
+			
+			String strNotReachStart = "";
+			String strNotReachEnd = "";
+			String strerr = "";
+			
+			if(alg.iUserStart == -1){
+				JOptionPane.showMessageDialog(null, "Start state is not in the selected scope!");
+				return;
+			}
+			if(alg.iUserEnd == -1){
+				JOptionPane.showMessageDialog(null, "End state is not in the selected scope!");
+				return;
+			}
+			
+			qState.add(alg.iUserStart);
+			qStateAdded.add(alg.iUserStart);
+			for(;!qState.isEmpty();){
+				int icurState = qState.remove();
+				AbstractState ast = userstm.getItsState().get(icurState);
+
+				for(int i = 0; i < ast.getItsOutTransition().size(); i++){
+					UITransition tran = ast.getItsOutTransition().get(i);
+					int iState = alg.hashUserState.get(tran.getItsTrgtState());
+					
+					// leaf node
+					if(qStateAdded.contains(iState)){
+						continue;
+					} 
+					// UserEnd node
+					else if (iState == alg.iUserEnd){
+						qStateAdded.add(iState);
+					}
+					// common node
+					else{
+						qState.add(iState);
+						qStateAdded.add(iState);
+					}
+				}
+			}
+			for(int i = 0; i < userstm.getItsState().size(); i++){
+				AbstractState ast = userstm.getItsState().get(i);
+				// the state cannot be reached from Start
+				if(!qStateAdded.contains(i)){
+					strNotReachStart += ast.getName() + "   ";
+				}
+			}
+			
+			qState.clear();
+			qStateAdded.clear();
+			qState.add(alg.iUserEnd);
+			qStateAdded.add(alg.iUserEnd);
+			for(;!qState.isEmpty();){
+				int icurState = qState.remove();
+				AbstractState ast = userstm.getItsState().get(icurState);
+
+				for(int i = 0; i < ast.getItsInTransition().size(); i++){
+					UITransition tran = ast.getItsInTransition().get(i);
+					int iState = alg.hashUserState.get(tran.getItsSrcState());
+					
+					// leaf node
+					if(qStateAdded.contains(iState)){
+						continue;
+					}
+					// UserStart node
+					else if (iState == alg.iUserStart){
+						qStateAdded.add(iState);
+					}
+					// common node
+					else{
+						qState.add(iState);
+						qStateAdded.add(iState);
+					}
+				}
+			}
+			for(int i = 0; i < userstm.getItsState().size(); i++){
+				AbstractState ast = userstm.getItsState().get(i);
+				// the state cannot reach End
+				if(!qStateAdded.contains(i)){
+					strNotReachEnd += ast.getName() + "   ";
+				}
+			}
+			
+			if(strNotReachStart!="" || strNotReachEnd!=""){
+				strerr += "Error\n";
+				if(strNotReachStart!=""){
+					strerr += "These states cannot be reached from Start:\n" + strNotReachStart + "\n";
+				}
+				
+				if(strNotReachEnd!=""){
+					strerr += "These states cannot reach End:\n" + strNotReachEnd + "\n";
+				}
+				
+				JOptionPane.showMessageDialog(null, strerr);
+				return;
+			}
+			
+			JOptionPane.showMessageDialog(null, "Validation passed.");
+			
 			// find PreCondition
 			alg.arrPreCondition = alg.findPreCondition(userstm);
 			
@@ -150,15 +258,7 @@ public class GenerationTestCaseAlgorithm {
 			alg.enumeratePath(userstm, ts, alg.iUserStart);
 			
 			// save target resource
-			// set target resource
-//			ResourceSet trgtResourceSet = new ResourceSetImpl();
-//			trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().
-//				put("uitf", new XMIResourceFactoryImpl());
-//			URI trgtURI = URI.createFileURI(trgtFile);
-//			Resource trgtResource = trgtResourceSet.createResource(trgtURI);
-//			trgtResource.getContents().add(ts);
-//			trgtResource.save(null);
-			alg.checkAndFlush(ts, true ) ;
+			alg.checkAndFlush(ts, true);
 			
 			// get end time
 			long endTime = System.currentTimeMillis();
@@ -173,12 +273,12 @@ public class GenerationTestCaseAlgorithm {
 	}
 	
 	
-	 void initialVariables(){
+	void initialVariables(){
 		
-		iMaxLoop = 0;
-		iMaxStep = 0;
-		iUserStart = 0;
-		iUserEnd = 0;
+		iMaxLoop = -1;
+		iMaxStep = -1;
+		iUserStart = -1;
+		iUserEnd = -1;
 		iTCounter = 0;
 		
 		hashUserState.clear();
@@ -194,11 +294,11 @@ public class GenerationTestCaseAlgorithm {
 		
 	}
 	
-	 UIStatemachine createUserSTM(UIStatemachine stm, ArrayList<String> userScopeNames){
+	UIStatemachine createUserSTM(UIStatemachine stm, ArrayList<String> userScopeNames){
 		
 		// parameter validation
 		if(stm == null){
-			throw new IllegalArgumentException("stm must not null");
+			throw new IllegalArgumentException("stm must not null!");
 		}
 		if(userScopeNames == null){
 			return stm;
@@ -232,9 +332,9 @@ public class GenerationTestCaseAlgorithm {
 			ArrayList<AbstractState> removeCandidate = new ArrayList<AbstractState>();
 			ArrayList<UITransition> removeTranCandidate = new ArrayList<UITransition>();
 			for(AbstractState s : target.getItsState()){
-				if( s instanceof InitialState || s instanceof FinalState ){
-					continue ;
-				}
+//				if( s instanceof InitialState || s instanceof FinalState ){
+//					continue ;
+//				}
 				boolean found = false;
 				for(String name : userScopeNames){
 					if((s.getName() != null && s.getName().equals(name))
@@ -274,7 +374,7 @@ public class GenerationTestCaseAlgorithm {
 		return null;
 	}
 	
-	 void setUserHashMaps(UIStatemachine userstm){
+	void setUserHashMaps(UIStatemachine userstm){
 		
 		// fill hashUserState
 		for(int i = 0; i < userstm.getItsState().size(); i++){
@@ -294,7 +394,7 @@ public class GenerationTestCaseAlgorithm {
 		}
 	}
 	
-	 ArrayList<UIDataVariable> findPreCondition(UIStatemachine userstm){
+	ArrayList<UIDataVariable> findPreCondition(UIStatemachine userstm){
 		
 		HashSet<UIDataVariable> addedByStates = new HashSet<UIDataVariable>();
 		HashSet<UIDataVariable> needByTransitions = new HashSet<UIDataVariable>();
@@ -317,7 +417,7 @@ public class GenerationTestCaseAlgorithm {
 		return new ArrayList(needByTransitions);
 	}
 	
-	 void enumeratePath(UIStatemachine userstm, TestSuite ts, int icurast){
+	void enumeratePath(UIStatemachine userstm, TestSuite ts, int icurast){
 		
 		AbstractState curast = userstm.getItsState().get(icurast);
 		
@@ -429,7 +529,7 @@ public class GenerationTestCaseAlgorithm {
 					stepAsrStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsTrgtState().getDescription()));
 					tc.getItsStatement().add(stepAsrStatement);
 				}
-				// TODO: here, a new tc added to ts, try check the size of ts, if >= 5k, output to a file
+				// TODO: here, a new tc added to ts, try check the size of ts, if >= 10000, output to a file
 				// TODO: a implementation may be:
 				// make all field and function not static,
 				// add a field named targetFile, flushCount,
@@ -457,4 +557,5 @@ public class GenerationTestCaseAlgorithm {
 			arrCurCondition = (ArrayList<UIDataVariable>) arrLastCondition.clone();
 		}
 	}
+	
 }

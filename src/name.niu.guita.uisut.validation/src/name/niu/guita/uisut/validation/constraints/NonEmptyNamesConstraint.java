@@ -24,7 +24,7 @@ public class NonEmptyNamesConstraint extends AbstractModelConstraint {
 			if (eObj instanceof UIState) {
 				name = ((UIState)eObj).getName();
 			} else if (eObj instanceof UIStatemachine) {
-				name = ((UIStatemachine)eObj).getName();
+				//name = ((UIStatemachine)eObj).getName();
 			}
 			
 			if (name == null || name.length() == 0) {
