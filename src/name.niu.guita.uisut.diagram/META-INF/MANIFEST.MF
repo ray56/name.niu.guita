@@ -31,6 +31,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  name.niu.guita.uisut;visibility:=reexport,
  name.niu.guita.uisut.edit;visibility:=reexport,
- org.eclipse.ui.ide;bundle-version="3.6.2"
+ org.eclipse.ui.ide;bundle-version="3.6.2",
+ org.eclipse.gmf.runtime.draw2d.ui.render;bundle-version="1.4.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

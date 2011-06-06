@@ -1,5 +1,8 @@
 package name.niu.guita.uisut.diagram.edit.parts;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,10 +14,12 @@ import name.niu.guita.uisut.diagram.providers.UISUTElementTypes;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -30,8 +35,14 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+
+
+import org.eclipse.gmf.runtime.draw2d.ui.render.factory.RenderedImageFactory;
+import org.eclipse.gmf.runtime.draw2d.ui.render.figures.ScalableImageFigure;
+import org.eclipse.gmf.runtime.notation.Image;
 
 /**
  * @generated
@@ -53,6 +64,9 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure primaryShape;
 
+	//2011-06-06
+	URL screenshotURL ;
+	
 	/**
 	 * @generated
 	 */
@@ -316,6 +330,47 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		}
 		return types;
 	}
+	
+	// 2011-06-06
+	protected void handleNotificationEvent(Notification notification) {
+
+		try {
+			if( screenshotURL == null ) {
+				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+			} else if( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png"))) {
+				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");	
+			} else if ( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png") )){
+				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+			}			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		this.getPrimaryShape().freshScreenShot( this.screenshotURL ) ;
+		
+		Object feature = notification.getFeature();
+		super.handleNotificationEvent(notification) ;
+		
+//		this.refresh() ;
+//		this.refreshVisuals() ;
+//		this.refreshVisibility() ;
+		
+		//this.refreshVisuals();
+		
+//		Object feature = notification.getFeature();
+//		if (NotationPackage.eINSTANCE.getView_SourceEdges().equals(feature))
+//			refreshSourceConnections();
+//		else if (NotationPackage.eINSTANCE.getView_TargetEdges().equals(feature))
+//			refreshTargetConnections();
+//		else if (NotationPackage.eINSTANCE.getFillStyle_Gradient().equals(feature) ||
+//				NotationPackage.eINSTANCE.getFillStyle_FillColor().equals(feature)) {				
+//			refreshBackgroundColor();
+//		} else if (NotationPackage.eINSTANCE.getFillStyle_Transparency().equals(feature)) {
+//			refreshTransparency();			
+//		} else {
+//			super.handleNotificationEvent(notification);
+//		}
+	}
 
 	/**
 	 * @generated
@@ -326,6 +381,10 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureGgLable_UIStateNameFigure;
+		
+		//2011-06-06
+		RectangleFigure screenshotArea0;
+		URL screenshotURL ;
 
 		/**
 		 * @generated
@@ -366,8 +425,93 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			constraintFFigureGgLable_UIStateNameFigure.grabExcessVerticalSpace = true;
 			this.add(fFigureGgLable_UIStateNameFigure,
 					constraintFFigureGgLable_UIStateNameFigure);
+			
+			createStateScreenshot() ;
 
 		}
+		
+		// 2011-06-06: create pic
+		private void createStateScreenshot() 
+		{
+			RectangleFigure screenshotArea0 = new RectangleFigure();
+			screenshotArea0.setBackgroundColor( new Color(null, 128, 128, 128) );
+
+			GridData constraintScreenshotArea0 = new GridData();
+			constraintScreenshotArea0.verticalAlignment = GridData.CENTER;	
+			constraintScreenshotArea0.horizontalAlignment = GridData.CENTER;
+			constraintScreenshotArea0.horizontalIndent = 0;
+			constraintScreenshotArea0.horizontalSpan = 1;
+			constraintScreenshotArea0.verticalSpan = 1;
+			constraintScreenshotArea0.grabExcessHorizontalSpace = true;
+			constraintScreenshotArea0.grabExcessVerticalSpace = true;
+			// add 
+			this.add(screenshotArea0, constraintScreenshotArea0);
+			this.screenshotArea0 = screenshotArea0 ;
+
+			GridLayout layoutScreenshotArea0 = new GridLayout();
+			layoutScreenshotArea0.numColumns = 1;
+			layoutScreenshotArea0.makeColumnsEqualWidth = true;
+			
+			
+			screenshotArea0.setLayoutManager(layoutScreenshotArea0);
+
+			//URL url = this.getClass().getResource("") ;
+			//URL url = Platform.getBundle("name.niu.guita.uisut.diagram").getEntry("/images/book.png") ;
+			URL url = null;
+			try {
+				int i = ( int)  ( Math.floor( Math.random() * 2 ) ) ;
+				if ( i == 0 ) {
+					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");	
+				} else {
+					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");
+				}
+				
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+					RenderedImageFactory.getInstance(url), true, true, true );
+			
+			GridData constraintScreenshot1 = new GridData();
+			{
+				constraintScreenshot1.verticalAlignment = GridData.CENTER;
+				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
+				constraintScreenshot1.horizontalIndent = 0;
+				constraintScreenshot1.horizontalSpan = 1;
+				constraintScreenshot1.verticalSpan = 1;
+				constraintScreenshot1.grabExcessHorizontalSpace = true;
+				constraintScreenshot1.grabExcessVerticalSpace = true;
+			}
+			screenshotArea0.removeAll() ;
+			screenshotArea0.add(screenshot1, constraintScreenshot1);		
+			
+		}
+		
+		//2011-06-06
+		public void freshScreenShot(URL url ) 
+		{
+			this.screenshotArea0.removeAll() ;
+			
+			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+					RenderedImageFactory.getInstance(url), true, true, true );
+			
+			GridData constraintScreenshot1 = new GridData();
+			{
+				constraintScreenshot1.verticalAlignment = GridData.CENTER;
+				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
+				constraintScreenshot1.horizontalIndent = 0;
+				constraintScreenshot1.horizontalSpan = 1;
+				constraintScreenshot1.verticalSpan = 1;
+				constraintScreenshot1.grabExcessHorizontalSpace = true;
+				constraintScreenshot1.grabExcessVerticalSpace = true;
+			}
+			
+			
+			
+			this.screenshotArea0.add(screenshot1, constraintScreenshot1 ) ;
+		}
+
 
 		/**
 		 * @generated
