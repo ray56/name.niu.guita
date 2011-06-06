@@ -67,6 +67,7 @@ public class UIStateItemProvider
 			//addIsInitialPropertyDescriptor(object);
 			addAddedDataVariablePropertyDescriptor(object);
 			addDeletedDataVariablePropertyDescriptor(object);
+			addPicPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,6 +134,28 @@ public class UIStateItemProvider
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Pic feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPicPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UIState_pic_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UIState_pic_feature", "_UI_UIState_type"),
+				 uisutPackage.Literals.UI_STATE__PIC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -205,6 +228,7 @@ public class UIStateItemProvider
 
 		switch (notification.getFeatureID(UIState.class)) {
 			case uisutPackage.UI_STATE__IS_INITIAL:
+			case uisutPackage.UI_STATE__PIC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case uisutPackage.UI_STATE__ITS_UI_CONTROL:

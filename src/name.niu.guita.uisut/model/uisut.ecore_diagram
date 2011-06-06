@@ -61,6 +61,10 @@
         <element xmi:type="ecore:EAttribute" href="uisut.ecore#//UIState/isInitial"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_L2bSoVlIEeC25JyzWWXOTw"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_IlxsoZAvEeCdOvhXCm0zAw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="uisut.ecore#//UIState/pic"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_IlxsopAvEeCdOvhXCm0zAw"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_jGdi9EwIEeClcP_ts0gcDw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_jGdi9UwIEeClcP_ts0gcDw"/>
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_Gy9boEwJEeClcP_ts0gcDw" value="0.18181818181818182"/>

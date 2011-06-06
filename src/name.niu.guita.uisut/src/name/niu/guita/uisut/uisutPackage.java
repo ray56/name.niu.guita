@@ -444,13 +444,22 @@ public interface uisutPackage extends EPackage {
 	int UI_STATE__DELETED_DATA_VARIABLE = ABSTRACT_STATE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Pic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATE__PIC = ABSTRACT_STATE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>UI State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 4;
+	int UI_STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guita.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
@@ -1224,6 +1233,17 @@ public interface uisutPackage extends EPackage {
 	EReference getUIState_DeletedDataVariable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guita.uisut.UIState#getPic <em>Pic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pic</em>'.
+	 * @see name.niu.guita.uisut.UIState#getPic()
+	 * @see #getUIState()
+	 * @generated
+	 */
+	EAttribute getUIState_Pic();
+
+	/**
 	 * Returns the meta object for class '{@link name.niu.guita.uisut.UITransition <em>UI Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1696,6 +1716,14 @@ public interface uisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UI_STATE__DELETED_DATA_VARIABLE = eINSTANCE.getUIState_DeletedDataVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Pic</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI_STATE__PIC = eINSTANCE.getUIState_Pic();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guita.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.

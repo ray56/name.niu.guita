@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guita.uisut.UIState#isIsInitial <em>Is Initial</em>}</li>
  *   <li>{@link name.niu.guita.uisut.UIState#getAddedDataVariable <em>Added Data Variable</em>}</li>
  *   <li>{@link name.niu.guita.uisut.UIState#getDeletedDataVariable <em>Deleted Data Variable</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.UIState#getPic <em>Pic</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,5 +102,31 @@ public interface UIState extends AbstractState {
 	 * @generated
 	 */
 	EList<UIDataVariable> getDeletedDataVariable();
+
+	/**
+	 * Returns the value of the '<em><b>Pic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pic</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pic</em>' attribute.
+	 * @see #setPic(String)
+	 * @see name.niu.guita.uisut.uisutPackage#getUIState_Pic()
+	 * @model
+	 * @generated
+	 */
+	String getPic();
+
+	/**
+	 * Sets the value of the '{@link name.niu.guita.uisut.UIState#getPic <em>Pic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pic</em>' attribute.
+	 * @see #getPic()
+	 * @generated
+	 */
+	void setPic(String value);
 
 } // UIState

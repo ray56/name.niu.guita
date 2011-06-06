@@ -27,6 +27,7 @@
         eType="#//UIDataVariable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deletedDataVariable" upperBound="-1"
         eType="#//UIDataVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UISUTElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsTrgtState" lowerBound="1"

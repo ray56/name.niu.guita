@@ -333,6 +333,15 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getUIState_Pic() {
+		return (EAttribute)uiStateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUITransition() {
 		return uiTransitionEClass;
 	}
@@ -660,6 +669,7 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		createEAttribute(uiStateEClass, UI_STATE__IS_INITIAL);
 		createEReference(uiStateEClass, UI_STATE__ADDED_DATA_VARIABLE);
 		createEReference(uiStateEClass, UI_STATE__DELETED_DATA_VARIABLE);
+		createEAttribute(uiStateEClass, UI_STATE__PIC);
 
 		uiTransitionEClass = createEClass(UI_TRANSITION);
 		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_TRGT_STATE);
@@ -767,6 +777,7 @@ public class uisutPackageImpl extends EPackageImpl implements uisutPackage {
 		initEAttribute(getUIState_IsInitial(), ecorePackage.getEBoolean(), "isInitial", null, 0, 1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIState_AddedDataVariable(), this.getUIDataVariable(), null, "addedDataVariable", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIState_DeletedDataVariable(), this.getUIDataVariable(), null, "deletedDataVariable", null, 0, -1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUIState_Pic(), ecorePackage.getEString(), "pic", null, 0, 1, UIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiTransitionEClass, UITransition.class, "UITransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUITransition_ItsTrgtState(), this.getAbstractState(), this.getAbstractState_ItsInTransition(), "itsTrgtState", null, 1, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

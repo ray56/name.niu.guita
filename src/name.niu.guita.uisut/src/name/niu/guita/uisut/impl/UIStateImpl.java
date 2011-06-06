@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link name.niu.guita.uisut.impl.UIStateImpl#isIsInitial <em>Is Initial</em>}</li>
  *   <li>{@link name.niu.guita.uisut.impl.UIStateImpl#getAddedDataVariable <em>Added Data Variable</em>}</li>
  *   <li>{@link name.niu.guita.uisut.impl.UIStateImpl#getDeletedDataVariable <em>Deleted Data Variable</em>}</li>
+ *   <li>{@link name.niu.guita.uisut.impl.UIStateImpl#getPic <em>Pic</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,6 +98,24 @@ public class UIStateImpl extends AbstractStateImpl implements UIState {
 	@SuppressWarnings("unchecked")
 	public EList<UIDataVariable> getDeletedDataVariable() {
 		return (EList<UIDataVariable>)eGet(uisutPackage.Literals.UI_STATE__DELETED_DATA_VARIABLE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPic() {
+		return (String)eGet(uisutPackage.Literals.UI_STATE__PIC, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPic(String newPic) {
+		eSet(uisutPackage.Literals.UI_STATE__PIC, newPic);
 	}
 
 } //UIStateImpl
