@@ -3,6 +3,8 @@ package name.niu.guita.uisut.diagram.sheet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import name.niu.guita.uisut.UIState;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -34,6 +36,13 @@ public class UISUTPropertySection extends AdvancedPropertySection implements
 		}
 		AdapterFactory af = getAdapterFactory(object);
 		if (af != null) {
+			
+			//2011-06-06
+			if (object instanceof UIState) {
+				IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
+				return new PicPropertySource(object, ips);
+			}
+			
 			IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
 					IItemPropertySource.class);
 			if (ips != null) {

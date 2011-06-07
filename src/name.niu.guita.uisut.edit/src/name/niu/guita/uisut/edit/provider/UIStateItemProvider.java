@@ -13,6 +13,7 @@ import java.util.List;
 import name.niu.guita.uisut.UIState;
 import name.niu.guita.uisut.uisutFactory;
 import name.niu.guita.uisut.uisutPackage;
+import name.niu.guita.uisut.edit.provider.propertyDescriptor.PicItemPropertyDescriptor;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,6 +29,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 
 /**
  * This is the item provider adapter for a {@link name.niu.guita.uisut.UIState} object.
@@ -67,7 +69,18 @@ public class UIStateItemProvider
 			//addIsInitialPropertyDescriptor(object);
 			addAddedDataVariablePropertyDescriptor(object);
 			addDeletedDataVariablePropertyDescriptor(object);
-			addPicPropertyDescriptor(object);
+			
+			// 2011-06-06
+			//addPicPropertyDescriptor(object);
+			itemPropertyDescriptors.add( new PicItemPropertyDescriptor(
+					((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+					 getResourceLocator(),
+					 getString("_UI_UIState_pic_feature"),
+					 getString("_UI_PropertyDescriptor_description", "_UI_UIState_pic_feature", "_UI_UIState_type"),
+					 uisutPackage.Literals.UI_STATE__PIC,
+					 true,
+					 null));
+			
 		}
 		return itemPropertyDescriptors;
 	}
@@ -124,8 +137,10 @@ public class UIStateItemProvider
 	 */
 	protected void addDeletedDataVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+			(
+					createItemPropertyDescriptor
+				(
+						((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_UIState_deletedDataVariable_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_UIState_deletedDataVariable_feature", "_UI_UIState_type"),
@@ -135,7 +150,9 @@ public class UIStateItemProvider
 				 true,
 				 null,
 				 null,
-				 null));
+				 null
+				 )
+				 );
 	}
 
 	/**

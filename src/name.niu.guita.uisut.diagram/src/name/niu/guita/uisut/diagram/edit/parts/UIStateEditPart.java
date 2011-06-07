@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import name.niu.guita.uisut.UIState;
+import name.niu.guita.uisut.uisutPackage;
 import name.niu.guita.uisut.diagram.edit.policies.UIStateItemSemanticEditPolicy;
 import name.niu.guita.uisut.diagram.part.UISUTVisualIDRegistry;
 import name.niu.guita.uisut.diagram.providers.UISUTElementTypes;
@@ -20,6 +22,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -65,7 +68,7 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	protected IFigure primaryShape;
 
 	//2011-06-06
-	URL screenshotURL ;
+	String screenshotURL ;
 	
 	/**
 	 * @generated
@@ -116,7 +119,14 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new GgFigureDescriptor_UIStateFigure();
+		primaryShape = new GgFigureDescriptor_UIStateFigure();
+		
+		// 2011-06-06
+		UIState semanticEle = (UIState) ((View)this.getModel()).getElement() ;		
+		screenshotURL =  semanticEle.getPic()  ;	
+		this.getPrimaryShape().freshScreenShot( screenshotURL ) ;		
+		
+		return primaryShape ;
 	}
 
 	/**
@@ -334,21 +344,21 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	// 2011-06-06
 	protected void handleNotificationEvent(Notification notification) {
 
-		try {
-			if( screenshotURL == null ) {
-				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
-			} else if( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png"))) {
-				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");	
-			} else if ( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png") )){
-				screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
-			}			
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		
-		this.getPrimaryShape().freshScreenShot( this.screenshotURL ) ;
-		
 		Object feature = notification.getFeature();
+		if ( uisutPackage.eINSTANCE.getUIState_Pic().equals(feature) )
+		{
+			screenshotURL =  notification.getNewStringValue() ;	
+			this.getPrimaryShape().freshScreenShot( screenshotURL ) ;
+//				if( screenshotURL == null ) {
+//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+//				} else if( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png"))) {
+//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");	
+//				} else if ( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png") )){
+//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+//				}			
+
+		}		
+		
 		super.handleNotificationEvent(notification) ;
 		
 //		this.refresh() ;
@@ -402,8 +412,8 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
 					getMapMode().DPtoLP(8)));
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300),
-					getMapMode().DPtoLP(200)));
+//			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300),
+//					getMapMode().DPtoLP(200)));
 			createContents();
 		}
 
@@ -422,7 +432,7 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			constraintFFigureGgLable_UIStateNameFigure.horizontalSpan = 1;
 			constraintFFigureGgLable_UIStateNameFigure.verticalSpan = 1;
 			constraintFFigureGgLable_UIStateNameFigure.grabExcessHorizontalSpace = true;
-			constraintFFigureGgLable_UIStateNameFigure.grabExcessVerticalSpace = true;
+			constraintFFigureGgLable_UIStateNameFigure.grabExcessVerticalSpace = false;
 			this.add(fFigureGgLable_UIStateNameFigure,
 					constraintFFigureGgLable_UIStateNameFigure);
 			
@@ -434,11 +444,11 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		private void createStateScreenshot() 
 		{
 			RectangleFigure screenshotArea0 = new RectangleFigure();
-			screenshotArea0.setBackgroundColor( new Color(null, 128, 128, 128) );
+			screenshotArea0.setBackgroundColor( new Color(null, 255, 255, 255) );
 
 			GridData constraintScreenshotArea0 = new GridData();
-			constraintScreenshotArea0.verticalAlignment = GridData.CENTER;	
-			constraintScreenshotArea0.horizontalAlignment = GridData.CENTER;
+			constraintScreenshotArea0.verticalAlignment = GridData.FILL;	
+			constraintScreenshotArea0.horizontalAlignment = GridData.FILL;
 			constraintScreenshotArea0.horizontalIndent = 0;
 			constraintScreenshotArea0.horizontalSpan = 1;
 			constraintScreenshotArea0.verticalSpan = 1;
@@ -451,46 +461,54 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			GridLayout layoutScreenshotArea0 = new GridLayout();
 			layoutScreenshotArea0.numColumns = 1;
 			layoutScreenshotArea0.makeColumnsEqualWidth = true;
+			layoutScreenshotArea0.verticalSpacing = 0 ;
+			layoutScreenshotArea0.horizontalSpacing = 0 ;
+			layoutScreenshotArea0.marginHeight = 0 ;
+			layoutScreenshotArea0.marginWidth = 0 ;
 			
 			
 			screenshotArea0.setLayoutManager(layoutScreenshotArea0);
 
 			//URL url = this.getClass().getResource("") ;
 			//URL url = Platform.getBundle("name.niu.guita.uisut.diagram").getEntry("/images/book.png") ;
-			URL url = null;
-			try {
-				int i = ( int)  ( Math.floor( Math.random() * 2 ) ) ;
-				if ( i == 0 ) {
-					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");	
-				} else {
-					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");
-				}
-				
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ScalableImageFigure screenshot1 = new ScalableImageFigure(
-					RenderedImageFactory.getInstance(url), true, true, true );
-			
-			GridData constraintScreenshot1 = new GridData();
-			{
-				constraintScreenshot1.verticalAlignment = GridData.CENTER;
-				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
-				constraintScreenshot1.horizontalIndent = 0;
-				constraintScreenshot1.horizontalSpan = 1;
-				constraintScreenshot1.verticalSpan = 1;
-				constraintScreenshot1.grabExcessHorizontalSpace = true;
-				constraintScreenshot1.grabExcessVerticalSpace = true;
-			}
-			screenshotArea0.removeAll() ;
-			screenshotArea0.add(screenshot1, constraintScreenshot1);		
+//			URL url = null;
+//			try {
+//				int i = ( int)  ( Math.floor( Math.random() * 2 ) ) ;
+//				if ( i == 0 ) {
+//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");	
+//				} else {
+//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");
+//				}
+//				
+//			} catch (MalformedURLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+//					RenderedImageFactory.getInstance(url), true, true, true );
+//			
+//			GridData constraintScreenshot1 = new GridData();
+//			{
+//				constraintScreenshot1.verticalAlignment = GridData.CENTER;
+//				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
+//				constraintScreenshot1.horizontalIndent = 0;
+//				constraintScreenshot1.horizontalSpan = 1;
+//				constraintScreenshot1.verticalSpan = 1;
+//				constraintScreenshot1.grabExcessHorizontalSpace = true;
+//				constraintScreenshot1.grabExcessVerticalSpace = true;
+//			}
+//			screenshotArea0.removeAll() ;
+//			screenshotArea0.add(screenshot1, constraintScreenshot1);		
 			
 		}
 		
 		//2011-06-06
-		public void freshScreenShot(URL url ) 
+		public void freshScreenShot(String url ) 
 		{
+			if ( url == null || url.equals("")){
+				this.screenshotArea0.removeAll() ;
+				return ;
+			}
 			this.screenshotArea0.removeAll() ;
 			
 			ScalableImageFigure screenshot1 = new ScalableImageFigure(
@@ -498,8 +516,8 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			
 			GridData constraintScreenshot1 = new GridData();
 			{
-				constraintScreenshot1.verticalAlignment = GridData.CENTER;
-				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
+				constraintScreenshot1.verticalAlignment = GridData.FILL;
+				constraintScreenshot1.horizontalAlignment = GridData.FILL;
 				constraintScreenshot1.horizontalIndent = 0;
 				constraintScreenshot1.horizontalSpan = 1;
 				constraintScreenshot1.verticalSpan = 1;
