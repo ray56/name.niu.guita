@@ -46,7 +46,7 @@
                class="name.niu.guita.uisut.validation.actions.BatchValidationDelegate"
                definitionId="name.niu.guita.uisut.validation.CMD_Validate"
                id="name.niu.guita.uisut.validation.ACTION_validation"
-               label="XR_V1"
+               label="ACTION_validation"
                style="push">
          </action>
       </editorContribution>
@@ -78,7 +78,42 @@
                   A {0} has been found to have no unique identifier (name or title).                  
                </message>
                <target class="UIState"/>
-               <target class="UIStatemachine"/>
+            </constraint>
+            <constraint
+                  class="name.niu.guita.uisut.validation.constraints.IsolatedConstraint"
+                  id="name.niu.guita.uisut.validation.Isolated"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="Isolated"
+                  severity="ERROR"
+                  statusCode="1">
+               <description>
+                  All items are not isolated.
+               </description>
+               <message>
+                  {0}
+               </message>
+               <target class="UIState"/>
+            </constraint>
+            <constraint
+                  class="name.niu.guita.uisut.validation.constraints.UniqueInitFinlConstraint"
+                  id="name.niu.guita.uisut.validation.UniqueInitFinl"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="UniqueInitFinl"
+                  severity="ERROR"
+                  statusCode="1">
+               <description>
+                  There should be only one initial state or final state.
+               </description>
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="UIStatemachine">
+               </target>
             </constraint>
          </constraints>
       </constraintProvider>
@@ -93,6 +128,14 @@
      <binding
            context="name.niu.guita.uisut.validation.stmContext"
            constraint="name.niu.guita.uisut.validation.ui.NameNotEmpty">
+     </binding>
+     <binding
+           constraint="name.niu.guita.uisut.validation.Isolated"
+           context="name.niu.guita.uisut.validation.stmContext">
+     </binding>
+     <binding
+           constraint="name.niu.guita.uisut.validation.UniqueInitFinl"
+           context="name.niu.guita.uisut.validation.stmContext">
      </binding>
    </extension>
 

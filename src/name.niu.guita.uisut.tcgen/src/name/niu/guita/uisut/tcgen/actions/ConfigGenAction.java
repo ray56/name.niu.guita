@@ -1,9 +1,11 @@
 package name.niu.guita.uisut.tcgen.actions;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+import name.niu.guita.uisut.AbstractState;
+import name.niu.guita.uisut.FinalState;
+import name.niu.guita.uisut.InitialState;
 import name.niu.guita.uisut.UIState;
 import name.niu.guita.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.InitialStateEditPart;
@@ -11,7 +13,6 @@ import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.part.UISUTDiagramEditor;
 import name.niu.guita.uisut.tcgen.config.Configuration;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartListener;
 import org.eclipse.jface.action.IAction;
@@ -21,7 +22,6 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.handlers.HandlerUtil;
 
 public class ConfigGenAction implements IEditorActionDelegate {
 	
@@ -76,8 +76,9 @@ public class ConfigGenAction implements IEditorActionDelegate {
 				UIState st = (UIState) fromStateEp.getAdapter(UIState.class) ;
 				Configuration.setGenFrom( st.getName() );
 			} else if ( fromEp instanceof InitialStateEditPart ){
-				// if start from initial,, set null
-				Configuration.setGenFrom( null );
+				InitialStateEditPart scopeStateEp = (InitialStateEditPart) fromEp ;
+				InitialState inist = (InitialState) scopeStateEp.getAdapter(InitialState.class) ;
+				Configuration.setGenFrom( inist.getName() );
 			}
 		
 		} else if ( action.getId().equals( "name.niu.guita.uisut.tcgen.setGenToAction" ) 
@@ -88,8 +89,9 @@ public class ConfigGenAction implements IEditorActionDelegate {
 				UIState st = (UIState) toStateEp.getAdapter(UIState.class) ;
 				Configuration.setGenTo( st.getName() );
 			} else if ( toEp instanceof FinalStateEditPart ){
-				// if end to final,, set null
-				Configuration.setGenFrom( null );
+				FinalStateEditPart scopeStateEp = (FinalStateEditPart) toEp ;
+				FinalState finst = (FinalState) scopeStateEp.getAdapter(FinalState.class) ;
+				Configuration.setGenTo( finst.getName() );
 			}
 		} 
 		else if ( action.getId().equals( "name.niu.guita.uisut.tcgen.setGenScopeAction" ) 
@@ -101,11 +103,18 @@ public class ConfigGenAction implements IEditorActionDelegate {
 					UIStateEditPart scopeStateEp = (UIStateEditPart) scopeEp ;
 					UIState st = (UIState) scopeStateEp.getAdapter(UIState.class) ;
 					genScope.add(st.getName());
+				} else if (scopeEp instanceof InitialStateEditPart){
+					InitialStateEditPart scopeStateEp = (InitialStateEditPart) scopeEp ;
+					InitialState inist = (InitialState) scopeStateEp.getAdapter(InitialState.class) ;
+					genScope.add(inist.getName());
+				} else if (scopeEp instanceof FinalStateEditPart){
+					FinalStateEditPart scopeStateEp = (FinalStateEditPart) scopeEp ;
+					FinalState st = (FinalState) scopeStateEp.getAdapter(FinalState.class) ;
+					genScope.add(st.getName());
 				}
 			}
 			Configuration.setGenScope(genScope ) ;
 			
-			// 
 			List<EditPart> selectedEditPart = 
 				ConfigGenAction.editor.getDiagramGraphicalViewer().getSelectedEditParts();
 			ISelection sel = ConfigGenAction.editor.getDiagramGraphicalViewer().getSelection();

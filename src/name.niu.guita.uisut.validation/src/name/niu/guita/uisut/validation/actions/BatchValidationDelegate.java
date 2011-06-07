@@ -6,12 +6,15 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import name.niu.guita.uisut.AbstractState;
 import name.niu.guita.uisut.UIState;
 import name.niu.guita.uisut.UIStatemachine;
+import name.niu.guita.uisut.UITransition;
 import name.niu.guita.uisut.diagram.edit.parts.UIStateEditPart;
 import name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guita.uisut.diagram.part.UISUTDiagramEditor;
 import name.niu.guita.uisut.validation.Activator;
+import name.niu.guita.uisut.validation.constraints.IsolatedConstraint;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -59,6 +62,18 @@ public class BatchValidationDelegate
 		// track the validated resources for accurate problem-marker updates
 		validator.setOption(IBatchValidator.OPTION_TRACK_RESOURCES, true);
 		
+		for (Object next : selectedEObjects) {
+			UIStatemachine stm = null ;
+			if ( next instanceof UIStatemachine ) {
+				stm = (UIStatemachine)next ;
+			} else if ( next instanceof AbstractState ){
+				stm = (UIStatemachine) ((AbstractState)next).eContainer() ;
+			} else if ( next instanceof UITransition ){
+				stm = (UIStatemachine) ((UITransition)next).eContainer() ;
+			}
+			IsolatedConstraint.stmValidate(stm);
+			break ;
+		}
 		final IStatus status = validator.validate(selectedEObjects);
 		
 		if (status.isOK()) {
