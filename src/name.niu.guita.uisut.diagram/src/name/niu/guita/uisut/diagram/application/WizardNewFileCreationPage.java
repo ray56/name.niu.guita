@@ -2,6 +2,10 @@ package name.niu.guita.uisut.diagram.application;
 
 import name.niu.guita.uisut.diagram.part.Messages;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -45,16 +49,27 @@ public class WizardNewFileCreationPage extends WizardPage {
 	private Text fileNameEditor;
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public WizardNewFileCreationPage(String name,
 			IStructuredSelection currentSelection) {
 		super(name);
 		this.currentSelection = currentSelection;
-		String home = System.getProperty("user.home"); //$NON-NLS-1$
-		if (home != null) {
-			initialContainerFullPath = new Path(home);
+		
+		if ( currentSelection.getFirstElement() instanceof IContainer ) {
+			IContainer c = (IContainer)currentSelection.getFirstElement();
+			initialContainerFullPath = c.getLocation() ;
+			return ;
 		}
+		
+		
+		// 2011-06-07 set initial path
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot(); 
+		initialContainerFullPath = root.getLocation() ;
+		String home = System.getProperty("user.home"); //$NON-NLS-1$
+//		if (home != null) {
+//			initialContainerFullPath = new Path(home);
+//		}
 	}
 
 	/**
