@@ -40,6 +40,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
@@ -523,6 +524,8 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		//2011-06-06
 		public void freshScreenShot(String url ) 
 		{
+			UIState s = ( UIState ) ( (Node) UIStateEditPart.this.getModel() ).getElement() ;
+			url = s.getPic() ;
 			if ( url == null || url.equals("")){
 				this.screenshotArea0.removeAll() ;
 				return ;
