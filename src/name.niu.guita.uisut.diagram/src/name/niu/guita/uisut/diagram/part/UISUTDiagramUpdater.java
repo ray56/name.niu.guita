@@ -35,6 +35,14 @@ public class UISUTDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static boolean isShortcutOrphaned(View view) {
+		return !view.isSetElement() || view.getElement() == null
+				|| view.getElement().eIsProxy();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<UISUTNodeDescriptor> getSemanticChildren(View view) {
 		switch (UISUTVisualIDRegistry.getVisualID(view)) {
 		case UIStatemachineEditPart.VISUAL_ID:

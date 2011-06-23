@@ -19,6 +19,8 @@
     <viewmap
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
+    <containsShortcutsTo>uisut</containsShortcutsTo>
+    <shortcutsProvidedFor>UISUT</shortcutsProvidedFor>
     <domainDiagramElement
         href="uisut.genmodel#//uisut/UIStatemachine"/>
     <topLevelNodes
@@ -578,5 +580,7 @@
       context="//@diagram">
     <items
         xsi:type="gmfgen:LoadResourceAction"/>
+    <items
+        xsi:type="gmfgen:CreateShortcutAction"/>
   </contextMenus>
 </gmfgen:GenEditorGenerator>

@@ -36,13 +36,6 @@ public class UISUTPropertySection extends AdvancedPropertySection implements
 		}
 		AdapterFactory af = getAdapterFactory(object);
 		if (af != null) {
-			
-			//2011-06-06
-			if (object instanceof UIState) {
-				IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
-				return new PicPropertySource(object, ips);
-			}
-			
 			IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
 					IItemPropertySource.class);
 			if (ips != null) {

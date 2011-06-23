@@ -171,6 +171,10 @@
       <?gmfgen generated="true"?>
       <viewProvider class="name.niu.guita.uisut.diagram.providers.UISUTViewProvider">
          <Priority name="Lowest"/>
+         <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
+            <method name="getType()" value="UISUT"/>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="UISUT"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
@@ -460,6 +464,16 @@
                </and>
             </visibleWhen>
          </command>
+         <command commandId="name.niu.guita.uisut.diagram.CreateShortcutAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="name.niu.guita.uisut.diagram.edit.parts.UIStatemachineEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
       </menuContribution>
    </extension>
 
@@ -470,6 +484,10 @@
          name="Load Resource"
          categoryId="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID"
          defaultHandler="name.niu.guita.uisut.diagram.part.LoadResourceAction"/>
+      <command id="name.niu.guita.uisut.diagram.CreateShortcutAction"
+         name="Create Shortcut..."
+         categoryId="name.niu.guita.uisut.diagram.part.UISUTDiagramEditorID"
+         defaultHandler="name.niu.guita.uisut.diagram.part.CreateShortcutAction"/>
    </extension>
 
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
@@ -514,6 +532,17 @@
          </property>
       </product>
    </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders" id="decorator-provider">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="name.niu.guita.uisut.diagram.providers.UISUTShortcutsDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
+            <method name="getType()" value="2001,2002,2003,2004"/>
+         </object>
+         <context decoratorTargets="generated-top-nodes"/>
+      </decoratorProvider>
+   </extension>
+
 
    <!-- optionally, specify keybindings -->
 </plugin>
