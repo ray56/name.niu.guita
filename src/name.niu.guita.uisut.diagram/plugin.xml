@@ -172,7 +172,7 @@
       <viewProvider class="name.niu.guita.uisut.diagram.providers.UISUTViewProvider">
          <Priority name="Lowest"/>
          <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
-            <method name="getType()" value="uisut"/>
+            <method name="getType()" value="UISUT"/>
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="UISUT"/>

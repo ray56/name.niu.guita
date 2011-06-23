@@ -110,7 +110,7 @@ public class UISUTVisualIDRegistry {
 		String containerModelID = name.niu.guita.uisut.diagram.part.UISUTVisualIDRegistry
 				.getModelID(containerView);
 		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)
-				&& !"uisut".equals(containerModelID)) { //$NON-NLS-1$
+				&& !"UISUT".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
@@ -154,7 +154,7 @@ public class UISUTVisualIDRegistry {
 		String containerModelID = name.niu.guita.uisut.diagram.part.UISUTVisualIDRegistry
 				.getModelID(containerView);
 		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)
-				&& !"uisut".equals(containerModelID)) { //$NON-NLS-1$
+				&& !"UISUT".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;

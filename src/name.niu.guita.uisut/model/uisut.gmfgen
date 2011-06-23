@@ -20,7 +20,7 @@
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
     <containsShortcutsTo>uisut</containsShortcutsTo>
-    <shortcutsProvidedFor>uisut</shortcutsProvidedFor>
+    <shortcutsProvidedFor>UISUT</shortcutsProvidedFor>
     <domainDiagramElement
         href="uisut.genmodel#//uisut/UIStatemachine"/>
     <topLevelNodes
