@@ -24,6 +24,7 @@ import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -44,7 +45,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-
 
 import org.eclipse.gmf.runtime.draw2d.ui.render.factory.RenderedImageFactory;
 import org.eclipse.gmf.runtime.draw2d.ui.render.figures.ScalableImageFigure;
@@ -71,8 +71,8 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	protected IFigure primaryShape;
 
 	//2011-06-06
-	String screenshotURL ;
-	
+	String screenshotURL;
+
 	/**
 	 * @generated
 	 */
@@ -119,7 +119,7 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
 		primaryShape = new GgFigureDescriptor_UIStateFigure();
@@ -282,7 +282,6 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 				.getType(UIStateNameEditPart.VISUAL_ID));
 	}
 
-	
 	// 2011-06-08
 	public EditPolicy getPrimaryDragEditPolicy() {
 		EditPolicy result = super.getPrimaryDragEditPolicy();
@@ -292,7 +291,7 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -354,46 +353,45 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		}
 		return types;
 	}
-	
+
 	// 2011-06-06
 	protected void handleNotificationEvent(Notification notification) {
 
 		Object feature = notification.getFeature();
-		if ( uisutPackage.eINSTANCE.getUIState_Pic().equals(feature) )
-		{
-			screenshotURL =  notification.getNewStringValue() ;	
-			this.getPrimaryShape().freshScreenShot( screenshotURL ) ;
-//				if( screenshotURL == null ) {
-//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
-//				} else if( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png"))) {
-//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");	
-//				} else if ( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png") )){
-//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
-//				}			
+		if (uisutPackage.eINSTANCE.getUIState_Pic().equals(feature)) {
+			screenshotURL = notification.getNewStringValue();
+			this.getPrimaryShape().freshScreenShot(screenshotURL);
+			//				if( screenshotURL == null ) {
+			//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+			//				} else if( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png"))) {
+			//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");	
+			//				} else if ( screenshotURL.equals( new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png") )){
+			//					screenshotURL = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");
+			//				}			
 
-		}		
-		
-		super.handleNotificationEvent(notification) ;
-		
-//		this.refresh() ;
-//		this.refreshVisuals() ;
-//		this.refreshVisibility() ;
-		
+		}
+
+		super.handleNotificationEvent(notification);
+
+		//		this.refresh() ;
+		//		this.refreshVisuals() ;
+		//		this.refreshVisibility() ;
+
 		//this.refreshVisuals();
-		
-//		Object feature = notification.getFeature();
-//		if (NotationPackage.eINSTANCE.getView_SourceEdges().equals(feature))
-//			refreshSourceConnections();
-//		else if (NotationPackage.eINSTANCE.getView_TargetEdges().equals(feature))
-//			refreshTargetConnections();
-//		else if (NotationPackage.eINSTANCE.getFillStyle_Gradient().equals(feature) ||
-//				NotationPackage.eINSTANCE.getFillStyle_FillColor().equals(feature)) {				
-//			refreshBackgroundColor();
-//		} else if (NotationPackage.eINSTANCE.getFillStyle_Transparency().equals(feature)) {
-//			refreshTransparency();			
-//		} else {
-//			super.handleNotificationEvent(notification);
-//		}
+
+		//		Object feature = notification.getFeature();
+		//		if (NotationPackage.eINSTANCE.getView_SourceEdges().equals(feature))
+		//			refreshSourceConnections();
+		//		else if (NotationPackage.eINSTANCE.getView_TargetEdges().equals(feature))
+		//			refreshTargetConnections();
+		//		else if (NotationPackage.eINSTANCE.getFillStyle_Gradient().equals(feature) ||
+		//				NotationPackage.eINSTANCE.getFillStyle_FillColor().equals(feature)) {				
+		//			refreshBackgroundColor();
+		//		} else if (NotationPackage.eINSTANCE.getFillStyle_Transparency().equals(feature)) {
+		//			refreshTransparency();			
+		//		} else {
+		//			super.handleNotificationEvent(notification);
+		//		}
 	}
 
 	/**
@@ -405,10 +403,10 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureGgLable_UIStateNameFigure;
-		
+
 		//2011-06-06
 		RectangleFigure screenshotArea0;
-		URL screenshotURL ;
+		URL screenshotURL;
 
 		/**
 		 * @generated
@@ -454,19 +452,18 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			constraintFFigureGgLable_UIStateNameFigure.grabExcessVerticalSpace = false;
 			this.add(fFigureGgLable_UIStateNameFigure,
 					constraintFFigureGgLable_UIStateNameFigure);
-			
-			createStateScreenshot() ;
 
-		}
-		
+					createStateScreenshot() ;
+
+}
+
 		// 2011-06-06: create pic
-		private void createStateScreenshot() 
-		{
+		private void createStateScreenshot() {
 			RectangleFigure screenshotArea0 = new RectangleFigure();
-			screenshotArea0.setBackgroundColor( new Color(null, 255, 255, 255) );
+			screenshotArea0.setBackgroundColor(new Color(null, 255, 255, 255));
 
 			GridData constraintScreenshotArea0 = new GridData();
-			constraintScreenshotArea0.verticalAlignment = GridData.FILL;	
+			constraintScreenshotArea0.verticalAlignment = GridData.FILL;
 			constraintScreenshotArea0.horizontalAlignment = GridData.FILL;
 			constraintScreenshotArea0.horizontalIndent = 0;
 			constraintScreenshotArea0.horizontalSpan = 1;
@@ -475,66 +472,65 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 			constraintScreenshotArea0.grabExcessVerticalSpace = true;
 			// add 
 			this.add(screenshotArea0, constraintScreenshotArea0);
-			this.screenshotArea0 = screenshotArea0 ;
+			this.screenshotArea0 = screenshotArea0;
 
 			GridLayout layoutScreenshotArea0 = new GridLayout();
 			layoutScreenshotArea0.numColumns = 1;
 			layoutScreenshotArea0.makeColumnsEqualWidth = true;
-			layoutScreenshotArea0.verticalSpacing = 0 ;
-			layoutScreenshotArea0.horizontalSpacing = 0 ;
-			layoutScreenshotArea0.marginHeight = 0 ;
-			layoutScreenshotArea0.marginWidth = 0 ;
-			
-			
+			layoutScreenshotArea0.verticalSpacing = 0;
+			layoutScreenshotArea0.horizontalSpacing = 0;
+			layoutScreenshotArea0.marginHeight = 0;
+			layoutScreenshotArea0.marginWidth = 0;
+
 			screenshotArea0.setLayoutManager(layoutScreenshotArea0);
 
 			//URL url = this.getClass().getResource("") ;
 			//URL url = Platform.getBundle("name.niu.guita.uisut.diagram").getEntry("/images/book.png") ;
-//			URL url = null;
-//			try {
-//				int i = ( int)  ( Math.floor( Math.random() * 2 ) ) ;
-//				if ( i == 0 ) {
-//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");	
-//				} else {
-//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");
-//				}
-//				
-//			} catch (MalformedURLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			ScalableImageFigure screenshot1 = new ScalableImageFigure(
-//					RenderedImageFactory.getInstance(url), true, true, true );
-//			
-//			GridData constraintScreenshot1 = new GridData();
-//			{
-//				constraintScreenshot1.verticalAlignment = GridData.CENTER;
-//				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
-//				constraintScreenshot1.horizontalIndent = 0;
-//				constraintScreenshot1.horizontalSpan = 1;
-//				constraintScreenshot1.verticalSpan = 1;
-//				constraintScreenshot1.grabExcessHorizontalSpace = true;
-//				constraintScreenshot1.grabExcessVerticalSpace = true;
-//			}
-//			screenshotArea0.removeAll() ;
-//			screenshotArea0.add(screenshot1, constraintScreenshot1);		
-			
+			//			URL url = null;
+			//			try {
+			//				int i = ( int)  ( Math.floor( Math.random() * 2 ) ) ;
+			//				if ( i == 0 ) {
+			//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Apple.png");	
+			//				} else {
+			//					url = new URL("file:///F:/x.home/x.repositories/x.repository51(AuthoringMaterial)/x.repository(Picture)/实体.自然物/Nature/s/Orange.png");
+			//				}
+			//				
+			//			} catch (MalformedURLException e) {
+			//				// TODO Auto-generated catch block
+			//				e.printStackTrace();
+			//			}
+			//			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+			//					RenderedImageFactory.getInstance(url), true, true, true );
+			//			
+			//			GridData constraintScreenshot1 = new GridData();
+			//			{
+			//				constraintScreenshot1.verticalAlignment = GridData.CENTER;
+			//				constraintScreenshot1.horizontalAlignment = GridData.CENTER;
+			//				constraintScreenshot1.horizontalIndent = 0;
+			//				constraintScreenshot1.horizontalSpan = 1;
+			//				constraintScreenshot1.verticalSpan = 1;
+			//				constraintScreenshot1.grabExcessHorizontalSpace = true;
+			//				constraintScreenshot1.grabExcessVerticalSpace = true;
+			//			}
+			//			screenshotArea0.removeAll() ;
+			//			screenshotArea0.add(screenshot1, constraintScreenshot1);		
+
 		}
-		
+
 		//2011-06-06
-		public void freshScreenShot(String url ) 
-		{
-			UIState s = ( UIState ) ( (Node) UIStateEditPart.this.getModel() ).getElement() ;
-			url = s.getPic() ;
-			if ( url == null || url.equals("")){
-				this.screenshotArea0.removeAll() ;
-				return ;
+		public void freshScreenShot(String url) {
+			UIState s = (UIState) ((Node) UIStateEditPart.this.getModel())
+					.getElement();
+			url = s.getPic();
+			if (url == null || url.equals("")) {
+				this.screenshotArea0.removeAll();
+				return;
 			}
-			this.screenshotArea0.removeAll() ;
-			
+			this.screenshotArea0.removeAll();
+
 			ScalableImageFigure screenshot1 = new ScalableImageFigure(
-					RenderedImageFactory.getInstance(url), true, true, true );
-			
+					RenderedImageFactory.getInstance(url), true, true, true);
+
 			GridData constraintScreenshot1 = new GridData();
 			{
 				constraintScreenshot1.verticalAlignment = GridData.FILL;
@@ -545,12 +541,9 @@ public class UIStateEditPart extends ShapeNodeEditPart {
 				constraintScreenshot1.grabExcessHorizontalSpace = true;
 				constraintScreenshot1.grabExcessVerticalSpace = true;
 			}
-			
-			
-			
-			this.screenshotArea0.add(screenshot1, constraintScreenshot1 ) ;
-		}
 
+			this.screenshotArea0.add(screenshot1, constraintScreenshot1);
+		}
 
 		/**
 		 * @generated

@@ -108,25 +108,25 @@ public class UISUTCreationWizard extends Wizard implements INewWizard {
 				.setDescription(Messages.UISUTCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-//		domainModelFilePage = new UISUTCreationWizardPage(
-//				"DomainModelFile", getSelection(), "uisut") { //$NON-NLS-1$ //$NON-NLS-2$
-//
-//			public void setVisible(boolean visible) {
-//				if (visible) {
-//					String fileName = diagramModelFilePage.getFileName();
-//					fileName = fileName.substring(0, fileName.length()
-//							- ".uisut_diagram".length()); //$NON-NLS-1$
-//					setFileName(UISUTDiagramEditorUtil.getUniqueFileName(
-//							getContainerFullPath(), fileName, "uisut")); //$NON-NLS-1$
-//				}
-//				super.setVisible(visible);
-//			}
-//		};
-//		domainModelFilePage
-//				.setTitle(Messages.UISUTCreationWizard_DomainModelFilePageTitle);
-//		domainModelFilePage
-//				.setDescription(Messages.UISUTCreationWizard_DomainModelFilePageDescription);
-//		addPage(domainModelFilePage);
+		//		domainModelFilePage = new UISUTCreationWizardPage(
+		//				"DomainModelFile", getSelection(), "uisut") { //$NON-NLS-1$ //$NON-NLS-2$
+		//
+		//			public void setVisible(boolean visible) {
+		//				if (visible) {
+		//					String fileName = diagramModelFilePage.getFileName();
+		//					fileName = fileName.substring(0, fileName.length()
+		//							- ".uisut_diagram".length()); //$NON-NLS-1$
+		//					setFileName(UISUTDiagramEditorUtil.getUniqueFileName(
+		//							getContainerFullPath(), fileName, "uisut")); //$NON-NLS-1$
+		//				}
+		//				super.setVisible(visible);
+		//			}
+		//		};
+		//		domainModelFilePage
+		//				.setTitle(Messages.UISUTCreationWizard_DomainModelFilePageTitle);
+		//		domainModelFilePage
+		//				.setDescription(Messages.UISUTCreationWizard_DomainModelFilePageDescription);
+		//		addPage(domainModelFilePage);
 	}
 
 	/**
@@ -138,8 +138,9 @@ public class UISUTCreationWizard extends Wizard implements INewWizard {
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException, InterruptedException {
 				diagram = UISUTDiagramEditorUtil.createDiagram(
-						diagramModelFilePage.getURI(),
-						diagramModelFilePage.getURI().trimFileExtension().appendFileExtension("uisut"), monitor);
+						diagramModelFilePage.getURI(), diagramModelFilePage
+								.getURI().trimFileExtension()
+								.appendFileExtension("uisut"), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						UISUTDiagramEditorUtil.openDiagram(diagram);

@@ -55,21 +55,20 @@ public class WizardNewFileCreationPage extends WizardPage {
 			IStructuredSelection currentSelection) {
 		super(name);
 		this.currentSelection = currentSelection;
-		
-		if ( currentSelection.getFirstElement() instanceof IContainer ) {
-			IContainer c = (IContainer)currentSelection.getFirstElement();
-			initialContainerFullPath = c.getLocation() ;
-			return ;
+
+		if (currentSelection.getFirstElement() instanceof IContainer) {
+			IContainer c = (IContainer) currentSelection.getFirstElement();
+			initialContainerFullPath = c.getLocation();
+			return;
 		}
-		
-		
+
 		// 2011-06-07 set initial path
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot(); 
-		initialContainerFullPath = root.getLocation() ;
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		initialContainerFullPath = root.getLocation();
 		String home = System.getProperty("user.home"); //$NON-NLS-1$
-//		if (home != null) {
-//			initialContainerFullPath = new Path(home);
-//		}
+		//		if (home != null) {
+		//			initialContainerFullPath = new Path(home);
+		//		}
 	}
 
 	/**
