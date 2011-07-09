@@ -1,0 +1,7 @@
+# Tracing options for the name.niu.guitar.uisut.diagram plug-in
+
+# Common issues
+name.niu.guitar.uisut.diagram/debug=false
+
+# Visual IDs
+name.niu.guitar.uisut.diagram/debug/visualID=false

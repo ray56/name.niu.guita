@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Scriptgen
+Bundle-SymbolicName: name.niu.guitar.uitf.scriptgen
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: name.niu.guitar.uitf.scriptgen.Activator
+Bundle-Vendor: niu
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ name.niu.guitar.uisut.tcgen;bundle-version="1.0.0",
+ name.niu.guitar.uitf;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: name.niu.guitar.uitf.scriptgen
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.emf.ecore.xmi.impl

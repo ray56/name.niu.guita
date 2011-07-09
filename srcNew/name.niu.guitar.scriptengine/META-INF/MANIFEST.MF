@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Scriptengine
+Bundle-SymbolicName: name.niu.guitar.scriptengine
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: name.niu.guitar.scriptengine.Activator
+Bundle-Vendor: niu
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: name.niu.guitar.scriptengine

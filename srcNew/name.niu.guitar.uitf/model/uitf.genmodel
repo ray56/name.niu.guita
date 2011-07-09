@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/name.niu.guitar.uitf/src"
+    modelPluginID="name.niu.guitar.uitf" modelName="Uitf" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>uitf.ecore</foreignModel>
+  <genPackages prefix="Uitf" basePackage="name.niu.guitar" disposableProviderFactory="true"
+      ecorePackage="uitf.ecore#/">
+    <genClasses ecoreClass="uitf.ecore#//TestSuite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//TestSuite/itsTestCase"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//TestCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uitf.ecore#//TestCase/itsStatement"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//Statement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/scriptStr"/>
+    </genClasses>
+    <genClasses ecoreClass="uitf.ecore#//TestElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TestElement/id"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

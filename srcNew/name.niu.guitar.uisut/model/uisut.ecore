@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uisut"
+    nsURI="http://www.niu.name/guita/uisut/1.0" nsPrefix="UISUT_">
+  <eClassifiers xsi:type="ecore:EClass" name="UIStatemachine" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUIState" upperBound="-1"
+        eType="#//AbstractUIState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUITransition" upperBound="-1"
+        eType="#//UITransition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
+        eType="#//UISystemVariable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSubSTM" upperBound="-1"
+        eType="#//UIStatemachine" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractUIState" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsInTransition" upperBound="-1"
+        eType="#//UITransition" eOpposite="#//UITransition/itsTarState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutTrantion" upperBound="-1"
+        eType="#//UITransition" eOpposite="#//UITransition/itsSrcState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addedSystemVariable" upperBound="-1"
+        eType="#//UISystemVariable" eOpposite="#//UISystemVariable/addUIState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deletedSystemVariable"
+        upperBound="-1" eType="#//UISystemVariable" eOpposite="#//UISystemVariable/deleteUIState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSrcState" lowerBound="1"
+        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/itsOutTrantion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsTarState" lowerBound="1"
+        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/itsInTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guardedSystemVariable"
+        upperBound="-1" eType="#//UISystemVariable" eOpposite="#//UISystemVariable/guardUITransitions"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UISystemVariable" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addUIState" upperBound="-1"
+        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/addedSystemVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deleteUIState" upperBound="-1"
+        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/deletedSystemVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guardUITransitions" upperBound="-1"
+        eType="#//UITransition" eOpposite="#//UITransition/guardedSystemVariable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UIElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommonState" eSuperTypes="#//AbstractUIState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="picture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//AbstractUIState"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FinalState" eSuperTypes="#//AbstractUIState"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSTM" eType="#//UIStatemachine"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

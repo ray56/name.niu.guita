@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/name.niu.guitar.uisut/src"
+    modelPluginID="name.niu.guitar.uisut" modelName="Uisut" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>uisut.ecore</foreignModel>
+  <genPackages prefix="Uisut" basePackage="name.niu.guitar" disposableProviderFactory="true"
+      ecorePackage="uisut.ecore#/">
+    <genClasses ecoreClass="uisut.ecore#//UIStatemachine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUIState"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUITransition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsSubSTM"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//AbstractUIState">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsInTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsOutTrantion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/addedSystemVariable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/deletedSystemVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//AbstractUIState/scriptStr"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//UITransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsSrcState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTarState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/guardedSystemVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/scriptStr"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//UISystemVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariable/addUIState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariable/deleteUIState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariable/guardUITransitions"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//UIElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/id"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//CommonState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//CommonState/picture"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//InitialState"/>
+    <genClasses ecoreClass="uisut.ecore#//FinalState"/>
+    <genClasses ecoreClass="uisut.ecore#//UISUT">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISUT/itsSTM"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

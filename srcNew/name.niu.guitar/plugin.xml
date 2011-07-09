@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="ProductGuitar"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Guitar Application">
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guitar.CMD_GEN_OFFLINE"
+            name="Generate Test Case Offline">
+      </command>
+      <command
+            id="name.niu.guitar.CMD_GEN_ONLINE"
+            name="Generate Test Case Online">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="name.niu.guitar.guitarMainMenu"
+               label="Guitar">
+            <command
+                  commandId="name.niu.guitar.CMD_GEN_OFFLINE"
+                  label="Generate Test Case Offline"
+                  style="push">
+            </command>
+            <command
+                  commandId="name.niu.guitar.CMD_GEN_ONLINE"
+                  label="Generate Test Case Online"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="name.niu.guitar.action.TCgenOfflineAction"
+            commandId="name.niu.guitar.CMD_GEN_OFFLINE">
+      </handler>
+      <handler
+            class="name.niu.guitar.action.TCgenOnlineAction"
+            commandId="name.niu.guitar.CMD_GEN_ONLINE">
+      </handler>
+   </extension>
+
+</plugin>
