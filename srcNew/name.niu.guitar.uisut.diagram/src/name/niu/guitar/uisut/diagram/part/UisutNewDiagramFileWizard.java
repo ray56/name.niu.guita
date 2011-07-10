@@ -82,7 +82,7 @@ public class UisutNewDiagramFileWizard extends Wizard {
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
 		myFileCreationPage.setFileName(UisutDiagramEditorUtil
-				.getUniqueFileName(filePath, fileName, "uisut_diagram")); //$NON-NLS-1$
+				.getUniqueFileName(filePath, fileName, "uisut")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				Messages.UisutNewDiagramFileWizard_RootSelectionPageName);
@@ -134,6 +134,7 @@ public class UisutNewDiagramFileWizard extends Wizard {
 						UIStatemachineEditPart.MODEL_ID,
 						UisutDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				diagramResource.getContents().add(diagram);
+				diagramResource.getContents().add(diagram.getElement());
 				return CommandResult.newOKCommandResult();
 			}
 		};

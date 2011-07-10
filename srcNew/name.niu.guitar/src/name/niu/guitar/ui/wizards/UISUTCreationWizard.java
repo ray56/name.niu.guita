@@ -1,6 +1,10 @@
-package name.niu.guitar.uisut.diagram.part;
+package name.niu.guitar.ui.wizards;
+
 
 import java.lang.reflect.InvocationTargetException;
+
+import name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin;
+import name.niu.guitar.uisut.diagram.part.UisutDiagramEditorUtil;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -16,7 +20,7 @@ import org.eclipse.ui.PartInitException;
 /**
  * @generated
  */
-public class UisutCreationWizard extends Wizard implements INewWizard {
+public class UISUTCreationWizard extends Wizard implements INewWizard {
 
 	/**
 	 * @generated
@@ -31,7 +35,12 @@ public class UisutCreationWizard extends Wizard implements INewWizard {
 	/**
 	 * @generated
 	 */
-	protected UisutCreationWizardPage diagramModelFilePage;
+	protected UISUTCreationWizardPage diagramModelFilePage;
+
+	/**
+	 * @generated
+	 */
+	protected UISUTCreationWizardPage domainModelFilePage;
 
 	/**
 	 * @generated
@@ -85,27 +94,47 @@ public class UisutCreationWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(Messages.UisutCreationWizardTitle);
+		setWindowTitle("New UISUT Diagram");
 		setDefaultPageImageDescriptor(UisutDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/wizban/NewUisutWizard.gif")); //$NON-NLS-1$
+				.getBundledImageDescriptor("icons/wizban/NewuisutWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public void addPages() {
-		diagramModelFilePage = new UisutCreationWizardPage(
+		diagramModelFilePage = new UISUTCreationWizardPage(
 				"DiagramModelFile", getSelection(), "uisut"); //$NON-NLS-1$ //$NON-NLS-2$
 		diagramModelFilePage
-				.setTitle(Messages.UisutCreationWizard_DiagramModelFilePageTitle);
+				.setTitle("Create UISUT Diagram");
 		diagramModelFilePage
-				.setDescription(Messages.UisutCreationWizard_DiagramModelFilePageDescription);
+				.setDescription("Select file that will contain diagram model.");
 		addPage(diagramModelFilePage);
+
+		//		domainModelFilePage = new UISUTCreationWizardPage(
+		//				"DomainModelFile", getSelection(), "uisut") { //$NON-NLS-1$ //$NON-NLS-2$
+		//
+		//			public void setVisible(boolean visible) {
+		//				if (visible) {
+		//					String fileName = diagramModelFilePage.getFileName();
+		//					fileName = fileName.substring(0, fileName.length()
+		//							- ".uisut_diagram".length()); //$NON-NLS-1$
+		//					setFileName(UISUTDiagramEditorUtil.getUniqueFileName(
+		//							getContainerFullPath(), fileName, "uisut")); //$NON-NLS-1$
+		//				}
+		//				super.setVisible(visible);
+		//			}
+		//		};
+		//		domainModelFilePage
+		//				.setTitle(Messages.UISUTCreationWizard_DomainModelFilePageTitle);
+		//		domainModelFilePage
+		//				.setDescription(Messages.UISUTCreationWizard_DomainModelFilePageDescription);
+		//		addPage(domainModelFilePage);
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean performFinish() {
 		IRunnableWithProgress op = new IRunnableWithProgress() {
@@ -119,7 +148,7 @@ public class UisutCreationWizard extends Wizard implements INewWizard {
 						UisutDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
 						ErrorDialog.openError(getContainer().getShell(),
-								Messages.UisutCreationWizardOpenEditorError,
+								"Error opening diagram editor",
 								null, e.getStatus());
 					}
 				}
@@ -132,7 +161,7 @@ public class UisutCreationWizard extends Wizard implements INewWizard {
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
 				ErrorDialog.openError(getContainer().getShell(),
-						Messages.UisutCreationWizardCreationError, null,
+						"Creation Problems", null,
 						((CoreException) e.getTargetException()).getStatus());
 			} else {
 				UisutDiagramEditorPlugin.getInstance().logError(

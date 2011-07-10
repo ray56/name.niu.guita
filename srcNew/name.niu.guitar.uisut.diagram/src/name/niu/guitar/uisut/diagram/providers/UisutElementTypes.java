@@ -59,18 +59,22 @@ public class UisutElementTypes {
 	 * @generated
 	 */
 	public static final IElementType CommonState_2001 = getElementType("name.niu.guitar.uisut.diagram.CommonState_2001"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
 	public static final IElementType InitialState_2002 = getElementType("name.niu.guitar.uisut.diagram.InitialState_2002"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
 	public static final IElementType FinalState_2003 = getElementType("name.niu.guitar.uisut.diagram.FinalState_2003"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
 	public static final IElementType UIStatemachine_2004 = getElementType("name.niu.guitar.uisut.diagram.UIStatemachine_2004"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */

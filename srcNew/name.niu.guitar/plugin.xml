@@ -1,6 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="name.niu.guitar.ui.guitarMainMenu"
+               label="Guitar">
+
+		<separator
+               name="separator1"
+               visible="false">
+         </separator>
+         <separator
+               name="separator2"
+               visible="true">
+         </separator>
+         <separator
+               name="separator3"
+               visible="true">
+         </separator>
+            <command
+                  commandId="name.niu.guitar.ui.cmd.CMD_GEN_OFFLINE"
+                  label="Generate Test Case Offline"
+                  style="push">
+            </command>
+            <command
+                  commandId="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE"
+                  label="Generate Test Case Online"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="name.niu.guitar.ui.demo"
+               label="Demo">
+            <separator
+                  name="separator1"
+                  visible="false">
+            </separator>
+            <command
+                  commandId="name.niu.guitar.ui.commands.demo1"
+                  label="demo1"
+                  style="push">
+            </command>
+            <command
+                  commandId="name.niu.guitar.ui.commands.demo2"
+                  label="demo2"
+                  style="push">
+            </command>
+            <separator
+                  name="separator2"
+                  visible="true">
+            </separator>
+            <separator
+                  name="separator3"
+                  visible="true">
+            </separator>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guitar.ui.cmd.CMD_GEN_OFFLINE"
+            name="Generate Test Case Offline">
+      </command>
+      <command
+            id="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE"
+            name="Generate Test Case Online">
+      </command>
+      <command
+            id="name.niu.guitar.ui.commands.demo1"
+            name="demo1">
+      </command>
+      <command
+            id="name.niu.guitar.ui.commands.demo2"
+            name="demo2">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="name.niu.guitar.ui.handlers.TCgenOfflineAction"
+            commandId="name.niu.guitar.ui.cmd.CMD_GEN_OFFLINE">
+      </handler>
+      <handler
+            class="name.niu.guitar.ui.handlers.TCgenOnlineAction"
+            commandId="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE">
+      </handler>
+      <handler
+            class="name.niu.guitar.ui.handlers.DemoHandler"
+            commandId="name.niu.guitar.ui.commands.demo1">
+      </handler>
+            <handler
+            commandId="name.niu.guitar.ui.commands.demo2">
+      </handler>
+   </extension>
 
    <extension
          id="ProductGuitar"
@@ -11,47 +112,33 @@
       </product>
    </extension>
    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            id="name.niu.guitar.CMD_GEN_OFFLINE"
-            name="Generate Test Case Offline">
-      </command>
-      <command
-            id="name.niu.guitar.CMD_GEN_ONLINE"
-            name="Generate Test Case Online">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               id="name.niu.guitar.guitarMainMenu"
-               label="Guitar">
-            <command
-                  commandId="name.niu.guitar.CMD_GEN_OFFLINE"
-                  label="Generate Test Case Offline"
-                  style="push">
-            </command>
-            <command
-                  commandId="name.niu.guitar.CMD_GEN_ONLINE"
-                  label="Generate Test Case Online"
-                  style="push">
-            </command>
-         </menu>
-      </menuContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="name.niu.guitar.action.TCgenOfflineAction"
-            commandId="name.niu.guitar.CMD_GEN_OFFLINE">
-      </handler>
-      <handler
-            class="name.niu.guitar.action.TCgenOnlineAction"
-            commandId="name.niu.guitar.CMD_GEN_ONLINE">
-      </handler>
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="name.niu.guitar.ui.wizards.guitarCategroy"
+            name="Guitar">
+      </category>
+      <wizard
+            category="name.niu.guitar.ui.wizards.guitarCategroy"
+            class="name.niu.guitar.ui.wizards.NewGuitarProjectWizard"
+            icon="icons/guitar-plus-16.png"
+            id="name.niu.guitar.ui.wizards.NewGuitarProject"
+            name="New Guitar Project"
+            project="true">
+         <description>
+            Create a Guita Project...
+         </description>
+      </wizard>
+         
+      
+  	  <wizard
+  	     name="New UISUT Diagram"
+  	     icon="icons/obj16/uisutDiagramFile.gif"
+  	     category="name.niu.guitar.ui.wizards.guitarCategroy"
+  	     class="name.niu.guitar.ui.wizards.UISUTCreationWizard"
+  	     id="name.niu.guita.ui.wizards.NewUISUTDiagramWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+
    </extension>
 
 </plugin>

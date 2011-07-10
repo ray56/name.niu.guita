@@ -4,13 +4,13 @@
 
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
-      <fileTypes type="text" extension="uisut_diagram"/>
+      <fileTypes type="text" extension="uisut"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
       <?gmfgen generated="true"?>
       <parser
-         type="uisut_diagram"
+         type="uisut"
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
@@ -21,7 +21,7 @@
          id="name.niu.guitar.uisut.diagram.part.UisutDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/UisutDiagramFile.gif"
-         extensions="uisut_diagram"
+         extensions="uisut"
          default="true"
          class="name.niu.guitar.uisut.diagram.part.UisutDiagramEditor"
          matchingStrategy="name.niu.guitar.uisut.diagram.part.UisutMatchingStrategy"
@@ -227,6 +227,16 @@
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
+   </extension>
+   
+      <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.resources.editor.documentProviders">
+         <!-- maybe removable -->
+      <provider
+            class="name.niu.guitar.uisut.diagram.part.UisutDocumentProvider"
+            extensions="uisut"
+            id="name.niu.guitar.uisut.diagram.part.UisutDocumentProvider">
+      </provider>
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">

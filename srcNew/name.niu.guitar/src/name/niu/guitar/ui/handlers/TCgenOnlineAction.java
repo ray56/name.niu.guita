@@ -1,4 +1,4 @@
-package name.niu.guitar.action;
+package name.niu.guitar.ui.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

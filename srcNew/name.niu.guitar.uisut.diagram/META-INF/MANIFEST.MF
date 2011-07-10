@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: name.niu.guitar.uisut.diagram.edit.parts, 
+Export-Package: name.niu.guitar.uisut.diagram.edit.parts,
  name.niu.guitar.uisut.diagram.part,
  name.niu.guitar.uisut.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -28,6 +28,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  name.niu.guitar.uisut;visibility:=reexport,
  name.niu.guitar.uisut.edit;visibility:=reexport,
- org.eclipse.gef;visibility:=reexport
+ org.eclipse.gef;visibility:=reexport,
+ org.eclipse.ui.ide;bundle-version="3.6.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

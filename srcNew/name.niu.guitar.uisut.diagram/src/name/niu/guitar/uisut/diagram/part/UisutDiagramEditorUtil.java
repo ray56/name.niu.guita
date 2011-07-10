@@ -171,7 +171,7 @@ public class UisutDiagramEditorUtil {
 	/**
 	 * @generated
 	 */
-	public static Resource createDiagram(URI diagramURI, URI modelURI,
+	public static Resource createDiagram(URI diagramURI,
 			IProgressMonitor progressMonitor) {
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
@@ -179,8 +179,6 @@ public class UisutDiagramEditorUtil {
 				Messages.UisutDiagramEditorUtil_CreateDiagramProgressTask, 3);
 		final Resource diagramResource = editingDomain.getResourceSet()
 				.createResource(diagramURI);
-		final Resource modelResource = editingDomain.getResourceSet()
-				.createResource(modelURI);
 		final String diagramName = diagramURI.lastSegment();
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
 				editingDomain,
@@ -190,7 +188,7 @@ public class UisutDiagramEditorUtil {
 					IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				UIStatemachine model = createInitialModel();
-				attachModelToResource(model, modelResource);
+				attachModelToResource(model, diagramResource);
 
 				Diagram diagram = ViewService.createDiagram(model,
 						UIStatemachineEditPart.MODEL_ID,
@@ -202,9 +200,7 @@ public class UisutDiagramEditorUtil {
 				}
 
 				try {
-					modelResource
-							.save(name.niu.guitar.uisut.diagram.part.UisutDiagramEditorUtil
-									.getSaveOptions());
+
 					diagramResource
 							.save(name.niu.guitar.uisut.diagram.part.UisutDiagramEditorUtil
 									.getSaveOptions());

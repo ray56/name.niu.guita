@@ -48,16 +48,6 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String UisutCreationWizard_DomainModelFilePageTitle;
-
-	/**
-	 * @generated
-	 */
-	public static String UisutCreationWizard_DomainModelFilePageDescription;
-
-	/**
-	 * @generated
-	 */
 	public static String UisutCreationWizardOpenEditorError;
 
 	/**
