@@ -160,10 +160,15 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.properties.views.PropertiesBrowserPage;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.document.FileEditorInputProxy;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.gmf.runtime.notation.Diagram;
 
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.presentation.editorParts.*;
@@ -180,7 +185,10 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
  */
 public class UisutEditor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, /*ISelectionProvider,*/ IMenuListener, IViewerProvider, IGotoMarker,ITabbedPropertySheetPageContributor {
+	implements IEditingDomainProvider, /*ISelectionProvider,*/ IMenuListener, IViewerProvider, IGotoMarker,
+		ITabbedPropertySheetPageContributor,
+		IDiagramWorkbenchPart
+		{
 	
 	// added for ingetration
 	protected IEditorInput  wrappedInput ;
@@ -1686,4 +1694,36 @@ public class UisutEditor
 	public String getContributorId() {
 		return diagramEditor.getContributorId() ;
 	}
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart#getDiagram()
+	 */
+	public Diagram getDiagram() {
+		return diagramEditor.getDiagram();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart#getDiagramEditDomain()
+	 */
+	public IDiagramEditDomain getDiagramEditDomain() {
+		return diagramEditor.getDiagramEditDomain();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart#getDiagramEditPart()
+	 */
+	public DiagramEditPart getDiagramEditPart() {
+		return diagramEditor.getDiagramEditPart();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart#getDiagramGraphicalViewer()
+	 */
+	public IDiagramGraphicalViewer getDiagramGraphicalViewer() {
+		return diagramEditor.getDiagramGraphicalViewer();
+	}
+
+	
 }
