@@ -83,6 +83,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
@@ -93,6 +94,7 @@ import org.eclipse.ui.ide.IGotoMarker;
 
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.part.MultiPageSelectionProvider;
 
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -156,7 +158,13 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.document.FileEditorInputProxy;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 
+import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
+import name.niu.guitar.uisut.presentation.editorParts.*;
 import name.niu.guitar.uisut.provider.UisutItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -171,6 +179,32 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 public class UisutEditor
 	extends MultiPageEditorPart
 	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
+	
+	// added for ingetration
+	protected IEditorInput  wrappedInput ;
+	protected UisutDiagramEditor diagramEditor;
+	protected SelectionEditorPart selectionEditorPart ;
+	protected ParentEditorPart parentEditorPart ;
+	protected ListEditorPart listEditorPart ;
+	protected TreeEditorPart treeEditorPart ;
+	protected TableEditorPart tableEditorPart ;
+	protected TableTreeEditorPart tableTreeEditorPart ;
+	protected MultiPageSelectionProvider selectionProvider;
+	
+	protected IEditorInput getWrappedInput() {
+		if (wrappedInput == null) {
+			if (getEditorInput() instanceof IFileEditorInput) {
+				wrappedInput = new FileEditorInputProxy(
+						(IFileEditorInput) getEditorInput(),
+						(TransactionalEditingDomain) getEditingDomain());
+			} else {
+				wrappedInput =  getEditorInput();
+			}
+		}
+		return wrappedInput;
+	}
+	
+	
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 * <!-- begin-user-doc -->
@@ -532,7 +566,7 @@ public class UisutEditor
 	 * Handles activation of the editor or it's associated views.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleActivate() {
 		// Recompute the read only state.
@@ -542,7 +576,7 @@ public class UisutEditor
 
 		  // Refresh any actions that may become enabled or disabled.
 		  //
-		  setSelection(getSelection());
+		  selectionProvider.setSelection(selectionProvider.getSelection());
 		}
 
 		if (!removedResources.isEmpty()) {
@@ -675,18 +709,25 @@ public class UisutEditor
 	 * This creates a model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UisutEditor() {
 		super();
 		initializeEditingDomain();
+		
+	    selectionProvider = new MultiPageSelectionProvider(this);
+	    selectionProvider.addSelectionChangedListener(new ISelectionChangedListener() {
+	      public void selectionChanged(SelectionChangedEvent event) {
+	        setStatusLineManager(event.getSelection());
+	      }
+	    }); 
 	}
 
 	/**
 	 * This sets up the editing domain for the model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
@@ -697,13 +738,14 @@ public class UisutEditor
 		adapterFactory.addAdapterFactory(new UisutItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
-		// Create the command stack that will notify this editor as commands are executed.
-		//
-		BasicCommandStack commandStack = new BasicCommandStack();
+		// 2011-07-06:Create a transactional editing domain for integration
+		TransactionalEditingDomain  domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain() ;
+		domain.setID( "name.niu.guitar.uisut.diagram.EditingDomain" );
 
+		
 		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
 		//
-		commandStack.addCommandStackListener
+		domain.getCommandStack().addCommandStackListener
 			(new CommandStackListener() {
 				 public void commandStackChanged(final EventObject event) {
 					 getContainer().getDisplay().asyncExec
@@ -727,7 +769,7 @@ public class UisutEditor
 
 		// Create the editing domain with a special command stack.
 		//
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+		editingDomain = ( AdapterFactoryEditingDomain ) domain ;
 	}
 
 	/**
@@ -857,44 +899,11 @@ public class UisutEditor
 	 * is the current one.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setCurrentViewer(Viewer viewer) {
-		// If it is changing...
-		//
 		if (currentViewer != viewer) {
-			if (selectionChangedListener == null) {
-				// Create the listener on demand.
-				//
-				selectionChangedListener =
-					new ISelectionChangedListener() {
-						// This just notifies those things that are affected by the section.
-						//
-						public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
-							setSelection(selectionChangedEvent.getSelection());
-						}
-					};
-			}
-
-			// Stop listening to the old one.
-			//
-			if (currentViewer != null) {
-				currentViewer.removeSelectionChangedListener(selectionChangedListener);
-			}
-
-			// Start listening to the new one.
-			//
-			if (viewer != null) {
-				viewer.addSelectionChangedListener(selectionChangedListener);
-			}
-
-			// Remember it.
-			//
-			currentViewer = viewer;
-
-			// Set the editors selection based on the current viewer's selection.
-			//
-			setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
+			currentViewer = viewer ;
 		}
 	}
 
@@ -993,7 +1002,7 @@ public class UisutEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -1003,208 +1012,62 @@ public class UisutEditor
 
 		// Only creates the other pages if there is something that can be edited
 		//
-		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
-			// Create a page for the selection tree view.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							Tree tree = new Tree(composite, SWT.MULTI);
-							TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
+		if (!getEditingDomain().getResourceSet().getResources().isEmpty()&&
+				!(getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty()) {
 
-				selectionViewer = (TreeViewer)viewerPane.getViewer();
-				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+			try {
+				int pageIndex ;
+				
+                // This is the page for the graphical diagram viewer.
+                //
+                diagramEditor = new UisutDiagramEditor();
+                pageIndex = addPage(diagramEditor, getEditorInput());
+                setPageText(pageIndex, "Diagram");
+				
+                // Create a page for the selection tree view.
+                //
+                selectionEditorPart = new SelectionEditorPart(this);
+                pageIndex = addPage(selectionEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+                selectionEditorPart.setInput(editingDomain.getResourceSet());			
+                
+                // Create a page for the parent tree view.
+                //
+                parentEditorPart = new ParentEditorPart(this);
+                pageIndex = addPage(parentEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_ParentPage_label"));
+                
+                // This is the page for the list viewer
+                //
+                listEditorPart = new ListEditorPart(this);
+                pageIndex = addPage(listEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_ListPage_label"));
+                
+                // This is the page for the tree viewer
+                //
+                treeEditorPart = new TreeEditorPart(this);
+                pageIndex = addPage(treeEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_TreePage_label"));
+                
+                // This is the page for the table viewer.
+                //
+                tableEditorPart = new TableEditorPart(this);
+                pageIndex = addPage(tableEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_TablePage_label"));
+                
+                // This is the page for the table tree viewer.
+                //
+                tableTreeEditorPart = new TableTreeEditorPart(this);
+                pageIndex = addPage(tableTreeEditorPart, getWrappedInput());
+                setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
+                
 
-				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
-				selectionViewer.setInput(editingDomain.getResourceSet());
-				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-				viewerPane.setTitle(editingDomain.getResourceSet());
-
-				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
-
-				createContextMenuFor(selectionViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
-			}
-
-			// Create a page for the parent tree view.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							Tree tree = new Tree(composite, SWT.MULTI);
-							TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-
-				parentViewer = (TreeViewer)viewerPane.getViewer();
-				parentViewer.setAutoExpandLevel(30);
-				parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
-				parentViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, parentViewer));
-
-				createContextMenuFor(parentViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ParentPage_label"));
-			}
-
-			// This is the page for the list viewer
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new ListViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				listViewer = (ListViewer)viewerPane.getViewer();
-				listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				listViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, listViewer));
-
-				createContextMenuFor(listViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ListPage_label"));
-			}
-
-			// This is the page for the tree viewer
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TreeViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				treeViewer = (TreeViewer)viewerPane.getViewer();
-				treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, treeViewer));
-
-				new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-
-				createContextMenuFor(treeViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreePage_label"));
-			}
-
-			// This is the page for the table viewer.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TableViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				tableViewer = (TableViewer)viewerPane.getViewer();
-
-				Table table = tableViewer.getTable();
-				TableLayout layout = new TableLayout();
-				table.setLayout(layout);
-				table.setHeaderVisible(true);
-				table.setLinesVisible(true);
-
-				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(3, 100, true));
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-
-				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(2, 100, true));
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-
-				tableViewer.setColumnProperties(new String [] {"a", "b"});
-				tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, tableViewer));
-
-				createContextMenuFor(tableViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TablePage_label"));
-			}
-
-			// This is the page for the table tree viewer.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), UisutEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TreeViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-
-				treeViewerWithColumns = (TreeViewer)viewerPane.getViewer();
-
-				Tree tree = treeViewerWithColumns.getTree();
-				tree.setLayoutData(new FillLayout());
-				tree.setHeaderVisible(true);
-				tree.setLinesVisible(true);
-
-				TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-				objectColumn.setWidth(250);
-
-				TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-				selfColumn.setWidth(200);
-
-				treeViewerWithColumns.setColumnProperties(new String [] {"a", "b"});
-				treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, treeViewerWithColumns));
-
-				createContextMenuFor(treeViewerWithColumns);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
-			}
-
+				
+			}catch (PartInitException e) {
+                // add some error handling for production-quality coding
+                e.printStackTrace();
+            }
+			
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
 					 public void run() {
@@ -1407,39 +1270,33 @@ public class UisutEditor
 	 * This deals with how we want selection in the outliner to affect the other views.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
-		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
-			Iterator<?> selectedElements = ((IStructuredSelection)selection).iterator();
-			if (selectedElements.hasNext()) {
-				// Get the first selected element.
-				//
-				Object selectedElement = selectedElements.next();
-
-				// If it's the selection viewer, then we want it to select the same selection as this selection.
-				//
-				if (currentViewerPane.getViewer() == selectionViewer) {
-					ArrayList<Object> selectionList = new ArrayList<Object>();
-					selectionList.add(selectedElement);
-					while (selectedElements.hasNext()) {
-						selectionList.add(selectedElements.next());
-					}
-
-					// Set the selection to the widget.
-					//
-					selectionViewer.setSelection(new StructuredSelection(selectionList));
-				}
-				else {
-					// Set the input to the widget.
-					//
-					if (currentViewerPane.getViewer().getInput() != selectedElement) {
-						currentViewerPane.getViewer().setInput(selectedElement);
-						currentViewerPane.setTitle(selectedElement);
-					}
-				}
-			}
-		}
+		   if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
+			      List selectedElements = ((IStructuredSelection)selection).toList();
+			      if (getActiveEditor() == selectionEditorPart) {
+			        // If the selection viewer is active, we want it to select the same selection as this selection.
+			        //
+			        selectionProvider.setSelection(new StructuredSelection(selectedElements));
+					} else if (getActiveEditor() == diagramEditor){
+						// If the diagram viewer is active, we need to map the selection to the corresponding EditParts.
+						//
+						ArrayList<Object> selectionList = new ArrayList<Object>();
+						for(Object selectedElement: selectedElements) {
+							if (selectedElement instanceof EObject) {
+								String elementID = EMFCoreUtil.getProxyID((EObject) selectedElement);
+								selectionList.addAll(diagramEditor.getDiagramGraphicalViewer().findEditPartsForElement(elementID, 
+										IGraphicalEditPart.class));
+							}
+							selectionProvider.setSelection(new StructuredSelection(selectionList));
+						}
+					} else {
+			        // For any other viewer, set the input directly.
+			        //
+			        ((UISUTBaseEditorPart)getActiveEditor()).setInput(selectedElements.get(0));
+			      }
+			    }
 	}
 
 	/**

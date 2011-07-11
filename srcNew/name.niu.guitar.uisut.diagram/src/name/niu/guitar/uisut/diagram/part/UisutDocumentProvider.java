@@ -10,10 +10,13 @@ import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IStorage;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -34,13 +37,16 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.DiagramDocum
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocumentProvider;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.document.FileEditorInputProxy;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.internal.EditorStatusCodes;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.internal.util.DiagramIOUtil;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 
 /**
@@ -87,10 +93,11 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IDocument createDocument(Object element) throws CoreException {
-		if (false == element instanceof URIEditorInput) {
+		if (false == element instanceof URIEditorInput
+				&& false == element instanceof IFileEditorInput ) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -102,7 +109,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 											"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 							null));
 		}
-		IDocument document = createEmptyDocument();
+		IDocument document = createEmptyDocument(element);
 		setDocumentContent(document, (IEditorInput) element);
 		setupDocument(element, document);
 		return document;
@@ -138,14 +145,26 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IDocument createEmptyDocument() {
-		DiagramDocument document = new DiagramDocument();
-		document.setEditingDomain(createEditingDomain());
-		return document;
+		return createEmptyDocument(null);
+//		DiagramDocument document = new DiagramDocument();
+//		document.setEditingDomain(createEditingDomain());
+//		return document;
 	}
 
+	protected IDocument createEmptyDocument(Object input) {
+		DiagramDocument document = new DiagramDocument();
+		if (input instanceof FileEditorInputProxy) {
+			FileEditorInputProxy proxy = (FileEditorInputProxy) input;
+			document.setEditingDomain(proxy.getEditingDomain());
+		} else {
+			document.setEditingDomain(createEditingDomain());
+		}
+		return document;
+	}
+	
 	/**
 	 * @generated
 	 */
@@ -189,13 +208,18 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void setDocumentContent(IDocument document, IEditorInput element)
 			throws CoreException {
 		IDiagramDocument diagramDocument = (IDiagramDocument) document;
 		TransactionalEditingDomain domain = diagramDocument.getEditingDomain();
-		if (element instanceof URIEditorInput) {
+		if (element instanceof IFileEditorInput ){
+			IStorage storage = ((IFileEditorInput) element).getStorage();
+			Diagram diagram = DiagramIOUtil.load(domain, storage, true,
+					getProgressMonitor());
+			document.setContent(diagram);						
+		} else if (element instanceof URIEditorInput) {
 			URI uri = ((URIEditorInput) element).getURI();
 			Resource resource = null;
 			try {
@@ -331,11 +355,12 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isModifiable(Object element) {
 		if (!isStateValidated(element)) {
-			if (element instanceof URIEditorInput) {
+			if (element instanceof URIEditorInput
+					&& element instanceof IFileEditorInput) {
 				return true;
 			}
 		}
@@ -548,10 +573,16 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleElementMoved(IEditorInput input, URI uri) {
-
+		if (input instanceof IFileEditorInput) {
+			IFile newFile = ResourcesPlugin.getWorkspace().getRoot().getFile(
+					new Path(URI.decode(uri.path())).removeFirstSegments(1));
+			fireElementMoved(input, newFile == null ? null
+					: new FileEditorInput(newFile));
+			return;
+		}
 		// TODO: append suffix to the URI! (use diagram as a parameter)
 		fireElementMoved(input, new URIEditorInput(uri));
 	}
