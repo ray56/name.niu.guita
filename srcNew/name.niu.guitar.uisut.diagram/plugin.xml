@@ -192,6 +192,7 @@
             class="name.niu.guitar.uisut.diagram.sheet.UisutPropertySection">
             <input type="org.eclipse.gmf.runtime.notation.View"/>
             <input type="org.eclipse.gef.EditPart"/>
+            <input type="name.niu.guitar.uisut.UIElement"/>
          </propertySection>
       </propertySections>
    </extension>

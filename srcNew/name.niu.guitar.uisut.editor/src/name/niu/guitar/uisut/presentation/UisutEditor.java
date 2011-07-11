@@ -103,6 +103,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
@@ -160,6 +161,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.properties.views.PropertiesBrowserPage;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.document.FileEditorInputProxy;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 
@@ -178,7 +180,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
  */
 public class UisutEditor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
+	implements IEditingDomainProvider, /*ISelectionProvider,*/ IMenuListener, IViewerProvider, IGotoMarker,ITabbedPropertySheetPageContributor {
 	
 	// added for ingetration
 	protected IEditorInput  wrappedInput ;
@@ -249,9 +251,9 @@ public class UisutEditor
 	 * This is the property sheet page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	protected PropertySheetPage propertySheetPage;
+	protected PropertiesBrowserPage propertySheetPage;
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline.
@@ -326,7 +328,7 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ISelectionChangedListener selectionChangedListener;
+	//protected ISelectionChangedListener selectionChangedListener;
 
 	/**
 	 * This keeps track of all the {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are listening to this editor.
@@ -334,7 +336,7 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
+	//protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
 	/**
 	 * This keeps track of the selection of the editor as a whole.
@@ -342,7 +344,7 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ISelection editorSelection = StructuredSelection.EMPTY;
+	//protected ISelection editorSelection = StructuredSelection.EMPTY;
 
 	/**
 	 * The MarkerHelper is responsible for creating workspace resource markers presented
@@ -625,9 +627,9 @@ public class UisutEditor
 				}
 			}
 
-			if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
-				setSelection(StructuredSelection.EMPTY);
-			}
+//			if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
+//				setSelection(StructuredSelection.EMPTY);
+//			}
 
 			updateProblemIndication = true;
 			updateProblemIndication();
@@ -1246,21 +1248,28 @@ public class UisutEditor
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
-			propertySheetPage =
-				new ExtendedPropertySheetPage(editingDomain) {
-					@Override
-					public void setSelectionToViewer(List<?> selection) {
-						UisutEditor.this.setSelectionToViewer(selection);
-						UisutEditor.this.setFocus();
-					}
-
-					@Override
-					public void setActionBars(IActionBars actionBars) {
-						super.setActionBars(actionBars);
-						getActionBarContributor().shareGlobalActions(this, actionBars);
-					}
-				};
-			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+			propertySheetPage = new PropertiesBrowserPage(this) {
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this,
+							actionBars);
+				}
+			};
+//			propertySheetPage =
+//				new ExtendedPropertySheetPage(editingDomain) {
+//					@Override
+//					public void setSelectionToViewer(List<?> selection) {
+//						UisutEditor.this.setSelectionToViewer(selection);
+//						UisutEditor.this.setFocus();
+//					}
+//
+//					@Override
+//					public void setActionBars(IActionBars actionBars) {
+//						super.setActionBars(actionBars);
+//						getActionBarContributor().shareGlobalActions(this, actionBars);
+//					}
+//				};
+//			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
 		}
 
 		return propertySheetPage;
@@ -1474,7 +1483,7 @@ public class UisutEditor
 		setSite(site);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
-		site.setSelectionProvider(this);
+		site.setSelectionProvider(selectionProvider);
 		site.getPage().addPartListener(partListener);
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
 	}
@@ -1500,9 +1509,9 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-		selectionChangedListeners.add(listener);
-	}
+//	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+//		selectionChangedListeners.add(listener);
+//	}
 
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
@@ -1510,9 +1519,9 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-		selectionChangedListeners.remove(listener);
-	}
+//	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+//		selectionChangedListeners.remove(listener);
+//	}
 
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall selection.
@@ -1520,9 +1529,9 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ISelection getSelection() {
-		return editorSelection;
-	}
+//	public ISelection getSelection() {
+//		return editorSelection;
+//	}
 
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall selection.
@@ -1531,14 +1540,14 @@ public class UisutEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSelection(ISelection selection) {
-		editorSelection = selection;
-
-		for (ISelectionChangedListener listener : selectionChangedListeners) {
-			listener.selectionChanged(new SelectionChangedEvent(this, selection));
-		}
-		setStatusLineManager(selection);
-	}
+//	public void setSelection(ISelection selection) {
+//		editorSelection = selection;
+//
+//		for (ISelectionChangedListener listener : selectionChangedListeners) {
+//			listener.selectionChanged(new SelectionChangedEvent(this, selection));
+//		}
+//		setStatusLineManager(selection);
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1669,5 +1678,10 @@ public class UisutEditor
 	 */
 	protected boolean showOutlineView() {
 		return true;
+	}
+
+	@Override
+	public String getContributorId() {
+		return diagramEditor.getContributorId() ;
 	}
 }
