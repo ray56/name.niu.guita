@@ -91,13 +91,13 @@ public class UisutDiagramEditor extends DiagramDocumentEditor {
 	protected void setDocumentProvider(IEditorInput input) {
 		setDocumentProvider(UisutDiagramEditorPlugin.getInstance()
 				.getDocumentProvider());
-				
-//		if (input instanceof URIEditorInput) {
-//			setDocumentProvider(UisutDiagramEditorPlugin.getInstance()
-//					.getDocumentProvider());
-//		} else {
-//			super.setDocumentProvider(input);
-//		}
+
+		//		if (input instanceof URIEditorInput) {
+		//			setDocumentProvider(UisutDiagramEditorPlugin.getInstance()
+		//					.getDocumentProvider());
+		//		} else {
+		//			super.setDocumentProvider(input);
+		//		}
 	}
 
 	/**

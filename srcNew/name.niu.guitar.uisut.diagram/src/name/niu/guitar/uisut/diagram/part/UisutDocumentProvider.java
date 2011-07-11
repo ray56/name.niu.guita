@@ -62,7 +62,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	protected ElementInfo createElementInfo(Object element)
 			throws CoreException {
 		if (false == element instanceof URIEditorInput
-				&& false == element instanceof FileEditorInput ) {
+				&& false == element instanceof FileEditorInput) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -74,7 +74,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 											"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 							null));
 		}
-		
+
 		IEditorInput editorInput = null;
 		if (element instanceof FileEditorInput) {
 
@@ -97,7 +97,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	 */
 	protected IDocument createDocument(Object element) throws CoreException {
 		if (false == element instanceof URIEditorInput
-				&& false == element instanceof IFileEditorInput ) {
+				&& false == element instanceof IFileEditorInput) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -149,9 +149,9 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	 */
 	protected IDocument createEmptyDocument() {
 		return createEmptyDocument(null);
-//		DiagramDocument document = new DiagramDocument();
-//		document.setEditingDomain(createEditingDomain());
-//		return document;
+		//		DiagramDocument document = new DiagramDocument();
+		//		document.setEditingDomain(createEditingDomain());
+		//		return document;
 	}
 
 	protected IDocument createEmptyDocument(Object input) {
@@ -164,7 +164,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 		}
 		return document;
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -214,11 +214,11 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 			throws CoreException {
 		IDiagramDocument diagramDocument = (IDiagramDocument) document;
 		TransactionalEditingDomain domain = diagramDocument.getEditingDomain();
-		if (element instanceof IFileEditorInput ){
+		if (element instanceof IFileEditorInput) {
 			IStorage storage = ((IFileEditorInput) element).getStorage();
 			Diagram diagram = DiagramIOUtil.load(domain, storage, true,
 					getProgressMonitor());
-			document.setContent(diagram);						
+			document.setContent(diagram);
 		} else if (element instanceof URIEditorInput) {
 			URI uri = ((URIEditorInput) element).getURI();
 			Resource resource = null;
@@ -577,8 +577,12 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	 */
 	protected void handleElementMoved(IEditorInput input, URI uri) {
 		if (input instanceof IFileEditorInput) {
-			IFile newFile = ResourcesPlugin.getWorkspace().getRoot().getFile(
-					new Path(URI.decode(uri.path())).removeFirstSegments(1));
+			IFile newFile = ResourcesPlugin
+					.getWorkspace()
+					.getRoot()
+					.getFile(
+							new Path(URI.decode(uri.path()))
+									.removeFirstSegments(1));
 			fireElementMoved(input, newFile == null ? null
 					: new FileEditorInput(newFile));
 			return;

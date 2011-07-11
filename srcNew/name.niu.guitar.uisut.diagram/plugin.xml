@@ -164,7 +164,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
-      <?gmfgen generated="true"?>   
+      <?gmfgen generated="false"?>   
       <propertySections contributorId="name.niu.guitar.uisut.diagram">
          <propertySection id="property.section.ConnectorAppearancePropertySection" 
             filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
@@ -192,8 +192,8 @@
             class="name.niu.guitar.uisut.diagram.sheet.UisutPropertySection">
             <input type="org.eclipse.gmf.runtime.notation.View"/>
             <input type="org.eclipse.gef.EditPart"/>
-            <input type="name.niu.guitar.uisut.UIElement"/>
-         </propertySection>
+             <input type="name.niu.guitar.uisut.UIElement"/>
+        </propertySection>
       </propertySections>
    </extension>
 
