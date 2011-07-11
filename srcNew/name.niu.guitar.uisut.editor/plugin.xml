@@ -32,7 +32,7 @@
             icon="icons/full/obj16/UisutModelFile.gif"
             extensions="uisut"
             class="name.niu.guitar.uisut.presentation.UisutEditor"
-            contributorClass="name.niu.guitar.uisut.presentation.UisutActionBarContributor">
+            contributorClass="name.niu.guitar.uisut.presentation.UISUTMultipageActionBarContributor">
       </editor>
    </extension>
 

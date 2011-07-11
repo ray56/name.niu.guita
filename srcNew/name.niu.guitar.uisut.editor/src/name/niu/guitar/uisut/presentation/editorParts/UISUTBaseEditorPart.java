@@ -2,6 +2,8 @@ package name.niu.guitar.uisut.presentation.editorParts;
 
 
 
+import name.niu.guitar.uisut.presentation.UISUTMultipageActionBarContributor;
+import name.niu.guitar.uisut.presentation.UisutActionBarContributor;
 import name.niu.guitar.uisut.presentation.UisutEditor;
 import name.niu.guitar.uisut.presentation.UisutEditorPlugin;
 
@@ -98,9 +100,10 @@ public abstract class UISUTBaseEditorPart
 	  }
 
 	  public void menuAboutToShow(IMenuManager manager) {
-	    // pass the request to show the context menu on to the parent editor
-	    ((IMenuListener)parentEditor.getEditorSite().getActionBarContributor()).menuAboutToShow(manager);
-	  }
+		   ((UisutActionBarContributor) ((UISUTMultipageActionBarContributor) parentEditor
+			        .getEditorSite().getActionBarContributor())
+			        .getTreeSubActionBars().getContributor())
+			        .menuAboutToShow(manager);	  }
 	  
 	  public abstract void setInput(Object input);	
 

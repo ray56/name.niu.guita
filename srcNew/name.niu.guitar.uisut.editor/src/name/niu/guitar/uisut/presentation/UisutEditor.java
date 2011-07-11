@@ -1616,11 +1616,13 @@ public class UisutEditor
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EditingDomainActionBarContributor getActionBarContributor() {
-		return (EditingDomainActionBarContributor)getEditorSite().getActionBarContributor();
-	}
+	    return (UisutActionBarContributor) ((UISUTMultipageActionBarContributor) getEditorSite()
+	            .getActionBarContributor()).getTreeSubActionBars()
+	            .getContributor();	
+	    }
 
 	/**
 	 * <!-- begin-user-doc -->
