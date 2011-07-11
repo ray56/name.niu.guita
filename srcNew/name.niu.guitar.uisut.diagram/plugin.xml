@@ -70,7 +70,7 @@
       <?gmfgen generated="true"?>
       <GlobalActionHandlerProvider
          class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
-         id="UisutPresentation">
+         id="uisutPresentation">
          <Priority name="Lowest"/>
          <ViewId id="name.niu.guitar.uisut.diagram.part.UisutDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
@@ -83,7 +83,7 @@
       </GlobalActionHandlerProvider>
       <GlobalActionHandlerProvider
             class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
-            id="UisutRender">
+            id="uisutRender">
          <Priority name="Lowest"/>
          <ViewId id="name.niu.guitar.uisut.diagram.part.UisutDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
@@ -205,7 +205,7 @@
             <method name="getType()" value="uisut"/>
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Uisut"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="uisut"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
@@ -216,7 +216,7 @@
       <editpartProvider class="name.niu.guitar.uisut.diagram.providers.UisutEditPartProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
-            <method name="getType()" value="Uisut"/>
+            <method name="getType()" value="uisut"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
             <method name="getType()" value="2001,2002,2003,2004"/>
@@ -354,7 +354,7 @@
       </binding>
    </extension>
 
-   <extension id="UisutApplication" point="org.eclipse.core.runtime.applications">
+   <extension id="uisutApplication" point="org.eclipse.core.runtime.applications">
       <?gmfgen generated="true"?>
       <application>
          <run class="name.niu.guitar.uisut.diagram.application.UisutApplication"/>
@@ -364,7 +364,7 @@
    <extension point="org.eclipse.ui.perspectives" id="rcp-perspective">
       <?gmfgen generated="true"?>
       <perspective
-            id="name.niu.guitar.uisut.diagram.UisutPerspective"
+            id="name.niu.guitar.uisut.diagram.uisutPerspective"
             name="%perspectiveName"
             class="name.niu.guitar.uisut.diagram.application.DiagramEditorPerspective">
       </perspective>

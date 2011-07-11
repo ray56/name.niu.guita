@@ -12,7 +12,7 @@ public class DiagramEditorWorkbenchAdvisor extends WorkbenchAdvisor {
 	/**
 	 * @generated
 	 */
-	public static final String PERSPECTIVE_ID = "name.niu.guitar.uisut.diagram.UisutPerspective"; //$NON-NLS-1$
+	public static final String PERSPECTIVE_ID = "name.niu.guitar.uisut.diagram.uisutPerspective"; //$NON-NLS-1$
 
 	/**
 	 * @generated

@@ -23,7 +23,7 @@ public class UIStatemachineEditPart extends DiagramEditPart {
 	/**
 	 * @generated
 	 */
-	public final static String MODEL_ID = "Uisut"; //$NON-NLS-1$
+	public final static String MODEL_ID = "uisut"; //$NON-NLS-1$
 
 	/**
 	 * @generated
