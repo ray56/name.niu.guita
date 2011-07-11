@@ -10,6 +10,7 @@ package name.niu.guitar.uisut.provider;
 import java.util.Collection;
 import java.util.List;
 
+import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UISystemVariable;
 import name.niu.guitar.uisut.UisutPackage;
 
@@ -36,7 +37,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class UISystemVariableItemProvider
 	extends UIElementItemProvider
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+		IEditingDomainItemProvider, IStructuredItemContentProvider, 
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, 
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -180,5 +183,23 @@ public class UISystemVariableItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
-
+	 public Object getColumnImage(Object object, int columnIndex)
+	 {
+		return super.getColumnImage(object, columnIndex);	 
+	 }
+	 
+	 public String getColumnText(Object object, int columnIndex)
+	 {		 
+		 UISystemVariable o = (UISystemVariable)object ;
+		 switch (columnIndex) {
+		 	case 0:
+		 		return o.getName();
+		 	case 1:
+		 		return o.getDescription();
+		 	case 2:
+		 		return "";//Categories don't own descriptions
+		 	default:
+		 		return "";
+		 }
+	 }
 }
