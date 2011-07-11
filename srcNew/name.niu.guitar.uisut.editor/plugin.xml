@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="name.niu.guitar.uisut.presentation.UisutModelWizardID"
+            name="%_UI_UisutModelWizard_label"
+            class="name.niu.guitar.uisut.presentation.UisutModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/UisutModelFile.gif">
+         <description>%_UI_UisutModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="name.niu.guitar.uisut.presentation.UisutEditorID"
+            name="%_UI_UisutEditor_label"
+            icon="icons/full/obj16/UisutModelFile.gif"
+            extensions="uisut"
+            class="name.niu.guitar.uisut.presentation.UisutEditor"
+            contributorClass="name.niu.guitar.uisut.presentation.UisutActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
