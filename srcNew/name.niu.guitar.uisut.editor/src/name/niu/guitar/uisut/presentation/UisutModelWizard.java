@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
+import org.eclipse.gmf.runtime.notation.Diagram;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -75,6 +77,8 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import name.niu.guitar.uisut.UisutFactory;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
+import name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin;
 import name.niu.guitar.uisut.provider.UisutEditPlugin;
 
 
@@ -255,6 +259,17 @@ public class UisutModelWizard extends Wizard implements INewWizard {
 							if (rootObject != null) {
 								resource.getContents().add(rootObject);
 							}
+							
+							//Create the diagram
+				             // It seems that it is ok without code below 
+				              Diagram diagram = ViewService.createDiagram(rootObject,
+				                  UIStatemachineEditPart.MODEL_ID,
+				                  UisutDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+				              if (diagram != null) {
+				                resource.getContents().add(diagram);
+				                diagram.setName(fileURI.lastSegment());
+				                diagram.setElement(rootObject);
+				              }
 
 							// Save the contents of the resource to the file system.
 							//
