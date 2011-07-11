@@ -35,6 +35,14 @@ public class UisutDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static boolean isShortcutOrphaned(View view) {
+		return !view.isSetElement() || view.getElement() == null
+				|| view.getElement().eIsProxy();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<UisutNodeDescriptor> getSemanticChildren(View view) {
 		switch (UisutVisualIDRegistry.getVisualID(view)) {
 		case UIStatemachineEditPart.VISUAL_ID:

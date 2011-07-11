@@ -109,7 +109,8 @@ public class UisutVisualIDRegistry {
 		}
 		String containerModelID = name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry
 				.getModelID(containerView);
-		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)) {
+		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)
+				&& !"uisut".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
@@ -152,7 +153,8 @@ public class UisutVisualIDRegistry {
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
 		String containerModelID = name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry
 				.getModelID(containerView);
-		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)) {
+		if (!UIStatemachineEditPart.MODEL_ID.equals(containerModelID)
+				&& !"uisut".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;
