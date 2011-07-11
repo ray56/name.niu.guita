@@ -109,6 +109,10 @@
       <product
             application="org.eclipse.ui.ide.workbench"
             name="Guitar Application">
+         <property
+               name="appName"
+               value="Guitar Application">
+         </property>
       </product>
    </extension>
    <extension

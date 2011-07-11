@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Guitar Application" uid="name.niu.guitar.product" id="name.niu.guitar.ProductGuitar" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="Guitar Application" uid="name.niu.guitar.ProductGuitar" id="name.niu.guitar.ProductGuitar" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -15,6 +15,7 @@
       <plugin id="name.niu.guitar.uisut"/>
       <plugin id="name.niu.guitar.uisut.diagram"/>
       <plugin id="name.niu.guitar.uisut.edit"/>
+      <plugin id="name.niu.guitar.uisut.editor"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.dom"/>
