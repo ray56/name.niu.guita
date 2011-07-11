@@ -153,6 +153,13 @@ public class UisutSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UisutPackage.UI_SYSTEM_VARIABLE_POOL: {
+				UISystemVariablePool uiSystemVariablePool = (UISystemVariablePool)theEObject;
+				T result = caseUISystemVariablePool(uiSystemVariablePool);
+				if (result == null) result = caseUIElement(uiSystemVariablePool);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -289,6 +296,21 @@ public class UisutSwitch<T> {
 	 * @generated
 	 */
 	public T caseUISUT(UISUT object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>UI System Variable Pool</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>UI System Variable Pool</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUISystemVariablePool(UISystemVariablePool object) {
 		return null;
 	}
 

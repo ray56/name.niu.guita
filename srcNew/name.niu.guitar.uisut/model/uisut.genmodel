@@ -10,8 +10,9 @@
     <genClasses ecoreClass="uisut.ecore#//UIStatemachine">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUIState"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUITransition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsSubSTM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariablePool"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariable"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//AbstractUIState">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsInTransition"/>
@@ -43,6 +44,9 @@
     <genClasses ecoreClass="uisut.ecore#//FinalState"/>
     <genClasses ecoreClass="uisut.ecore#//UISUT">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISUT/itsSTM"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//UISystemVariablePool">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariablePool/itsUISystemVariable"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

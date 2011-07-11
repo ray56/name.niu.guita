@@ -289,6 +289,29 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link name.niu.guitar.uisut.UISystemVariablePool} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UISystemVariablePoolItemProvider uiSystemVariablePoolItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link name.niu.guitar.uisut.UISystemVariablePool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUISystemVariablePoolAdapter() {
+		if (uiSystemVariablePoolItemProvider == null) {
+			uiSystemVariablePoolItemProvider = new UISystemVariablePoolItemProvider(this);
+		}
+
+		return uiSystemVariablePoolItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -396,6 +419,7 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 		if (initialStateItemProvider != null) initialStateItemProvider.dispose();
 		if (finalStateItemProvider != null) finalStateItemProvider.dispose();
 		if (uisutItemProvider != null) uisutItemProvider.dispose();
+		if (uiSystemVariablePoolItemProvider != null) uiSystemVariablePoolItemProvider.dispose();
 	}
 
 }

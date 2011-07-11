@@ -13,6 +13,7 @@ import name.niu.guitar.uisut.InitialState;
 import name.niu.guitar.uisut.UIElement;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UISystemVariable;
+import name.niu.guitar.uisut.UISystemVariablePool;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutFactory;
 import name.niu.guitar.uisut.UisutPackage;
@@ -94,6 +95,13 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * @generated
 	 */
 	private EClass uisutEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass uiSystemVariablePoolEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -189,7 +197,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * @generated
 	 */
 	public EReference getUIStatemachine_ItsUISystemVariable() {
-		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(2);
+		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -198,6 +206,15 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * @generated
 	 */
 	public EReference getUIStatemachine_ItsSubSTM() {
+		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUIStatemachine_ItsUISystemVariablePool() {
 		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -431,6 +448,24 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getUISystemVariablePool() {
+		return uiSystemVariablePoolEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUISystemVariablePool_ItsUISystemVariable() {
+		return (EReference)uiSystemVariablePoolEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UisutFactory getUisutFactory() {
 		return (UisutFactory)getEFactoryInstance();
 	}
@@ -457,8 +492,9 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		uiStatemachineEClass = createEClass(UI_STATEMACHINE);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_STATE);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_TRANSITION);
-		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_SUB_STM);
+		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL);
+		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
 
 		abstractUIStateEClass = createEClass(ABSTRACT_UI_STATE);
 		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_IN_TRANSITION);
@@ -492,6 +528,9 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 
 		uisutEClass = createEClass(UISUT);
 		createEReference(uisutEClass, UISUT__ITS_STM);
+
+		uiSystemVariablePoolEClass = createEClass(UI_SYSTEM_VARIABLE_POOL);
+		createEReference(uiSystemVariablePoolEClass, UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE);
 	}
 
 	/**
@@ -530,13 +569,15 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initialStateEClass.getESuperTypes().add(this.getAbstractUIState());
 		finalStateEClass.getESuperTypes().add(this.getAbstractUIState());
 		uisutEClass.getESuperTypes().add(this.getUIElement());
+		uiSystemVariablePoolEClass.getESuperTypes().add(this.getUIElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(uiStatemachineEClass, UIStatemachine.class, "UIStatemachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIStatemachine_ItsUIState(), this.getAbstractUIState(), null, "itsUIState", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsUITransition(), this.getUITransition(), null, "itsUITransition", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUIStatemachine_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsSubSTM(), this.getUIStatemachine(), null, "itsSubSTM", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsUISystemVariablePool(), this.getUISystemVariablePool(), null, "itsUISystemVariablePool", null, 1, 1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractUIStateEClass, AbstractUIState.class, "AbstractUIState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractUIState_ItsInTransition(), this.getUITransition(), this.getUITransition_ItsTarState(), "itsInTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -570,6 +611,9 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 
 		initEClass(uisutEClass, name.niu.guitar.uisut.UISUT.class, "UISUT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUISUT_ItsSTM(), this.getUIStatemachine(), null, "itsSTM", null, 0, 1, name.niu.guitar.uisut.UISUT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(uiSystemVariablePoolEClass, UISystemVariablePool.class, "UISystemVariablePool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUISystemVariablePool_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UISystemVariablePool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

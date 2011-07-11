@@ -170,7 +170,8 @@ public class TableEditorPart extends UISUTBaseEditorPart
 		
 		EObject eo = this.getEditingDomain().getResourceSet().getResources().get(0).getContents().get(0) ;
 		if (eo instanceof UIStatemachine ) {
-			viewer.setInput( eo ) ;
+			
+			viewer.setInput( ((UIStatemachine)eo).getItsUISystemVariablePool() ) ;
 			return ;
 		}
 		

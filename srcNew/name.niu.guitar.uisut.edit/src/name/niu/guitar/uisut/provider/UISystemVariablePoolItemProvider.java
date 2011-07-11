@@ -10,7 +10,7 @@ package name.niu.guitar.uisut.provider;
 import java.util.Collection;
 import java.util.List;
 
-import name.niu.guitar.uisut.UIStatemachine;
+import name.niu.guitar.uisut.UISystemVariablePool;
 import name.niu.guitar.uisut.UisutFactory;
 import name.niu.guitar.uisut.UisutPackage;
 
@@ -31,22 +31,29 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link name.niu.guitar.uisut.UIStatemachine} object.
+ * This is the item provider adapter for a {@link name.niu.guitar.uisut.UISystemVariablePool} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIStatemachineItemProvider
+public class UISystemVariablePoolItemProvider
 	extends UIElementItemProvider
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource,
+		ITableItemLabelProvider,
+		ITableItemColorProvider,
+		IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UIStatemachineItemProvider(AdapterFactory adapterFactory) {
+	public UISystemVariablePoolItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -77,11 +84,7 @@ public class UIStatemachineItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_STATE);
-			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_TRANSITION);
-			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_SUB_STM);
-			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL);
-			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
+			childrenFeatures.add(UisutPackage.Literals.UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE);
 		}
 		return childrenFeatures;
 	}
@@ -100,14 +103,14 @@ public class UIStatemachineItemProvider
 	}
 
 	/**
-	 * This returns UIStatemachine.gif.
+	 * This returns UISystemVariablePool.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/UIStatemachine"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/UISystemVariablePool"));
 	}
 
 	/**
@@ -118,10 +121,10 @@ public class UIStatemachineItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((UIStatemachine)object).getName();
+		String label = ((UISystemVariablePool)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_UIStatemachine_type") :
-			getString("_UI_UIStatemachine_type") + " " + label;
+			getString("_UI_UISystemVariablePool_type") :
+			getString("_UI_UISystemVariablePool_type") + " " + label;
 	}
 
 	/**
@@ -135,12 +138,8 @@ public class UIStatemachineItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(UIStatemachine.class)) {
-			case UisutPackage.UI_STATEMACHINE__ITS_UI_STATE:
-			case UisutPackage.UI_STATEMACHINE__ITS_UI_TRANSITION:
-			case UisutPackage.UI_STATEMACHINE__ITS_SUB_STM:
-			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL:
-			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE:
+		switch (notification.getFeatureID(UISystemVariablePool.class)) {
+			case UisutPackage.UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -160,42 +159,7 @@ public class UIStatemachineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_STATE,
-				 UisutFactory.eINSTANCE.createAbstractUIState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_STATE,
-				 UisutFactory.eINSTANCE.createCommonState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_STATE,
-				 UisutFactory.eINSTANCE.createInitialState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_STATE,
-				 UisutFactory.eINSTANCE.createFinalState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_TRANSITION,
-				 UisutFactory.eINSTANCE.createUITransition()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_SUB_STM,
-				 UisutFactory.eINSTANCE.createUIStatemachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL,
-				 UisutFactory.eINSTANCE.createUISystemVariablePool()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE,
+				(UisutPackage.Literals.UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE,
 				 UisutFactory.eINSTANCE.createUISystemVariable()));
 	}
 

@@ -109,6 +109,10 @@ public class UisutAdapterFactory extends AdapterFactoryImpl {
 				return createUISUTAdapter();
 			}
 			@Override
+			public Adapter caseUISystemVariablePool(UISystemVariablePool object) {
+				return createUISystemVariablePoolAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -251,6 +255,20 @@ public class UisutAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUISUTAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link name.niu.guitar.uisut.UISystemVariablePool <em>UI System Variable Pool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see name.niu.guitar.uisut.UISystemVariablePool
+	 * @generated
+	 */
+	public Adapter createUISystemVariablePoolAdapter() {
 		return null;
 	}
 

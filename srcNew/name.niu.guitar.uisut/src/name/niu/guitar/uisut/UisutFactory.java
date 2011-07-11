@@ -107,6 +107,15 @@ public interface UisutFactory extends EFactory {
 	UISUT createUISUT();
 
 	/**
+	 * Returns a new object of class '<em>UI System Variable Pool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>UI System Variable Pool</em>'.
+	 * @generated
+	 */
+	UISystemVariablePool createUISystemVariablePool();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

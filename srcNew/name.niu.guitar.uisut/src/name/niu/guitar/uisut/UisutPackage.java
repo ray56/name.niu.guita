@@ -161,22 +161,31 @@ public interface UisutPackage extends EPackage {
 	int UI_STATEMACHINE__ITS_UI_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Its UI System Variable</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Its Sub STM</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATEMACHINE__ITS_SUB_STM = UI_ELEMENT_FEATURE_COUNT + 3;
+	int UI_STATEMACHINE__ITS_SUB_STM = UI_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Its UI System Variable Pool</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL = UI_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Its UI System Variable</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>UI Statemachine</em>' class.
@@ -185,7 +194,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 4;
+	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl <em>Abstract UI State</em>}' class.
@@ -772,6 +781,62 @@ public interface UisutPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UISystemVariablePoolImpl <em>UI System Variable Pool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see name.niu.guitar.uisut.impl.UISystemVariablePoolImpl
+	 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getUISystemVariablePool()
+	 * @generated
+	 */
+	int UI_SYSTEM_VARIABLE_POOL = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL__NAME = UI_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL__DESCRIPTION = UI_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL__ID = UI_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Its UI System Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>UI System Variable Pool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UIStatemachine <em>UI Statemachine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -804,10 +869,10 @@ public interface UisutPackage extends EPackage {
 	EReference getUIStatemachine_ItsUITransition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariable <em>Its UI System Variable</em>}'.
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariable <em>Its UI System Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Its UI System Variable</em>'.
+	 * @return the meta object for the reference list '<em>Its UI System Variable</em>'.
 	 * @see name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariable()
 	 * @see #getUIStatemachine()
 	 * @generated
@@ -824,6 +889,17 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getUIStatemachine_ItsSubSTM();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariablePool <em>Its UI System Variable Pool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Its UI System Variable Pool</em>'.
+	 * @see name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariablePool()
+	 * @see #getUIStatemachine()
+	 * @generated
+	 */
+	EReference getUIStatemachine_ItsUISystemVariablePool();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.AbstractUIState <em>Abstract UI State</em>}'.
@@ -1093,6 +1169,27 @@ public interface UisutPackage extends EPackage {
 	EReference getUISUT_ItsSTM();
 
 	/**
+	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UISystemVariablePool <em>UI System Variable Pool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>UI System Variable Pool</em>'.
+	 * @see name.niu.guitar.uisut.UISystemVariablePool
+	 * @generated
+	 */
+	EClass getUISystemVariablePool();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link name.niu.guitar.uisut.UISystemVariablePool#getItsUISystemVariable <em>Its UI System Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Its UI System Variable</em>'.
+	 * @see name.niu.guitar.uisut.UISystemVariablePool#getItsUISystemVariable()
+	 * @see #getUISystemVariablePool()
+	 * @generated
+	 */
+	EReference getUISystemVariablePool_ItsUISystemVariable();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1141,7 +1238,7 @@ public interface UisutPackage extends EPackage {
 		EReference UI_STATEMACHINE__ITS_UI_TRANSITION = eINSTANCE.getUIStatemachine_ItsUITransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Its UI System Variable</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Its UI System Variable</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1155,6 +1252,14 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UI_STATEMACHINE__ITS_SUB_STM = eINSTANCE.getUIStatemachine_ItsSubSTM();
+
+		/**
+		 * The meta object literal for the '<em><b>Its UI System Variable Pool</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL = eINSTANCE.getUIStatemachine_ItsUISystemVariablePool();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl <em>Abstract UI State</em>}' class.
@@ -1371,6 +1476,24 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UISUT__ITS_STM = eINSTANCE.getUISUT_ItsSTM();
+
+		/**
+		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.UISystemVariablePoolImpl <em>UI System Variable Pool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see name.niu.guitar.uisut.impl.UISystemVariablePoolImpl
+		 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getUISystemVariablePool()
+		 * @generated
+		 */
+		EClass UI_SYSTEM_VARIABLE_POOL = eINSTANCE.getUISystemVariablePool();
+
+		/**
+		 * The meta object literal for the '<em><b>Its UI System Variable</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE = eINSTANCE.getUISystemVariablePool_ItsUISystemVariable();
 
 	}
 

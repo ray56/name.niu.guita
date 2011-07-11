@@ -8,10 +8,12 @@
         eType="#//AbstractUIState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUITransition" upperBound="-1"
         eType="#//UITransition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
-        eType="#//UISystemVariable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsSubSTM" upperBound="-1"
         eType="#//UIStatemachine" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariablePool"
+        lowerBound="1" eType="#//UISystemVariablePool" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
+        eType="#//UISystemVariable" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractUIState" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsInTransition" upperBound="-1"
@@ -54,5 +56,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="UISUT" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsSTM" eType="#//UIStatemachine"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UISystemVariablePool" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
+        eType="#//UISystemVariable" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
