@@ -243,10 +243,10 @@ public class CommonStateImpl extends AbstractUIStateImpl implements CommonState 
 	 * override here
 	 */
 	@Override
-	public EList<UITransition> getItsExpendedInTransition() {		
+	public EList<UITransition> getItsExpandedInTransition() {		
 		EList<UITransition> itsExpendedInTransition = null ;
 		if (itsExpendedInTransition == null) {
-			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
+			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.COMMON_STATE__ITS_EXPANDED_IN_TRANSITION);
 		}
 		
 		itsExpendedInTransition.addAll(getItsInTransition()) ;
@@ -264,10 +264,10 @@ public class CommonStateImpl extends AbstractUIStateImpl implements CommonState 
 	 * override here
 	 */
 	@Override
-	public EList<UITransition> getItsExpendedOutTransition() {
+	public EList<UITransition> getItsExpandedOutTransition() {
 		EList<UITransition> itsExpendedOutTransition = null ;
 		if (itsExpendedOutTransition == null) {
-			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
+			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.COMMON_STATE__ITS_EXPANDED_OUT_TRANSITION);
 		}
 		
 		itsExpendedOutTransition.addAll(getItsOutTransition());

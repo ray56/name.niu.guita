@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guitar.uisut.UITransition#getGuardedSystemVariable <em>Guarded System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UITransition#getScriptStr <em>Script Str</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UITransition#getItsExpandedTarState <em>Its Expanded Tar State</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.UITransition#getItsExpendedSrcState <em>Its Expended Src State</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.UITransition#getItsExpandedSrcState <em>Its Expanded Src State</em>}</li>
  * </ul>
  * </p>
  *
@@ -157,29 +157,29 @@ public interface UITransition extends UIElement {
 	void setItsExpandedTarState(AbstractUIState value);
 
 	/**
-	 * Returns the value of the '<em><b>Its Expended Src State</b></em>' reference.
+	 * Returns the value of the '<em><b>Its Expanded Src State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Its Expended Src State</em>' reference isn't clear,
+	 * If the meaning of the '<em>Its Expanded Src State</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Expended Src State</em>' reference.
-	 * @see #setItsExpendedSrcState(AbstractUIState)
-	 * @see name.niu.guitar.uisut.UisutPackage#getUITransition_ItsExpendedSrcState()
+	 * @return the value of the '<em>Its Expanded Src State</em>' reference.
+	 * @see #setItsExpandedSrcState(AbstractUIState)
+	 * @see name.niu.guitar.uisut.UisutPackage#getUITransition_ItsExpandedSrcState()
 	 * @model required="true" derived="true"
 	 * @generated
 	 */
-	AbstractUIState getItsExpendedSrcState();
+	AbstractUIState getItsExpandedSrcState();
 
 	/**
-	 * Sets the value of the '{@link name.niu.guitar.uisut.UITransition#getItsExpendedSrcState <em>Its Expended Src State</em>}' reference.
+	 * Sets the value of the '{@link name.niu.guitar.uisut.UITransition#getItsExpandedSrcState <em>Its Expanded Src State</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Its Expended Src State</em>' reference.
-	 * @see #getItsExpendedSrcState()
+	 * @param value the new value of the '<em>Its Expanded Src State</em>' reference.
+	 * @see #getItsExpandedSrcState()
 	 * @generated
 	 */
-	void setItsExpendedSrcState(AbstractUIState value);
+	void setItsExpandedSrcState(AbstractUIState value);
 
 } // UITransition

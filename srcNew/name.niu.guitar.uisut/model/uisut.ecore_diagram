@@ -579,7 +579,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_MOFktqxKEeCSfaGn3dh38A" x="-2" y="17"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_MOFksaxKEeCSfaGn3dh38A" fontColor="33023"/>
-    <element xmi:type="ecore:EReference" href="uisut.ecore#//UITransition/itsExpendedSrcState"/>
+    <element xmi:type="ecore:EReference" href="uisut.ecore#//UITransition/itsExpandedSrcState"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MOFksqxKEeCSfaGn3dh38A" points="[-118, -8, -114, 150]$[-118, -137, -114, 21]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MOOuoKxKEeCSfaGn3dh38A" id="(0.912621359223301,0.09876543209876543)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MOOuoaxKEeCSfaGn3dh38A" id="(0.8932038834951457,0.6818181818181818)"/>
@@ -612,7 +612,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_6CbItqxNEeCSfaGn3dh38A" x="6" y="8"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_6CbIsaxNEeCSfaGn3dh38A" fontColor="4227327"/>
-    <element xmi:type="ecore:EReference" href="uisut.ecore#//AbstractUIState/itsExpendedInTransition"/>
+    <element xmi:type="ecore:EReference" href="uisut.ecore#//AbstractUIState/itsExpandedInTransition"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6CbIsqxNEeCSfaGn3dh38A" points="[-64, 33, -64, -169]$[-64, 162, -64, -40]"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_PJzyIKxOEeCSfaGn3dh38A" type="4002" source="_cCt1MKOxEeCeZupa1u290A" target="_gM4IgKOxEeCeZupa1u290A" routing="Rectilinear" lineColor="4227327">
@@ -623,7 +623,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_PJ9jI6xOEeCSfaGn3dh38A" x="6" y="-13"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_PJzyIaxOEeCSfaGn3dh38A" fontColor="4227327"/>
-    <element xmi:type="ecore:EReference" href="uisut.ecore#//AbstractUIState/itsExpendedOutTransition"/>
+    <element xmi:type="ecore:EReference" href="uisut.ecore#//AbstractUIState/itsExpandedOutTransition"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PJzyIqxOEeCSfaGn3dh38A" points="[-96, 19, -98, -139]$[-96, 148, -98, -10]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PJ9jJKxOEeCSfaGn3dh38A" id="(0.9029126213592233,0.7121212121212122)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PJ9jJaxOEeCSfaGn3dh38A" id="(0.912621359223301,0.12345679012345678)"/>

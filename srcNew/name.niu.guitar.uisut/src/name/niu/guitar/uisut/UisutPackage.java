@@ -352,22 +352,22 @@ public interface UisutPackage extends EPackage {
 	int ABSTRACT_UI_STATE__SCRIPT_STR = VERTEX_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = VERTEX_FEATURE_COUNT + 3;
+	int ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION = VERTEX_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = VERTEX_FEATURE_COUNT + 4;
+	int ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION = VERTEX_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Abstract UI State</em>' class.
@@ -461,13 +461,13 @@ public interface UisutPackage extends EPackage {
 	int UI_TRANSITION__ITS_EXPANDED_TAR_STATE = UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended Src State</b></em>' reference.
+	 * The feature id for the '<em><b>Its Expanded Src State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION__ITS_EXPENDED_SRC_STATE = UI_ELEMENT_FEATURE_COUNT + 5;
+	int UI_TRANSITION__ITS_EXPANDED_SRC_STATE = UI_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>UI Transition</em>' class.
@@ -634,22 +634,22 @@ public interface UisutPackage extends EPackage {
 	int COMMON_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMON_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+	int COMMON_STATE__ITS_EXPANDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMON_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
+	int COMMON_STATE__ITS_EXPANDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Picture</b></em>' attribute.
@@ -761,22 +761,22 @@ public interface UisutPackage extends EPackage {
 	int INITIAL_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+	int INITIAL_STATE__ITS_EXPANDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
+	int INITIAL_STATE__ITS_EXPANDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION;
 
 	/**
 	 * The number of structural features of the '<em>Initial State</em>' class.
@@ -870,22 +870,22 @@ public interface UisutPackage extends EPackage {
 	int FINAL_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINAL_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+	int FINAL_STATE__ITS_EXPANDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Expanded Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINAL_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
+	int FINAL_STATE__ITS_EXPANDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION;
 
 	/**
 	 * The number of structural features of the '<em>Final State</em>' class.
@@ -1202,26 +1202,26 @@ public interface UisutPackage extends EPackage {
 	EAttribute getAbstractUIState_ScriptStr();
 
 	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition <em>Its Expended In Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpandedInTransition <em>Its Expanded In Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Its Expended In Transition</em>'.
-	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition()
+	 * @return the meta object for the reference list '<em>Its Expanded In Transition</em>'.
+	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpandedInTransition()
 	 * @see #getAbstractUIState()
 	 * @generated
 	 */
-	EReference getAbstractUIState_ItsExpendedInTransition();
+	EReference getAbstractUIState_ItsExpandedInTransition();
 
 	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpandedOutTransition <em>Its Expanded Out Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Its Expended Out Transition</em>'.
-	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition()
+	 * @return the meta object for the reference list '<em>Its Expanded Out Transition</em>'.
+	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpandedOutTransition()
 	 * @see #getAbstractUIState()
 	 * @generated
 	 */
-	EReference getAbstractUIState_ItsExpendedOutTransition();
+	EReference getAbstractUIState_ItsExpandedOutTransition();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UITransition <em>UI Transition</em>}'.
@@ -1289,15 +1289,15 @@ public interface UisutPackage extends EPackage {
 	EReference getUITransition_ItsExpandedTarState();
 
 	/**
-	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsExpendedSrcState <em>Its Expended Src State</em>}'.
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsExpandedSrcState <em>Its Expanded Src State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Its Expended Src State</em>'.
-	 * @see name.niu.guitar.uisut.UITransition#getItsExpendedSrcState()
+	 * @return the meta object for the reference '<em>Its Expanded Src State</em>'.
+	 * @see name.niu.guitar.uisut.UITransition#getItsExpandedSrcState()
 	 * @see #getUITransition()
 	 * @generated
 	 */
-	EReference getUITransition_ItsExpendedSrcState();
+	EReference getUITransition_ItsExpandedSrcState();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UISystemVariable <em>UI System Variable</em>}'.
@@ -1647,20 +1647,20 @@ public interface UisutPackage extends EPackage {
 		EAttribute ABSTRACT_UI_STATE__SCRIPT_STR = eINSTANCE.getAbstractUIState_ScriptStr();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Expended In Transition</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Its Expanded In Transition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpendedInTransition();
+		EReference ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpandedInTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Expended Out Transition</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Its Expanded Out Transition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpendedOutTransition();
+		EReference ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpandedOutTransition();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
@@ -1713,12 +1713,12 @@ public interface UisutPackage extends EPackage {
 		EReference UI_TRANSITION__ITS_EXPANDED_TAR_STATE = eINSTANCE.getUITransition_ItsExpandedTarState();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Expended Src State</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Its Expanded Src State</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference UI_TRANSITION__ITS_EXPENDED_SRC_STATE = eINSTANCE.getUITransition_ItsExpendedSrcState();
+		EReference UI_TRANSITION__ITS_EXPANDED_SRC_STATE = eINSTANCE.getUITransition_ItsExpandedSrcState();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.UISystemVariableImpl <em>UI System Variable</em>}' class.

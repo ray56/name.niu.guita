@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getGuardedSystemVariable <em>Guarded System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getScriptStr <em>Script Str</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsExpandedTarState <em>Its Expanded Tar State</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsExpendedSrcState <em>Its Expended Src State</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsExpandedSrcState <em>Its Expanded Src State</em>}</li>
  * </ul>
  * </p>
  *
@@ -109,14 +109,14 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	protected AbstractUIState itsExpandedTarState;
 
 	/**
-	 * The cached value of the '{@link #getItsExpendedSrcState() <em>Its Expended Src State</em>}' reference.
+	 * The cached value of the '{@link #getItsExpandedSrcState() <em>Its Expanded Src State</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItsExpendedSrcState()
+	 * @see #getItsExpandedSrcState()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractUIState itsExpendedSrcState;
+	protected AbstractUIState itsExpandedSrcState;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -347,6 +347,44 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState getItsExpandedSrcState() {
+		if (itsExpandedSrcState != null && itsExpandedSrcState.eIsProxy()) {
+			InternalEObject oldItsExpandedSrcState = (InternalEObject)itsExpandedSrcState;
+			itsExpandedSrcState = (AbstractUIState)eResolveProxy(oldItsExpandedSrcState);
+			if (itsExpandedSrcState != oldItsExpandedSrcState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE, oldItsExpandedSrcState, itsExpandedSrcState));
+			}
+		}
+		return itsExpandedSrcState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState basicGetItsExpandedSrcState() {
+		return itsExpandedSrcState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItsExpandedSrcState(AbstractUIState newItsExpandedSrcState) {
+		AbstractUIState oldItsExpandedSrcState = itsExpandedSrcState;
+		itsExpandedSrcState = newItsExpandedSrcState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE, oldItsExpandedSrcState, itsExpandedSrcState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 * itsExpendedSrcState is derived
 	 */
@@ -376,27 +414,6 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 //			}
 //		}
 //		return itsExpendedSrcState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractUIState basicGetItsExpendedSrcState() {
-		return itsExpendedSrcState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setItsExpendedSrcState(AbstractUIState newItsExpendedSrcState) {
-		AbstractUIState oldItsExpendedSrcState = itsExpendedSrcState;
-		itsExpendedSrcState = newItsExpendedSrcState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE, oldItsExpendedSrcState, itsExpendedSrcState));
 	}
 
 	/**
@@ -461,9 +478,9 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
 				if (resolve) return getItsExpandedTarState();
 				return basicGetItsExpandedTarState();
-			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
-				if (resolve) return getItsExpendedSrcState();
-				return basicGetItsExpendedSrcState();
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE:
+				if (resolve) return getItsExpandedSrcState();
+				return basicGetItsExpandedSrcState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -493,8 +510,8 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
 				setItsExpandedTarState((AbstractUIState)newValue);
 				return;
-			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
-				setItsExpendedSrcState((AbstractUIState)newValue);
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE:
+				setItsExpandedSrcState((AbstractUIState)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -523,8 +540,8 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
 				setItsExpandedTarState((AbstractUIState)null);
 				return;
-			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
-				setItsExpendedSrcState((AbstractUIState)null);
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE:
+				setItsExpandedSrcState((AbstractUIState)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -548,8 +565,8 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 				return SCRIPT_STR_EDEFAULT == null ? scriptStr != null : !SCRIPT_STR_EDEFAULT.equals(scriptStr);
 			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
 				return itsExpandedTarState != null;
-			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
-				return itsExpendedSrcState != null;
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE:
+				return itsExpandedSrcState != null;
 		}
 		return super.eIsSet(featureID);
 	}

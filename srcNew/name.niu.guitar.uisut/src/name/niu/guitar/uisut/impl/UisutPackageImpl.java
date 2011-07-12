@@ -284,7 +284,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAbstractUIState_ItsExpendedInTransition() {
+	public EReference getAbstractUIState_ItsExpandedInTransition() {
 		return (EReference)abstractUIStateEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -293,7 +293,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAbstractUIState_ItsExpendedOutTransition() {
+	public EReference getAbstractUIState_ItsExpandedOutTransition() {
 		return (EReference)abstractUIStateEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -356,7 +356,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUITransition_ItsExpendedSrcState() {
+	public EReference getUITransition_ItsExpandedSrcState() {
 		return (EReference)uiTransitionEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -598,8 +598,8 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE);
 		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE);
 		createEAttribute(abstractUIStateEClass, ABSTRACT_UI_STATE__SCRIPT_STR);
-		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
-		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
+		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION);
+		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION);
 
 		uiTransitionEClass = createEClass(UI_TRANSITION);
 		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_SRC_STATE);
@@ -607,7 +607,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		createEReference(uiTransitionEClass, UI_TRANSITION__GUARDED_SYSTEM_VARIABLE);
 		createEAttribute(uiTransitionEClass, UI_TRANSITION__SCRIPT_STR);
 		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_EXPANDED_TAR_STATE);
-		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_EXPENDED_SRC_STATE);
+		createEReference(uiTransitionEClass, UI_TRANSITION__ITS_EXPANDED_SRC_STATE);
 
 		uiSystemVariableEClass = createEClass(UI_SYSTEM_VARIABLE);
 		createEReference(uiSystemVariableEClass, UI_SYSTEM_VARIABLE__ADD_UI_STATE);
@@ -694,8 +694,8 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initEReference(getAbstractUIState_AddedSystemVariable(), this.getUISystemVariable(), this.getUISystemVariable_AddUIState(), "addedSystemVariable", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractUIState_DeletedSystemVariable(), this.getUISystemVariable(), this.getUISystemVariable_DeleteUIState(), "deletedSystemVariable", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractUIState_ScriptStr(), ecorePackage.getEString(), "scriptStr", null, 0, 1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractUIState_ItsExpendedInTransition(), this.getUITransition(), null, "itsExpendedInTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractUIState_ItsExpendedOutTransition(), this.getUITransition(), null, "itsExpendedOutTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractUIState_ItsExpandedInTransition(), this.getUITransition(), null, "itsExpandedInTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractUIState_ItsExpandedOutTransition(), this.getUITransition(), null, "itsExpandedOutTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiTransitionEClass, UITransition.class, "UITransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUITransition_ItsSrcState(), this.getVertex(), this.getVertex_ItsOutTransition(), "itsSrcState", null, 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -703,7 +703,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initEReference(getUITransition_GuardedSystemVariable(), this.getUISystemVariable(), this.getUISystemVariable_GuardUITransitions(), "guardedSystemVariable", null, 0, -1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUITransition_ScriptStr(), ecorePackage.getEString(), "scriptStr", null, 0, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUITransition_ItsExpandedTarState(), this.getAbstractUIState(), null, "itsExpandedTarState", null, 1, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getUITransition_ItsExpendedSrcState(), this.getAbstractUIState(), null, "itsExpendedSrcState", null, 1, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getUITransition_ItsExpandedSrcState(), this.getAbstractUIState(), null, "itsExpandedSrcState", null, 1, 1, UITransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiSystemVariableEClass, UISystemVariable.class, "UISystemVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUISystemVariable_AddUIState(), this.getAbstractUIState(), this.getAbstractUIState_AddedSystemVariable(), "addUIState", null, 0, -1, UISystemVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

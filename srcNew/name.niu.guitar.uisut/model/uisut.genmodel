@@ -19,8 +19,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/addedSystemVariable"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/deletedSystemVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//AbstractUIState/scriptStr"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsExpendedInTransition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsExpendedOutTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsExpandedInTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsExpandedOutTransition"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UITransition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsSrcState"/>
@@ -28,7 +28,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/guardedSystemVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/scriptStr"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpandedTarState"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpendedSrcState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpandedSrcState"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UISystemVariable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariable/addUIState"/>

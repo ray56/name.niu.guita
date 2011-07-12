@@ -63,8 +63,8 @@ public class AbstractUIStateItemProvider
 			addAddedSystemVariablePropertyDescriptor(object);
 			addDeletedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
-			addItsExpendedInTransitionPropertyDescriptor(object);
-			addItsExpendedOutTransitionPropertyDescriptor(object);
+			addItsExpandedInTransitionPropertyDescriptor(object);
+			addItsExpandedOutTransitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -136,19 +136,19 @@ public class AbstractUIStateItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Its Expended In Transition feature.
+	 * This adds a property descriptor for the Its Expanded In Transition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addItsExpendedInTransitionPropertyDescriptor(Object object) {
+	protected void addItsExpandedInTransitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AbstractUIState_itsExpendedInTransition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsExpendedInTransition_feature", "_UI_AbstractUIState_type"),
-				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION,
+				 getString("_UI_AbstractUIState_itsExpandedInTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsExpandedInTransition_feature", "_UI_AbstractUIState_type"),
+				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION,
 				 true,
 				 false,
 				 true,
@@ -158,19 +158,19 @@ public class AbstractUIStateItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Its Expended Out Transition feature.
+	 * This adds a property descriptor for the Its Expanded Out Transition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addItsExpendedOutTransitionPropertyDescriptor(Object object) {
+	protected void addItsExpandedOutTransitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AbstractUIState_itsExpendedOutTransition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsExpendedOutTransition_feature", "_UI_AbstractUIState_type"),
-				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION,
+				 getString("_UI_AbstractUIState_itsExpandedOutTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsExpandedOutTransition_feature", "_UI_AbstractUIState_type"),
+				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION,
 				 true,
 				 false,
 				 true,

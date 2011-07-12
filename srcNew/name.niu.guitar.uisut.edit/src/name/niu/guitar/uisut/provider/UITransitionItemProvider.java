@@ -65,7 +65,7 @@ public class UITransitionItemProvider
 			addGuardedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
 			addItsExpandedTarStatePropertyDescriptor(object);
-			addItsExpendedSrcStatePropertyDescriptor(object);
+			addItsExpandedSrcStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -181,19 +181,19 @@ public class UITransitionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Its Expended Src State feature.
+	 * This adds a property descriptor for the Its Expanded Src State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addItsExpendedSrcStatePropertyDescriptor(Object object) {
+	protected void addItsExpandedSrcStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_UITransition_itsExpendedSrcState_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsExpendedSrcState_feature", "_UI_UITransition_type"),
-				 UisutPackage.Literals.UI_TRANSITION__ITS_EXPENDED_SRC_STATE,
+				 getString("_UI_UITransition_itsExpandedSrcState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsExpandedSrcState_feature", "_UI_UITransition_type"),
+				 UisutPackage.Literals.UI_TRANSITION__ITS_EXPANDED_SRC_STATE,
 				 true,
 				 false,
 				 true,

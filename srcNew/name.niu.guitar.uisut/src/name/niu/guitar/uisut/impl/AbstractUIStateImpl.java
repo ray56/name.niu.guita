@@ -39,8 +39,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getScriptStr <em>Script Str</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpendedInTransition <em>Its Expended In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpandedInTransition <em>Its Expanded In Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpandedOutTransition <em>Its Expanded Out Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,24 +88,24 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	protected String scriptStr = SCRIPT_STR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItsExpendedInTransition() <em>Its Expended In Transition</em>}' reference list.
+	 * The cached value of the '{@link #getItsExpandedInTransition() <em>Its Expanded In Transition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItsExpendedInTransition()
+	 * @see #getItsExpandedInTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UITransition> itsExpendedInTransition;
+	protected EList<UITransition> itsExpandedInTransition;
 
 	/**
-	 * The cached value of the '{@link #getItsExpendedOutTransition() <em>Its Expended Out Transition</em>}' reference list.
+	 * The cached value of the '{@link #getItsExpandedOutTransition() <em>Its Expanded Out Transition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItsExpendedOutTransition()
+	 * @see #getItsExpandedOutTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UITransition> itsExpendedOutTransition;
+	protected EList<UITransition> itsExpandedOutTransition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,10 +177,10 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	 * @generated NOT
 	 * itsExpendedInTransition is derived
 	 */
-	public EList<UITransition> getItsExpendedInTransition() {		
+	public EList<UITransition> getItsExpandedInTransition() {		
 		EList<UITransition> itsExpendedInTransition = null ;
 		if (itsExpendedInTransition == null) {
-			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
+			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION);
 		}
 		itsExpendedInTransition.addAll(getItsInTransition()) ;
 		return itsExpendedInTransition;
@@ -192,10 +192,10 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	 * @generated NOT
 	 * itsExpendedOutTransition is derived
 	 */
-	public EList<UITransition> getItsExpendedOutTransition() {
+	public EList<UITransition> getItsExpandedOutTransition() {
 		EList<UITransition> itsExpendedOutTransition = null ;
 		if (itsExpendedOutTransition == null) {
-			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
+			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION);
 		}
 		itsExpendedOutTransition.addAll(getItsOutTransition());
 		return itsExpendedOutTransition;
@@ -248,10 +248,10 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 				return getDeletedSystemVariable();
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				return getScriptStr();
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
-				return getItsExpendedInTransition();
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
-				return getItsExpendedOutTransition();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION:
+				return getItsExpandedInTransition();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION:
+				return getItsExpandedOutTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -276,13 +276,13 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				setScriptStr((String)newValue);
 				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
-				getItsExpendedInTransition().clear();
-				getItsExpendedInTransition().addAll((Collection<? extends UITransition>)newValue);
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION:
+				getItsExpandedInTransition().clear();
+				getItsExpandedInTransition().addAll((Collection<? extends UITransition>)newValue);
 				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
-				getItsExpendedOutTransition().clear();
-				getItsExpendedOutTransition().addAll((Collection<? extends UITransition>)newValue);
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION:
+				getItsExpandedOutTransition().clear();
+				getItsExpandedOutTransition().addAll((Collection<? extends UITransition>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,11 +305,11 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				setScriptStr(SCRIPT_STR_EDEFAULT);
 				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
-				getItsExpendedInTransition().clear();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION:
+				getItsExpandedInTransition().clear();
 				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
-				getItsExpendedOutTransition().clear();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION:
+				getItsExpandedOutTransition().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -329,10 +329,10 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 				return deletedSystemVariable != null && !deletedSystemVariable.isEmpty();
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				return SCRIPT_STR_EDEFAULT == null ? scriptStr != null : !SCRIPT_STR_EDEFAULT.equals(scriptStr);
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
-				return itsExpendedInTransition != null && !itsExpendedInTransition.isEmpty();
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
-				return itsExpendedOutTransition != null && !itsExpendedOutTransition.isEmpty();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION:
+				return itsExpandedInTransition != null && !itsExpandedInTransition.isEmpty();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION:
+				return itsExpandedOutTransition != null && !itsExpandedOutTransition.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

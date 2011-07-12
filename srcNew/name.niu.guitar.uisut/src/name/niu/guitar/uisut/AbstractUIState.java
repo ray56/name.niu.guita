@@ -19,8 +19,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getScriptStr <em>Script Str</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition <em>Its Expended In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpandedInTransition <em>Its Expanded In Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpandedOutTransition <em>Its Expanded Out Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,35 +92,35 @@ public interface AbstractUIState extends Vertex {
 	void setScriptStr(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Its Expanded In Transition</b></em>' reference list.
 	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Its Expended In Transition</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Its Expanded In Transition</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Expended In Transition</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpendedInTransition()
+	 * @return the value of the '<em>Its Expanded In Transition</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpandedInTransition()
 	 * @model derived="true"
 	 * @generated
 	 */
-	EList<UITransition> getItsExpendedInTransition();
+	EList<UITransition> getItsExpandedInTransition();
 
 	/**
-	 * Returns the value of the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Its Expanded Out Transition</b></em>' reference list.
 	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Its Expended Out Transition</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Its Expanded Out Transition</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Expended Out Transition</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpendedOutTransition()
+	 * @return the value of the '<em>Its Expanded Out Transition</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpandedOutTransition()
 	 * @model derived="true"
 	 * @generated
 	 */
-	EList<UITransition> getItsExpendedOutTransition();
+	EList<UITransition> getItsExpandedOutTransition();
 
 } // AbstractUIState
