@@ -3,6 +3,8 @@ package name.niu.guitar.uisut.diagram.sheet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import name.niu.guitar.uisut.CommonState;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -26,7 +28,7 @@ public class UisutPropertySection extends AdvancedPropertySection implements
 		IPropertySourceProvider {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public IPropertySource getPropertySource(Object object) {
 		if (object instanceof IPropertySource) {
@@ -34,6 +36,13 @@ public class UisutPropertySection extends AdvancedPropertySection implements
 		}
 		AdapterFactory af = getAdapterFactory(object);
 		if (af != null) {
+
+			if (object instanceof CommonState) {
+				IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
+				return new PicPropertySource(object, ips);
+			}
+			
+
 			IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
 					IItemPropertySource.class);
 			if (ips != null) {

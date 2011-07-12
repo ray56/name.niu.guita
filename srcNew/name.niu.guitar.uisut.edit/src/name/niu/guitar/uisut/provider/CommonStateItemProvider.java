@@ -12,6 +12,7 @@ import java.util.List;
 
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.provider.providerDescriptions.PicItemPropertyDescriptor;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -70,22 +71,31 @@ public class CommonStateItemProvider
 	 * This adds a property descriptor for the Picture feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addPicturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CommonState_picture_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CommonState_picture_feature", "_UI_CommonState_type"),
-				 UisutPackage.Literals.COMMON_STATE__PICTURE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+//		itemPropertyDescriptors.add
+//			(createItemPropertyDescriptor
+//				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//				 getResourceLocator(),
+//				 getString("_UI_CommonState_picture_feature"),
+//				 getString("_UI_PropertyDescriptor_description", "_UI_CommonState_picture_feature", "_UI_CommonState_type"),
+//				 UisutPackage.Literals.COMMON_STATE__PICTURE,
+//				 true,
+//				 false,
+//				 false,
+//				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+//				 null,
+//				 null));
+		
+		itemPropertyDescriptors.add	( new PicItemPropertyDescriptor (
+			((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+			 getResourceLocator(),
+			 getString("_UI_CommonState_picture_feature"),
+			 getString("_UI_PropertyDescriptor_description", "_UI_CommonState_picture_feature", "_UI_CommonState_type"),
+			 UisutPackage.Literals.COMMON_STATE__PICTURE,
+			 true,
+			 null));
 	}
 
 	/**
