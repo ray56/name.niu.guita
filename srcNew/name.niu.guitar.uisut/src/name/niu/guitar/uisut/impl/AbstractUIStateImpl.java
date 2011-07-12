@@ -220,24 +220,30 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * itsExpendedInTransition is derived
 	 */
-	public EList<UITransition> getItsExpendedInTransition() {
+	public EList<UITransition> getItsExpendedInTransition() {		
+		EList<UITransition> itsExpendedInTransition = null ;
 		if (itsExpendedInTransition == null) {
 			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
 		}
+		itsExpendedInTransition.addAll(getItsInTransition()) ;
 		return itsExpendedInTransition;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * itsExpendedOutTransition is derived
 	 */
 	public EList<UITransition> getItsExpendedOutTransition() {
+		EList<UITransition> itsExpendedOutTransition = null ;
 		if (itsExpendedOutTransition == null) {
 			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
 		}
+		itsExpendedOutTransition.addAll(getItsOutTrantion());
 		return itsExpendedOutTransition;
 	}
 

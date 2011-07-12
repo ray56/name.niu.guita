@@ -9,6 +9,7 @@ package name.niu.guitar.uisut.impl;
 import java.util.Collection;
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.Stateshortcut;
+import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -234,5 +236,46 @@ public class CommonStateImpl extends AbstractUIStateImpl implements CommonState 
 		result.append(')');
 		return result.toString();
 	}
+	
+	/**
+	 * itsExpendedInTransition is derived
+	 * @generated NOT NOT
+	 * override here
+	 */
+	@Override
+	public EList<UITransition> getItsExpendedInTransition() {		
+		EList<UITransition> itsExpendedInTransition = null ;
+		if (itsExpendedInTransition == null) {
+			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
+		}
+		
+		itsExpendedInTransition.addAll(getItsInTransition()) ;
+		
+		for ( Stateshortcut shortcut : this.getItsShortcut() ) {
+			itsExpendedInTransition.addAll( shortcut.getItsInTransition() );
+		}
+		
+		return itsExpendedInTransition;
+	}
 
+	/**
+	 * itsExpendedOutTransition is derived
+	 * @generated NOT NOT
+	 * override here
+	 */
+	@Override
+	public EList<UITransition> getItsExpendedOutTransition() {
+		EList<UITransition> itsExpendedOutTransition = null ;
+		if (itsExpendedOutTransition == null) {
+			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
+		}
+		
+		itsExpendedOutTransition.addAll(getItsOutTrantion());
+		
+		for ( Stateshortcut shortcut : this.getItsShortcut() ) {
+			itsExpendedOutTransition.addAll( shortcut.getItsOutTransition() );
+		}
+		
+		return itsExpendedOutTransition;
+	}
 } //CommonStateImpl

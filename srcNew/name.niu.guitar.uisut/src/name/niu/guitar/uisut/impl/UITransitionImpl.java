@@ -434,18 +434,28 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * itsExpandedTarState is derived
 	 */
 	public AbstractUIState getItsExpandedTarState() {
-		if (itsExpandedTarState != null && itsExpandedTarState.eIsProxy()) {
-			InternalEObject oldItsExpandedTarState = (InternalEObject)itsExpandedTarState;
-			itsExpandedTarState = (AbstractUIState)eResolveProxy(oldItsExpandedTarState);
-			if (itsExpandedTarState != oldItsExpandedTarState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE, oldItsExpandedTarState, itsExpandedTarState));
-			}
+		
+		if ( getItsTarState() != null ) {
+			return getItsTarState() ;
+		} else if ( getItsTarStateShortcut() != null  ) {
+			return getItsTarStateShortcut().getItsShortcutFor();
+		} else {
+			return null ;
 		}
-		return itsExpandedTarState;
+		
+//		if (itsExpandedTarState != null && itsExpandedTarState.eIsProxy()) {
+//			InternalEObject oldItsExpandedTarState = (InternalEObject)itsExpandedTarState;
+//			itsExpandedTarState = (AbstractUIState)eResolveProxy(oldItsExpandedTarState);
+//			if (itsExpandedTarState != oldItsExpandedTarState) {
+//				if (eNotificationRequired())
+//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE, oldItsExpandedTarState, itsExpandedTarState));
+//			}
+//		}
+//		return itsExpandedTarState;
 	}
 
 	/**
@@ -472,18 +482,28 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * itsExpendedSrcState is derived
 	 */
 	public AbstractUIState getItsExpendedSrcState() {
-		if (itsExpendedSrcState != null && itsExpendedSrcState.eIsProxy()) {
-			InternalEObject oldItsExpendedSrcState = (InternalEObject)itsExpendedSrcState;
-			itsExpendedSrcState = (AbstractUIState)eResolveProxy(oldItsExpendedSrcState);
-			if (itsExpendedSrcState != oldItsExpendedSrcState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE, oldItsExpendedSrcState, itsExpendedSrcState));
-			}
+		
+		if ( getItsSrcState() != null ) {
+			return getItsSrcState() ;
+		} else if ( getItsSrcStateShortcut() != null  ) {
+			return getItsSrcStateShortcut().getItsShortcutFor();
+		} else {
+			return null ;
 		}
-		return itsExpendedSrcState;
+		
+//		if (itsExpendedSrcState != null && itsExpendedSrcState.eIsProxy()) {
+//			InternalEObject oldItsExpendedSrcState = (InternalEObject)itsExpendedSrcState;
+//			itsExpendedSrcState = (AbstractUIState)eResolveProxy(oldItsExpendedSrcState);
+//			if (itsExpendedSrcState != oldItsExpendedSrcState) {
+//				if (eNotificationRequired())
+//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE, oldItsExpendedSrcState, itsExpendedSrcState));
+//			}
+//		}
+//		return itsExpendedSrcState;
 	}
 
 	/**
