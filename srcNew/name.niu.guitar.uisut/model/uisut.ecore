@@ -25,6 +25,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="deletedSystemVariable"
         upperBound="-1" eType="#//UISystemVariable" eOpposite="#//UISystemVariable/deleteUIState"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpendedInTransition"
+        upperBound="-1" eType="#//UITransition" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpendedOutTransition"
+        upperBound="-1" eType="#//UITransition" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsSrcState" eType="#//AbstractUIState"
