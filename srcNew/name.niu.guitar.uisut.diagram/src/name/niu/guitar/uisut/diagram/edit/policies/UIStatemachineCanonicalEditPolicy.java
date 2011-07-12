@@ -122,7 +122,7 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void refreshSemantic() {
 		if (resolveSemanticElement() == null) {
@@ -172,7 +172,9 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		// those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
 		// or those we have potential matches to, and thus need to be recreated, preserving size/location information.
-		orphaned.addAll(knownViewChildren);
+		
+		//orphaned.addAll(knownViewChildren);
+		
 		//
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
