@@ -107,6 +107,26 @@
         </children>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="StateshortcutFigureDescriptor">
+      <actualFigure
+          xsi:type="gmfgraph:RoundedRectangle">
+        <layout
+            xsi:type="gmfgraph:GridLayout"/>
+        <preferredSize
+            dx="30"
+            dy="30"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="StateshortcutLabel">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              verticalAlignment="BEGINNING"/>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+    </descriptors>
   </figures>
   <nodes
       name="StateMachine"
@@ -122,6 +142,10 @@
       name="FinalState"
       figure="FinalStateFigureDescriptor"
       resizeConstraint="NONE"/>
+  <nodes
+      name="Stateshortcuct"
+      figure="StateshortcutFigureDescriptor"
+      resizeConstraint="NONE"/>
   <connections
       name="UITransition"
       figure="UITransitionFigureDescriptor"/>
@@ -133,4 +157,8 @@
       name="CommonStateName"
       figure="CommonStateFigureDescriptor"
       accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels
+      name="StateshortcutName"
+      figure="StateshortcutFigureDescriptor"
+      accessor="//@figures.0/@descriptors.5/@accessors.0"/>
 </gmfgraph:Canvas>

@@ -11,12 +11,14 @@ import name.niu.guitar.uisut.AbstractUIState;
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.FinalState;
 import name.niu.guitar.uisut.InitialState;
+import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachine2EditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -89,6 +91,16 @@ public class UisutDiagramUpdater {
 				continue;
 			}
 		}
+		for (Iterator<?> it = modelElement.getItsStateShortcut().iterator(); it
+				.hasNext();) {
+			Stateshortcut childElement = (Stateshortcut) it.next();
+			int visualID = UisutVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == StateshortcutEditPart.VISUAL_ID) {
+				result.add(new UisutNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
 		return result;
 	}
 
@@ -107,6 +119,8 @@ public class UisutDiagramUpdater {
 			return getFinalState_2003ContainedLinks(view);
 		case UIStatemachine2EditPart.VISUAL_ID:
 			return getUIStatemachine_2004ContainedLinks(view);
+		case StateshortcutEditPart.VISUAL_ID:
+			return getStateshortcut_2005ContainedLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001ContainedLinks(view);
 		}
@@ -126,6 +140,8 @@ public class UisutDiagramUpdater {
 			return getFinalState_2003IncomingLinks(view);
 		case UIStatemachine2EditPart.VISUAL_ID:
 			return getUIStatemachine_2004IncomingLinks(view);
+		case StateshortcutEditPart.VISUAL_ID:
+			return getStateshortcut_2005IncomingLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001IncomingLinks(view);
 		}
@@ -145,6 +161,8 @@ public class UisutDiagramUpdater {
 			return getFinalState_2003OutgoingLinks(view);
 		case UIStatemachine2EditPart.VISUAL_ID:
 			return getUIStatemachine_2004OutgoingLinks(view);
+		case StateshortcutEditPart.VISUAL_ID:
+			return getStateshortcut_2005OutgoingLinks(view);
 		case UITransitionEditPart.VISUAL_ID:
 			return getUITransition_4001OutgoingLinks(view);
 		}
@@ -195,6 +213,14 @@ public class UisutDiagramUpdater {
 		LinkedList<UisutLinkDescriptor> result = new LinkedList<UisutLinkDescriptor>();
 		result.addAll(getContainedTypeModelFacetLinks_UITransition_4001(modelElement));
 		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<UisutLinkDescriptor> getStateshortcut_2005ContainedLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
@@ -258,6 +284,14 @@ public class UisutDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<UisutLinkDescriptor> getStateshortcut_2005IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<UisutLinkDescriptor> getUITransition_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -300,6 +334,14 @@ public class UisutDiagramUpdater {
 	 * @generated
 	 */
 	public static List<UisutLinkDescriptor> getUIStatemachine_2004OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<UisutLinkDescriptor> getStateshortcut_2005OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
 	}

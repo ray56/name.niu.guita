@@ -50,6 +50,12 @@ public class UisutEditPartFactory implements EditPartFactory {
 			case UIStatemachineNameEditPart.VISUAL_ID:
 				return new UIStatemachineNameEditPart(view);
 
+			case StateshortcutEditPart.VISUAL_ID:
+				return new StateshortcutEditPart(view);
+
+			case StateshortcutNameEditPart.VISUAL_ID:
+				return new StateshortcutNameEditPart(view);
+
 			case UITransitionEditPart.VISUAL_ID:
 				return new UITransitionEditPart(view);
 

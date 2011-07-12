@@ -40,11 +40,12 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 		IGraphicalEditPart editPart = (IGraphicalEditPart) host
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof UIStatemachineEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(4);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(5);
 			types.add(UisutElementTypes.CommonState_2001);
 			types.add(UisutElementTypes.InitialState_2002);
 			types.add(UisutElementTypes.FinalState_2003);
 			types.add(UisutElementTypes.UIStatemachine_2004);
+			types.add(UisutElementTypes.Stateshortcut_2005);
 			return types;
 		}
 		return Collections.EMPTY_LIST;

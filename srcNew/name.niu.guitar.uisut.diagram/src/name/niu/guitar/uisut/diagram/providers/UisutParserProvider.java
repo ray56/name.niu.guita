@@ -2,6 +2,7 @@ package name.niu.guitar.uisut.diagram.providers;
 
 import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateNameEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineNameEditPart;
 import name.niu.guitar.uisut.diagram.parsers.MessageFormatParser;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
@@ -70,12 +71,35 @@ public class UisutParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser stateshortcutName_5003Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getStateshortcutName_5003Parser() {
+		if (stateshortcutName_5003Parser == null) {
+			EAttribute[] features = new EAttribute[] { UisutPackage.eINSTANCE
+					.getUIElement_Name() };
+			EAttribute[] editableFeatures = new EAttribute[] { UisutPackage.eINSTANCE
+					.getUIElement_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features,
+					editableFeatures);
+			stateshortcutName_5003Parser = parser;
+		}
+		return stateshortcutName_5003Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case CommonStateNameEditPart.VISUAL_ID:
 			return getCommonStateName_5001Parser();
 		case UIStatemachineNameEditPart.VISUAL_ID:
 			return getUIStatemachineName_5002Parser();
+		case StateshortcutNameEditPart.VISUAL_ID:
+			return getStateshortcutName_5003Parser();
 		}
 		return null;
 	}

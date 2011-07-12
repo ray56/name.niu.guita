@@ -6,6 +6,8 @@ import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachine2EditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineNameEditPart;
@@ -142,6 +144,10 @@ public class UisutVisualIDRegistry {
 					domainElement.eClass())) {
 				return UIStatemachine2EditPart.VISUAL_ID;
 			}
+			if (UisutPackage.eINSTANCE.getStateshortcut().isSuperTypeOf(
+					domainElement.eClass())) {
+				return StateshortcutEditPart.VISUAL_ID;
+			}
 			break;
 		}
 		return -1;
@@ -182,6 +188,9 @@ public class UisutVisualIDRegistry {
 			if (UIStatemachine2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (StateshortcutEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case CommonStateEditPart.VISUAL_ID:
 			if (CommonStateNameEditPart.VISUAL_ID == nodeVisualID) {
@@ -190,6 +199,11 @@ public class UisutVisualIDRegistry {
 			break;
 		case UIStatemachine2EditPart.VISUAL_ID:
 			if (UIStatemachineNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case StateshortcutEditPart.VISUAL_ID:
+			if (StateshortcutNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

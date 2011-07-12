@@ -39,6 +39,7 @@ public class UisutPaletteFactory {
 		paletteContainer.add(createInitialState3CreationTool());
 		paletteContainer.add(createFinalState4CreationTool());
 		paletteContainer.add(createUITransition5CreationTool());
+		paletteContainer.add(createStateshortcut6CreationTool());
 		return paletteContainer;
 	}
 
@@ -114,6 +115,21 @@ public class UisutPaletteFactory {
 		entry.setId("createUITransition5CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(UisutElementTypes
 				.getImageDescriptor(UisutElementTypes.UITransition_4001));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createStateshortcut6CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				Messages.Stateshortcut6CreationTool_title,
+				Messages.Stateshortcut6CreationTool_desc,
+				Collections.singletonList(UisutElementTypes.Stateshortcut_2005));
+		entry.setId("createStateshortcut6CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(UisutElementTypes
+				.getImageDescriptor(UisutElementTypes.Stateshortcut_2005));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

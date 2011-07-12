@@ -213,6 +213,15 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUIStatemachine_ItsStateShortcut() {
+		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getUIStatemachine_ItsSubSTM() {
 		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(2);
 	}
@@ -602,6 +611,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_SUB_STM);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
+		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_STATE_SHORTCUT);
 
 		abstractUIStateEClass = createEClass(ABSTRACT_UI_STATE);
 		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ITS_IN_TRANSITION);
@@ -698,6 +708,7 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initEReference(getUIStatemachine_ItsSubSTM(), this.getUIStatemachine(), null, "itsSubSTM", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsUISystemVariablePool(), this.getUISystemVariablePool(), null, "itsUISystemVariablePool", null, 1, 1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsStateShortcut(), this.getStateshortcut(), null, "itsStateShortcut", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractUIStateEClass, AbstractUIState.class, "AbstractUIState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractUIState_ItsInTransition(), this.getUITransition(), this.getUITransition_ItsTarState(), "itsInTransition", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

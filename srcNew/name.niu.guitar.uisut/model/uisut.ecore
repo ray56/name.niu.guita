@@ -14,6 +14,8 @@
         lowerBound="1" eType="#//UISystemVariablePool" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
         eType="#//UISystemVariable" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsStateShortcut" upperBound="-1"
+        eType="#//Stateshortcut" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractUIState" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsInTransition" upperBound="-1"

@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsSubSTM <em>Its Sub STM</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariablePool <em>Its UI System Variable Pool</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariable <em>Its UI System Variable</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsStateShortcut <em>Its State Shortcut</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,6 +77,22 @@ public interface UIStatemachine extends UIElement {
 	 * @generated
 	 */
 	EList<UISystemVariable> getItsUISystemVariable();
+
+	/**
+	 * Returns the value of the '<em><b>Its State Shortcut</b></em>' containment reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.Stateshortcut}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Its State Shortcut</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Its State Shortcut</em>' containment reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getUIStatemachine_ItsStateShortcut()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Stateshortcut> getItsStateShortcut();
 
 	/**
 	 * Returns the value of the '<em><b>Its Sub STM</b></em>' containment reference list.

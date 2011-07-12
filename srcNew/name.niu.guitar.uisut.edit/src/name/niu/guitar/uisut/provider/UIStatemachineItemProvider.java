@@ -82,6 +82,7 @@ public class UIStatemachineItemProvider
 			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_SUB_STM);
 			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL);
 			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
+			childrenFeatures.add(UisutPackage.Literals.UI_STATEMACHINE__ITS_STATE_SHORTCUT);
 		}
 		return childrenFeatures;
 	}
@@ -141,6 +142,7 @@ public class UIStatemachineItemProvider
 			case UisutPackage.UI_STATEMACHINE__ITS_SUB_STM:
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL:
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE:
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -197,6 +199,11 @@ public class UIStatemachineItemProvider
 			(createChildParameter
 				(UisutPackage.Literals.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE,
 				 UisutFactory.eINSTANCE.createUISystemVariable()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UisutPackage.Literals.UI_STATEMACHINE__ITS_STATE_SHORTCUT,
+				 UisutFactory.eINSTANCE.createStateshortcut()));
 	}
 
 }

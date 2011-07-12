@@ -3,6 +3,7 @@ package name.niu.guitar.uisut.diagram.edit.policies;
 import name.niu.guitar.uisut.diagram.edit.commands.CommonStateCreateCommand;
 import name.niu.guitar.uisut.diagram.edit.commands.FinalStateCreateCommand;
 import name.niu.guitar.uisut.diagram.edit.commands.InitialStateCreateCommand;
+import name.niu.guitar.uisut.diagram.edit.commands.StateshortcutCreateCommand;
 import name.niu.guitar.uisut.diagram.edit.commands.UIStatemachineCreateCommand;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 
@@ -41,6 +42,9 @@ public class UIStatemachineItemSemanticEditPolicy extends
 		}
 		if (UisutElementTypes.UIStatemachine_2004 == req.getElementType()) {
 			return getGEFWrapper(new UIStatemachineCreateCommand(req));
+		}
+		if (UisutElementTypes.Stateshortcut_2005 == req.getElementType()) {
+			return getGEFWrapper(new StateshortcutCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

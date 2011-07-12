@@ -665,4 +665,16 @@
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PJ9jJKxOEeCSfaGn3dh38A" id="(0.9029126213592233,0.7121212121212122)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PJ9jJaxOEeCSfaGn3dh38A" id="(0.912621359223301,0.12345679012345678)"/>
   </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_kXrnoKxaEeCSfaGn3dh38A" type="4003" source="_m-5WQKOuEeCeZupa1u290A" target="_j899Maw8EeCSfaGn3dh38A" routing="Rectilinear" lineColor="16776960">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kXrno6xaEeCSfaGn3dh38A" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kXrnpKxaEeCSfaGn3dh38A" x="278" y="13"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kXrnpaxaEeCSfaGn3dh38A" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kXrnpqxaEeCSfaGn3dh38A" x="75" y="13"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kXrnoaxaEeCSfaGn3dh38A" fontColor="16776960"/>
+    <element xmi:type="ecore:EReference" href="uisut.ecore#//UIStatemachine/itsStateShortcut"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kXrnoqxaEeCSfaGn3dh38A" points="[61, 86, -724, 45]$[780, 86, -5, 45]$[780, 52, -5, 11]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kX1YoKxaEeCSfaGn3dh38A" id="(0.5416666666666666,0.8428571428571429)"/>
+  </edges>
 </notation:Diagram>

@@ -188,13 +188,22 @@ public interface UisutPackage extends EPackage {
 	int UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Its State Shortcut</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ITS_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>UI Statemachine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 5;
+	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl <em>Abstract UI State</em>}' class.
@@ -1071,6 +1080,17 @@ public interface UisutPackage extends EPackage {
 	EReference getUIStatemachine_ItsUISystemVariable();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsStateShortcut <em>Its State Shortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Its State Shortcut</em>'.
+	 * @see name.niu.guitar.uisut.UIStatemachine#getItsStateShortcut()
+	 * @see #getUIStatemachine()
+	 * @generated
+	 */
+	EReference getUIStatemachine_ItsStateShortcut();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsSubSTM <em>Its Sub STM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1555,6 +1575,14 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE = eINSTANCE.getUIStatemachine_ItsUISystemVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Its State Shortcut</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATEMACHINE__ITS_STATE_SHORTCUT = eINSTANCE.getUIStatemachine_ItsStateShortcut();
 
 		/**
 		 * The meta object literal for the '<em><b>Its Sub STM</b></em>' containment reference list feature.

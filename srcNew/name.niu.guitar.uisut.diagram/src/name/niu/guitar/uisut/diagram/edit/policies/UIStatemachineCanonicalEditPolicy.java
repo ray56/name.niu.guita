@@ -15,6 +15,7 @@ import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachine2EditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -75,6 +76,8 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 					.getUIStatemachine_ItsUIState());
 			myFeaturesToSynchronize.add(UisutPackage.eINSTANCE
 					.getUIStatemachine_ItsSubSTM());
+			myFeaturesToSynchronize.add(UisutPackage.eINSTANCE
+					.getUIStatemachine_ItsStateShortcut());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -116,6 +119,7 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 		case InitialStateEditPart.VISUAL_ID:
 		case FinalStateEditPart.VISUAL_ID:
 		case UIStatemachine2EditPart.VISUAL_ID:
+		case StateshortcutEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -172,9 +176,9 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		// those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
 		// or those we have potential matches to, and thus need to be recreated, preserving size/location information.
-		
+
 		//orphaned.addAll(knownViewChildren);
-		
+
 		//
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
@@ -320,6 +324,17 @@ public class UIStatemachineCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(UisutDiagramUpdater
 						.getUIStatemachine_2004ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
+		case StateshortcutEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(UisutDiagramUpdater
+						.getStateshortcut_2005ContainedLinks(view));
 			}
 			if (!domain2NotationMap.containsKey(view.getElement())
 					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$

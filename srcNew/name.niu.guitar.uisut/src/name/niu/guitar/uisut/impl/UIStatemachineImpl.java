@@ -9,6 +9,7 @@ package name.niu.guitar.uisut.impl;
 import java.util.Collection;
 
 import name.niu.guitar.uisut.AbstractUIState;
+import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UISystemVariable;
 import name.niu.guitar.uisut.UISystemVariablePool;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsSubSTM <em>Its Sub STM</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsUISystemVariablePool <em>Its UI System Variable Pool</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsUISystemVariable <em>Its UI System Variable</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsStateShortcut <em>Its State Shortcut</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,6 +98,16 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 	 * @ordered
 	 */
 	protected EList<UISystemVariable> itsUISystemVariable;
+
+	/**
+	 * The cached value of the '{@link #getItsStateShortcut() <em>Its State Shortcut</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsStateShortcut()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Stateshortcut> itsStateShortcut;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,6 +168,18 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 //			itsUISystemVariable = new EObjectResolvingEList<UISystemVariable>(UISystemVariable.class, this, UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
 //		}
 //		return itsUISystemVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Stateshortcut> getItsStateShortcut() {
+		if (itsStateShortcut == null) {
+			itsStateShortcut = new EObjectContainmentEList<Stateshortcut>(Stateshortcut.class, this, UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT);
+		}
+		return itsStateShortcut;
 	}
 
 	/**
@@ -229,6 +253,8 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				return ((InternalEList<?>)getItsSubSTM()).basicRemove(otherEnd, msgs);
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL:
 				return basicSetItsUISystemVariablePool(null, msgs);
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
+				return ((InternalEList<?>)getItsStateShortcut()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -251,6 +277,8 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				return getItsUISystemVariablePool();
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE:
 				return getItsUISystemVariable();
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
+				return getItsStateShortcut();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -283,6 +311,10 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				getItsUISystemVariable().clear();
 				getItsUISystemVariable().addAll((Collection<? extends UISystemVariable>)newValue);
 				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
+				getItsStateShortcut().clear();
+				getItsStateShortcut().addAll((Collection<? extends Stateshortcut>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -310,6 +342,9 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE:
 				getItsUISystemVariable().clear();
 				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
+				getItsStateShortcut().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -332,6 +367,8 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				return itsUISystemVariablePool != null;
 			case UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE:
 				return itsUISystemVariable != null && !itsUISystemVariable.isEmpty();
+			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
+				return itsStateShortcut != null && !itsStateShortcut.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

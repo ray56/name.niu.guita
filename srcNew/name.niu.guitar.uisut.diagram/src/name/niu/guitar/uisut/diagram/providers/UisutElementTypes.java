@@ -9,6 +9,7 @@ import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachine2EditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UITransitionEditPart;
@@ -74,6 +75,11 @@ public class UisutElementTypes {
 	 * @generated
 	 */
 	public static final IElementType UIStatemachine_2004 = getElementType("name.niu.guitar.uisut.diagram.UIStatemachine_2004"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType Stateshortcut_2005 = getElementType("name.niu.guitar.uisut.diagram.Stateshortcut_2005"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -206,6 +212,9 @@ public class UisutElementTypes {
 			elements.put(UIStatemachine_2004,
 					UisutPackage.eINSTANCE.getUIStatemachine());
 
+			elements.put(Stateshortcut_2005,
+					UisutPackage.eINSTANCE.getStateshortcut());
+
 			elements.put(UITransition_4001,
 					UisutPackage.eINSTANCE.getUITransition());
 		}
@@ -230,6 +239,7 @@ public class UisutElementTypes {
 			KNOWN_ELEMENT_TYPES.add(InitialState_2002);
 			KNOWN_ELEMENT_TYPES.add(FinalState_2003);
 			KNOWN_ELEMENT_TYPES.add(UIStatemachine_2004);
+			KNOWN_ELEMENT_TYPES.add(Stateshortcut_2005);
 			KNOWN_ELEMENT_TYPES.add(UITransition_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -250,6 +260,8 @@ public class UisutElementTypes {
 			return FinalState_2003;
 		case UIStatemachine2EditPart.VISUAL_ID:
 			return UIStatemachine_2004;
+		case StateshortcutEditPart.VISUAL_ID:
+			return Stateshortcut_2005;
 		case UITransitionEditPart.VISUAL_ID:
 			return UITransition_4001;
 		}

@@ -76,6 +76,28 @@
           href="uisut.gmfgraph#StateMachine"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="uisut.ecore#//UIStatemachine/itsStateShortcut"/>
+    <ownedChild>
+      <domainMetaElement
+          href="uisut.ecore#//Stateshortcut"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="uisut.gmfgraph#StateshortcutName"/>
+        <features
+            href="uisut.ecore#//UIElement/name"/>
+        <editableFeatures
+            href="uisut.ecore#//UIElement/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="uisut.gmftool#//@palette/@tools.0/@tools.5"/>
+      <diagramNode
+          href="uisut.gmfgraph#Stateshortcuct"/>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="uisut.ecore#//UITransition"/>

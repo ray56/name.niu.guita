@@ -202,6 +202,57 @@
         </modelFacet>
       </labels>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2005"
+        editPartClassName="StateshortcutEditPart"
+        itemSemanticEditPolicyClassName="StateshortcutItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="StateshortcutCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="StateshortcutGraphicalNodeEditPolicy"
+        createCommandClassName="StateshortcutCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="StateshortcutEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="StateshortcutFigureDescriptor"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class StateshortcutFigureDescriptor extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureStateshortcutLabel; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public StateshortcutFigureDescriptor() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutThis = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutThis.numColumns = 1;&#xA;&#x9;layoutThis.makeColumnsEqualWidth = true;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureStateshortcutLabel = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureStateshortcutLabel.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureStateshortcutLabel = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureStateshortcutLabel.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureStateshortcutLabel.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureStateshortcutLabel.horizontalIndent = 0;&#xA;constraintFFigureStateshortcutLabel.horizontalSpan = 1;&#xA;constraintFFigureStateshortcutLabel.verticalSpan = 1;&#xA;constraintFFigureStateshortcutLabel.grabExcessHorizontalSpace = false;&#xA;constraintFFigureStateshortcutLabel.grabExcessVerticalSpace = false;&#xA;this.add(fFigureStateshortcutLabel, constraintFFigureStateshortcutLabel);&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureStateshortcutLabel() {&#xA;&#x9;&#x9;return fFigureStateshortcutLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:ResizeConstraints"/>
+        <attributes
+            xsi:type="gmfgen:DefaultSizeAttributes"
+            width="30"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="uisut.genmodel#//uisut/Stateshortcut"/>
+        <containmentMetaFeature
+            href="uisut.genmodel#//uisut/UIStatemachine/itsStateShortcut"/>
+        <childMetaFeature
+            href="uisut.genmodel#//uisut/UIStatemachine/itsStateShortcut"/>
+      </modelFacet>
+      <labels
+          visualID="5003"
+          editPartClassName="StateshortcutNameEditPart"
+          itemSemanticEditPolicyClassName="StateshortcutNameItemSemanticEditPolicy"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureStateshortcutLabel"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="uisut.genmodel#//uisut/UIElement/name"/>
+          <editableMetaFeatures
+              href="uisut.genmodel#//uisut/UIElement/name"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="UITransitionEditPart"
@@ -260,6 +311,11 @@
             title="UITransition"
             description="Create new UITransition"
             genLinks="//@diagram/@links.0"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Stateshortcut"
+            description="Create new Stateshortcut"
+            genNodes="//@diagram/@topLevelNodes.4"/>
       </groups>
     </palette>
     <preferencePages
@@ -548,7 +604,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet"/>
+        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">
