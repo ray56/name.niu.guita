@@ -611,7 +611,7 @@ public class UisutEditor
 	 * Handles what to do with changed resources on activation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleChangedResources() {
 		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
@@ -1252,17 +1252,17 @@ public class UisutEditor
 	 * This accesses a cached version of the property sheet.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
 			propertySheetPage = new PropertiesBrowserPage(this) {
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
+					public void setActionBars(IActionBars actionBars) {
+						super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
 							actionBars);
-				}
-			};
+					}
+				};
 //			propertySheetPage =
 //				new ExtendedPropertySheetPage(editingDomain) {
 //					@Override
@@ -1484,7 +1484,7 @@ public class UisutEditor
 	 * This is called during startup.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void init(IEditorSite site, IEditorInput editorInput) {
