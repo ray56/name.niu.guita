@@ -15,6 +15,7 @@ import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.Vertex;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
@@ -286,7 +287,13 @@ public class UisutDiagramUpdater {
 	 */
 	public static List<UisutLinkDescriptor> getStateshortcut_2005IncomingLinks(
 			View view) {
-		return Collections.emptyList();
+		Stateshortcut modelElement = (Stateshortcut) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<UisutLinkDescriptor> result = new LinkedList<UisutLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_UITransition_4001(
+				modelElement, crossReferences));
+		return result;
 	}
 
 	/**
@@ -343,7 +350,10 @@ public class UisutDiagramUpdater {
 	 */
 	public static List<UisutLinkDescriptor> getStateshortcut_2005OutgoingLinks(
 			View view) {
-		return Collections.emptyList();
+		Stateshortcut modelElement = (Stateshortcut) view.getElement();
+		LinkedList<UisutLinkDescriptor> result = new LinkedList<UisutLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_UITransition_4001(modelElement));
+		return result;
 	}
 
 	/**
@@ -371,8 +381,8 @@ public class UisutDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			AbstractUIState dst = link.getItsTarState();
-			AbstractUIState src = link.getItsSrcState();
+			Vertex dst = link.getItsTarState();
+			Vertex src = link.getItsSrcState();
 			result.add(new UisutLinkDescriptor(src, dst, link,
 					UisutElementTypes.UITransition_4001,
 					UITransitionEditPart.VISUAL_ID));
@@ -384,7 +394,7 @@ public class UisutDiagramUpdater {
 	 * @generated
 	 */
 	private static Collection<UisutLinkDescriptor> getIncomingTypeModelFacetLinks_UITransition_4001(
-			AbstractUIState target,
+			Vertex target,
 			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<UisutLinkDescriptor> result = new LinkedList<UisutLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences
@@ -400,7 +410,7 @@ public class UisutDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			AbstractUIState src = link.getItsSrcState();
+			Vertex src = link.getItsSrcState();
 			result.add(new UisutLinkDescriptor(src, target, link,
 					UisutElementTypes.UITransition_4001,
 					UITransitionEditPart.VISUAL_ID));
@@ -412,7 +422,7 @@ public class UisutDiagramUpdater {
 	 * @generated
 	 */
 	private static Collection<UisutLinkDescriptor> getOutgoingTypeModelFacetLinks_UITransition_4001(
-			AbstractUIState source) {
+			Vertex source) {
 		UIStatemachine container = null;
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
@@ -438,8 +448,8 @@ public class UisutDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			AbstractUIState dst = link.getItsTarState();
-			AbstractUIState src = link.getItsSrcState();
+			Vertex dst = link.getItsTarState();
+			Vertex src = link.getItsSrcState();
 			if (src != source) {
 				continue;
 			}

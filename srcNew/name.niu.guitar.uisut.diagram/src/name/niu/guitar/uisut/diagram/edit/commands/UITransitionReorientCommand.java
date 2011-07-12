@@ -3,6 +3,7 @@ package name.niu.guitar.uisut.diagram.edit.commands;
 import name.niu.guitar.uisut.AbstractUIState;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UITransition;
+import name.niu.guitar.uisut.Vertex;
 import name.niu.guitar.uisut.diagram.edit.policies.UisutBaseItemSemanticEditPolicy;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -63,10 +64,10 @@ public class UITransitionReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof AbstractUIState && newEnd instanceof AbstractUIState)) {
+		if (!(oldEnd instanceof Vertex && newEnd instanceof Vertex)) {
 			return false;
 		}
-		AbstractUIState target = getLink().getItsTarState();
+		Vertex target = getLink().getItsTarState();
 		if (!(getLink().eContainer() instanceof UIStatemachine)) {
 			return false;
 		}
@@ -80,10 +81,10 @@ public class UITransitionReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof AbstractUIState && newEnd instanceof AbstractUIState)) {
+		if (!(oldEnd instanceof Vertex && newEnd instanceof Vertex)) {
 			return false;
 		}
-		AbstractUIState source = getLink().getItsSrcState();
+		Vertex source = getLink().getItsSrcState();
 		if (!(getLink().eContainer() instanceof UIStatemachine)) {
 			return false;
 		}
@@ -137,28 +138,28 @@ public class UITransitionReorientCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getOldSource() {
-		return (AbstractUIState) oldEnd;
+	protected Vertex getOldSource() {
+		return (Vertex) oldEnd;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getNewSource() {
-		return (AbstractUIState) newEnd;
+	protected Vertex getNewSource() {
+		return (Vertex) newEnd;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getOldTarget() {
-		return (AbstractUIState) oldEnd;
+	protected Vertex getOldTarget() {
+		return (Vertex) oldEnd;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getNewTarget() {
-		return (AbstractUIState) newEnd;
+	protected Vertex getNewTarget() {
+		return (Vertex) newEnd;
 	}
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.part.Messages;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin;
@@ -69,6 +70,10 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((FinalStateEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
+		if (sourceEditPart instanceof StateshortcutEditPart) {
+			return ((StateshortcutEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -88,6 +93,10 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 		}
 		if (targetEditPart instanceof FinalStateEditPart) {
 			return ((FinalStateEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof StateshortcutEditPart) {
+			return ((StateshortcutEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
@@ -114,6 +123,10 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((FinalStateEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
+		if (sourceEditPart instanceof StateshortcutEditPart) {
+			return ((StateshortcutEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -136,6 +149,10 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((FinalStateEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
+		if (targetEditPart instanceof StateshortcutEditPart) {
+			return ((StateshortcutEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -156,6 +173,10 @@ public class UisutModelingAssistantProvider extends ModelingAssistantProvider {
 		}
 		if (sourceEditPart instanceof FinalStateEditPart) {
 			return ((FinalStateEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof StateshortcutEditPart) {
+			return ((StateshortcutEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		return Collections.EMPTY_LIST;

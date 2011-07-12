@@ -5,6 +5,7 @@ import java.util.Iterator;
 import name.niu.guitar.uisut.AbstractUIState;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UITransition;
+import name.niu.guitar.uisut.Vertex;
 import name.niu.guitar.uisut.diagram.edit.helpers.UisutBaseEditHelper;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
@@ -326,7 +327,7 @@ public class UisutBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 * @generated
 		 */
 		public boolean canCreateUITransition_4001(UIStatemachine container,
-				AbstractUIState source, AbstractUIState target) {
+				Vertex source, Vertex target) {
 			return canExistUITransition_4001(container, null, source, target);
 		}
 
@@ -334,8 +335,7 @@ public class UisutBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 * @generated
 		 */
 		public boolean canExistUITransition_4001(UIStatemachine container,
-				UITransition linkInstance, AbstractUIState source,
-				AbstractUIState target) {
+				UITransition linkInstance, Vertex source, Vertex target) {
 			return true;
 		}
 	}

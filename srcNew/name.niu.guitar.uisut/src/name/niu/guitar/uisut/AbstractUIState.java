@@ -16,8 +16,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsInTransition <em>Its In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsOutTrantion <em>Its Out Trantion</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getScriptStr <em>Script Str</em>}</li>
@@ -30,43 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface AbstractUIState extends UIElement {
-	/**
-	 * Returns the value of the '<em><b>Its In Transition</b></em>' reference list.
-	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
-	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.UITransition#getItsTarState <em>Its Tar State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Its In Transition</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its In Transition</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsInTransition()
-	 * @see name.niu.guitar.uisut.UITransition#getItsTarState
-	 * @model opposite="itsTarState"
-	 * @generated
-	 */
-	EList<UITransition> getItsInTransition();
-
-	/**
-	 * Returns the value of the '<em><b>Its Out Trantion</b></em>' reference list.
-	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
-	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.UITransition#getItsSrcState <em>Its Src State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Its Out Trantion</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Out Trantion</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsOutTrantion()
-	 * @see name.niu.guitar.uisut.UITransition#getItsSrcState
-	 * @model opposite="itsSrcState"
-	 * @generated
-	 */
-	EList<UITransition> getItsOutTrantion();
-
+public interface AbstractUIState extends Vertex {
 	/**
 	 * Returns the value of the '<em><b>Added System Variable</b></em>' reference list.
 	 * The list contents are of type {@link name.niu.guitar.uisut.UISystemVariable}.

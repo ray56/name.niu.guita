@@ -206,6 +206,70 @@ public interface UisutPackage extends EPackage {
 	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.VertexImpl <em>Vertex</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see name.niu.guitar.uisut.impl.VertexImpl
+	 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getVertex()
+	 * @generated
+	 */
+	int VERTEX = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__NAME = UI_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__DESCRIPTION = UI_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__ID = UI_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__ITS_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__ITS_OUT_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Vertex</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl <em>Abstract UI State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,7 +286,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__NAME = UI_ELEMENT__NAME;
+	int ABSTRACT_UI_STATE__NAME = VERTEX__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -231,7 +295,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__DESCRIPTION = UI_ELEMENT__DESCRIPTION;
+	int ABSTRACT_UI_STATE__DESCRIPTION = VERTEX__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -240,7 +304,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ID = UI_ELEMENT__ID;
+	int ABSTRACT_UI_STATE__ID = VERTEX__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -249,16 +313,16 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_UI_STATE__ITS_IN_TRANSITION = VERTEX__ITS_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Out Trantion</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_OUT_TRANTION = UI_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_UI_STATE__ITS_OUT_TRANSITION = VERTEX__ITS_OUT_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Added System Variable</b></em>' reference list.
@@ -267,7 +331,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE = VERTEX_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Deleted System Variable</b></em>' reference list.
@@ -276,7 +340,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE = UI_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE = VERTEX_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Script Str</b></em>' attribute.
@@ -285,7 +349,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__SCRIPT_STR = UI_ELEMENT_FEATURE_COUNT + 4;
+	int ABSTRACT_UI_STATE__SCRIPT_STR = VERTEX_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
@@ -294,7 +358,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = VERTEX_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
@@ -303,7 +367,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 6;
+	int ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = VERTEX_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Abstract UI State</em>' class.
@@ -312,7 +376,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 7;
+	int ABSTRACT_UI_STATE_FEATURE_COUNT = VERTEX_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
@@ -388,31 +452,13 @@ public interface UisutPackage extends EPackage {
 	int UI_TRANSITION__SCRIPT_STR = UI_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Its Tar State Shortcut</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UI_TRANSITION__ITS_TAR_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Its Src State Shortcut</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UI_TRANSITION__ITS_SRC_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Its Expanded Tar State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION__ITS_EXPANDED_TAR_STATE = UI_ELEMENT_FEATURE_COUNT + 6;
+	int UI_TRANSITION__ITS_EXPANDED_TAR_STATE = UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Its Expended Src State</b></em>' reference.
@@ -421,7 +467,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION__ITS_EXPENDED_SRC_STATE = UI_ELEMENT_FEATURE_COUNT + 7;
+	int UI_TRANSITION__ITS_EXPENDED_SRC_STATE = UI_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>UI Transition</em>' class.
@@ -430,7 +476,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 8;
+	int UI_TRANSITION_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UISystemVariableImpl <em>UI System Variable</em>}' class.
@@ -552,13 +598,13 @@ public interface UisutPackage extends EPackage {
 	int COMMON_STATE__ITS_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Out Trantion</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMON_STATE__ITS_OUT_TRANTION = ABSTRACT_UI_STATE__ITS_OUT_TRANTION;
+	int COMMON_STATE__ITS_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_OUT_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Added System Variable</b></em>' reference list.
@@ -679,13 +725,13 @@ public interface UisutPackage extends EPackage {
 	int INITIAL_STATE__ITS_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Out Trantion</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE__ITS_OUT_TRANTION = ABSTRACT_UI_STATE__ITS_OUT_TRANTION;
+	int INITIAL_STATE__ITS_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_OUT_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Added System Variable</b></em>' reference list.
@@ -788,13 +834,13 @@ public interface UisutPackage extends EPackage {
 	int FINAL_STATE__ITS_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_IN_TRANSITION;
 
 	/**
-	 * The feature id for the '<em><b>Its Out Trantion</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINAL_STATE__ITS_OUT_TRANTION = ABSTRACT_UI_STATE__ITS_OUT_TRANTION;
+	int FINAL_STATE__ITS_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_OUT_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Added System Variable</b></em>' reference list.
@@ -979,7 +1025,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT__NAME = UI_ELEMENT__NAME;
+	int STATESHORTCUT__NAME = VERTEX__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -988,7 +1034,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT__DESCRIPTION = UI_ELEMENT__DESCRIPTION;
+	int STATESHORTCUT__DESCRIPTION = VERTEX__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -997,16 +1043,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT__ID = UI_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Its Shortcut For</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATESHORTCUT__ITS_SHORTCUT_FOR = UI_ELEMENT_FEATURE_COUNT + 0;
+	int STATESHORTCUT__ID = VERTEX__ID;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -1015,7 +1052,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT__ITS_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 1;
+	int STATESHORTCUT__ITS_IN_TRANSITION = VERTEX__ITS_IN_TRANSITION;
 
 	/**
 	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
@@ -1024,7 +1061,16 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT__ITS_OUT_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 2;
+	int STATESHORTCUT__ITS_OUT_TRANSITION = VERTEX__ITS_OUT_TRANSITION;
+
+	/**
+	 * The feature id for the '<em><b>Its Shortcut For</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__ITS_SHORTCUT_FOR = VERTEX_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Stateshortcut</em>' class.
@@ -1033,7 +1079,7 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATESHORTCUT_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 3;
+	int STATESHORTCUT_FEATURE_COUNT = VERTEX_FEATURE_COUNT + 1;
 
 
 	/**
@@ -1121,28 +1167,6 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAbstractUIState();
-
-	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsInTransition <em>Its In Transition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Its In Transition</em>'.
-	 * @see name.niu.guitar.uisut.AbstractUIState#getItsInTransition()
-	 * @see #getAbstractUIState()
-	 * @generated
-	 */
-	EReference getAbstractUIState_ItsInTransition();
-
-	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsOutTrantion <em>Its Out Trantion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Its Out Trantion</em>'.
-	 * @see name.niu.guitar.uisut.AbstractUIState#getItsOutTrantion()
-	 * @see #getAbstractUIState()
-	 * @generated
-	 */
-	EReference getAbstractUIState_ItsOutTrantion();
 
 	/**
 	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getAddedSystemVariable <em>Added System Variable</em>}'.
@@ -1252,28 +1276,6 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUITransition_ScriptStr();
-
-	/**
-	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsTarStateShortcut <em>Its Tar State Shortcut</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Its Tar State Shortcut</em>'.
-	 * @see name.niu.guitar.uisut.UITransition#getItsTarStateShortcut()
-	 * @see #getUITransition()
-	 * @generated
-	 */
-	EReference getUITransition_ItsTarStateShortcut();
-
-	/**
-	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut <em>Its Src State Shortcut</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Its Src State Shortcut</em>'.
-	 * @see name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut()
-	 * @see #getUITransition()
-	 * @generated
-	 */
-	EReference getUITransition_ItsSrcStateShortcut();
 
 	/**
 	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsExpandedTarState <em>Its Expanded Tar State</em>}'.
@@ -1499,26 +1501,36 @@ public interface UisutPackage extends EPackage {
 	EReference getStateshortcut_ItsShortcutFor();
 
 	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsInTransition <em>Its In Transition</em>}'.
+	 * Returns the meta object for class '{@link name.niu.guitar.uisut.Vertex <em>Vertex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Vertex</em>'.
+	 * @see name.niu.guitar.uisut.Vertex
+	 * @generated
+	 */
+	EClass getVertex();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Vertex#getItsInTransition <em>Its In Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Its In Transition</em>'.
-	 * @see name.niu.guitar.uisut.Stateshortcut#getItsInTransition()
-	 * @see #getStateshortcut()
+	 * @see name.niu.guitar.uisut.Vertex#getItsInTransition()
+	 * @see #getVertex()
 	 * @generated
 	 */
-	EReference getStateshortcut_ItsInTransition();
+	EReference getVertex_ItsInTransition();
 
 	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Vertex#getItsOutTransition <em>Its Out Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Its Out Transition</em>'.
-	 * @see name.niu.guitar.uisut.Stateshortcut#getItsOutTransition()
-	 * @see #getStateshortcut()
+	 * @see name.niu.guitar.uisut.Vertex#getItsOutTransition()
+	 * @see #getVertex()
 	 * @generated
 	 */
-	EReference getStateshortcut_ItsOutTransition();
+	EReference getVertex_ItsOutTransition();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1611,22 +1623,6 @@ public interface UisutPackage extends EPackage {
 		EClass ABSTRACT_UI_STATE = eINSTANCE.getAbstractUIState();
 
 		/**
-		 * The meta object literal for the '<em><b>Its In Transition</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_UI_STATE__ITS_IN_TRANSITION = eINSTANCE.getAbstractUIState_ItsInTransition();
-
-		/**
-		 * The meta object literal for the '<em><b>Its Out Trantion</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_UI_STATE__ITS_OUT_TRANTION = eINSTANCE.getAbstractUIState_ItsOutTrantion();
-
-		/**
 		 * The meta object literal for the '<em><b>Added System Variable</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1707,22 +1703,6 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UI_TRANSITION__SCRIPT_STR = eINSTANCE.getUITransition_ScriptStr();
-
-		/**
-		 * The meta object literal for the '<em><b>Its Tar State Shortcut</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference UI_TRANSITION__ITS_TAR_STATE_SHORTCUT = eINSTANCE.getUITransition_ItsTarStateShortcut();
-
-		/**
-		 * The meta object literal for the '<em><b>Its Src State Shortcut</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference UI_TRANSITION__ITS_SRC_STATE_SHORTCUT = eINSTANCE.getUITransition_ItsSrcStateShortcut();
 
 		/**
 		 * The meta object literal for the '<em><b>Its Expanded Tar State</b></em>' reference feature.
@@ -1909,12 +1889,22 @@ public interface UisutPackage extends EPackage {
 		EReference STATESHORTCUT__ITS_SHORTCUT_FOR = eINSTANCE.getStateshortcut_ItsShortcutFor();
 
 		/**
+		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.VertexImpl <em>Vertex</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see name.niu.guitar.uisut.impl.VertexImpl
+		 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getVertex()
+		 * @generated
+		 */
+		EClass VERTEX = eINSTANCE.getVertex();
+
+		/**
 		 * The meta object literal for the '<em><b>Its In Transition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATESHORTCUT__ITS_IN_TRANSITION = eINSTANCE.getStateshortcut_ItsInTransition();
+		EReference VERTEX__ITS_IN_TRANSITION = eINSTANCE.getVertex_ItsInTransition();
 
 		/**
 		 * The meta object literal for the '<em><b>Its Out Transition</b></em>' reference list feature.
@@ -1922,7 +1912,7 @@ public interface UisutPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATESHORTCUT__ITS_OUT_TRANSITION = eINSTANCE.getStateshortcut_ItsOutTransition();
+		EReference VERTEX__ITS_OUT_TRANSITION = eINSTANCE.getVertex_ItsOutTransition();
 
 	}
 

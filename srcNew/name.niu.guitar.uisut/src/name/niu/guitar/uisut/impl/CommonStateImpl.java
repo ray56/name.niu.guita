@@ -270,7 +270,7 @@ public class CommonStateImpl extends AbstractUIStateImpl implements CommonState 
 			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
 		}
 		
-		itsExpendedOutTransition.addAll(getItsOutTrantion());
+		itsExpendedOutTransition.addAll(getItsOutTransition());
 		
 		for ( Stateshortcut shortcut : this.getItsShortcut() ) {
 			itsExpendedOutTransition.addAll( shortcut.getItsOutTransition() );

@@ -206,6 +206,7 @@
         visualID="2005"
         editPartClassName="StateshortcutEditPart"
         itemSemanticEditPolicyClassName="StateshortcutItemSemanticEditPolicy"
+        notationViewFactoryClassName="StateshortcutViewFactory"
         canonicalEditPolicyClassName="StateshortcutCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="StateshortcutGraphicalNodeEditPolicy"
         createCommandClassName="StateshortcutCreateCommand">
@@ -236,6 +237,7 @@
           visualID="5003"
           editPartClassName="StateshortcutNameEditPart"
           itemSemanticEditPolicyClassName="StateshortcutNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="StateshortcutNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>

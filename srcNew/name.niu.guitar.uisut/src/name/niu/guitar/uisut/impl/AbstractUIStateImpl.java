@@ -36,8 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsInTransition <em>Its In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsOutTrantion <em>Its Out Trantion</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getScriptStr <em>Script Str</em>}</li>
@@ -48,27 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIState {
-	/**
-	 * The cached value of the '{@link #getItsInTransition() <em>Its In Transition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItsInTransition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<UITransition> itsInTransition;
-
-	/**
-	 * The cached value of the '{@link #getItsOutTrantion() <em>Its Out Trantion</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItsOutTrantion()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<UITransition> itsOutTrantion;
-
+public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	/**
 	 * The cached value of the '{@link #getAddedSystemVariable() <em>Added System Variable</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -153,30 +131,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<UITransition> getItsInTransition() {
-		if (itsInTransition == null) {
-			itsInTransition = new EObjectWithInverseResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION, UisutPackage.UI_TRANSITION__ITS_TAR_STATE);
-		}
-		return itsInTransition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<UITransition> getItsOutTrantion() {
-		if (itsOutTrantion == null) {
-			itsOutTrantion = new EObjectWithInverseResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION, UisutPackage.UI_TRANSITION__ITS_SRC_STATE);
-		}
-		return itsOutTrantion;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<UISystemVariable> getAddedSystemVariable() {
 		if (addedSystemVariable == null) {
 			addedSystemVariable = new EObjectWithInverseResolvingEList.ManyInverse<UISystemVariable>(UISystemVariable.class, this, UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE, UisutPackage.UI_SYSTEM_VARIABLE__ADD_UI_STATE);
@@ -243,7 +197,7 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 		if (itsExpendedOutTransition == null) {
 			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
 		}
-		itsExpendedOutTransition.addAll(getItsOutTrantion());
+		itsExpendedOutTransition.addAll(getItsOutTransition());
 		return itsExpendedOutTransition;
 	}
 
@@ -256,10 +210,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItsInTransition()).basicAdd(otherEnd, msgs);
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItsOutTrantion()).basicAdd(otherEnd, msgs);
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAddedSystemVariable()).basicAdd(otherEnd, msgs);
 			case UisutPackage.ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE:
@@ -276,10 +226,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				return ((InternalEList<?>)getItsInTransition()).basicRemove(otherEnd, msgs);
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				return ((InternalEList<?>)getItsOutTrantion()).basicRemove(otherEnd, msgs);
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				return ((InternalEList<?>)getAddedSystemVariable()).basicRemove(otherEnd, msgs);
 			case UisutPackage.ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE:
@@ -296,10 +242,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				return getItsInTransition();
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				return getItsOutTrantion();
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				return getAddedSystemVariable();
 			case UisutPackage.ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE:
@@ -323,14 +265,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				getItsInTransition().clear();
-				getItsInTransition().addAll((Collection<? extends UITransition>)newValue);
-				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				getItsOutTrantion().clear();
-				getItsOutTrantion().addAll((Collection<? extends UITransition>)newValue);
-				return;
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				getAddedSystemVariable().clear();
 				getAddedSystemVariable().addAll((Collection<? extends UISystemVariable>)newValue);
@@ -362,12 +296,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				getItsInTransition().clear();
-				return;
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				getItsOutTrantion().clear();
-				return;
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				getAddedSystemVariable().clear();
 				return;
@@ -395,10 +323,6 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_IN_TRANSITION:
-				return itsInTransition != null && !itsInTransition.isEmpty();
-			case UisutPackage.ABSTRACT_UI_STATE__ITS_OUT_TRANTION:
-				return itsOutTrantion != null && !itsOutTrantion.isEmpty();
 			case UisutPackage.ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE:
 				return addedSystemVariable != null && !addedSystemVariable.isEmpty();
 			case UisutPackage.ABSTRACT_UI_STATE__DELETED_SYSTEM_VARIABLE:

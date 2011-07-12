@@ -17,8 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor <em>Its Shortcut For</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.Stateshortcut#getItsInTransition <em>Its In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Stateshortcut extends UIElement {
+public interface Stateshortcut extends Vertex {
 	/**
 	 * Returns the value of the '<em><b>Its Shortcut For</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.CommonState#getItsShortcut <em>Its Shortcut</em>}'.
@@ -54,41 +52,5 @@ public interface Stateshortcut extends UIElement {
 	 * @generated
 	 */
 	void setItsShortcutFor(CommonState value);
-
-	/**
-	 * Returns the value of the '<em><b>Its In Transition</b></em>' reference list.
-	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
-	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.UITransition#getItsTarStateShortcut <em>Its Tar State Shortcut</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Its In Transition</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its In Transition</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getStateshortcut_ItsInTransition()
-	 * @see name.niu.guitar.uisut.UITransition#getItsTarStateShortcut
-	 * @model opposite="itsTarStateShortcut"
-	 * @generated
-	 */
-	EList<UITransition> getItsInTransition();
-
-	/**
-	 * Returns the value of the '<em><b>Its Out Transition</b></em>' reference list.
-	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
-	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut <em>Its Src State Shortcut</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Its Out Transition</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Out Transition</em>' reference list.
-	 * @see name.niu.guitar.uisut.UisutPackage#getStateshortcut_ItsOutTransition()
-	 * @see name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut
-	 * @model opposite="itsSrcStateShortcut"
-	 * @generated
-	 */
-	EList<UITransition> getItsOutTransition();
 
 } // Stateshortcut

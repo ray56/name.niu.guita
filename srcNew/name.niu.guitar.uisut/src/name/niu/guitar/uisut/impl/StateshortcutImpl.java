@@ -34,14 +34,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link name.niu.guitar.uisut.impl.StateshortcutImpl#getItsShortcutFor <em>Its Shortcut For</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.StateshortcutImpl#getItsInTransition <em>Its In Transition</em>}</li>
- *   <li>{@link name.niu.guitar.uisut.impl.StateshortcutImpl#getItsOutTransition <em>Its Out Transition</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
+public class StateshortcutImpl extends VertexImpl implements Stateshortcut {
 	/**
 	 * The cached value of the '{@link #getItsShortcutFor() <em>Its Shortcut For</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -51,26 +49,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 	 * @ordered
 	 */
 	protected CommonState itsShortcutFor;
-
-	/**
-	 * The cached value of the '{@link #getItsInTransition() <em>Its In Transition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItsInTransition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<UITransition> itsInTransition;
-
-	/**
-	 * The cached value of the '{@link #getItsOutTransition() <em>Its Out Transition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItsOutTransition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<UITransition> itsOutTransition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,30 +134,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<UITransition> getItsInTransition() {
-		if (itsInTransition == null) {
-			itsInTransition = new EObjectWithInverseResolvingEList<UITransition>(UITransition.class, this, UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION, UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT);
-		}
-		return itsInTransition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<UITransition> getItsOutTransition() {
-		if (itsOutTransition == null) {
-			itsOutTransition = new EObjectWithInverseResolvingEList<UITransition>(UITransition.class, this, UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION, UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT);
-		}
-		return itsOutTransition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -188,10 +142,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 				if (itsShortcutFor != null)
 					msgs = ((InternalEObject)itsShortcutFor).eInverseRemove(this, UisutPackage.COMMON_STATE__ITS_SHORTCUT, CommonState.class, msgs);
 				return basicSetItsShortcutFor((CommonState)otherEnd, msgs);
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItsInTransition()).basicAdd(otherEnd, msgs);
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItsOutTransition()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -206,10 +156,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 		switch (featureID) {
 			case UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR:
 				return basicSetItsShortcutFor(null, msgs);
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				return ((InternalEList<?>)getItsInTransition()).basicRemove(otherEnd, msgs);
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				return ((InternalEList<?>)getItsOutTransition()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -225,10 +171,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 			case UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR:
 				if (resolve) return getItsShortcutFor();
 				return basicGetItsShortcutFor();
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				return getItsInTransition();
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				return getItsOutTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -245,14 +187,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 			case UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR:
 				setItsShortcutFor((CommonState)newValue);
 				return;
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				getItsInTransition().clear();
-				getItsInTransition().addAll((Collection<? extends UITransition>)newValue);
-				return;
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				getItsOutTransition().clear();
-				getItsOutTransition().addAll((Collection<? extends UITransition>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -268,12 +202,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 			case UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR:
 				setItsShortcutFor((CommonState)null);
 				return;
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				getItsInTransition().clear();
-				return;
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				getItsOutTransition().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -288,10 +216,6 @@ public class StateshortcutImpl extends UIElementImpl implements Stateshortcut {
 		switch (featureID) {
 			case UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR:
 				return itsShortcutFor != null;
-			case UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION:
-				return itsInTransition != null && !itsInTransition.isEmpty();
-			case UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION:
-				return itsOutTransition != null && !itsOutTransition.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

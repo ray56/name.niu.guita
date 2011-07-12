@@ -16,8 +16,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsStateShortcut"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//AbstractUIState">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsInTransition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/itsOutTrantion"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/addedSystemVariable"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/deletedSystemVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//AbstractUIState/scriptStr"/>
@@ -29,8 +27,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTarState"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/guardedSystemVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/scriptStr"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTarStateShortcut"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsSrcStateShortcut"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpandedTarState"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpendedSrcState"/>
     </genClasses>
@@ -58,8 +54,10 @@
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//Stateshortcut">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsShortcutFor"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsInTransition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsOutTransition"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//Vertex">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Vertex/itsInTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Vertex/itsOutTransition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

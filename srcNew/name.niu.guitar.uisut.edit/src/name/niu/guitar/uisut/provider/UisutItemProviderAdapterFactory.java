@@ -335,6 +335,29 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link name.niu.guitar.uisut.Vertex} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VertexItemProvider vertexItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link name.niu.guitar.uisut.Vertex}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVertexAdapter() {
+		if (vertexItemProvider == null) {
+			vertexItemProvider = new VertexItemProvider(this);
+		}
+
+		return vertexItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,6 +467,7 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 		if (uisutItemProvider != null) uisutItemProvider.dispose();
 		if (uiSystemVariablePoolItemProvider != null) uiSystemVariablePoolItemProvider.dispose();
 		if (stateshortcutItemProvider != null) stateshortcutItemProvider.dispose();
+		if (vertexItemProvider != null) vertexItemProvider.dispose();
 	}
 
 }

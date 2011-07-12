@@ -117,6 +117,10 @@ public class UisutAdapterFactory extends AdapterFactoryImpl {
 				return createStateshortcutAdapter();
 			}
 			@Override
+			public Adapter caseVertex(Vertex object) {
+				return createVertexAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -287,6 +291,20 @@ public class UisutAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateshortcutAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link name.niu.guitar.uisut.Vertex <em>Vertex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see name.niu.guitar.uisut.Vertex
+	 * @generated
+	 */
+	public Adapter createVertexAdapter() {
 		return null;
 	}
 

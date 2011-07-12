@@ -98,6 +98,7 @@ public class UisutSwitch<T> {
 			case UisutPackage.ABSTRACT_UI_STATE: {
 				AbstractUIState abstractUIState = (AbstractUIState)theEObject;
 				T result = caseAbstractUIState(abstractUIState);
+				if (result == null) result = caseVertex(abstractUIState);
 				if (result == null) result = caseUIElement(abstractUIState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -126,6 +127,7 @@ public class UisutSwitch<T> {
 				CommonState commonState = (CommonState)theEObject;
 				T result = caseCommonState(commonState);
 				if (result == null) result = caseAbstractUIState(commonState);
+				if (result == null) result = caseVertex(commonState);
 				if (result == null) result = caseUIElement(commonState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -134,6 +136,7 @@ public class UisutSwitch<T> {
 				InitialState initialState = (InitialState)theEObject;
 				T result = caseInitialState(initialState);
 				if (result == null) result = caseAbstractUIState(initialState);
+				if (result == null) result = caseVertex(initialState);
 				if (result == null) result = caseUIElement(initialState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -142,6 +145,7 @@ public class UisutSwitch<T> {
 				FinalState finalState = (FinalState)theEObject;
 				T result = caseFinalState(finalState);
 				if (result == null) result = caseAbstractUIState(finalState);
+				if (result == null) result = caseVertex(finalState);
 				if (result == null) result = caseUIElement(finalState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -163,7 +167,15 @@ public class UisutSwitch<T> {
 			case UisutPackage.STATESHORTCUT: {
 				Stateshortcut stateshortcut = (Stateshortcut)theEObject;
 				T result = caseStateshortcut(stateshortcut);
+				if (result == null) result = caseVertex(stateshortcut);
 				if (result == null) result = caseUIElement(stateshortcut);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UisutPackage.VERTEX: {
+				Vertex vertex = (Vertex)theEObject;
+				T result = caseVertex(vertex);
+				if (result == null) result = caseUIElement(vertex);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -333,6 +345,21 @@ public class UisutSwitch<T> {
 	 * @generated
 	 */
 	public T caseStateshortcut(Stateshortcut object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Vertex</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Vertex</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVertex(Vertex object) {
 		return null;
 	}
 

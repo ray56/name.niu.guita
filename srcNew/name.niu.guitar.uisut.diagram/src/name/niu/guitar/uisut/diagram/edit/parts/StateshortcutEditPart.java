@@ -1,8 +1,12 @@
 package name.niu.guitar.uisut.diagram.edit.parts;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import name.niu.guitar.uisut.diagram.edit.policies.StateshortcutItemSemanticEditPolicy;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 
+import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
@@ -26,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -263,6 +268,73 @@ public class StateshortcutEditPart extends ShapeNodeEditPart {
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(UisutVisualIDRegistry
 				.getType(StateshortcutNameEditPart.VISUAL_ID));
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMARelTypesOnSource() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+		types.add(UisutElementTypes.UITransition_4001);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMARelTypesOnSourceAndTarget(
+			IGraphicalEditPart targetEditPart) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
+		if (targetEditPart instanceof CommonStateEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
+		if (targetEditPart instanceof InitialStateEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
+		if (targetEditPart instanceof FinalStateEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
+		if (targetEditPart instanceof name.niu.guitar.uisut.diagram.edit.parts.StateshortcutEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
+		if (relationshipType == UisutElementTypes.UITransition_4001) {
+			types.add(UisutElementTypes.CommonState_2001);
+			types.add(UisutElementTypes.InitialState_2002);
+			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMARelTypesOnTarget() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+		types.add(UisutElementTypes.UITransition_4001);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
+		if (relationshipType == UisutElementTypes.UITransition_4001) {
+			types.add(UisutElementTypes.CommonState_2001);
+			types.add(UisutElementTypes.InitialState_2002);
+			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
+		}
+		return types;
 	}
 
 	/**

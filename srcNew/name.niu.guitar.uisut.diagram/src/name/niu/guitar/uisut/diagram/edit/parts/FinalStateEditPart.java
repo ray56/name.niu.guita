@@ -230,6 +230,9 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart) {
 			types.add(UisutElementTypes.UITransition_4001);
 		}
+		if (targetEditPart instanceof StateshortcutEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
 		return types;
 	}
 
@@ -242,6 +245,7 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 			types.add(UisutElementTypes.CommonState_2001);
 			types.add(UisutElementTypes.InitialState_2002);
 			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
 		}
 		return types;
 	}
@@ -264,6 +268,7 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 			types.add(UisutElementTypes.CommonState_2001);
 			types.add(UisutElementTypes.InitialState_2002);
 			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
 		}
 		return types;
 	}

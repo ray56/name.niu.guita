@@ -228,6 +228,9 @@ public class InitialStateEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof FinalStateEditPart) {
 			types.add(UisutElementTypes.UITransition_4001);
 		}
+		if (targetEditPart instanceof StateshortcutEditPart) {
+			types.add(UisutElementTypes.UITransition_4001);
+		}
 		return types;
 	}
 
@@ -240,6 +243,7 @@ public class InitialStateEditPart extends ShapeNodeEditPart {
 			types.add(UisutElementTypes.CommonState_2001);
 			types.add(UisutElementTypes.InitialState_2002);
 			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
 		}
 		return types;
 	}
@@ -262,6 +266,7 @@ public class InitialStateEditPart extends ShapeNodeEditPart {
 			types.add(UisutElementTypes.CommonState_2001);
 			types.add(UisutElementTypes.InitialState_2002);
 			types.add(UisutElementTypes.FinalState_2003);
+			types.add(UisutElementTypes.Stateshortcut_2005);
 		}
 		return types;
 	}

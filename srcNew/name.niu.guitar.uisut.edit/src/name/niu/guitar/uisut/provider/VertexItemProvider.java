@@ -10,8 +10,8 @@ package name.niu.guitar.uisut.provider;
 import java.util.Collection;
 import java.util.List;
 
-import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.Vertex;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,13 +28,13 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link name.niu.guitar.uisut.Stateshortcut} object.
+ * This is the item provider adapter for a {@link name.niu.guitar.uisut.Vertex} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StateshortcutItemProvider
-	extends VertexItemProvider
+public class VertexItemProvider
+	extends UIElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -50,7 +50,7 @@ public class StateshortcutItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateshortcutItemProvider(AdapterFactory adapterFactory) {
+	public VertexItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,25 +65,26 @@ public class StateshortcutItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addItsShortcutForPropertyDescriptor(object);
+			addItsInTransitionPropertyDescriptor(object);
+			addItsOutTransitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Its Shortcut For feature.
+	 * This adds a property descriptor for the Its In Transition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addItsShortcutForPropertyDescriptor(Object object) {
+	protected void addItsInTransitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Stateshortcut_itsShortcutFor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Stateshortcut_itsShortcutFor_feature", "_UI_Stateshortcut_type"),
-				 UisutPackage.Literals.STATESHORTCUT__ITS_SHORTCUT_FOR,
+				 getString("_UI_Vertex_itsInTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Vertex_itsInTransition_feature", "_UI_Vertex_type"),
+				 UisutPackage.Literals.VERTEX__ITS_IN_TRANSITION,
 				 true,
 				 false,
 				 true,
@@ -93,14 +94,36 @@ public class StateshortcutItemProvider
 	}
 
 	/**
-	 * This returns Stateshortcut.gif.
+	 * This adds a property descriptor for the Its Out Transition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsOutTransitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Vertex_itsOutTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Vertex_itsOutTransition_feature", "_UI_Vertex_type"),
+				 UisutPackage.Literals.VERTEX__ITS_OUT_TRANSITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Vertex.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Stateshortcut"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Vertex"));
 	}
 
 	/**
@@ -111,10 +134,10 @@ public class StateshortcutItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Stateshortcut)object).getName();
+		String label = ((Vertex)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Stateshortcut_type") :
-			getString("_UI_Stateshortcut_type") + " " + label;
+			getString("_UI_Vertex_type") :
+			getString("_UI_Vertex_type") + " " + label;
 	}
 
 	/**

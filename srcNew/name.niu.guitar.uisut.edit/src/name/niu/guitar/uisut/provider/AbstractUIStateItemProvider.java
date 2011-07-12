@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class AbstractUIStateItemProvider
-	extends UIElementItemProvider
+	extends VertexItemProvider
 	implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
@@ -60,8 +60,6 @@ public class AbstractUIStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addItsInTransitionPropertyDescriptor(object);
-			addItsOutTrantionPropertyDescriptor(object);
 			addAddedSystemVariablePropertyDescriptor(object);
 			addDeletedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
@@ -69,50 +67,6 @@ public class AbstractUIStateItemProvider
 			addItsExpendedOutTransitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Its In Transition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addItsInTransitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractUIState_itsInTransition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsInTransition_feature", "_UI_AbstractUIState_type"),
-				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_IN_TRANSITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Its Out Trantion feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addItsOutTrantionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractUIState_itsOutTrantion_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractUIState_itsOutTrantion_feature", "_UI_AbstractUIState_type"),
-				 UisutPackage.Literals.ABSTRACT_UI_STATE__ITS_OUT_TRANTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

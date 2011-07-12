@@ -4,6 +4,7 @@ import name.niu.guitar.uisut.AbstractUIState;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutFactory;
+import name.niu.guitar.uisut.Vertex;
 import name.niu.guitar.uisut.diagram.edit.policies.UisutBaseItemSemanticEditPolicy;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -56,10 +57,10 @@ public class UITransitionCreateCommand extends EditElementCommand {
 		if (source == null && target == null) {
 			return false;
 		}
-		if (source != null && false == source instanceof AbstractUIState) {
+		if (source != null && false == source instanceof Vertex) {
 			return false;
 		}
-		if (target != null && false == target instanceof AbstractUIState) {
+		if (target != null && false == target instanceof Vertex) {
 			return false;
 		}
 		if (getSource() == null) {
@@ -128,15 +129,15 @@ public class UITransitionCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getSource() {
-		return (AbstractUIState) source;
+	protected Vertex getSource() {
+		return (Vertex) source;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected AbstractUIState getTarget() {
-		return (AbstractUIState) target;
+	protected Vertex getTarget() {
+		return (Vertex) target;
 	}
 
 	/**
