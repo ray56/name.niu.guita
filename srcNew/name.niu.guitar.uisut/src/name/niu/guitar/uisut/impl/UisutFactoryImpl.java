@@ -71,6 +71,7 @@ public class UisutFactoryImpl extends EFactoryImpl implements UisutFactory {
 			case UisutPackage.FINAL_STATE: return createFinalState();
 			case UisutPackage.UISUT: return createUISUT();
 			case UisutPackage.UI_SYSTEM_VARIABLE_POOL: return createUISystemVariablePool();
+			case UisutPackage.STATESHORTCUT: return createStateshortcut();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -174,6 +175,16 @@ public class UisutFactoryImpl extends EFactoryImpl implements UisutFactory {
 	public UISystemVariablePool createUISystemVariablePool() {
 		UISystemVariablePoolImpl uiSystemVariablePool = new UISystemVariablePoolImpl();
 		return uiSystemVariablePool;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stateshortcut createStateshortcut() {
+		StateshortcutImpl stateshortcut = new StateshortcutImpl();
+		return stateshortcut;
 	}
 
 	/**

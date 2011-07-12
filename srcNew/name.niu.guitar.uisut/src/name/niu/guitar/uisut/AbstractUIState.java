@@ -21,6 +21,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getScriptStr <em>Script Str</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition <em>Its Expended In Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,5 +128,37 @@ public interface AbstractUIState extends UIElement {
 	 * @generated
 	 */
 	void setScriptStr(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Its Expended In Transition</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Its Expended In Transition</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpendedInTransition()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<UITransition> getItsExpendedInTransition();
+
+	/**
+	 * Returns the value of the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Its Expended Out Transition</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Its Expended Out Transition</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getAbstractUIState_ItsExpendedOutTransition()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<UITransition> getItsExpendedOutTransition();
 
 } // AbstractUIState

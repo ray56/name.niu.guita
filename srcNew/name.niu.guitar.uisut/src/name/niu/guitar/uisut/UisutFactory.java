@@ -116,6 +116,15 @@ public interface UisutFactory extends EFactory {
 	UISystemVariablePool createUISystemVariablePool();
 
 	/**
+	 * Returns a new object of class '<em>Stateshortcut</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stateshortcut</em>'.
+	 * @generated
+	 */
+	Stateshortcut createStateshortcut();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

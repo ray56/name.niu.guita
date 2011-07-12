@@ -160,6 +160,13 @@ public class UisutSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UisutPackage.STATESHORTCUT: {
+				Stateshortcut stateshortcut = (Stateshortcut)theEObject;
+				T result = caseStateshortcut(stateshortcut);
+				if (result == null) result = caseUIElement(stateshortcut);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -311,6 +318,21 @@ public class UisutSwitch<T> {
 	 * @generated
 	 */
 	public T caseUISystemVariablePool(UISystemVariablePool object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stateshortcut</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stateshortcut</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStateshortcut(Stateshortcut object) {
 		return null;
 	}
 

@@ -279,13 +279,31 @@ public interface UisutPackage extends EPackage {
 	int ABSTRACT_UI_STATE__SCRIPT_STR = UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Abstract UI State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_UI_STATE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_UI_STATE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
@@ -361,13 +379,49 @@ public interface UisutPackage extends EPackage {
 	int UI_TRANSITION__SCRIPT_STR = UI_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Its Tar State Shortcut</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__ITS_TAR_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Its Src State Shortcut</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__ITS_SRC_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Its Expanded Tar State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__ITS_EXPANDED_TAR_STATE = UI_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended Src State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__ITS_EXPENDED_SRC_STATE = UI_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>UI Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_TRANSITION_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 4;
+	int UI_TRANSITION_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UISystemVariableImpl <em>UI System Variable</em>}' class.
@@ -525,6 +579,24 @@ public interface UisutPackage extends EPackage {
 	int COMMON_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
 
 	/**
+	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMON_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMON_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
+
+	/**
 	 * The feature id for the '<em><b>Picture</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -534,13 +606,22 @@ public interface UisutPackage extends EPackage {
 	int COMMON_STATE__PICTURE = ABSTRACT_UI_STATE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Its Shortcut</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMON_STATE__ITS_SHORTCUT = ABSTRACT_UI_STATE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Common State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMON_STATE_FEATURE_COUNT = ABSTRACT_UI_STATE_FEATURE_COUNT + 1;
+	int COMMON_STATE_FEATURE_COUNT = ABSTRACT_UI_STATE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.InitialStateImpl <em>Initial State</em>}' class.
@@ -623,6 +704,24 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int INITIAL_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
 
 	/**
 	 * The number of structural features of the '<em>Initial State</em>' class.
@@ -714,6 +813,24 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_STATE__SCRIPT_STR = ABSTRACT_UI_STATE__SCRIPT_STR;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__ITS_EXPENDED_IN_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION;
+
+	/**
+	 * The feature id for the '<em><b>Its Expended Out Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__ITS_EXPENDED_OUT_TRANSITION = ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION;
 
 	/**
 	 * The number of structural features of the '<em>Final State</em>' class.
@@ -834,6 +951,80 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_SYSTEM_VARIABLE_POOL_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.StateshortcutImpl <em>Stateshortcut</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see name.niu.guitar.uisut.impl.StateshortcutImpl
+	 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getStateshortcut()
+	 * @generated
+	 */
+	int STATESHORTCUT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__NAME = UI_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__DESCRIPTION = UI_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__ID = UI_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Its Shortcut For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__ITS_SHORTCUT_FOR = UI_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__ITS_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__ITS_OUT_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Stateshortcut</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 3;
 
 
 	/**
@@ -967,6 +1158,28 @@ public interface UisutPackage extends EPackage {
 	EAttribute getAbstractUIState_ScriptStr();
 
 	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition <em>Its Expended In Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Expended In Transition</em>'.
+	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpendedInTransition()
+	 * @see #getAbstractUIState()
+	 * @generated
+	 */
+	EReference getAbstractUIState_ItsExpendedInTransition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Expended Out Transition</em>'.
+	 * @see name.niu.guitar.uisut.AbstractUIState#getItsExpendedOutTransition()
+	 * @see #getAbstractUIState()
+	 * @generated
+	 */
+	EReference getAbstractUIState_ItsExpendedOutTransition();
+
+	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UITransition <em>UI Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1019,6 +1232,50 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUITransition_ScriptStr();
+
+	/**
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsTarStateShortcut <em>Its Tar State Shortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Its Tar State Shortcut</em>'.
+	 * @see name.niu.guitar.uisut.UITransition#getItsTarStateShortcut()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EReference getUITransition_ItsTarStateShortcut();
+
+	/**
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut <em>Its Src State Shortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Its Src State Shortcut</em>'.
+	 * @see name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EReference getUITransition_ItsSrcStateShortcut();
+
+	/**
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsExpandedTarState <em>Its Expanded Tar State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Its Expanded Tar State</em>'.
+	 * @see name.niu.guitar.uisut.UITransition#getItsExpandedTarState()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EReference getUITransition_ItsExpandedTarState();
+
+	/**
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.UITransition#getItsExpendedSrcState <em>Its Expended Src State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Its Expended Src State</em>'.
+	 * @see name.niu.guitar.uisut.UITransition#getItsExpendedSrcState()
+	 * @see #getUITransition()
+	 * @generated
+	 */
+	EReference getUITransition_ItsExpendedSrcState();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.UISystemVariable <em>UI System Variable</em>}'.
@@ -1128,6 +1385,17 @@ public interface UisutPackage extends EPackage {
 	EAttribute getCommonState_Picture();
 
 	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.CommonState#getItsShortcut <em>Its Shortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Shortcut</em>'.
+	 * @see name.niu.guitar.uisut.CommonState#getItsShortcut()
+	 * @see #getCommonState()
+	 * @generated
+	 */
+	EReference getCommonState_ItsShortcut();
+
+	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.InitialState <em>Initial State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1188,6 +1456,49 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getUISystemVariablePool_ItsUISystemVariable();
+
+	/**
+	 * Returns the meta object for class '{@link name.niu.guitar.uisut.Stateshortcut <em>Stateshortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Stateshortcut</em>'.
+	 * @see name.niu.guitar.uisut.Stateshortcut
+	 * @generated
+	 */
+	EClass getStateshortcut();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor <em>Its Shortcut For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Shortcut For</em>'.
+	 * @see name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor()
+	 * @see #getStateshortcut()
+	 * @generated
+	 */
+	EReference getStateshortcut_ItsShortcutFor();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsInTransition <em>Its In Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its In Transition</em>'.
+	 * @see name.niu.guitar.uisut.Stateshortcut#getItsInTransition()
+	 * @see #getStateshortcut()
+	 * @generated
+	 */
+	EReference getStateshortcut_ItsInTransition();
+
+	/**
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Its Out Transition</em>'.
+	 * @see name.niu.guitar.uisut.Stateshortcut#getItsOutTransition()
+	 * @see #getStateshortcut()
+	 * @generated
+	 */
+	EReference getStateshortcut_ItsOutTransition();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1312,6 +1623,22 @@ public interface UisutPackage extends EPackage {
 		EAttribute ABSTRACT_UI_STATE__SCRIPT_STR = eINSTANCE.getAbstractUIState_ScriptStr();
 
 		/**
+		 * The meta object literal for the '<em><b>Its Expended In Transition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpendedInTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Expended Out Transition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION = eINSTANCE.getAbstractUIState_ItsExpendedOutTransition();
+
+		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.UITransitionImpl <em>UI Transition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1352,6 +1679,38 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UI_TRANSITION__SCRIPT_STR = eINSTANCE.getUITransition_ScriptStr();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Tar State Shortcut</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_TRANSITION__ITS_TAR_STATE_SHORTCUT = eINSTANCE.getUITransition_ItsTarStateShortcut();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Src State Shortcut</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_TRANSITION__ITS_SRC_STATE_SHORTCUT = eINSTANCE.getUITransition_ItsSrcStateShortcut();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Expanded Tar State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_TRANSITION__ITS_EXPANDED_TAR_STATE = eINSTANCE.getUITransition_ItsExpandedTarState();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Expended Src State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_TRANSITION__ITS_EXPENDED_SRC_STATE = eINSTANCE.getUITransition_ItsExpendedSrcState();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.UISystemVariableImpl <em>UI System Variable</em>}' class.
@@ -1440,6 +1799,14 @@ public interface UisutPackage extends EPackage {
 		EAttribute COMMON_STATE__PICTURE = eINSTANCE.getCommonState_Picture();
 
 		/**
+		 * The meta object literal for the '<em><b>Its Shortcut</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMMON_STATE__ITS_SHORTCUT = eINSTANCE.getCommonState_ItsShortcut();
+
+		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.InitialStateImpl <em>Initial State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1494,6 +1861,40 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UI_SYSTEM_VARIABLE_POOL__ITS_UI_SYSTEM_VARIABLE = eINSTANCE.getUISystemVariablePool_ItsUISystemVariable();
+
+		/**
+		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.StateshortcutImpl <em>Stateshortcut</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see name.niu.guitar.uisut.impl.StateshortcutImpl
+		 * @see name.niu.guitar.uisut.impl.UisutPackageImpl#getStateshortcut()
+		 * @generated
+		 */
+		EClass STATESHORTCUT = eINSTANCE.getStateshortcut();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Shortcut For</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATESHORTCUT__ITS_SHORTCUT_FOR = eINSTANCE.getStateshortcut_ItsShortcutFor();
+
+		/**
+		 * The meta object literal for the '<em><b>Its In Transition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATESHORTCUT__ITS_IN_TRANSITION = eINSTANCE.getStateshortcut_ItsInTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Out Transition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATESHORTCUT__ITS_OUT_TRANSITION = eINSTANCE.getStateshortcut_ItsOutTransition();
 
 	}
 

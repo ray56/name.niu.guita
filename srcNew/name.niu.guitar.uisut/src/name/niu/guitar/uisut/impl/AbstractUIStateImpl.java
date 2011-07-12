@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -40,6 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getAddedSystemVariable <em>Added System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getDeletedSystemVariable <em>Deleted System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getScriptStr <em>Script Str</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpendedInTransition <em>Its Expended In Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.AbstractUIStateImpl#getItsExpendedOutTransition <em>Its Expended Out Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,6 +108,26 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	 * @ordered
 	 */
 	protected String scriptStr = SCRIPT_STR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getItsExpendedInTransition() <em>Its Expended In Transition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpendedInTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UITransition> itsExpendedInTransition;
+
+	/**
+	 * The cached value of the '{@link #getItsExpendedOutTransition() <em>Its Expended Out Transition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpendedOutTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UITransition> itsExpendedOutTransition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,6 +222,30 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<UITransition> getItsExpendedInTransition() {
+		if (itsExpendedInTransition == null) {
+			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION);
+		}
+		return itsExpendedInTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<UITransition> getItsExpendedOutTransition() {
+		if (itsExpendedOutTransition == null) {
+			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION);
+		}
+		return itsExpendedOutTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -253,6 +300,10 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 				return getDeletedSystemVariable();
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				return getScriptStr();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
+				return getItsExpendedInTransition();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
+				return getItsExpendedOutTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -285,6 +336,14 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				setScriptStr((String)newValue);
 				return;
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
+				getItsExpendedInTransition().clear();
+				getItsExpendedInTransition().addAll((Collection<? extends UITransition>)newValue);
+				return;
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
+				getItsExpendedOutTransition().clear();
+				getItsExpendedOutTransition().addAll((Collection<? extends UITransition>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -312,6 +371,12 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				setScriptStr(SCRIPT_STR_EDEFAULT);
 				return;
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
+				getItsExpendedInTransition().clear();
+				return;
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
+				getItsExpendedOutTransition().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -334,6 +399,10 @@ public class AbstractUIStateImpl extends UIElementImpl implements AbstractUIStat
 				return deletedSystemVariable != null && !deletedSystemVariable.isEmpty();
 			case UisutPackage.ABSTRACT_UI_STATE__SCRIPT_STR:
 				return SCRIPT_STR_EDEFAULT == null ? scriptStr != null : !SCRIPT_STR_EDEFAULT.equals(scriptStr);
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_IN_TRANSITION:
+				return itsExpendedInTransition != null && !itsExpendedInTransition.isEmpty();
+			case UisutPackage.ABSTRACT_UI_STATE__ITS_EXPENDED_OUT_TRANSITION:
+				return itsExpendedOutTransition != null && !itsExpendedOutTransition.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

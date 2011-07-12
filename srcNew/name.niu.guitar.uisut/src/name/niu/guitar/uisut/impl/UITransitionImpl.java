@@ -9,6 +9,7 @@ package name.niu.guitar.uisut.impl;
 import java.util.Collection;
 
 import name.niu.guitar.uisut.AbstractUIState;
+import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UISystemVariable;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutPackage;
@@ -38,6 +39,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsTarState <em>Its Tar State</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getGuardedSystemVariable <em>Guarded System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getScriptStr <em>Script Str</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsTarStateShortcut <em>Its Tar State Shortcut</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsSrcStateShortcut <em>Its Src State Shortcut</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsExpandedTarState <em>Its Expanded Tar State</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UITransitionImpl#getItsExpendedSrcState <em>Its Expended Src State</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,6 +98,46 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	 * @ordered
 	 */
 	protected String scriptStr = SCRIPT_STR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getItsTarStateShortcut() <em>Its Tar State Shortcut</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsTarStateShortcut()
+	 * @generated
+	 * @ordered
+	 */
+	protected Stateshortcut itsTarStateShortcut;
+
+	/**
+	 * The cached value of the '{@link #getItsSrcStateShortcut() <em>Its Src State Shortcut</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsSrcStateShortcut()
+	 * @generated
+	 * @ordered
+	 */
+	protected Stateshortcut itsSrcStateShortcut;
+
+	/**
+	 * The cached value of the '{@link #getItsExpandedTarState() <em>Its Expanded Tar State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpandedTarState()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractUIState itsExpandedTarState;
+
+	/**
+	 * The cached value of the '{@link #getItsExpendedSrcState() <em>Its Expended Src State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpendedSrcState()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractUIState itsExpendedSrcState;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -271,6 +316,202 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Stateshortcut getItsTarStateShortcut() {
+		if (itsTarStateShortcut != null && itsTarStateShortcut.eIsProxy()) {
+			InternalEObject oldItsTarStateShortcut = (InternalEObject)itsTarStateShortcut;
+			itsTarStateShortcut = (Stateshortcut)eResolveProxy(oldItsTarStateShortcut);
+			if (itsTarStateShortcut != oldItsTarStateShortcut) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT, oldItsTarStateShortcut, itsTarStateShortcut));
+			}
+		}
+		return itsTarStateShortcut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stateshortcut basicGetItsTarStateShortcut() {
+		return itsTarStateShortcut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetItsTarStateShortcut(Stateshortcut newItsTarStateShortcut, NotificationChain msgs) {
+		Stateshortcut oldItsTarStateShortcut = itsTarStateShortcut;
+		itsTarStateShortcut = newItsTarStateShortcut;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT, oldItsTarStateShortcut, newItsTarStateShortcut);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItsTarStateShortcut(Stateshortcut newItsTarStateShortcut) {
+		if (newItsTarStateShortcut != itsTarStateShortcut) {
+			NotificationChain msgs = null;
+			if (itsTarStateShortcut != null)
+				msgs = ((InternalEObject)itsTarStateShortcut).eInverseRemove(this, UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION, Stateshortcut.class, msgs);
+			if (newItsTarStateShortcut != null)
+				msgs = ((InternalEObject)newItsTarStateShortcut).eInverseAdd(this, UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION, Stateshortcut.class, msgs);
+			msgs = basicSetItsTarStateShortcut(newItsTarStateShortcut, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT, newItsTarStateShortcut, newItsTarStateShortcut));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stateshortcut getItsSrcStateShortcut() {
+		if (itsSrcStateShortcut != null && itsSrcStateShortcut.eIsProxy()) {
+			InternalEObject oldItsSrcStateShortcut = (InternalEObject)itsSrcStateShortcut;
+			itsSrcStateShortcut = (Stateshortcut)eResolveProxy(oldItsSrcStateShortcut);
+			if (itsSrcStateShortcut != oldItsSrcStateShortcut) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT, oldItsSrcStateShortcut, itsSrcStateShortcut));
+			}
+		}
+		return itsSrcStateShortcut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stateshortcut basicGetItsSrcStateShortcut() {
+		return itsSrcStateShortcut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetItsSrcStateShortcut(Stateshortcut newItsSrcStateShortcut, NotificationChain msgs) {
+		Stateshortcut oldItsSrcStateShortcut = itsSrcStateShortcut;
+		itsSrcStateShortcut = newItsSrcStateShortcut;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT, oldItsSrcStateShortcut, newItsSrcStateShortcut);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItsSrcStateShortcut(Stateshortcut newItsSrcStateShortcut) {
+		if (newItsSrcStateShortcut != itsSrcStateShortcut) {
+			NotificationChain msgs = null;
+			if (itsSrcStateShortcut != null)
+				msgs = ((InternalEObject)itsSrcStateShortcut).eInverseRemove(this, UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION, Stateshortcut.class, msgs);
+			if (newItsSrcStateShortcut != null)
+				msgs = ((InternalEObject)newItsSrcStateShortcut).eInverseAdd(this, UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION, Stateshortcut.class, msgs);
+			msgs = basicSetItsSrcStateShortcut(newItsSrcStateShortcut, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT, newItsSrcStateShortcut, newItsSrcStateShortcut));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState getItsExpandedTarState() {
+		if (itsExpandedTarState != null && itsExpandedTarState.eIsProxy()) {
+			InternalEObject oldItsExpandedTarState = (InternalEObject)itsExpandedTarState;
+			itsExpandedTarState = (AbstractUIState)eResolveProxy(oldItsExpandedTarState);
+			if (itsExpandedTarState != oldItsExpandedTarState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE, oldItsExpandedTarState, itsExpandedTarState));
+			}
+		}
+		return itsExpandedTarState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState basicGetItsExpandedTarState() {
+		return itsExpandedTarState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItsExpandedTarState(AbstractUIState newItsExpandedTarState) {
+		AbstractUIState oldItsExpandedTarState = itsExpandedTarState;
+		itsExpandedTarState = newItsExpandedTarState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE, oldItsExpandedTarState, itsExpandedTarState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState getItsExpendedSrcState() {
+		if (itsExpendedSrcState != null && itsExpendedSrcState.eIsProxy()) {
+			InternalEObject oldItsExpendedSrcState = (InternalEObject)itsExpendedSrcState;
+			itsExpendedSrcState = (AbstractUIState)eResolveProxy(oldItsExpendedSrcState);
+			if (itsExpendedSrcState != oldItsExpendedSrcState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE, oldItsExpendedSrcState, itsExpendedSrcState));
+			}
+		}
+		return itsExpendedSrcState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractUIState basicGetItsExpendedSrcState() {
+		return itsExpendedSrcState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItsExpendedSrcState(AbstractUIState newItsExpendedSrcState) {
+		AbstractUIState oldItsExpendedSrcState = itsExpendedSrcState;
+		itsExpendedSrcState = newItsExpendedSrcState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE, oldItsExpendedSrcState, itsExpendedSrcState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -285,6 +526,14 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 				return basicSetItsTarState((AbstractUIState)otherEnd, msgs);
 			case UisutPackage.UI_TRANSITION__GUARDED_SYSTEM_VARIABLE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGuardedSystemVariable()).basicAdd(otherEnd, msgs);
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				if (itsTarStateShortcut != null)
+					msgs = ((InternalEObject)itsTarStateShortcut).eInverseRemove(this, UisutPackage.STATESHORTCUT__ITS_IN_TRANSITION, Stateshortcut.class, msgs);
+				return basicSetItsTarStateShortcut((Stateshortcut)otherEnd, msgs);
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				if (itsSrcStateShortcut != null)
+					msgs = ((InternalEObject)itsSrcStateShortcut).eInverseRemove(this, UisutPackage.STATESHORTCUT__ITS_OUT_TRANSITION, Stateshortcut.class, msgs);
+				return basicSetItsSrcStateShortcut((Stateshortcut)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -303,6 +552,10 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 				return basicSetItsTarState(null, msgs);
 			case UisutPackage.UI_TRANSITION__GUARDED_SYSTEM_VARIABLE:
 				return ((InternalEList<?>)getGuardedSystemVariable()).basicRemove(otherEnd, msgs);
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				return basicSetItsTarStateShortcut(null, msgs);
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				return basicSetItsSrcStateShortcut(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -325,6 +578,18 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 				return getGuardedSystemVariable();
 			case UisutPackage.UI_TRANSITION__SCRIPT_STR:
 				return getScriptStr();
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				if (resolve) return getItsTarStateShortcut();
+				return basicGetItsTarStateShortcut();
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				if (resolve) return getItsSrcStateShortcut();
+				return basicGetItsSrcStateShortcut();
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
+				if (resolve) return getItsExpandedTarState();
+				return basicGetItsExpandedTarState();
+			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
+				if (resolve) return getItsExpendedSrcState();
+				return basicGetItsExpendedSrcState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -351,6 +616,18 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 			case UisutPackage.UI_TRANSITION__SCRIPT_STR:
 				setScriptStr((String)newValue);
 				return;
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				setItsTarStateShortcut((Stateshortcut)newValue);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				setItsSrcStateShortcut((Stateshortcut)newValue);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
+				setItsExpandedTarState((AbstractUIState)newValue);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
+				setItsExpendedSrcState((AbstractUIState)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -375,6 +652,18 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 			case UisutPackage.UI_TRANSITION__SCRIPT_STR:
 				setScriptStr(SCRIPT_STR_EDEFAULT);
 				return;
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				setItsTarStateShortcut((Stateshortcut)null);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				setItsSrcStateShortcut((Stateshortcut)null);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
+				setItsExpandedTarState((AbstractUIState)null);
+				return;
+			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
+				setItsExpendedSrcState((AbstractUIState)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -395,6 +684,14 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 				return guardedSystemVariable != null && !guardedSystemVariable.isEmpty();
 			case UisutPackage.UI_TRANSITION__SCRIPT_STR:
 				return SCRIPT_STR_EDEFAULT == null ? scriptStr != null : !SCRIPT_STR_EDEFAULT.equals(scriptStr);
+			case UisutPackage.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT:
+				return itsTarStateShortcut != null;
+			case UisutPackage.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT:
+				return itsSrcStateShortcut != null;
+			case UisutPackage.UI_TRANSITION__ITS_EXPANDED_TAR_STATE:
+				return itsExpandedTarState != null;
+			case UisutPackage.UI_TRANSITION__ITS_EXPENDED_SRC_STATE:
+				return itsExpendedSrcState != null;
 		}
 		return super.eIsSet(featureID);
 	}
