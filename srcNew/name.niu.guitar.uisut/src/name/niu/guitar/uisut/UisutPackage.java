@@ -991,7 +991,7 @@ public interface UisutPackage extends EPackage {
 	int STATESHORTCUT__ID = UI_ELEMENT__ID;
 
 	/**
-	 * The feature id for the '<em><b>Its Shortcut For</b></em>' reference list.
+	 * The feature id for the '<em><b>Its Shortcut For</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1009,7 +1009,7 @@ public interface UisutPackage extends EPackage {
 	int STATESHORTCUT__ITS_IN_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference.
+	 * The feature id for the '<em><b>Its Out Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1468,10 +1468,10 @@ public interface UisutPackage extends EPackage {
 	EClass getStateshortcut();
 
 	/**
-	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor <em>Its Shortcut For</em>}'.
+	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor <em>Its Shortcut For</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Its Shortcut For</em>'.
+	 * @return the meta object for the reference '<em>Its Shortcut For</em>'.
 	 * @see name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor()
 	 * @see #getStateshortcut()
 	 * @generated
@@ -1490,10 +1490,10 @@ public interface UisutPackage extends EPackage {
 	EReference getStateshortcut_ItsInTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Its Out Transition</em>'.
+	 * @return the meta object for the reference list '<em>Its Out Transition</em>'.
 	 * @see name.niu.guitar.uisut.Stateshortcut#getItsOutTransition()
 	 * @see #getStateshortcut()
 	 * @generated
@@ -1873,7 +1873,7 @@ public interface UisutPackage extends EPackage {
 		EClass STATESHORTCUT = eINSTANCE.getStateshortcut();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Shortcut For</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Its Shortcut For</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1889,7 +1889,7 @@ public interface UisutPackage extends EPackage {
 		EReference STATESHORTCUT__ITS_IN_TRANSITION = eINSTANCE.getStateshortcut_ItsInTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Its Out Transition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Its Out Transition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

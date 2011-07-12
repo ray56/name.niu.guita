@@ -28,8 +28,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Stateshortcut extends UIElement {
 	/**
-	 * Returns the value of the '<em><b>Its Shortcut For</b></em>' reference list.
-	 * The list contents are of type {@link name.niu.guitar.uisut.CommonState}.
+	 * Returns the value of the '<em><b>Its Shortcut For</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.CommonState#getItsShortcut <em>Its Shortcut</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -37,13 +36,24 @@ public interface Stateshortcut extends UIElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Shortcut For</em>' reference list.
+	 * @return the value of the '<em>Its Shortcut For</em>' reference.
+	 * @see #setItsShortcutFor(CommonState)
 	 * @see name.niu.guitar.uisut.UisutPackage#getStateshortcut_ItsShortcutFor()
 	 * @see name.niu.guitar.uisut.CommonState#getItsShortcut
 	 * @model opposite="itsShortcut"
 	 * @generated
 	 */
-	EList<CommonState> getItsShortcutFor();
+	CommonState getItsShortcutFor();
+
+	/**
+	 * Sets the value of the '{@link name.niu.guitar.uisut.Stateshortcut#getItsShortcutFor <em>Its Shortcut For</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Its Shortcut For</em>' reference.
+	 * @see #getItsShortcutFor()
+	 * @generated
+	 */
+	void setItsShortcutFor(CommonState value);
 
 	/**
 	 * Returns the value of the '<em><b>Its In Transition</b></em>' reference list.
@@ -64,7 +74,8 @@ public interface Stateshortcut extends UIElement {
 	EList<UITransition> getItsInTransition();
 
 	/**
-	 * Returns the value of the '<em><b>Its Out Transition</b></em>' reference.
+	 * Returns the value of the '<em><b>Its Out Transition</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
 	 * It is bidirectional and its opposite is '{@link name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut <em>Its Src State Shortcut</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -72,23 +83,12 @@ public interface Stateshortcut extends UIElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Its Out Transition</em>' reference.
-	 * @see #setItsOutTransition(UITransition)
+	 * @return the value of the '<em>Its Out Transition</em>' reference list.
 	 * @see name.niu.guitar.uisut.UisutPackage#getStateshortcut_ItsOutTransition()
 	 * @see name.niu.guitar.uisut.UITransition#getItsSrcStateShortcut
 	 * @model opposite="itsSrcStateShortcut"
 	 * @generated
 	 */
-	UITransition getItsOutTransition();
-
-	/**
-	 * Sets the value of the '{@link name.niu.guitar.uisut.Stateshortcut#getItsOutTransition <em>Its Out Transition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Its Out Transition</em>' reference.
-	 * @see #getItsOutTransition()
-	 * @generated
-	 */
-	void setItsOutTransition(UITransition value);
+	EList<UITransition> getItsOutTransition();
 
 } // Stateshortcut

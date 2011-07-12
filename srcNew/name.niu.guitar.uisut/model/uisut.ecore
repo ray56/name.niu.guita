@@ -76,11 +76,11 @@
         eType="#//UISystemVariable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stateshortcut" eSuperTypes="#//UIElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsShortcutFor" upperBound="-1"
-        eType="#//CommonState" eOpposite="#//CommonState/itsShortcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsShortcutFor" eType="#//CommonState"
+        eOpposite="#//CommonState/itsShortcut"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsInTransition" upperBound="-1"
         eType="#//UITransition" eOpposite="#//UITransition/itsTarStateShortcut"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutTransition" eType="#//UITransition"
-        eOpposite="#//UITransition/itsSrcStateShortcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutTransition" upperBound="-1"
+        eType="#//UITransition" eOpposite="#//UITransition/itsSrcStateShortcut"/>
   </eClassifiers>
 </ecore:EPackage>

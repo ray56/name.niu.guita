@@ -115,7 +115,7 @@ public class CommonStateImpl extends AbstractUIStateImpl implements CommonState 
 	 */
 	public EList<Stateshortcut> getItsShortcut() {
 		if (itsShortcut == null) {
-			itsShortcut = new EObjectWithInverseResolvingEList.ManyInverse<Stateshortcut>(Stateshortcut.class, this, UisutPackage.COMMON_STATE__ITS_SHORTCUT, UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR);
+			itsShortcut = new EObjectWithInverseResolvingEList<Stateshortcut>(Stateshortcut.class, this, UisutPackage.COMMON_STATE__ITS_SHORTCUT, UisutPackage.STATESHORTCUT__ITS_SHORTCUT_FOR);
 		}
 		return itsShortcut;
 	}

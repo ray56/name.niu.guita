@@ -743,9 +743,9 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initEReference(getUISystemVariablePool_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UISystemVariablePool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateshortcutEClass, Stateshortcut.class, "Stateshortcut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStateshortcut_ItsShortcutFor(), this.getCommonState(), this.getCommonState_ItsShortcut(), "itsShortcutFor", null, 0, -1, Stateshortcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateshortcut_ItsShortcutFor(), this.getCommonState(), this.getCommonState_ItsShortcut(), "itsShortcutFor", null, 0, 1, Stateshortcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateshortcut_ItsInTransition(), this.getUITransition(), this.getUITransition_ItsTarStateShortcut(), "itsInTransition", null, 0, -1, Stateshortcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStateshortcut_ItsOutTransition(), this.getUITransition(), this.getUITransition_ItsSrcStateShortcut(), "itsOutTransition", null, 0, 1, Stateshortcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateshortcut_ItsOutTransition(), this.getUITransition(), this.getUITransition_ItsSrcStateShortcut(), "itsOutTransition", null, 0, -1, Stateshortcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
