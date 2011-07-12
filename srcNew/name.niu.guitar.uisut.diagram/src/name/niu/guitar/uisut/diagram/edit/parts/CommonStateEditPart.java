@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import name.niu.guitar.uisut.CommonState;
+import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.policies.CommonStateItemSemanticEditPolicy;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
@@ -11,6 +13,7 @@ import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -29,6 +32,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.draw2d.ui.render.factory.RenderedImageFactory;
+import org.eclipse.gmf.runtime.draw2d.ui.render.figures.ScalableImageFigure;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -325,9 +330,16 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleNotificationEvent(Notification event) {
+		
+		if (event.getNotifier() instanceof CommonState ) {
+			if ( UisutPackage.eINSTANCE.getCommonState_Picture().equals( event.getFeature() ) ) {
+				getPrimaryShape().updateFigureForPic();
+			}
+		}
+		
 		if (event.getNotifier() == getModel()
 				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
 						.equals(event.getFeature())) {
@@ -346,9 +358,12 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureCommonStateLabel;
+		
+		// ScreenSnap of CommonState
+		private RectangleFigure screensnapContainer = null ;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public CommonStateFigureDescriptor() {
 
@@ -362,26 +377,54 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(150),
 					getMapMode().DPtoLP(100)));
 			createContents();
+			updateFigureForPic();
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private void createContents() {
 
 			fFigureCommonStateLabel = new WrappingLabel();
 			fFigureCommonStateLabel.setText("");
-
-			GridData constraintFFigureCommonStateLabel = new GridData();
-			constraintFFigureCommonStateLabel.verticalAlignment = GridData.BEGINNING;
-			constraintFFigureCommonStateLabel.horizontalAlignment = GridData.CENTER;
-			constraintFFigureCommonStateLabel.horizontalIndent = 0;
-			constraintFFigureCommonStateLabel.horizontalSpan = 1;
-			constraintFFigureCommonStateLabel.verticalSpan = 1;
-			constraintFFigureCommonStateLabel.grabExcessHorizontalSpace = false;
-			constraintFFigureCommonStateLabel.grabExcessVerticalSpace = false;
+				GridData 
+					constraintFFigureCommonStateLabel = new GridData();
+					constraintFFigureCommonStateLabel.verticalAlignment = GridData.BEGINNING;
+					constraintFFigureCommonStateLabel.horizontalAlignment = GridData.CENTER;
+					constraintFFigureCommonStateLabel.horizontalIndent = 0;
+					constraintFFigureCommonStateLabel.horizontalSpan = 1;
+					constraintFFigureCommonStateLabel.verticalSpan = 1;
+					constraintFFigureCommonStateLabel.grabExcessHorizontalSpace = false;
+					constraintFFigureCommonStateLabel.grabExcessVerticalSpace = false;
 			this.add(fFigureCommonStateLabel, constraintFFigureCommonStateLabel);
 
+			 
+			screensnapContainer = new RectangleFigure();
+			screensnapContainer.setFill(false);
+			screensnapContainer.setOutline(false);
+			screensnapContainer.setLineWidth(0);
+			//sandboxRectangle0.setBackgroundColor( new Color(null, 255, 255, 255) );
+				GridData 
+					constraintSandboxRectangle0 = new GridData();
+					constraintSandboxRectangle0.verticalAlignment = GridData.CENTER;
+					constraintSandboxRectangle0.horizontalAlignment = GridData.CENTER;
+					constraintSandboxRectangle0.horizontalIndent = 0;
+					constraintSandboxRectangle0.horizontalSpan = 1;
+					constraintSandboxRectangle0.verticalSpan = 1;
+					constraintSandboxRectangle0.grabExcessHorizontalSpace = true;
+					constraintSandboxRectangle0.grabExcessVerticalSpace = true;
+			this.add(screensnapContainer, constraintSandboxRectangle0);
+
+				
+				GridLayout 
+					layoutScreenshotArea0 = new GridLayout();
+					layoutScreenshotArea0.numColumns = 1;
+					layoutScreenshotArea0.makeColumnsEqualWidth = true;
+					layoutScreenshotArea0.verticalSpacing = 0 ;
+					layoutScreenshotArea0.horizontalSpacing = 0 ;
+					layoutScreenshotArea0.marginHeight = 0 ;
+					layoutScreenshotArea0.marginWidth = 0 ;				
+				screensnapContainer.setLayoutManager(layoutScreenshotArea0);
 		}
 
 		/**
@@ -390,7 +433,30 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		public WrappingLabel getFigureCommonStateLabel() {
 			return fFigureCommonStateLabel;
 		}
-
+		
+		// update according to dynamic property of pic
+		public void updateFigureForPic() {
+			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
+			String picString = commonState.getPicture() ;
+			if ( picString == null || picString.isEmpty() )
+				return ;
+			
+			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+					RenderedImageFactory.getInstance(picString), true, true, true );
+			
+			GridData constraintScreenshot1 = new GridData();
+			{
+				constraintScreenshot1.verticalAlignment = GridData.FILL;
+				constraintScreenshot1.horizontalAlignment = GridData.FILL;
+				constraintScreenshot1.horizontalIndent = 0;
+				constraintScreenshot1.horizontalSpan = 1;
+				constraintScreenshot1.verticalSpan = 1;
+				constraintScreenshot1.grabExcessHorizontalSpace = true;
+				constraintScreenshot1.grabExcessVerticalSpace = true;
+			}
+			
+			this.screensnapContainer.add(screenshot1, constraintScreenshot1 ) ;			
+		}
 	}
 
 }
