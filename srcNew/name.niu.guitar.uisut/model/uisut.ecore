@@ -27,13 +27,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UITransition" eSuperTypes="#//UIElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSrcState" lowerBound="1"
-        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/itsOutTrantion"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="itsTarState" lowerBound="1"
-        eType="#//AbstractUIState" eOpposite="#//AbstractUIState/itsInTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSrcState" eType="#//AbstractUIState"
+        eOpposite="#//AbstractUIState/itsOutTrantion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsTarState" eType="#//AbstractUIState"
+        eOpposite="#//AbstractUIState/itsInTransition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guardedSystemVariable"
         upperBound="-1" eType="#//UISystemVariable" eOpposite="#//UISystemVariable/guardUITransitions"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsTarStateShortcut" eType="#//Stateshortcut"
+        eOpposite="#//Stateshortcut/itsInTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsSrcStateShortcut" eType="#//Stateshortcut"
+        eOpposite="#//Stateshortcut/itsOutTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpandedTarState" lowerBound="1"
+        eType="#//AbstractUIState" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpendedSrcState" lowerBound="1"
+        eType="#//AbstractUIState" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UISystemVariable" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="addUIState" upperBound="-1"
@@ -50,6 +58,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommonState" eSuperTypes="#//AbstractUIState">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="picture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsShortcut" upperBound="-1"
+        eType="#//Stateshortcut" eOpposite="#//Stateshortcut/itsShortcutFor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//AbstractUIState"/>
   <eClassifiers xsi:type="ecore:EClass" name="FinalState" eSuperTypes="#//AbstractUIState"/>
@@ -60,5 +70,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="UISystemVariablePool" eSuperTypes="#//UIElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsUISystemVariable" upperBound="-1"
         eType="#//UISystemVariable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stateshortcut" eSuperTypes="#//UIElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsShortcutFor" upperBound="-1"
+        eType="#//CommonState" eOpposite="#//CommonState/itsShortcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsInTransition" upperBound="-1"
+        eType="#//UITransition" eOpposite="#//UITransition/itsTarStateShortcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutTransition" eType="#//UITransition"
+        eOpposite="#//UITransition/itsSrcStateShortcut"/>
   </eClassifiers>
 </ecore:EPackage>

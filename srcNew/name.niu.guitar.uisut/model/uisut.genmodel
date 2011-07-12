@@ -26,6 +26,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTarState"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/guardedSystemVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UITransition/scriptStr"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsTarStateShortcut"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsSrcStateShortcut"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpandedTarState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UITransition/itsExpendedSrcState"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UISystemVariable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariable/addUIState"/>
@@ -39,6 +43,7 @@
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//CommonState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//CommonState/picture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//CommonState/itsShortcut"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//InitialState"/>
     <genClasses ecoreClass="uisut.ecore#//FinalState"/>
@@ -47,6 +52,11 @@
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//UISystemVariablePool">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UISystemVariablePool/itsUISystemVariable"/>
+    </genClasses>
+    <genClasses ecoreClass="uisut.ecore#//Stateshortcut">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsShortcutFor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsInTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//Stateshortcut/itsOutTransition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
