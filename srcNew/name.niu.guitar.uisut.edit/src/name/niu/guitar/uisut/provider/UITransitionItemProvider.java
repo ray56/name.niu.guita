@@ -64,6 +64,10 @@ public class UITransitionItemProvider
 			addItsTarStatePropertyDescriptor(object);
 			addGuardedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
+			addItsTarStateShortcutPropertyDescriptor(object);
+			addItsSrcStateShortcutPropertyDescriptor(object);
+			addItsExpandedTarStatePropertyDescriptor(object);
+			addItsExpendedSrcStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -152,6 +156,94 @@ public class UITransitionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Its Tar State Shortcut feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsTarStateShortcutPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_itsTarStateShortcut_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsTarStateShortcut_feature", "_UI_UITransition_type"),
+				 UisutPackage.Literals.UI_TRANSITION__ITS_TAR_STATE_SHORTCUT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Its Src State Shortcut feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsSrcStateShortcutPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_itsSrcStateShortcut_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsSrcStateShortcut_feature", "_UI_UITransition_type"),
+				 UisutPackage.Literals.UI_TRANSITION__ITS_SRC_STATE_SHORTCUT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Its Expanded Tar State feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsExpandedTarStatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_itsExpandedTarState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsExpandedTarState_feature", "_UI_UITransition_type"),
+				 UisutPackage.Literals.UI_TRANSITION__ITS_EXPANDED_TAR_STATE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Its Expended Src State feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsExpendedSrcStatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UITransition_itsExpendedSrcState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UITransition_itsExpendedSrcState_feature", "_UI_UITransition_type"),
+				 UisutPackage.Literals.UI_TRANSITION__ITS_EXPENDED_SRC_STATE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

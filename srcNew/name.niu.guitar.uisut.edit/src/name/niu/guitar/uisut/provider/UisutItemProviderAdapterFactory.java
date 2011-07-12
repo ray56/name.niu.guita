@@ -312,6 +312,29 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link name.niu.guitar.uisut.Stateshortcut} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateshortcutItemProvider stateshortcutItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link name.niu.guitar.uisut.Stateshortcut}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStateshortcutAdapter() {
+		if (stateshortcutItemProvider == null) {
+			stateshortcutItemProvider = new StateshortcutItemProvider(this);
+		}
+
+		return stateshortcutItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,6 +443,7 @@ public class UisutItemProviderAdapterFactory extends UisutAdapterFactory impleme
 		if (finalStateItemProvider != null) finalStateItemProvider.dispose();
 		if (uisutItemProvider != null) uisutItemProvider.dispose();
 		if (uiSystemVariablePoolItemProvider != null) uiSystemVariablePoolItemProvider.dispose();
+		if (stateshortcutItemProvider != null) stateshortcutItemProvider.dispose();
 	}
 
 }

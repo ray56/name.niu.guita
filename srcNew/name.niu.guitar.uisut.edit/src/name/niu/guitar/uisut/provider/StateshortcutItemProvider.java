@@ -10,7 +10,7 @@ package name.niu.guitar.uisut.provider;
 import java.util.Collection;
 import java.util.List;
 
-import name.niu.guitar.uisut.CommonState;
+import name.niu.guitar.uisut.Stateshortcut;
 import name.niu.guitar.uisut.UisutPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -26,26 +26,31 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemColorProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link name.niu.guitar.uisut.CommonState} object.
+ * This is the item provider adapter for a {@link name.niu.guitar.uisut.Stateshortcut} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CommonStateItemProvider
-	extends AbstractUIStateItemProvider
+public class StateshortcutItemProvider
+	extends UIElementItemProvider
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource,
+		ITableItemLabelProvider,
+		ITableItemColorProvider,
+		IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CommonStateItemProvider(AdapterFactory adapterFactory) {
+	public StateshortcutItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,48 +65,27 @@ public class CommonStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPicturePropertyDescriptor(object);
-			addItsShortcutPropertyDescriptor(object);
+			addItsShortcutForPropertyDescriptor(object);
+			addItsInTransitionPropertyDescriptor(object);
+			addItsOutTransitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Picture feature.
+	 * This adds a property descriptor for the Its Shortcut For feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPicturePropertyDescriptor(Object object) {
+	protected void addItsShortcutForPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CommonState_picture_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CommonState_picture_feature", "_UI_CommonState_type"),
-				 UisutPackage.Literals.COMMON_STATE__PICTURE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Its Shortcut feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addItsShortcutPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CommonState_itsShortcut_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CommonState_itsShortcut_feature", "_UI_CommonState_type"),
-				 UisutPackage.Literals.COMMON_STATE__ITS_SHORTCUT,
+				 getString("_UI_Stateshortcut_itsShortcutFor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Stateshortcut_itsShortcutFor_feature", "_UI_Stateshortcut_type"),
+				 UisutPackage.Literals.STATESHORTCUT__ITS_SHORTCUT_FOR,
 				 true,
 				 false,
 				 true,
@@ -111,14 +95,58 @@ public class CommonStateItemProvider
 	}
 
 	/**
-	 * This returns CommonState.gif.
+	 * This adds a property descriptor for the Its In Transition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsInTransitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Stateshortcut_itsInTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Stateshortcut_itsInTransition_feature", "_UI_Stateshortcut_type"),
+				 UisutPackage.Literals.STATESHORTCUT__ITS_IN_TRANSITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Its Out Transition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addItsOutTransitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Stateshortcut_itsOutTransition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Stateshortcut_itsOutTransition_feature", "_UI_Stateshortcut_type"),
+				 UisutPackage.Literals.STATESHORTCUT__ITS_OUT_TRANSITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Stateshortcut.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CommonState"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Stateshortcut"));
 	}
 
 	/**
@@ -129,10 +157,10 @@ public class CommonStateItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CommonState)object).getName();
+		String label = ((Stateshortcut)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_CommonState_type") :
-			getString("_UI_CommonState_type") + " " + label;
+			getString("_UI_Stateshortcut_type") :
+			getString("_UI_Stateshortcut_type") + " " + label;
 	}
 
 	/**
@@ -145,12 +173,6 @@ public class CommonStateItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(CommonState.class)) {
-			case UisutPackage.COMMON_STATE__PICTURE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
