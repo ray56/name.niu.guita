@@ -2,6 +2,67 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="name.niu.guitar.ui.cmd.CMD_GEN_OFFLINE"
+            name="Generate Test Case Offline">
+      </command>
+      <command
+            id="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE"
+            name="Generate Test Case Online">
+      </command>
+      <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo1"
+            name="demo1">
+      </command>
+      <command
+      		defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo2"
+            name="demo2">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo3"
+            name="demo3">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo4"
+            name="demo4">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo5"
+            name="demo5">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo6"
+            name="demo6">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo7"
+            name="demo7">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo8"
+            name="demo8">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo9"
+            name="demo9">
+      </command>
+            <command
+            defaultHandler="name.niu.guitar.ui.handlers.DemoHandler"
+            id="name.niu.guitar.ui.commands.demo10"
+            name="demo10">
+      </command>
+   </extension>
+   <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
@@ -54,6 +115,46 @@
                   label="demo2"
                   style="push">
             </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo3"
+                  label="demo3"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo4"
+                  label="demo4"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo5"
+                  label="demo5"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo6"
+                  label="demo6"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo7"
+                  label="demo7"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo8"
+                  label="demo8"
+                  style="push">
+            </command>
+                        <command
+                  commandId="name.niu.guitar.ui.commands.demo9"
+                  label="demo9"
+                  style="push">
+            </command>
+                        <command
+                              commandId="name.niu.guitar.ui.commands.demo10"
+                              label="demo10"
+                              style="push">
+                        </command>
             <separator
                   name="separator2"
                   visible="true">
@@ -66,25 +167,6 @@
       </menuContribution>
    </extension>
    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            id="name.niu.guitar.ui.cmd.CMD_GEN_OFFLINE"
-            name="Generate Test Case Offline">
-      </command>
-      <command
-            id="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE"
-            name="Generate Test Case Online">
-      </command>
-      <command
-            id="name.niu.guitar.ui.commands.demo1"
-            name="demo1">
-      </command>
-      <command
-            id="name.niu.guitar.ui.commands.demo2"
-            name="demo2">
-      </command>
-   </extension>
-   <extension
          point="org.eclipse.ui.handlers">
       <handler
             class="name.niu.guitar.ui.handlers.TCgenOfflineAction"
@@ -93,13 +175,6 @@
       <handler
             class="name.niu.guitar.ui.handlers.TCgenOnlineAction"
             commandId="name.niu.guitar.ui.cmd.CMD_GEN_ONLINE">
-      </handler>
-      <handler
-            class="name.niu.guitar.ui.handlers.DemoHandler"
-            commandId="name.niu.guitar.ui.commands.demo1">
-      </handler>
-            <handler
-            commandId="name.niu.guitar.ui.commands.demo2">
       </handler>
    </extension>
 
