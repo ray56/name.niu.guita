@@ -315,12 +315,16 @@ public class TestCaseGen extends TCDonePublisherImpl{
 					Statement stepStatement = UitfFactory.eINSTANCE.createStatement();
 					stepStatement.setDescription(String.format("%d.%s\n", ii, temptran.getDescription()));
 					stepStatement.setScriptStr(temptran.getScriptStr());
+					// set trackbackId as eObject's URIFragment
+					stepStatement.setTrackbackID( temptran.eResource().getURIFragment(temptran));
 					tc.getItsStatement().add(stepStatement);
 					
 					// add statement of expect
 					Statement stepExpStatement = UitfFactory.eINSTANCE.createStatement();
 					stepExpStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsExpandedTarState().getDescription()));
 					stepExpStatement.setScriptStr( temptran.getItsExpandedTarState().getScriptStr());
+					// set trackbackId as eObject's URIFragment
+					stepExpStatement.setTrackbackID(temptran.eResource().getURIFragment(temptran.getItsExpandedTarState()));
 					tc.getItsStatement().add(stepExpStatement);
 				}
 				
