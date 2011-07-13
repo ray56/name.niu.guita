@@ -20,8 +20,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 
 	@Override
 	public void OnUtifFileDone(String uitfFilePath) {
-		// TODO Auto-generated method stub
-		
+
 		// fill target string buffer with head
 		StringBuffer target_sb = new StringBuffer();
 		String headStr = 
@@ -42,7 +41,6 @@ public class ScriptGen implements ITCDoneSubscriber {
 			src_res.load(null);
 			ts = (TestSuite) src_res.getContents().get(0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
@@ -57,10 +55,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 			target_sb.append(tc_head.replace("%TEST_CASE_ID%", tc.getId()));			
 			for(Statement statement : tc.getItsStatement()){
 				
-				if(statement.getScriptStr() == null){
-					target_sb.append( statement.getScriptStr() + "\r\n");
-				}
-				else{
+				if(statement.getScriptStr() != null){
 					StringTokenizer strtoktt = new StringTokenizer(statement.getScriptStr(),";");
 					for(; strtoktt.hasMoreTokens(); ){
 						target_sb.append( strtoktt.nextToken() + "\r\n");
@@ -77,13 +72,10 @@ public class ScriptGen implements ITCDoneSubscriber {
 				os.write(target_sb.toString().getBytes( "utf8"));
 				os.close();				
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -93,8 +85,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 
 	@Override
 	public void OnTestCaseDone(TestCase tc) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -46,7 +46,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		long startTime = System.currentTimeMillis();
 		
 		// initial variables
-		this.initialVariables();
+		this.initialVariables(stm);
 		
 		// validate stm
 		Validator vali = new Validator();
@@ -83,7 +83,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	
 	}
 	
-	private void initialVariables(){ 
+	private void initialVariables(UIStatemachine stm){ 
 		
 		this.flushCount = 0;
 		this.tcCount = 0;
@@ -103,6 +103,11 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		this.alTranOccur.clear();
 		this.aqTranPath.clear();
+		
+		// fill alTranOccur with 0
+		for(int i = 0; i < stm.getItsUITransition().size(); i++){
+			this.alTranOccur.add(0);
+		}
 		
 	} 
 
@@ -150,29 +155,47 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		}
 		this.maxStep = maxStep;
 		
+		// check abd set start and end
+		int startInFlag = 0;
+		int endInFlag = 0;
+		
 		for(int i = 0; i < stm.getItsUIState().size(); i++){
 			
 			AbstractUIState ast = stm.getItsUIState().get(i);
 			
 			// set userStart
 			if(start == null && ast instanceof InitialState){
+				startInFlag = 1;
 				this.iStart = i;
 				continue;
 			}else if(start != null && start.equals(ast)){
+				startInFlag = 1;
 				this.iStart = i;
 				continue;
 			}
 			
 			// set userEnd
 			if(end == null && ast instanceof FinalState){
+				endInFlag = 1;
 				this.iEnd = i;
 				continue;
 			}
 			else if(end != null && end.equals(ast)){
+				endInFlag = 1;
 				this.iEnd = i;
 				continue;
 			}
 		}
+		if(startInFlag == 0){
+			JOptionPane.showMessageDialog(null, "Input Error: start state is not in the selected states!");
+			return 0;
+		}
+		if(endInFlag == 0){
+			JOptionPane.showMessageDialog(null, "Input Error: end state is not in the selected states!");
+			return 0;
+		}
+		
+		return 0;
 	}
 	
 	private ArrayList<UISystemVariable> findPreSystemVar(UIStatemachine stm){
@@ -222,9 +245,9 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			}
 		}
 		
-		for(int i = 0; i < curast.getItsOutTrantion().size(); i++){
+		for(int i = 0; i < curast.getItsExpandedOutTransition().size(); i++){
 			
-			UITransition curtran = curast.getItsOutTrantion().get(i);
+			UITransition curtran = curast.getItsExpandedOutTransition().get(i);
 			int icurtran = this.hmTransition.get(curtran);
 			
 			// judge the SystemVar on transition
@@ -260,7 +283,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			this.aqTranPath.addLast(icurtran);
 			alTranOccur.set(icurtran, alTranOccur.get(icurtran)+1);
 			
-			AbstractUIState nextast = curtran.getItsTarState();
+			AbstractUIState nextast = curtran.getItsExpandedTarState();
 			int inextast = this.hmState.get(nextast);
 			
 			// output path
@@ -280,6 +303,11 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				tchead.setDescription(String.format("test case head\n"));
 				tc.getItsStatement().add(tchead);
 				
+				Statement start = UitfFactory.eINSTANCE.createStatement();
+				start.setDescription(stm.getItsUIState().get(iStart).getDescription());
+				start.setScriptStr(stm.getItsUIState().get(iStart).getScriptStr());
+				tc.getItsStatement().add(start);
+				
 				ArrayDeque<Integer> tempqTranPath = this.aqTranPath.clone();
 				for(int ii = 1; !tempqTranPath.isEmpty(); ii++){
 					// add statement of action
@@ -291,7 +319,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 					
 					// add statement of expect
 					Statement stepExpStatement = UitfFactory.eINSTANCE.createStatement();
-					stepExpStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsTarState().getDescription()));
+					stepExpStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsExpandedTarState().getDescription()));
+					stepExpStatement.setScriptStr( temptran.getItsExpandedTarState().getScriptStr());
 					tc.getItsStatement().add(stepExpStatement);
 				}
 				
@@ -304,7 +333,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			}
 			
 			// recursion nextast
-			enumeratePath(stm, ts, inextast);
+			this.enumeratePath(stm, ts, inextast);
 		}
 		
 		if(!this.aqTranPath.isEmpty()){
