@@ -13,6 +13,7 @@ import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -338,6 +339,7 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		if (event.getNotifier() instanceof CommonState ) {
 			if ( UisutPackage.eINSTANCE.getCommonState_Picture().equals( event.getFeature() ) ) {
 				getPrimaryShape().updateFigureForPic();
+				getPrimaryShape().updateSimulationColorProperty();//for test
 			}
 		}
 		
@@ -385,6 +387,7 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 					getMapMode().DPtoLP(100)));
 			createContents();
 			updateFigureForPic();
+			updateSimulationColorProperty();
 		}
 
 		/**
@@ -466,6 +469,27 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 				constraintScreenshot1.grabExcessHorizontalSpace = true;
 				constraintScreenshot1.grabExcessVerticalSpace = true;			
 			screensnapContainer.add(screenshot1, constraintScreenshot1 ) ;			
+		}
+		
+		// update according to dynamic property of pic
+		public void updateSimulationColorProperty() {
+			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
+			// set lineWidth
+			int linewith = 1 ;
+			if ( commonState.getName() != null ){
+				linewith =  commonState.getName().length() ;
+				this.setLineWidth(linewith);;
+			}
+			
+			// update tooltip
+			String description = commonState.getDescription() ;
+			if (description != null && !description.isEmpty()){
+				if ( this.getToolTip() == null ) {
+					this.setToolTip( new Label(description)) ;
+				} else {
+					((Label)this.getToolTip()).setText(description) ;
+				}
+			}
 		}
 	}
 
