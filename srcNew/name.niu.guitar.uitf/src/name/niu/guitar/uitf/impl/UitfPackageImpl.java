@@ -184,6 +184,15 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStatement_TrackbackID() {
+		return (EAttribute)statementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestElement() {
 		return testElementEClass;
 	}
@@ -234,6 +243,7 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		statementEClass = createEClass(STATEMENT);
 		createEAttribute(statementEClass, STATEMENT__DESCRIPTION);
 		createEAttribute(statementEClass, STATEMENT__SCRIPT_STR);
+		createEAttribute(statementEClass, STATEMENT__TRACKBACK_ID);
 
 		testElementEClass = createEClass(TEST_ELEMENT);
 		createEAttribute(testElementEClass, TEST_ELEMENT__ID);
@@ -281,6 +291,7 @@ public class UitfPackageImpl extends EPackageImpl implements UitfPackage {
 		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStatement_Description(), ecorePackage.getEString(), "description", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStatement_ScriptStr(), ecorePackage.getEString(), "scriptStr", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStatement_TrackbackID(), ecorePackage.getEString(), "trackbackID", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testElementEClass, TestElement.class, "TestElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestElement_Id(), ecorePackage.getEString(), "id", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

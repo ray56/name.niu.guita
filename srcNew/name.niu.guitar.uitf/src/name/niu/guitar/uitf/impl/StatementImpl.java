@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link name.niu.guitar.uitf.impl.StatementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link name.niu.guitar.uitf.impl.StatementImpl#getScriptStr <em>Script Str</em>}</li>
+ *   <li>{@link name.niu.guitar.uitf.impl.StatementImpl#getTrackbackID <em>Trackback ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +70,26 @@ public class StatementImpl extends TestElementImpl implements Statement {
 	 * @ordered
 	 */
 	protected String scriptStr = SCRIPT_STR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTrackbackID() <em>Trackback ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrackbackID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRACKBACK_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTrackbackID() <em>Trackback ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrackbackID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String trackbackID = TRACKBACK_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +157,27 @@ public class StatementImpl extends TestElementImpl implements Statement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTrackbackID() {
+		return trackbackID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTrackbackID(String newTrackbackID) {
+		String oldTrackbackID = trackbackID;
+		trackbackID = newTrackbackID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UitfPackage.STATEMENT__TRACKBACK_ID, oldTrackbackID, trackbackID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +185,8 @@ public class StatementImpl extends TestElementImpl implements Statement {
 				return getDescription();
 			case UitfPackage.STATEMENT__SCRIPT_STR:
 				return getScriptStr();
+			case UitfPackage.STATEMENT__TRACKBACK_ID:
+				return getTrackbackID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,6 +204,9 @@ public class StatementImpl extends TestElementImpl implements Statement {
 				return;
 			case UitfPackage.STATEMENT__SCRIPT_STR:
 				setScriptStr((String)newValue);
+				return;
+			case UitfPackage.STATEMENT__TRACKBACK_ID:
+				setTrackbackID((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +226,9 @@ public class StatementImpl extends TestElementImpl implements Statement {
 			case UitfPackage.STATEMENT__SCRIPT_STR:
 				setScriptStr(SCRIPT_STR_EDEFAULT);
 				return;
+			case UitfPackage.STATEMENT__TRACKBACK_ID:
+				setTrackbackID(TRACKBACK_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +245,8 @@ public class StatementImpl extends TestElementImpl implements Statement {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case UitfPackage.STATEMENT__SCRIPT_STR:
 				return SCRIPT_STR_EDEFAULT == null ? scriptStr != null : !SCRIPT_STR_EDEFAULT.equals(scriptStr);
+			case UitfPackage.STATEMENT__TRACKBACK_ID:
+				return TRACKBACK_ID_EDEFAULT == null ? trackbackID != null : !TRACKBACK_ID_EDEFAULT.equals(trackbackID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +265,8 @@ public class StatementImpl extends TestElementImpl implements Statement {
 		result.append(description);
 		result.append(", scriptStr: ");
 		result.append(scriptStr);
+		result.append(", trackbackID: ");
+		result.append(trackbackID);
 		result.append(')');
 		return result.toString();
 	}

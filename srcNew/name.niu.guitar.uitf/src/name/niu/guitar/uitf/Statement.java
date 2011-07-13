@@ -17,6 +17,7 @@ package name.niu.guitar.uitf;
  * <ul>
  *   <li>{@link name.niu.guitar.uitf.Statement#getDescription <em>Description</em>}</li>
  *   <li>{@link name.niu.guitar.uitf.Statement#getScriptStr <em>Script Str</em>}</li>
+ *   <li>{@link name.niu.guitar.uitf.Statement#getTrackbackID <em>Trackback ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface Statement extends TestElement {
 	 * @generated
 	 */
 	void setScriptStr(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Trackback ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trackback ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trackback ID</em>' attribute.
+	 * @see #setTrackbackID(String)
+	 * @see name.niu.guitar.uitf.UitfPackage#getStatement_TrackbackID()
+	 * @model
+	 * @generated
+	 */
+	String getTrackbackID();
+
+	/**
+	 * Sets the value of the '{@link name.niu.guitar.uitf.Statement#getTrackbackID <em>Trackback ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trackback ID</em>' attribute.
+	 * @see #getTrackbackID()
+	 * @generated
+	 */
+	void setTrackbackID(String value);
 
 } // Statement

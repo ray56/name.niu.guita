@@ -16,6 +16,7 @@
     <genClasses ecoreClass="uitf.ecore#//Statement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/scriptStr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//Statement/trackbackID"/>
     </genClasses>
     <genClasses ecoreClass="uitf.ecore#//TestElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uitf.ecore#//TestElement/id"/>

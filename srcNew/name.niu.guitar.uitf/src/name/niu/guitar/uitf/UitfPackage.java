@@ -199,13 +199,22 @@ public interface UitfPackage extends EPackage {
 	int STATEMENT__SCRIPT_STR = TEST_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Trackback ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATEMENT__TRACKBACK_ID = TEST_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATEMENT_FEATURE_COUNT = TEST_ELEMENT_FEATURE_COUNT + 2;
+	int STATEMENT_FEATURE_COUNT = TEST_ELEMENT_FEATURE_COUNT + 3;
 
 
 	/**
@@ -281,6 +290,17 @@ public interface UitfPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStatement_ScriptStr();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guitar.uitf.Statement#getTrackbackID <em>Trackback ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trackback ID</em>'.
+	 * @see name.niu.guitar.uitf.Statement#getTrackbackID()
+	 * @see #getStatement()
+	 * @generated
+	 */
+	EAttribute getStatement_TrackbackID();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uitf.TestElement <em>Test Element</em>}'.
@@ -386,6 +406,14 @@ public interface UitfPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STATEMENT__SCRIPT_STR = eINSTANCE.getStatement_ScriptStr();
+
+		/**
+		 * The meta object literal for the '<em><b>Trackback ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATEMENT__TRACKBACK_ID = eINSTANCE.getStatement_TrackbackID();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uitf.impl.TestElementImpl <em>Test Element</em>}' class.

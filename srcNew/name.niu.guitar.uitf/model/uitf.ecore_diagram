@@ -45,6 +45,10 @@
         <element xmi:type="ecore:EAttribute" href="uitf.ecore#//Statement/scriptStr"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_IPjK4aPsEeCeZupa1u290A"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_RgBlca1oEeCuuP17T3oKTQ" type="3001">
+        <element xmi:type="ecore:EAttribute" href="uitf.ecore#//Statement/trackbackID"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_RgBlcq1oEeCuuP17T3oKTQ"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_FygWJKPrEeCeZupa1u290A"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_FygWJaPrEeCeZupa1u290A"/>
     </children>
