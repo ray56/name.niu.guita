@@ -55,10 +55,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 			target_sb.append(tc_head.replace("%TEST_CASE_ID%", tc.getId()));			
 			for(Statement statement : tc.getItsStatement()){
 				
-				if(statement.getScriptStr() == null){
-					//target_sb.append( statement.getScriptStr() + "\r\n");
-				}
-				else{
+				if(statement.getScriptStr() != null){
 					StringTokenizer strtoktt = new StringTokenizer(statement.getScriptStr(),";");
 					for(; strtoktt.hasMoreTokens(); ){
 						target_sb.append( strtoktt.nextToken() + "\r\n");
