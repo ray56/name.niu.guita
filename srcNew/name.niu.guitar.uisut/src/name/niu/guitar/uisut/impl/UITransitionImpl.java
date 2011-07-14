@@ -349,23 +349,6 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractUIState getItsExpandedSrcState() {
-		if (itsExpandedSrcState != null && itsExpandedSrcState.eIsProxy()) {
-			InternalEObject oldItsExpandedSrcState = (InternalEObject)itsExpandedSrcState;
-			itsExpandedSrcState = (AbstractUIState)eResolveProxy(oldItsExpandedSrcState);
-			if (itsExpandedSrcState != oldItsExpandedSrcState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UisutPackage.UI_TRANSITION__ITS_EXPANDED_SRC_STATE, oldItsExpandedSrcState, itsExpandedSrcState));
-			}
-		}
-		return itsExpandedSrcState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public AbstractUIState basicGetItsExpandedSrcState() {
 		return itsExpandedSrcState;
 	}
@@ -386,9 +369,9 @@ public class UITransitionImpl extends UIElementImpl implements UITransition {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
-	 * itsExpendedSrcState is derived
+	 * itsExpandedSrcState is derived
 	 */
-	public AbstractUIState getItsExpendedSrcState() {
+	public AbstractUIState getItsExpandedSrcState() {
 		
 		Vertex target = getItsSrcState() ;
 		if ( target != null ) {
