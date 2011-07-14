@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -180,7 +181,8 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	public EList<UITransition> getItsExpandedInTransition() {		
 		EList<UITransition> itsExpendedInTransition = null ;
 		if (itsExpendedInTransition == null) {
-			itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION);
+			//itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_IN_TRANSITION);
+			itsExpendedInTransition = new UniqueEList<UITransition> () ;
 		}
 		itsExpendedInTransition.addAll(getItsInTransition()) ;
 		return itsExpendedInTransition;
@@ -195,7 +197,8 @@ public class AbstractUIStateImpl extends VertexImpl implements AbstractUIState {
 	public EList<UITransition> getItsExpandedOutTransition() {
 		EList<UITransition> itsExpendedOutTransition = null ;
 		if (itsExpendedOutTransition == null) {
-			itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION);
+			//itsExpendedOutTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.ABSTRACT_UI_STATE__ITS_EXPANDED_OUT_TRANSITION);
+			itsExpendedOutTransition = new UniqueEList<UITransition> () ;
 		}
 		itsExpendedOutTransition.addAll(getItsOutTransition());
 		return itsExpendedOutTransition;
