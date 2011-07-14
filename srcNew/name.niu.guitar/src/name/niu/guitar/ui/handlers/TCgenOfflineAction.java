@@ -27,27 +27,10 @@ public class TCgenOfflineAction extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		// set uisutFilePath
-		String uisutDiaFilePath = "";
-		IEditorInput input = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
-		if (input instanceof FileEditorInput){
-			uisutDiaFilePath = ((FileEditorInput)input).getURI().toString();
-		} else if( input instanceof URIEditorInput ){
-			uisutDiaFilePath = ((URIEditorInput)input).getURI().toFileString();
-		}
-		String uisutFilePath = uisutDiaFilePath.substring(0, uisutDiaFilePath.length() - ".uisut_diagram".length()).concat(".uisut");
+		String uisutFilePath = getCurrentInputString(event);
 		
 		// set stm
-		UIStatemachine stm = null;
-		ResourceSet uisutResourceSet = new ResourceSetImpl();
-		uisutResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("uisut", new XMIResourceFactoryImpl());
-		URI uisutURI = URI.createFileURI(uisutFilePath);
-		Resource uisutResource = uisutResourceSet.createResource(uisutURI);
-		try{
-			uisutResource.load(null);
-			stm = (UIStatemachine)uisutResource.getContents().get(0);
-		}catch(IOException e){
-			e.printStackTrace();
-		}
+		UIStatemachine stm = getInputStm(uisutFilePath);
 
 		// set maxLoop
 		int maxLoop = 2;
@@ -71,6 +54,44 @@ public class TCgenOfflineAction extends AbstractHandler {
 		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
 		
 		return null;
+	}
+
+	static public UIStatemachine getInputStm(String uisutFilePath) {
+		UIStatemachine stm = null;
+		{
+			ResourceSet uisutResourceSet = new ResourceSetImpl();
+			uisutResourceSet.getResourceFactoryRegistry()
+					.getExtensionToFactoryMap()
+					.put("uisut", new XMIResourceFactoryImpl());
+			URI uisutURI = URI.createFileURI(uisutFilePath);
+			Resource uisutResource = uisutResourceSet.createResource(uisutURI);
+			try {
+				uisutResource.load(null);
+				stm = (UIStatemachine) uisutResource.getContents().get(0);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return stm;
+	}
+
+	static public String getCurrentInputString(ExecutionEvent event)
+			throws ExecutionException {
+		String uisutFilePath = null ;
+		{
+			String uisutDiaFilePath = "";
+			IEditorInput input = HandlerUtil.getActiveEditorChecked(event)
+					.getEditorInput();
+			if (input instanceof FileEditorInput) {
+				uisutDiaFilePath = ((FileEditorInput) input).getURI()
+						.toString();
+			} else if (input instanceof URIEditorInput) {
+				uisutDiaFilePath = ((URIEditorInput) input).getURI()
+						.toFileString();
+			}
+			uisutFilePath = uisutDiaFilePath;
+		}
+		return uisutFilePath;
 	}
 	
 }
