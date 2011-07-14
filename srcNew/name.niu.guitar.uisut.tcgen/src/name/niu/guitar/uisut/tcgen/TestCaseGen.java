@@ -325,6 +325,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 					stepExpStatement.setScriptStr( temptran.getItsExpandedTarState().getScriptStr());
 					// set trackbackId as eObject's URIFragment
 					stepExpStatement.setTrackbackID(temptran.eResource().getURIFragment(temptran.getItsExpandedTarState()));
+
 					tc.getItsStatement().add(stepExpStatement);
 				}
 				
