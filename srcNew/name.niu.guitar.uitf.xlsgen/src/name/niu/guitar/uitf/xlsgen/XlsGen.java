@@ -20,8 +20,7 @@ import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 
 public class XlsGen implements ITCDoneSubscriber{
 
-	@Override
-	public void OnUtifFileDone(String uitfFilePath) {
+	public void doGenXls(String uitfFilePath) {
 		
 		// open source resource to read
 		TestSuite ts = null;
@@ -104,6 +103,16 @@ public class XlsGen implements ITCDoneSubscriber{
 		} finally {
 
 		}
+	}
+	
+	@Override
+	public void OnUtifFileDone(String uitfFilePath) {
+		try{
+			doGenXls(uitfFilePath);
+		}catch( Exception e) {
+			e.printStackTrace() ;
+		}
+
 		
 	}
 

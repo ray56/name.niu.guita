@@ -14,3 +14,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: name.niu.guitar.uitf.xlsgen
+Bundle-ClassPath: .,
+ lib/poi-3.7-20101029.jar
