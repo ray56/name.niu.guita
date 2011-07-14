@@ -41,6 +41,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * @generated
@@ -338,8 +339,9 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		
 		if (event.getNotifier() instanceof CommonState ) {
 			if ( UisutPackage.eINSTANCE.getCommonState_Picture().equals( event.getFeature() ) ) {
-				getPrimaryShape().updateFigureForPic();
-				getPrimaryShape().updateSimulationColorProperty();//for test
+				getPrimaryShape().updateFigureForPic();				
+			} else if ( UisutPackage.eINSTANCE.getUIElement_Highlight().equals( event.getFeature() )) {
+				getPrimaryShape().updateHighlightProperty();//for test
 			}
 		}
 		
@@ -387,7 +389,7 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 					getMapMode().DPtoLP(100)));
 			createContents();
 			updateFigureForPic();
-			updateSimulationColorProperty();
+			//updateSimulationColorProperty();
 		}
 
 		/**
@@ -471,25 +473,28 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 			screensnapContainer.add(screenshot1, constraintScreenshot1 ) ;			
 		}
 		
-		// update according to dynamic property of pic
-		public void updateSimulationColorProperty() {
+		// update according to dynamic property of hight
+		public void updateHighlightProperty() {
 			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
-			// set lineWidth
-			int linewith = 1 ;
-			if ( commonState.getName() != null ){
-				linewith =  commonState.getName().length() ;
-				this.setLineWidth(linewith);;
+			String hightlintSyle = commonState.getHighlight() ;
+			if ( "none".equals(hightlintSyle.toLowerCase()) ){
+				this.setLineWidth(1);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;
+			} else if ( "bold_red".equals(hightlintSyle.toLowerCase()) ){				
+				int linewith = 3 ;
+				this.setLineWidth(linewith);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
 			}
 			
 			// update tooltip
-			String description = commonState.getDescription() ;
-			if (description != null && !description.isEmpty()){
-				if ( this.getToolTip() == null ) {
-					this.setToolTip( new Label(description)) ;
-				} else {
-					((Label)this.getToolTip()).setText(description) ;
-				}
-			}
+//			String description = commonState.getDescription() ;
+//			if (description != null && !description.isEmpty()){
+//				if ( this.getToolTip() == null ) {
+//					this.setToolTip( new Label(description)) ;
+//				} else {
+//					((Label)this.getToolTip()).setText(description) ;
+//				}
+//			}
 		}
 	}
 

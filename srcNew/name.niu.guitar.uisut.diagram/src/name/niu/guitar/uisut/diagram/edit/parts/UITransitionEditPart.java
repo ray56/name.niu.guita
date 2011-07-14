@@ -1,16 +1,22 @@
 package name.niu.guitar.uisut.diagram.edit.parts;
 
+import name.niu.guitar.uisut.CommonState;
+import name.niu.guitar.uisut.UITransition;
+import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.policies.UITransitionItemSemanticEditPolicy;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * @generated
@@ -58,6 +64,17 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 	public UITransitionFigureDescriptor getPrimaryShape() {
 		return (UITransitionFigureDescriptor) getFigure();
 	}
+	
+	// @generated NOT
+	protected void handleNotificationEvent(Notification event) {
+		if (event.getNotifier() instanceof UITransition ) {
+			if ( UisutPackage.eINSTANCE.getUIElement_Highlight().equals( event.getFeature() )) {
+				getPrimaryShape().updateHighlightProperty();//for test
+			}
+		}
+		super.handleNotificationEvent(event);		
+	}
+
 
 	/**
 	 * @generated
@@ -85,7 +102,21 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 			df.setScale(getMapMode().DPtoLP(7), getMapMode().DPtoLP(3));
 			return df;
 		}
-
+		
+		// update according to dynamic property of hight
+		public void updateHighlightProperty() {
+			UITransition transition = ( UITransition ) ((View)UITransitionEditPart.this.getModel()).getElement() ;
+			String hightlintSyle = transition.getHighlight() ;
+			if ( "none".equals(hightlintSyle.toLowerCase()) ){
+				this.setLineWidth(1);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;				
+			} else if ( "bold_red".equals(hightlintSyle.toLowerCase()) ){
+				int linewith = 3 ;
+				this.setLineWidth(linewith);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
+				//this.setBackgroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
+			}
+		}
 	}
 
 }
