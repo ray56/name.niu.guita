@@ -1,10 +1,14 @@
 package name.niu.guitar.scriptengine;
 
 import java.lang.Runtime;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.StringTokenizer;
 
@@ -58,7 +62,7 @@ public class ScriptEngine
 	}
 	
 	private String writeTargetScripToFile(String generatedScriptStatement) {
-		String tempFilePath = "";// get current workspace and create a temp txt 
+		String tempFilePath = "C:\\temp.txt";// get current workspace and create a temp txt 
 		OutputStream os;
 		
 		try {
@@ -79,15 +83,61 @@ public class ScriptEngine
 
 
 	private void executeTargetScrip(Statement statement, String targetScripFile) {
-		Runtime rt = Runtime.getRuntime();
-		Process pc = null;
+
+		
 		try {
-			pc = rt.exec("");
+			Process p = null;
+			int p_r = 0 ;
+			p = Runtime.getRuntime().exec("C:\\a.bat");
+
+			OutputStreamWriter osw2StdInput = new OutputStreamWriter( p.getOutputStream() ) ;
+			BufferedWriter bw2StdInput = new BufferedWriter( osw2StdInput ) ;
+			InputStreamReader isr4StdOutput = new InputStreamReader(p.getInputStream());
+			final BufferedReader br4StdOutput = new BufferedReader(isr4StdOutput) ;
+			InputStreamReader isr4ErrOutput = new InputStreamReader(p.getErrorStream());
+			final BufferedReader br4ErrOutput = new BufferedReader(isr4ErrOutput) ;
+			new Thread(new Runnable() {  
+			    public void run() {  
+			        try {
+						String s;
+						while( ( s=br4StdOutput.readLine() ) != null) 
+						{
+							System.out.println("Output:" + s);
+						};
+					} catch (IOException e) {
+						e.printStackTrace();
+					}  
+			    }  
+			}).start(); 
+			new Thread(new Runnable() {  
+			    public void run() {  
+			        try {
+						String s;
+						while( ( s=br4ErrOutput.readLine() ) != null) 
+						{
+							System.out.println("Error:" + s);
+						};
+					} catch (IOException e) {
+						e.printStackTrace();
+					}  
+			    }  
+			}).start(); 
 			
-			String [] trackbackIds = {statement.getTrackbackID()};
-			this.notifyTargetStatementDone(trackbackIds);
+			p_r = p.waitFor();
+			if ( p_r != 0 ) {
+				System.out.println("exe failed!");				
+			}
+			
+			if ( statement.getTrackbackID() != null ) {
+				String [] trackbackIds = {statement.getTrackbackID()};
+				this.notifyTargetStatementDone(trackbackIds);
+			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }
