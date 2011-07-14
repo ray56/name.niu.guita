@@ -66,6 +66,7 @@ public class UIElementItemProvider
 			addNamePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
+			addHighlightPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -137,6 +138,28 @@ public class UIElementItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Highlight feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHighlightPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UIElement_highlight_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UIElement_highlight_feature", "_UI_UIElement_type"),
+				 UisutPackage.Literals.UI_ELEMENT__HIGHLIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns UIElement.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,6 +199,7 @@ public class UIElementItemProvider
 			case UisutPackage.UI_ELEMENT__NAME:
 			case UisutPackage.UI_ELEMENT__DESCRIPTION:
 			case UisutPackage.UI_ELEMENT__ID:
+			case UisutPackage.UI_ELEMENT__HIGHLIGHT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

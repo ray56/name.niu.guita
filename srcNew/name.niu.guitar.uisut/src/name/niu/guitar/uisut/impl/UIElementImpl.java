@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link name.niu.guitar.uisut.impl.UIElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIElementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UIElementImpl#getHighlight <em>Highlight</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +93,26 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHighlight() <em>Highlight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHighlight()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HIGHLIGHT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHighlight() <em>Highlight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHighlight()
+	 * @generated
+	 * @ordered
+	 */
+	protected String highlight = HIGHLIGHT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +201,27 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getHighlight() {
+		return highlight;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHighlight(String newHighlight) {
+		String oldHighlight = highlight;
+		highlight = newHighlight;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UisutPackage.UI_ELEMENT__HIGHLIGHT, oldHighlight, highlight));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -189,6 +231,8 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 				return getDescription();
 			case UisutPackage.UI_ELEMENT__ID:
 				return getId();
+			case UisutPackage.UI_ELEMENT__HIGHLIGHT:
+				return getHighlight();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,6 +253,9 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 				return;
 			case UisutPackage.UI_ELEMENT__ID:
 				setId((String)newValue);
+				return;
+			case UisutPackage.UI_ELEMENT__HIGHLIGHT:
+				setHighlight((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -231,6 +278,9 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 			case UisutPackage.UI_ELEMENT__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case UisutPackage.UI_ELEMENT__HIGHLIGHT:
+				setHighlight(HIGHLIGHT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -249,6 +299,8 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case UisutPackage.UI_ELEMENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case UisutPackage.UI_ELEMENT__HIGHLIGHT:
+				return HIGHLIGHT_EDEFAULT == null ? highlight != null : !HIGHLIGHT_EDEFAULT.equals(highlight);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -269,6 +321,8 @@ public class UIElementImpl extends EObjectImpl implements UIElement {
 		result.append(description);
 		result.append(", id: ");
 		result.append(id);
+		result.append(", highlight: ");
+		result.append(highlight);
 		result.append(')');
 		return result.toString();
 	}

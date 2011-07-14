@@ -97,13 +97,22 @@ public interface UisutPackage extends EPackage {
 	int UI_ELEMENT__ID = 2;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_ELEMENT__HIGHLIGHT = 3;
+
+	/**
 	 * The number of structural features of the '<em>UI Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_ELEMENT_FEATURE_COUNT = 3;
+	int UI_ELEMENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.UIStatemachineImpl <em>UI Statemachine</em>}' class.
@@ -141,6 +150,15 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int UI_STATEMACHINE__ID = UI_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Its UI State</b></em>' containment reference list.
@@ -243,6 +261,15 @@ public interface UisutPackage extends EPackage {
 	int VERTEX__ID = UI_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -305,6 +332,15 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_UI_STATE__ID = VERTEX__ID;
+
+	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_UI_STATE__HIGHLIGHT = VERTEX__HIGHLIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -416,6 +452,15 @@ public interface UisutPackage extends EPackage {
 	int UI_TRANSITION__ID = UI_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_TRANSITION__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Its Src State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +561,15 @@ public interface UisutPackage extends EPackage {
 	int UI_SYSTEM_VARIABLE__ID = UI_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Add UI State</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -587,6 +641,15 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMON_STATE__ID = ABSTRACT_UI_STATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMON_STATE__HIGHLIGHT = ABSTRACT_UI_STATE__HIGHLIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -716,6 +779,15 @@ public interface UisutPackage extends EPackage {
 	int INITIAL_STATE__ID = ABSTRACT_UI_STATE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__HIGHLIGHT = ABSTRACT_UI_STATE__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -823,6 +895,15 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_STATE__ID = ABSTRACT_UI_STATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__HIGHLIGHT = ABSTRACT_UI_STATE__HIGHLIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -934,6 +1015,15 @@ public interface UisutPackage extends EPackage {
 	int UISUT__ID = UI_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UISUT__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Its STM</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -990,6 +1080,15 @@ public interface UisutPackage extends EPackage {
 	int UI_SYSTEM_VARIABLE_POOL__ID = UI_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_SYSTEM_VARIABLE_POOL__HIGHLIGHT = UI_ELEMENT__HIGHLIGHT;
+
+	/**
 	 * The feature id for the '<em><b>Its UI System Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1044,6 +1143,15 @@ public interface UisutPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATESHORTCUT__ID = VERTEX__ID;
+
+	/**
+	 * The feature id for the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATESHORTCUT__HIGHLIGHT = VERTEX__HIGHLIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Its In Transition</b></em>' reference list.
@@ -1384,6 +1492,17 @@ public interface UisutPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUIElement_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link name.niu.guitar.uisut.UIElement#getHighlight <em>Highlight</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Highlight</em>'.
+	 * @see name.niu.guitar.uisut.UIElement#getHighlight()
+	 * @see #getUIElement()
+	 * @generated
+	 */
+	EAttribute getUIElement_Highlight();
 
 	/**
 	 * Returns the meta object for class '{@link name.niu.guitar.uisut.CommonState <em>Common State</em>}'.
@@ -1787,6 +1906,14 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UI_ELEMENT__ID = eINSTANCE.getUIElement_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Highlight</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI_ELEMENT__HIGHLIGHT = eINSTANCE.getUIElement_Highlight();
 
 		/**
 		 * The meta object literal for the '{@link name.niu.guitar.uisut.impl.CommonStateImpl <em>Common State</em>}' class.

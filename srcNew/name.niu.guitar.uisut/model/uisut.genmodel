@@ -39,6 +39,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//UIElement/highlight"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//CommonState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uisut.ecore#//CommonState/picture"/>

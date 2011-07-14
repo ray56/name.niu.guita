@@ -94,6 +94,10 @@
         <element xmi:type="ecore:EAttribute" href="uisut.ecore#//UIElement/id"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_p8MXYaO6EeCeZupa1u290A"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_62Wh4a2_EeCgE_S6DVOMjg" type="3001">
+        <element xmi:type="ecore:EAttribute" href="uisut.ecore#//UIElement/highlight"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_62Wh4q2_EeCgE_S6DVOMjg"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_wGvDg6O5EeCeZupa1u290A"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wGvDhKO5EeCeZupa1u290A"/>
       <layoutConstraint xmi:type="notation:Ratio" xmi:id="_zYM0QKO5EeCeZupa1u290A" value="0.22641509433962265"/>
@@ -254,6 +258,18 @@
     </children>
     <element xmi:type="ecore:EClass" href="uisut.ecore#//Vertex"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_55wwkqx8EeCf1_QoIjTmow" x="795" y="30" width="116" height="70"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Km3NQK3AEeCgE_S6DVOMjg" type="Note" description="hightlight is volatile attribute:&#xD;&#xA;the value is commer seperated value of:&#xD;&#xA;none:&#xD;&#xA;bold_red:" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_KnAXMK3AEeCgE_S6DVOMjg" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_KnAXMa3AEeCgE_S6DVOMjg" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_Km3NQa3AEeCgE_S6DVOMjg"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_Km3NQq3AEeCgE_S6DVOMjg"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Km3NQ63AEeCgE_S6DVOMjg" x="215" y="-270"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_Scv9UKOtEeCeZupa1u290A"/>
   <element xmi:type="ecore:EPackage" href="uisut.ecore#/"/>
@@ -644,5 +660,11 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_bScMgqx9EeCmHb3m74WqcA"/>
     <element xsi:nil="true"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bScMg6x9EeCmHb3m74WqcA" points="[-23, -26, 363, 392]$[-331, -391, 55, 27]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Knm0IK3AEeCgE_S6DVOMjg" type="NoteAttachment" source="_Km3NQK3AEeCgE_S6DVOMjg" target="_wGo84KO5EeCeZupa1u290A" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_Knm0Ia3AEeCgE_S6DVOMjg"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_Knm0Iq3AEeCgE_S6DVOMjg"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Knm0I63AEeCgE_S6DVOMjg" points="[0, 0, -318, 104]$[245, -81, -73, 23]"/>
   </edges>
 </notation:Diagram>

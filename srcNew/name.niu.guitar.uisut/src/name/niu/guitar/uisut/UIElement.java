@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link name.niu.guitar.uisut.UIElement#getName <em>Name</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIElement#getDescription <em>Description</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIElement#getId <em>Id</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.UIElement#getHighlight <em>Highlight</em>}</li>
  * </ul>
  * </p>
  *
@@ -104,5 +105,31 @@ public interface UIElement extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Highlight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Highlight</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Highlight</em>' attribute.
+	 * @see #setHighlight(String)
+	 * @see name.niu.guitar.uisut.UisutPackage#getUIElement_Highlight()
+	 * @model transient="true"
+	 * @generated
+	 */
+	String getHighlight();
+
+	/**
+	 * Sets the value of the '{@link name.niu.guitar.uisut.UIElement#getHighlight <em>Highlight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Highlight</em>' attribute.
+	 * @see #getHighlight()
+	 * @generated
+	 */
+	void setHighlight(String value);
 
 } // UIElement
