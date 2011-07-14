@@ -2,13 +2,21 @@ package name.niu.guitar.ui.handlers;
 
 import java.util.concurrent.Semaphore;
 
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -19,6 +27,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.services.ISourceProviderService;
 
 import name.niu.guitar.scriptengine.ScriptEngine;
@@ -33,7 +42,7 @@ import name.niu.guitar.uitf.xlsgen.XlsGen;
 public class TCgenOnlineAction extends AbstractHandler {
 	
 	
-
+	private Shell shell = null ;
 	private String genAndExe = CommandState.GEN_AND_EXE_IN_IDLE ;
 	// sync variable for access genAndExe
 	private Object genAndExeSync = new String[0] ;
@@ -42,6 +51,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 	
 	
 	private CommandState commandStateService = null ;
+	private Job job;
 	
 	public void ChangeGenAndExe(String cur) {
 		synchronized (genAndExeSync) {
@@ -53,41 +63,45 @@ public class TCgenOnlineAction extends AbstractHandler {
 		}
 	}
 
-	private Object Start( ExecutionEvent event) throws ExecutionException 
+	private Object doStart( ExecutionEvent event) throws ExecutionException 
 	{
+		click = new Semaphore(1) ;
 		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;
-		assert(false);
-		final IEditorInput editorInput = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
-		// set uisutFilePath
-		String uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);
-		
-		// set stm
-		final UIStatemachine stm = TCgenOfflineAction.getInputStm(uisutFilePath);
-
-		// get diagramEditor
-		UisutDiagramEditor diagramEditor = null ;
-		IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor("a.uisut");
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
-			IEditorPart editorPart = page.openEditor(editorInput, desc.getId());
-			assert ( editorPart instanceof UisutDiagramEditor ) ;
-			diagramEditor = (UisutDiagramEditor) editorPart ;
-		} catch (PartInitException e1) {
+			click.acquire() ;
+		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
 		
+		
+		final IEditorInput editorInput = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
+		// set uisutFilePath
+		final String uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);
+		
+		// set stm	
+		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event) ;
+		if ( editorPart instanceof UisutDiagramEditor == false ) {			
+			ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
+			return null ;
+		}
+		final UIStatemachine stm = (UIStatemachine ) 
+			((UisutDiagramEditor)editorPart ).getDiagram().getElement();
+		
+		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
+		
+		
 		// set maxLoop
-		int maxLoop = 2;
+		final int maxLoop = 2;
 		
 		// set maxStep
-		int maxStep = 20;
+		final int maxStep = 20;
 		
 		// set start and end
-		AbstractUIState astStart = null;
-		AbstractUIState astEnd = null;
+		final AbstractUIState astStart = null;
+		final AbstractUIState astEnd = null;
 		
 		// add addSubscriber
-		TestCaseGen 	tcgen 	= new TestCaseGen();
+		final TestCaseGen 	tcgen 	= new TestCaseGen();
 		
 		ScriptGen 		sptgen 	= new ScriptGen();		
 		XlsGen 			xlsgen 	= new XlsGen();
@@ -103,13 +117,16 @@ public class TCgenOnlineAction extends AbstractHandler {
 			public void OnTargetStatementDone(String[] executedUUID) {
 				
 				for ( String uuid : executedUUID ) {
-					EObject o = stm.eResource().getEObject( uuid ) ;
-					if ( o instanceof AbstractUIState ){
+					final EObject o = stm.eResource().getEObject( uuid ) ;
+					if ( o instanceof AbstractUIState || o instanceof UITransition ){
 						// set color
-						((AbstractUIState)o).setHighlight("bold_red");
-					}else if ( o instanceof UITransition ) {
-						// set color
-						((UITransition)o).setHighlight("bold_red");
+						editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
+
+							@Override
+							protected void doExecute() {
+								((UIElement)o).setHighlight("bold_red");
+							}							
+						});
 					}else {
 						assert(false):"model changed?";
 					}
@@ -122,36 +139,77 @@ public class TCgenOnlineAction extends AbstractHandler {
 						click.acquire() ;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
-					}										
+					}
 				}
 			}
 			
 		});
 		
-		// generate TestCase
-		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
+		job = new Job("GenAndExe") {
+			protected IStatus run(IProgressMonitor monitor) {
+				monitor.beginTask("Gen And Exe!!!",IProgressMonitor.UNKNOWN );
+				
+				tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
+				
+				monitor.done();
+				if (monitor.isCanceled()) {
+					return org.eclipse.core.runtime.Status.CANCEL_STATUS;
+				}
+				return org.eclipse.core.runtime.Status.OK_STATUS;
+			}
+		};
+		job.addJobChangeListener(new JobChangeAdapter() {
+			public void done(IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
+					// end GenAndExe 	
+					job = null ;
+					doExternalStop(true) ;	
+					
+				} else {
+					job = null ;
+					doExternalStop(false) ;					
+				}
+			}
+		});	
+		job.setPriority(Job.INTERACTIVE);
+		job.setUser(true);
+		job.schedule();
 		
 		return null;
 	}
 
-	private Object Continue( ExecutionEvent event) throws ExecutionException 
+	private Object doContinue()
 	{
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING );
-		assert(false);
-		// generate a click
 		click.release() ;
+		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING );
 		return null ;
 	}
 	
-	private Object Stop( ExecutionEvent event) throws ExecutionException 
+	private Object doStop()   
 	{
+		click.release();
+		if ( job != null){
+			job.cancel();
+			job = null ;
+		}
 		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
 		return null ;
+	}
+	
+	private void doExternalStop(boolean isNormallyCompleted )   
+	{
+		if ( isNormallyCompleted ){
+			//MessageDialog.openInformation(shell,"Guitar","Completed!");
+		} else {
+			//MessageDialog.openInformation(shell,"Guitar","Canceled or Failed");
+		}
+		doStop() ;
 	}
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException 
 	{
+		shell = HandlerUtil.getActiveShell(event);
 		if ( commandStateService == null ) {
 			ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
 					.getActiveWorkbenchWindow(event).getService(
@@ -162,17 +220,18 @@ public class TCgenOnlineAction extends AbstractHandler {
 
 		String subCmd = event.getParameter("name.niu.guitar.ui.commands.GenOnline.subCmd") ;
 		if ( subCmd.equals("START")){
-			
-			MessageDialog.openInformation(
+			if ( !genAndExe.equals(CommandState.GEN_AND_EXE_IN_IDLE)){ 
+				MessageDialog.openInformation(
 					HandlerUtil.getActiveShell(event),
 					"Guitar",
 					"Already Started");
-			
-			return Start( event ) ;
+			} else {
+				return doStart( event ) ;
+			}
 		} else if (subCmd.equals("CONTINUE")){
-			return Continue( event ) ;
+			return doContinue() ;
 		} else if (subCmd.equals("STOP")) {
-			return Stop( event ) ;
+			return doStop() ;
 		} else {
 			assert(false);
 		}		

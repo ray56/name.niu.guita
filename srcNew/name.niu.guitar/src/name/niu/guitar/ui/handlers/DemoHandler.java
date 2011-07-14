@@ -6,6 +6,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import name.niu.guitar.ui.sourceProviders.CommandState;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -404,9 +406,8 @@ public class DemoHandler extends AbstractHandler
 
 	private void demo14(ExecutionEvent event) {
 		MessageDialog.openInformation(
-				HandlerUtil.getActiveShell(event),
-				"Guitar",
-				"Only in GEN_AND_EXE_IN_STEPED , the button enabled");
+				HandlerUtil.getActiveShell(event), "Guitar", "MessageDialog.openInformation");
+		JOptionPane.showMessageDialog(null, "JOptionPane.showMessageDialog");
 	}
 	
 	

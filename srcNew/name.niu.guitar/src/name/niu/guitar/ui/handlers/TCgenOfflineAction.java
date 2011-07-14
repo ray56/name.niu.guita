@@ -83,8 +83,7 @@ public class TCgenOfflineAction extends AbstractHandler {
 			IEditorInput input = HandlerUtil.getActiveEditorChecked(event)
 					.getEditorInput();
 			if (input instanceof FileEditorInput) {
-				uisutDiaFilePath = ((FileEditorInput) input).getURI()
-						.toString();
+				uisutDiaFilePath = ((FileEditorInput) input).getPath().toString();
 			} else if (input instanceof URIEditorInput) {
 				uisutDiaFilePath = ((URIEditorInput) input).getURI()
 						.toFileString();
