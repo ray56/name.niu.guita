@@ -117,7 +117,7 @@ public interface UIElement extends EObject {
 	 * @return the value of the '<em>Highlight</em>' attribute.
 	 * @see #setHighlight(String)
 	 * @see name.niu.guitar.uisut.UisutPackage#getUIElement_Highlight()
-	 * @model transient="true"
+	 * @model
 	 * @generated
 	 */
 	String getHighlight();
