@@ -3,6 +3,7 @@ package name.niu.guitar.ui.sourceProviders;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.AbstractSourceProvider;
 import org.eclipse.ui.ISources;
 
@@ -37,7 +38,15 @@ public class CommandState extends AbstractSourceProvider {
 	public void toogleGenAndExeStatus(String cur) {
 		if ( cur!= null && !cur.equals(genAndExe)){
 			genAndExe = cur ;
-			fireSourceChanged(ISources.WORKBENCH, GEN_AND_EXE_STATUS, genAndExe);
+			Display.getDefault().syncExec(new Runnable() {
+				public void run() {
+					fireSourceChanged(
+							ISources.WORKBENCH | ISources.ACTIVE_MENU, 
+							GEN_AND_EXE_STATUS, 
+							genAndExe);
+				}				
+			});
+
 		}
 	}
 	

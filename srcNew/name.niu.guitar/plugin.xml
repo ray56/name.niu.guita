@@ -14,29 +14,35 @@
                   visible="false">
             </separator>
             <menu
+                  id="demoGroup1"
                   label="1~10">
                <command
                      commandId="name.niu.guitar.ui.commands.demo1"
+                     id="demo1"
                      label="demo1"
                      style="push">
                </command>
                <command
                      commandId="name.niu.guitar.ui.commands.demo2"
+                     id="demo2"
                      label="demo2"
                      style="push">
                </command>
                <command
                      commandId="name.niu.guitar.ui.commands.demo3"
+                     id="demo3"
                      label="demo3"
                      style="push">
                </command>
                <command
                      commandId="name.niu.guitar.ui.commands.demo4"
+                     id="demo4"
                      label="demo4"
                      style="push">
                </command>
                <command
                      commandId="name.niu.guitar.ui.commands.demo5"
+                     id="demo5"
                      label="demo5"
                      style="push">
                </command>
@@ -67,6 +73,7 @@
                </command>
             </menu>
             <menu
+                  id="demoGroup2"
                   label="11~20">
                <command
                      commandId="name.niu.guitar.ui.commands.demo11"
@@ -300,6 +307,7 @@
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
                   icon="icons/StartGenAndExe.gif"
+                  id="start"
                   label="Start"
                   style="push"
                   tooltip="Start gen and exe test case">
@@ -320,6 +328,7 @@
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
                   icon="icons/ContinueExe.gif"
+                  id="continue"
                   label="Continue"
                   style="push"
                   tooltip="Continue exe test case">
@@ -331,15 +340,21 @@
                      checkEnabled="false">
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
-                     <equals
-                           value="GEN_AND_EXE_IN_STEPED">
-                     </equals>
+                     <or>
+                        <equals
+                              value="GEN_AND_EXE_IN_STEPED">
+                        </equals>
+                        <equals
+                              value="GEN_AND_EXE_IN_STEPPING">
+                        </equals>
+                     </or>
                   </with>
                </visibleWhen>
             </command>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
                   icon="icons/StopExe.gif"
+                  id="stop"
                   label="Stop"
                   style="push"
                   tooltip="Stop exe test case">
@@ -426,35 +441,6 @@
   	  	 <description>%newWizardDesc</description>  
       </wizard>
 
-   </extension>
-   <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="name.niu.guitar.ui.demoActionSet"
-            label="demo action set"
-            visible="true">
-         <menu
-               id="name.niu.guitar.ui.menus.demoActionMenu"
-               label="demo action"
-               path="name.niu.guitar.ui.menus.demo">
-         </menu>
-         <action
-               class="name.niu.guitar.actions.SampleAction"
-               icon="icons/guitar-plus-16.png"
-               id="name.niu.guitar.ui.actions.demo1"
-               label="demo1 action"
-               menubarPath="name.niu.guitar.ui.menus.demoActionMenu/a"
-               toolbarPath="Normal/demoActions">
-         </action>
-         <action
-               class="name.niu.guitar.actions.SampleAction"
-               icon="icons/guitar-plus-16.png"
-               id="name.niu.guitar.ui.actions.demo2"
-               label="demo1 action"
-               menubarPath="name.niu.guitar.ui.menus.demoActionMenu/b"
-               toolbarPath="Normal/demoActions">
-         </action>
-      </actionSet>
    </extension>
    <extension
          point="org.eclipse.ui.services">

@@ -36,6 +36,7 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
@@ -50,6 +51,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
@@ -64,6 +67,8 @@ import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.internal.Workbench;
+import org.eclipse.ui.internal.WorkbenchWindow;
 import org.eclipse.ui.menus.AbstractContributionFactory;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.IContributionRoot;
@@ -105,11 +110,10 @@ public class DemoHandler extends AbstractHandler
 		workbenchwindow	= PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
 		page 			= PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		ws 				= ResourcesPlugin.getWorkspace();
-		try{
-			
+		try{			
 			editPart 		= HandlerUtil.getActiveEditorChecked(event);			
 		} catch (Exception e ) {
-			e.printStackTrace() ;
+			//e.printStackTrace() ;
 		}
 		selection = HandlerUtil.getCurrentSelectionChecked(event);
 		if ( selection instanceof IStructuredSelection ) {
@@ -410,6 +414,79 @@ public class DemoHandler extends AbstractHandler
 		JOptionPane.showMessageDialog(null, "JOptionPane.showMessageDialog");
 	}
 	
+	private void demo15(ExecutionEvent event) {
+		//IMenuManager mm = 
+			IWorkbenchWindow iww = PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
+			Workbench.getInstance().getActiveWorkbenchWindow() ;
+			
+			if ( iww instanceof WorkbenchWindow ) {
+				WorkbenchWindow ww = (WorkbenchWindow) iww ;
+				MenuManager mm = ww.getMenuBarManager() ;
+				
+				ww.getToolBarManager() ;
+				ww.getToolBarManager2() ;
+				ww.getCoolBarManager();
+				ww.getCoolBarManager2();				
+				ww.getMenuManager() ;
+				ww.getMenuBarManager() ;				
+				ww.getStatusLineManager();
+				
+				mm.getMenu();
+				mm.find("name.niu.guitar.ui.menus.demo");// org.eclipse.jface.action.MenuManager
+				mm.findUsingPath("name.niu.guitar.ui.menus.demo");
+				mm.findMenuUsingPath("name.niu.guitar.ui.menus.demo");
+				
+				mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1");//org.eclipse.jface.action.MenuManager
+				mm.findMenuUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1");
+				
+				mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1/demo1"); //org.eclipse.ui.menus.CommandContributionItem
+				mm.findMenuUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1/demo1");//null
+				
+				mm.find("demoGroup1"); // null
+				mm.findUsingPath("demoGroup1");
+				mm.findMenuUsingPath("demoGroup1");
+				
+				MenuManager mm2 = (MenuManager ) mm.find("name.niu.guitar.ui.menus.demo") ;
+				mm2.find("demoGroup1") ; // org.eclipse.jface.action.MenuManager
+				
+				
+				IContributionItem demo1 = mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1/demo1") ;
+				IContributionItem demoGroup1 = mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1") ;				
+
+			}
+			
+	}
+	
+	// enable/disable/show/hide menu and menu item
+	private void demo16(ExecutionEvent event) {
+		IWorkbenchWindow iww = PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
+		assert ( iww instanceof WorkbenchWindow ); 
+		WorkbenchWindow ww = (WorkbenchWindow) iww ;
+		MenuManager mm = ww.getMenuBarManager() ;		
+		
+		IContributionItem demoGroup1 = mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1") ;				
+		if ( demoGroup1 instanceof MenuManager ) {
+			int demo1_index = ((MenuManager)demoGroup1).indexOf("demo1") ;
+			Menu menu_demoGroup1 = ((MenuManager)demoGroup1).getMenu() ;			
+			//menu_demoGroup1.setEnabled( ! menu_demoGroup1.isEnabled());
+//			MenuItem mi = menu_demoGroup1.getItem(1) ;
+//			menu_demoGroup1.getItems()[1];
+//			mi.setEnabled(!mi.getEnabled());
+		}
+		IContributionItem demo2 = mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1/demo2") ;
+		demo2.setVisible(!demo2.isVisible());
+
+		IContributionItem demo3 = mm.findUsingPath("name.niu.guitar.ui.menus.demo/demoGroup1/demo3") ;
+		if( demo3 instanceof CommandContributionItem) {
+			// cannot get MenuItem to disable , cannot set Command disabled,
+			// so set Handler to null to disable the menu item.
+			((CommandContributionItem)demo3).getCommand().getCommand().setHandler( null );
+		}
+//		demo3.update();
+//		demo2.update();
+//		demoGroup1.update() ;
+//		mm.updateAll(true);
+	}
 	
 	
 	@Override

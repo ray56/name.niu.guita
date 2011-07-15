@@ -29,6 +29,19 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	int maxStep;
 	int iStart;
 	int iEnd;
+	
+	private Integer runningFlag = 0 ; // set to 1 means stop running 
+	private String status = null ;
+	static final public String STATUS_END_OK = "OK" ; // normally closed ;
+	static final public String STATUS_END_STOPED = "STOPED" ; // closed by stop
+	static final public String STATUS_RUNNING = "RUNNING" ; // closed by stop
+	public String getStatus() {
+		return status;
+	}
+	private void setStatus(String status) {
+		this.status = status;
+	}
+	
 
 	HashMap<AbstractUIState, Integer> hmState = new HashMap<AbstractUIState, Integer>();
 	HashMap<UITransition, Integer> hmTransition = new HashMap<UITransition, Integer>();
@@ -40,8 +53,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	ArrayList<Integer> alTranOccur = new ArrayList<Integer>();
 	ArrayDeque<Integer> aqTranPath = new ArrayDeque<Integer>();
 	
-	public void generateTestCase(String uisutFilePath, UIStatemachine stm, int maxLoop, int maxStep, AbstractUIState start, AbstractUIState end) {
-		
+	public void doGenerateTestCase(String uisutFilePath, UIStatemachine stm, int maxLoop, int maxStep, AbstractUIState start, AbstractUIState end) throws StopGenExecption
+	{
 		// get start time
 		long startTime = System.currentTimeMillis();
 		
@@ -80,7 +93,30 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		// show message
 		JOptionPane.showMessageDialog(null, "Generate Test Case Successfully!\n"+generationTime);
+	}
 	
+	public void generateTestCase(final String uisutFilePath, final UIStatemachine stm, final int maxLoop, final int maxStep, final AbstractUIState start, final AbstractUIState end) 
+	{
+		setStatus(STATUS_RUNNING);
+		this.runningFlag = 0;
+		Thread gen = new Thread() {
+			public void run() {
+				try {
+					doGenerateTestCase(uisutFilePath, stm, maxLoop, maxStep,
+							start, end);
+				} catch (StopGenExecption e) {
+					setStatus(STATUS_END_STOPED);
+					return ;
+				}
+				setStatus(STATUS_END_OK);
+			}
+		};
+		gen.start();
+
+	}
+	
+	public void stopGen () {
+		this.runningFlag = 1 ;
 	}
 	
 	private void initialVariables(UIStatemachine stm){ 
@@ -222,7 +258,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		// ......
 	}
 	
-	private void enumeratePath(UIStatemachine stm, TestSuite ts, int icurast){
+	private void enumeratePath(UIStatemachine stm, TestSuite ts, int icurast) throws StopGenExecption{
 		
 		AbstractUIState curast = stm.getItsUIState().get(icurast);
 		
@@ -332,6 +368,11 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				// notify TestCaseDone
 				this.notifyTestCaseDone(tc);
 				
+				// HERE is a interrupt point
+				if( this.runningFlag == 1 ) {
+					throw new StopGenExecption() ;
+				}
+				
 				// check the size of ts, if >= 10000, output to a uitf file
 				this.checkAndFlush(ts, false);
 				
@@ -380,6 +421,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		this.notifyUitfFileDone(uitfFilePath);
 		
 		return;
+	}
+	
+	class StopGenExecption extends Exception {
+		
 	}
 	
 }
