@@ -103,7 +103,7 @@ public class ScriptEngine
 		try {
 			Process p = null;
 			int p_r = 0 ;
-			p = Runtime.getRuntime().exec("C:\\a.bat");
+			p = Runtime.getRuntime().exec("cmd /c echo hello");
 
 			OutputStreamWriter osw2StdInput = new OutputStreamWriter( p.getOutputStream() ) ;
 			BufferedWriter bw2StdInput = new BufferedWriter( osw2StdInput ) ;

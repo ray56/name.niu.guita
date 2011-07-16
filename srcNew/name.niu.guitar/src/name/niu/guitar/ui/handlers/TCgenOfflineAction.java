@@ -11,10 +11,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.FileEditorInput;
 
+import name.niu.guitar.ui.wizards.TestCaseGenWizard;
 import name.niu.guitar.uisut.*;
 import name.niu.guitar.uisut.tcgen.*;
 import name.niu.guitar.uitf.scriptgen.*;
@@ -33,10 +37,15 @@ public class TCgenOfflineAction extends AbstractHandler {
 		UIStatemachine stm = getInputStm(uisutFilePath);
 
 		// set maxLoop
-		int maxLoop = 2;
-		
-		// set maxStep
-		int maxStep = 20;
+		TestCaseGenWizard wizard = new TestCaseGenWizard();
+		Shell shell = HandlerUtil.getActiveShell(event);
+		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
+		int wizardResult = wizardDialog.open() ;
+		if ( wizardResult == Window.CANCEL ) {
+			return null ;
+		}
+		final int maxLoop = wizard.getMaxLoopCount();
+		final int maxStep = wizard.getMaxStepCount();
 		
 		// set start and end
 		AbstractUIState astStart = null;

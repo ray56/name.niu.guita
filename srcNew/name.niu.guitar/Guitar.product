@@ -10,12 +10,29 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
    <plugins>
       <plugin id="com.ibm.icu"/>
+      <plugin id="name.niu.guitar"/>
+      <plugin id="name.niu.guitar.scriptengine"/>
       <plugin id="name.niu.guitar.uisut"/>
       <plugin id="name.niu.guitar.uisut.diagram"/>
       <plugin id="name.niu.guitar.uisut.edit"/>
       <plugin id="name.niu.guitar.uisut.editor"/>
+      <plugin id="name.niu.guitar.uisut.tcgen"/>
+      <plugin id="name.niu.guitar.uisut.validator"/>
+      <plugin id="name.niu.guitar.uitf"/>
+      <plugin id="name.niu.guitar.uitf.scriptgen"/>
+      <plugin id="name.niu.guitar.uitf.xlsgen"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.dom"/>
@@ -36,6 +53,7 @@
       <plugin id="org.eclipse.core.databinding.observable"/>
       <plugin id="org.eclipse.core.databinding.property"/>
       <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filebuffers"/>
       <plugin id="org.eclipse.core.filesystem"/>
       <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
@@ -93,6 +111,7 @@
       <plugin id="org.eclipse.gmf.runtime.diagram.ui.providers"/>
       <plugin id="org.eclipse.gmf.runtime.diagram.ui.render"/>
       <plugin id="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
+      <plugin id="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
       <plugin id="org.eclipse.gmf.runtime.draw2d.ui"/>
       <plugin id="org.eclipse.gmf.runtime.draw2d.ui.render"/>
       <plugin id="org.eclipse.gmf.runtime.draw2d.ui.render.awt"/>
@@ -116,6 +135,7 @@
       <plugin id="org.eclipse.text"/>
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.console"/>
+      <plugin id="org.eclipse.ui.editors"/>
       <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.ide"/>
       <plugin id="org.eclipse.ui.ide.application"/>

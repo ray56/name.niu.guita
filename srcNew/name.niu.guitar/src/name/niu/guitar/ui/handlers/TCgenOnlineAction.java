@@ -24,6 +24,7 @@ import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.CoolBar;
 import org.eclipse.swt.widgets.Display;
@@ -145,7 +146,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 	private Object doStart( ExecutionEvent event) throws ExecutionException 
 	{
 		click = new Semaphore(0) ;
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;		
+			
 		
 		final IEditorInput editorInput = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
 		// set uisutFilePath
@@ -166,7 +167,9 @@ public class TCgenOnlineAction extends AbstractHandler {
 		TestCaseGenWizard wizard = new TestCaseGenWizard();
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
 		int wizardResult = wizardDialog.open();
-		
+		if ( wizardResult == Window.CANCEL ) {
+			return null ;
+		}
 		final int maxLoop = wizard.getMaxLoopCount();
 		final int maxStep = wizard.getMaxStepCount();
 		
@@ -292,7 +295,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 		});	
 		job.setPriority(Job.INTERACTIVE);
 		job.setUser(true);
-		job.schedule();
+		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;	
+		job.schedule(500);
 		
 		return null;
 	}
