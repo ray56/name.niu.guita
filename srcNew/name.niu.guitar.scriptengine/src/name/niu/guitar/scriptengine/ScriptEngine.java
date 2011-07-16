@@ -3,13 +3,17 @@ package name.niu.guitar.scriptengine;
 import java.lang.Runtime;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.Properties;
+import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.concurrent.Semaphore;
 
@@ -30,6 +34,14 @@ public class ScriptEngine
 	implements ITCDoneSubscriber
 {
 
+	static private String scriptInterpreter_scriptFile ;
+	static private String scriptInterpreter_commandLine ;
+	static {
+		ResourceBundle rb = ResourceBundle.getBundle("config/scriptengine");
+		scriptInterpreter_scriptFile = rb.getString("scriptInterpreter_scriptFile");
+		scriptInterpreter_commandLine = rb.getString("scriptInterpreter_commandLine");	
+	}
+	
 	private String status = null ;
 	static final public String STATUS_END_OK = "OK" ; // normally closed ;
 	static final public String STATUS_END_STOPED = "STOPED" ; // closed by stop
@@ -61,6 +73,11 @@ public class ScriptEngine
 				
 				// sent to engine
 				executeTargetScrip(statement, targetScriptFile);
+			} else {
+				if ( statement.getTrackbackID() != null ) {
+					String [] trackbackIds = {statement.getTrackbackID()};
+					this.notifyTargetStatementDone(trackbackIds);
+				}
 			}
 		}
 	}
@@ -81,7 +98,7 @@ public class ScriptEngine
 	}
 	
 	private String writeTargetScripToFile(String generatedScriptStatement) {
-		String tempFilePath = "C:\\temp.txt";// get current workspace and create a temp txt 
+		String tempFilePath = scriptInterpreter_scriptFile ;
 		OutputStream os;
 		
 		try {
@@ -103,7 +120,7 @@ public class ScriptEngine
 		try {
 			Process p = null;
 			int p_r = 0 ;
-			p = Runtime.getRuntime().exec("cmd /c echo hello");
+			p = Runtime.getRuntime().exec(scriptInterpreter_commandLine + " " + scriptInterpreter_scriptFile );
 
 			OutputStreamWriter osw2StdInput = new OutputStreamWriter( p.getOutputStream() ) ;
 			BufferedWriter bw2StdInput = new BufferedWriter( osw2StdInput ) ;
