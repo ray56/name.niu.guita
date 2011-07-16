@@ -272,6 +272,10 @@
                optional="false">
          </commandParameter>
       </command>
+	<command
+		id="name.niu.guitar.ui.commands.EditSystemVariable"
+		name="Edit System Variable">
+	</command>      
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -295,7 +299,11 @@
                      value="START">
                </parameter>
             </command>
-
+            <command
+                  commandId="name.niu.guitar.ui.commands.EditSystemVariable"
+                  label="Edit System Variable"
+                  style="push">
+            </command>
          </menu>
       </menuContribution>
       <menuContribution
@@ -386,6 +394,11 @@
                   label="Offline"
                   style="push">
             </command>
+            <command
+                  commandId="name.niu.guitar.ui.commands.EditSystemVariable"
+                  label="Variable"
+                  style="push">
+            </command>
          </toolbar>
       </menuContribution>
    </extension>
@@ -398,6 +411,10 @@
       <handler
             class="name.niu.guitar.ui.handlers.TCgenOnlineAction"
             commandId="name.niu.guitar.ui.commands.GenOnline">
+      </handler>
+      <handler
+            class="name.niu.guitar.ui.handlers.EditSystemVariableHandler"
+            commandId="name.niu.guitar.ui.commands.EditSystemVariable">
       </handler>
    </extension>
 

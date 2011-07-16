@@ -193,9 +193,9 @@ public class UISystemVariableItemProvider
 		 UISystemVariable o = (UISystemVariable)object ;
 		 switch (columnIndex) {
 		 	case 0:
-		 		return o.getName();
+		 		return ( o.getName() == null ) ? "<...>" : o.getName() ;
 		 	case 1:
-		 		return o.getDescription();
+		 		return ( o.getDescription() == null )? "<...>" : o.getDescription();
 		 	case 2:
 		 		return "";//Categories don't own descriptions
 		 	default:
