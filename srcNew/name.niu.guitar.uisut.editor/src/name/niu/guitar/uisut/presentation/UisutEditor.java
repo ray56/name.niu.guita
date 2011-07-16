@@ -193,10 +193,10 @@ public class UisutEditor
 	// added for ingetration
 	protected IEditorInput  wrappedInput ;
 	protected UisutDiagramEditor diagramEditor;
-	protected SelectionEditorPart selectionEditorPart ;
-	protected ParentEditorPart parentEditorPart ;
-	protected ListEditorPart listEditorPart ;
-	protected TreeEditorPart treeEditorPart ;
+//	protected SelectionEditorPart selectionEditorPart ;
+//	protected ParentEditorPart parentEditorPart ;
+//	protected ListEditorPart listEditorPart ;
+//	protected TreeEditorPart treeEditorPart ;
 	protected TableEditorPart tableEditorPart ;
 	protected TableTreeEditorPart tableTreeEditorPart ;
 	protected MultiPageSelectionProvider selectionProvider;
@@ -1028,48 +1028,43 @@ public class UisutEditor
 			try {
 				int pageIndex ;
 				
-                // This is the page for the graphical diagram viewer.
-                //
-                diagramEditor = new UisutDiagramEditor();
-                pageIndex = addPage(diagramEditor, getEditorInput());
-                setPageText(pageIndex, "Diagram");
-				
+			
                 // Create a page for the selection tree view.
-                //
-                selectionEditorPart = new SelectionEditorPart(this);
-                pageIndex = addPage(selectionEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
-                selectionEditorPart.setInput(editingDomain.getResourceSet());			
+//                selectionEditorPart = new SelectionEditorPart(this);
+//                pageIndex = addPage(selectionEditorPart, getWrappedInput());
+//                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+//                selectionEditorPart.setInput(editingDomain.getResourceSet());			
                 
                 // Create a page for the parent tree view.
-                //
-                parentEditorPart = new ParentEditorPart(this);
-                pageIndex = addPage(parentEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_ParentPage_label"));
+//                parentEditorPart = new ParentEditorPart(this);
+//                pageIndex = addPage(parentEditorPart, getWrappedInput());
+//                setPageText(pageIndex, getString("_UI_ParentPage_label"));
                 
                 // This is the page for the list viewer
-                //
-                listEditorPart = new ListEditorPart(this);
-                pageIndex = addPage(listEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_ListPage_label"));
+//                listEditorPart = new ListEditorPart(this);
+//                pageIndex = addPage(listEditorPart, getWrappedInput());
+//                setPageText(pageIndex, getString("_UI_ListPage_label"));
                 
                 // This is the page for the tree viewer
-                //
-                treeEditorPart = new TreeEditorPart(this);
-                pageIndex = addPage(treeEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_TreePage_label"));
+//                treeEditorPart = new TreeEditorPart(this);
+//                pageIndex = addPage(treeEditorPart, getWrappedInput());
+//                setPageText(pageIndex, getString("_UI_TreePage_label"));
                 
                 // This is the page for the table viewer.
-                //
                 tableEditorPart = new TableEditorPart(this);
                 pageIndex = addPage(tableEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_TablePage_label"));
+                setPageText(pageIndex, "Manage System Variables");
                 
                 // This is the page for the table tree viewer.
                 //
-                tableTreeEditorPart = new TableTreeEditorPart(this);
-                pageIndex = addPage(tableTreeEditorPart, getWrappedInput());
-                setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
+//                tableTreeEditorPart = new TableTreeEditorPart(this);
+//                pageIndex = addPage(tableTreeEditorPart, getWrappedInput());
+//                setPageText(pageIndex, "Table Tree");
+                
+                // This is the page for the graphical diagram viewer.
+                diagramEditor = new UisutDiagramEditor();
+                pageIndex = addPage(diagramEditor, getEditorInput());
+                setPageText(pageIndex, "Diagram");
                 
 
 				
@@ -1292,11 +1287,12 @@ public class UisutEditor
 	public void handleContentOutlineSelection(ISelection selection) {
 		   if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
 			      List selectedElements = ((IStructuredSelection)selection).toList();
-			      if (getActiveEditor() == selectionEditorPart) {
-			        // If the selection viewer is active, we want it to select the same selection as this selection.
-			        //
-			        selectionProvider.setSelection(new StructuredSelection(selectedElements));
-					} else if (getActiveEditor() == diagramEditor){
+//			      if (getActiveEditor() == selectionEditorPart) {
+//			        // If the selection viewer is active, we want it to select the same selection as this selection.
+//			        //
+//			        selectionProvider.setSelection(new StructuredSelection(selectedElements));
+//					} else 
+						if (getActiveEditor() == diagramEditor){
 						// If the diagram viewer is active, we need to map the selection to the corresponding EditParts.
 						//
 						ArrayList<Object> selectionList = new ArrayList<Object>();

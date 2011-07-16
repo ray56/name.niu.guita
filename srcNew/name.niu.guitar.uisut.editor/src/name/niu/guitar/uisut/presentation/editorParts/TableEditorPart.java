@@ -3,6 +3,7 @@ package name.niu.guitar.uisut.presentation.editorParts;
 import name.niu.guitar.uisut.UIElement;
 import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.UISystemVariable;
+import name.niu.guitar.uisut.UISystemVariablePool;
 import name.niu.guitar.uisut.UisutFactory;
 import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.presentation.UisutEditor;
@@ -12,9 +13,11 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -29,8 +32,14 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Item;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -43,6 +52,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 public class TableEditorPart extends UISUTBaseEditorPart 
 {
 	  protected TableViewer viewer;
+	  private UISystemVariablePool systemVariablePool;
 	  
 	  public TableEditorPart(UisutEditor parent) {
 	    super(parent);
@@ -50,7 +60,43 @@ public class TableEditorPart extends UISUTBaseEditorPart
 
 	  @Override
 	  public void createPartControl(Composite parent) {
+		  
+		//parent.setLayout(new GridLayout(1, false));
+		  // add "add" button
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText("Add");
+		button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		button.addSelectionListener(new SelectionListener() {
+			public void widgetSelected(SelectionEvent e) {
+				EditingDomain editingDomain = TableEditorPart.this
+						.getEditingDomain();
+				TransactionalEditingDomain ted = null;
+				if (editingDomain instanceof TransactionalEditingDomain)
+					ted = (TransactionalEditingDomain) editingDomain;
+
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(ted) {
+							@Override
+							protected void doExecute() {
+								UISystemVariable v = UisutFactory.eINSTANCE
+										.createUISystemVariable();
+								v.setName("defalutName");
+								systemVariablePool.getItsUISystemVariable()
+										.add(v);
+							}
+						});
+
+				// viewer.setInput( systemVariablePool ) ;
+				viewer.refresh();
+			}
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
+			
+			
 	    viewer = new TableViewer(parent, SWT.NONE);
+
 	    
 		Table table = viewer.getTable();
 		TableLayout layout = new TableLayout();
@@ -171,7 +217,8 @@ public class TableEditorPart extends UISUTBaseEditorPart
 		EObject eo = this.getEditingDomain().getResourceSet().getResources().get(0).getContents().get(0) ;
 		if (eo instanceof UIStatemachine ) {
 			
-			viewer.setInput( ((UIStatemachine)eo).getItsUISystemVariablePool() ) ;
+			systemVariablePool = ((UIStatemachine)eo).getItsUISystemVariablePool();
+			viewer.setInput( systemVariablePool ) ;
 			return ;
 		}
 		
