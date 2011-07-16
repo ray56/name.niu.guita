@@ -32,4 +32,12 @@ public class TargetScriptExeDonePublisherImpl implements ITargetScriptExeDonePub
 		}
 	}
 	
+	@Override
+	public void notifyTEStoped() {
+		
+		for(ITargetScriptExeDoneSubscriber sb : sbList){
+			
+			sb.OnSEStoped(this);
+		}
+	}
 }

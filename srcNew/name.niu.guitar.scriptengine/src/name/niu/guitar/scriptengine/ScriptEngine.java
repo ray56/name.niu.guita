@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.StringTokenizer;
+import java.util.concurrent.Semaphore;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDonePublisher;
 import name.niu.guitar.scriptengine.interfaces.impl.TargetScriptExeDonePublisherImpl;
 import name.niu.guitar.uitf.*;
+import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 
 public class ScriptEngine 
@@ -28,6 +30,19 @@ public class ScriptEngine
 	implements ITCDoneSubscriber
 {
 
+	private String status = null ;
+	static final public String STATUS_END_OK = "OK" ; // normally closed ;
+	static final public String STATUS_END_STOPED = "STOPED" ; // closed by stop
+	static final public String STATUS_RUNNING = "RUNNING" ; // closed by stop
+	private Semaphore down = new Semaphore(0) ;
+	
+	public String getStatus() {
+		return status;
+	}
+	private synchronized void setStatus(String status) {
+		this.status = status;
+	}
+	
 	@Override
 	public void OnUtifFileDone(String uitfFileParth) {
 		
@@ -50,6 +65,10 @@ public class ScriptEngine
 		}
 	}
 
+	public void stop () {
+		down.release() ;// when let stop ,fist let thread go on.
+		this.setStatus(STATUS_END_STOPED);
+	}
 	private String convertTargetScript(Statement statement) {
 		String generatedScriptStatement = null ;
 		StringBuffer target_sb = new StringBuffer();
@@ -80,11 +99,7 @@ public class ScriptEngine
 		return tempFilePath ;
 	}
 
-
-
-	private void executeTargetScrip(Statement statement, String targetScripFile) {
-
-		
+	private void doExecuteTargetScrip(Statement statement, String targetScripFile) throws StopScriptExecption {
 		try {
 			Process p = null;
 			int p_r = 0 ;
@@ -132,13 +147,57 @@ public class ScriptEngine
 				String [] trackbackIds = {statement.getTrackbackID()};
 				this.notifyTargetStatementDone(trackbackIds);
 			}
+			
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} finally {
+			if ( this.getStatus().equals(STATUS_END_STOPED ) ){
+				throw new StopScriptExecption() ;
+			}
 		}
 	}
+
+	private void executeTargetScrip(final Statement statement, final String targetScripFile) {
+
+		setStatus(STATUS_RUNNING);
+		Thread scriptExe = new Thread() {
+			public void run() {
+				try {
+					doExecuteTargetScrip(statement, targetScripFile);					
+				} catch (StopScriptExecption e) {
+					setStatus(STATUS_END_STOPED);
+					return ;
+				} finally {
+					down.release();
+				}
+				setStatus(STATUS_END_OK);				
+			}
+		};
+		
+		try{
+			scriptExe.start() ;
+		}finally{
+			try {
+				down.acquire();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
 	
-	
+	class StopScriptExecption extends Exception {
+		
+	}
+
+	@Override
+	public void OnTCGStoped(ITCDonePublisher tcg) {
+		// TODO Auto-generated method stub
+		
+	}
+		
 
 }

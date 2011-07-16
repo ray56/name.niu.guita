@@ -39,4 +39,12 @@ public class TCDonePublisherImpl implements ITCDonePublisher {
 		}
 	}
 	
+	@Override
+	public void notifyTCGStoped() {
+		
+		for(ITCDoneSubscriber sb : sbList){			
+			sb.OnTCGStoped(this);
+		}
+	}
+	
 }

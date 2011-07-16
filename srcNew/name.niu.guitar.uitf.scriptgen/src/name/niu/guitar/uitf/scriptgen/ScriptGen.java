@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import name.niu.guitar.uitf.*;
+import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 
 public class ScriptGen implements ITCDoneSubscriber {
@@ -86,6 +87,12 @@ public class ScriptGen implements ITCDoneSubscriber {
 	@Override
 	public void OnTestCaseDone(TestCase tc) {
 
+	}
+
+	@Override
+	public void OnTCGStoped(ITCDonePublisher tcg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

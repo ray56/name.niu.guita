@@ -99,6 +99,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	{
 		setStatus(STATUS_RUNNING);
 		this.runningFlag = 0;
+		final TestCaseGen tcg = this ;
 		Thread gen = new Thread() {
 			public void run() {
 				try {
@@ -107,6 +108,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				} catch (StopGenExecption e) {
 					setStatus(STATUS_END_STOPED);
 					return ;
+				} finally {
+					tcg.notifyTCGStoped();
 				}
 				setStatus(STATUS_END_OK);
 			}
@@ -117,6 +120,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	
 	public void stopGen () {
 		this.runningFlag = 1 ;
+		setStatus(STATUS_END_STOPED);
 	}
 	
 	private void initialVariables(UIStatemachine stm){ 

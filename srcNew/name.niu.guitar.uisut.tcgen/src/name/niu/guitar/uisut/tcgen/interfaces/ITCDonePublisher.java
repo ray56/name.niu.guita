@@ -8,5 +8,6 @@ public interface ITCDonePublisher {
 	public void rmvSubscriber( ITCDoneSubscriber sb );
 	public void notifyUitfFileDone( String uitfFilePath );
 	public void notifyTestCaseDone( TestCase tc );
+	public void notifyTCGStoped();
 	
 }

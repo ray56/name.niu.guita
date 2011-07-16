@@ -6,5 +6,6 @@ public interface ITCDoneSubscriber {
 	
 	public void OnUtifFileDone(String uitfFileParth);
 	public void OnTestCaseDone(TestCase tc);
+	public void OnTCGStoped(ITCDonePublisher tcg ) ;
 
 }

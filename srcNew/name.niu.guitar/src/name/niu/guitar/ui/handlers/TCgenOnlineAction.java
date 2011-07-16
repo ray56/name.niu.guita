@@ -24,6 +24,7 @@ import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.CoolBar;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -45,11 +46,14 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.services.ISourceProviderService;
 
 import name.niu.guitar.scriptengine.ScriptEngine;
+import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDonePublisher;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDoneSubscriber;
 import name.niu.guitar.ui.sourceProviders.CommandState;
+import name.niu.guitar.ui.wizards.TestCaseGenWizard;
 import name.niu.guitar.uisut.*;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.tcgen.*;
+import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 import name.niu.guitar.uitf.scriptgen.ScriptGen;
 import name.niu.guitar.uitf.xlsgen.XlsGen;
@@ -68,6 +72,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 	private CommandState commandStateService = null ;
 	private Job job;
 	private TestCaseGen tcgen = null ;
+	private ScriptEngine scriptEngine = null ;
 	private Workbench workbench;
 	private WorkbenchWindow workbenchWindown;
 	
@@ -139,14 +144,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 
 	private Object doStart( ExecutionEvent event) throws ExecutionException 
 	{
-		click = new Semaphore(1) ;
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;
-		try {
-			click.acquire() ;
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-		
+		click = new Semaphore(0) ;
+		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;		
 		
 		final IEditorInput editorInput = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
 		// set uisutFilePath
@@ -163,11 +162,13 @@ public class TCgenOnlineAction extends AbstractHandler {
 		
 		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
 		
-		// set maxLoop
-		final int maxLoop = 2;
+		// set maxLoop and max Step
+		TestCaseGenWizard wizard = new TestCaseGenWizard();
+		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
+		int wizardResult = wizardDialog.open();
 		
-		// set maxStep
-		final int maxStep = 20;
+		final int maxLoop = wizard.getMaxLoopCount();
+		final int maxStep = wizard.getMaxStepCount();
 		
 		// set start and end
 		final AbstractUIState astStart = null;
@@ -177,7 +178,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 		
 		ScriptGen 		sptgen 	= new ScriptGen();		
 		XlsGen 			xlsgen 	= new XlsGen();
-		final ScriptEngine	scriptEngine = new ScriptEngine();
+		scriptEngine = new ScriptEngine();
 		
 		tcgen.addSubscriber(sptgen);
 		tcgen.addSubscriber(xlsgen);
@@ -208,20 +209,25 @@ public class TCgenOnlineAction extends AbstractHandler {
 								assert(false):"model changed?";
 							}
 							
-							// change state
-							ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPED ) ;
-							
 							//
 							if( m.isCanceled()) {
+								scriptEngine.stop() ;
 								tcgen.stopGen() ;
 							}							
 							// wait for button clicked
 							try {
+								// change state
+								ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPED ) ;
 								click.acquire() ;
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							} 
 						}
+					}
+
+					@Override
+					public void OnSEStoped(ITargetScriptExeDonePublisher p) {
+						ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE ) ;						
 					}					
 				});		
 				
@@ -242,15 +248,21 @@ public class TCgenOnlineAction extends AbstractHandler {
 										((UIElement)eo).setHighlight("none");
 									}									
 								}								
-							}							
+							}				
 						});
+					}
+					@Override
+					public void OnTCGStoped(ITCDonePublisher tcg) {
+						ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE ) ;
 					}					
 				});
 				
 				monitor.beginTask("Gen And Exe!!!",IProgressMonitor.UNKNOWN );
 				tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);	
 				
-				while ( tcgen.getStatus().equals( TestCaseGen.STATUS_RUNNING )) {
+				// check running or monitor cancelling
+				while ( tcgen.getStatus().equals( TestCaseGen.STATUS_RUNNING ) && 
+						! monitor.isCanceled()) {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -294,7 +306,10 @@ public class TCgenOnlineAction extends AbstractHandler {
 	
 	private Object doStop()   
 	{
+		click.release(3) ;		
+		scriptEngine.stop() ;
 		tcgen.stopGen() ;
+		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE );
 		//click.release();
 //		if ( job != null){
 //			job.cancel();

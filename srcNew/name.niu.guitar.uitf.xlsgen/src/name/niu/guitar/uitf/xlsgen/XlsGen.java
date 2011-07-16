@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import name.niu.guitar.uitf.*;
 import name.niu.guitar.uitf.xlsgen.excelExporter.*;
+import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 
 public class XlsGen implements ITCDoneSubscriber{
@@ -118,6 +119,12 @@ public class XlsGen implements ITCDoneSubscriber{
 
 	@Override
 	public void OnTestCaseDone(TestCase tc) {
+		
+	}
+
+	@Override
+	public void OnTCGStoped(ITCDonePublisher tcg) {
+		// TODO Auto-generated method stub
 		
 	}
 

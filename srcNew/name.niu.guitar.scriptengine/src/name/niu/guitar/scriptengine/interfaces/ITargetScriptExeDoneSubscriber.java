@@ -5,5 +5,6 @@ import name.niu.guitar.uitf.*;
 public interface ITargetScriptExeDoneSubscriber {
 	
 	public void OnTargetStatementDone(String[] executedUUID);
+	public void OnSEStoped(ITargetScriptExeDonePublisher p);
 
 }
