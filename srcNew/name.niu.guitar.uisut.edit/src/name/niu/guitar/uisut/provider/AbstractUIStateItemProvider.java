@@ -53,7 +53,7 @@ public class AbstractUIStateItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -63,8 +63,8 @@ public class AbstractUIStateItemProvider
 			addAddedSystemVariablePropertyDescriptor(object);
 			addDeletedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
-			addItsExpandedInTransitionPropertyDescriptor(object);
-			addItsExpandedOutTransitionPropertyDescriptor(object);
+			//addItsExpandedInTransitionPropertyDescriptor(object);
+			//addItsExpandedOutTransitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

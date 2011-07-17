@@ -56,7 +56,7 @@ public class UIElementItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -65,8 +65,8 @@ public class UIElementItemProvider
 
 			addNamePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
-			addIdPropertyDescriptor(object);
-			addHighlightPropertyDescriptor(object);
+			//addIdPropertyDescriptor(object);
+			//addHighlightPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

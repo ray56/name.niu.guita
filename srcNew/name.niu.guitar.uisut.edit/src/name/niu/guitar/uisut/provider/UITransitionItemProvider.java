@@ -53,19 +53,19 @@ public class UITransitionItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addItsSrcStatePropertyDescriptor(object);
-			addItsTarStatePropertyDescriptor(object);
+			//addItsSrcStatePropertyDescriptor(object);
+			//addItsTarStatePropertyDescriptor(object);
 			addGuardedSystemVariablePropertyDescriptor(object);
 			addScriptStrPropertyDescriptor(object);
-			addItsExpandedTarStatePropertyDescriptor(object);
-			addItsExpandedSrcStatePropertyDescriptor(object);
+			//addItsExpandedTarStatePropertyDescriptor(object);
+			//addItsExpandedSrcStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
