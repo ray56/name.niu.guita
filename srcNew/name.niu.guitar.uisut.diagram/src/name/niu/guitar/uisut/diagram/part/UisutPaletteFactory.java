@@ -34,7 +34,8 @@ public class UisutPaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(
 				Messages.Uisut1Group_title);
 		paletteContainer.setId("createUisut1Group"); //$NON-NLS-1$
-		paletteContainer.add(createStateMachine1CreationTool());
+		// 2011-07-17 Modify temp
+		//paletteContainer.add(createStateMachine1CreationTool());
 		paletteContainer.add(createCommonState2CreationTool());
 		paletteContainer.add(createInitialState3CreationTool());
 		paletteContainer.add(createFinalState4CreationTool());
