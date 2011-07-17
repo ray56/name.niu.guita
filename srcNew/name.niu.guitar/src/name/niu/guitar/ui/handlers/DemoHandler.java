@@ -1,13 +1,20 @@
 package name.niu.guitar.ui.handlers;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import name.niu.guitar.scriptengine.ScriptEngine;
 import name.niu.guitar.ui.sourceProviders.CommandState;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -486,6 +493,43 @@ public class DemoHandler extends AbstractHandler
 //		demo2.update();
 //		demoGroup1.update() ;
 //		mm.updateAll(true);
+	}
+	
+	private void demo17(ExecutionEvent event) {
+			Properties property = new Properties();
+			// read from outside
+			try {			
+				property.load(new FileInputStream("C:\\scriptengine.properties"));
+				property.getProperty("scriptInterpreter_scriptFile");
+				property.getProperty("scriptInterpreter_commandLine");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// read by ResourceBundle
+			ResourceBundle rb = ResourceBundle.getBundle("config/scriptengine");
+			rb.getString("scriptInterpreter_scriptFile");
+			rb.getString("scriptInterpreter_commandLine");
+			
+			// read by class
+			InputStream in1 = ScriptEngine.class.getResourceAsStream("/config/scriptengine.properties");
+			try {
+				property.load(in1);
+				property.getProperty("scriptInterpreter_scriptFile");
+				property.getProperty("scriptInterpreter_commandLine");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// read by classLoader
+			InputStream in2 = ScriptEngine.class.getClassLoader().getResourceAsStream("config/scriptengine.properties");
+			try {
+				property.load(in2);
+				property.getProperty("scriptInterpreter_scriptFile");
+				property.getProperty("scriptInterpreter_commandLine");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
 	}
 	
 	

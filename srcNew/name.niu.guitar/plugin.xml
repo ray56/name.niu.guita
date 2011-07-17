@@ -275,7 +275,17 @@
 	<command
 		id="name.niu.guitar.ui.commands.EditSystemVariable"
 		name="Edit System Variable">
-	</command>      
+	</command>
+	<command
+		id="name.niu.guitar.ui.commands.SelectAsFrom"
+		name="Select As From">
+	</command>
+	<command
+		id="name.niu.guitar.ui.commands.SelectAsTo"
+		name="Select As To">
+	</command>
+
+     
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -312,6 +322,48 @@
          <toolbar
                id="name.niu.guitar.ui.toolbars.GuitarMainToolBar"
                label="Guitar">
+            <command
+                  commandId="name.niu.guitar.ui.commands.GenOnline"
+                  icon="icons/SelectFrom.png"
+                  id="selectFrom"
+                  label="SelectFrom"
+                  style="push"
+                  tooltip="Select a starting poin in a diagram/subdiagram">
+               <parameter
+                     name="name.niu.guitar.ui.commands.GenOnline.subCmd"
+                     value="SELECTFROM">
+               </parameter>
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
+                     <equals
+                           value="GEN_AND_EXE_IN_IDLE">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="name.niu.guitar.ui.commands.GenOnline"
+                  icon="icons/SelectTo.png"
+                  id="SelectTo"
+                  label="SelectTo"
+                  style="push"
+                  tooltip="Select a endding poin in a diagram/subdiagram">
+               <parameter
+                     name="name.niu.guitar.ui.commands.GenOnline.subCmd"
+                     value="SELECTTO">
+               </parameter>
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
+                     <equals
+                           value="GEN_AND_EXE_IN_IDLE">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
                   icon="icons/StartGenAndExe.gif"
@@ -394,9 +446,12 @@
                   label="Offline"
                   style="push">
             </command>
+            <separator
+                  name="sep2">
+            </separator>
             <command
                   commandId="name.niu.guitar.ui.commands.EditSystemVariable"
-                  label="Variable"
+                  label="Edit Variable"
                   style="push">
             </command>
          </toolbar>

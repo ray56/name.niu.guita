@@ -484,7 +484,15 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 				int linewith = 3 ;
 				this.setLineWidth(linewith);
 				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
-			}
+			} else if ( "from=true".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_GREEN));
+			} else if ( "from=false".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+			} else if ( "to=true".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW));
+			} else if ( "to=false".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+			} 
 			
 			// update tooltip
 //			String description = commonState.getDescription() ;

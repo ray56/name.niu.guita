@@ -18,12 +18,17 @@ import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.CoolBarManager;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.CoolBar;
@@ -52,6 +57,7 @@ import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDoneSubscriber;
 import name.niu.guitar.ui.sourceProviders.CommandState;
 import name.niu.guitar.ui.wizards.TestCaseGenWizard;
 import name.niu.guitar.uisut.*;
+import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.tcgen.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
@@ -76,6 +82,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 	private ScriptEngine scriptEngine = null ;
 	private Workbench workbench;
 	private WorkbenchWindow workbenchWindown;
+	private AbstractUIState selectTo = null ;
+	private AbstractUIState selectFrom = null ;
 	
 	public void ChangeGenAndExe(String cur) {
 		synchronized (genAndExeSync) {
@@ -158,8 +166,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 			ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
 			return null ;
 		}
-		final UIStatemachine stm = (UIStatemachine ) 
-			((UisutDiagramEditor)editorPart ).getDiagram().getElement();
+		
 		
 		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
 		
@@ -174,8 +181,22 @@ public class TCgenOnlineAction extends AbstractHandler {
 		final int maxStep = wizard.getMaxStepCount();
 		
 		// set start and end
-		final AbstractUIState astStart = null;
-		final AbstractUIState astEnd = null;
+		final AbstractUIState astStart = this.selectFrom;
+		final AbstractUIState astEnd = this.selectTo;
+		final UIStatemachine stm ;
+		if( astStart == null && astEnd == null ) {
+			stm = (UIStatemachine ) ((UisutDiagramEditor)editorPart ).getDiagram().getElement();
+		} else if ( astStart == null ){
+			assert( astEnd.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astEnd.eContainer() ;
+		} else if ( astEnd == null ){
+			assert( astStart.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astStart.eContainer() ;
+		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
+				stm = (UIStatemachine)astEnd.eContainer() ;
+		} else {
+			return null ;
+		}
 		
 		tcgen = new TestCaseGen();
 		
@@ -350,6 +371,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 		}
 		workbenchWindown = (WorkbenchWindow)workbench.getActiveWorkbenchWindow() ;
 
+		//
 		
 		String subCmd = event.getParameter("name.niu.guitar.ui.commands.GenOnline.subCmd") ;
 		if ( subCmd.equals("START")){
@@ -365,9 +387,70 @@ public class TCgenOnlineAction extends AbstractHandler {
 			return doContinue() ;
 		} else if (subCmd.equals("STOP")) {
 			return doStop() ;
+		} else if (subCmd.equals("SELECTFROM")) {
+			ISelection selection = HandlerUtil.getCurrentSelection(event);
+			if ( selection instanceof IStructuredSelection){
+				IStructuredSelection ss = (IStructuredSelection)selection ;
+				Object selObj = ss.getFirstElement();
+				if ( selObj instanceof GraphicalEditPart ){
+					CommonStateEditPart ep = (CommonStateEditPart)selObj;
+					return doSelectFrom ( ep );
+				}
+			}
+			return null ;
+		} else if (subCmd.equals("SELECTTO")) {
+			ISelection selection = HandlerUtil.getCurrentSelection(event);
+			if ( selection instanceof IStructuredSelection){
+				IStructuredSelection ss = (IStructuredSelection)selection ;
+				Object selObj = ss.getFirstElement();
+				if ( selObj instanceof GraphicalEditPart){
+					CommonStateEditPart ep = (CommonStateEditPart)selObj;
+					return doSelectTo ( ep );
+				}
+			}
+			return null ;
 		} else {
 			assert(false);
 		}		
 		return null ;
+	}
+
+	private Object doSelectTo( GraphicalEditPart to ) {
+		
+		EObject o =  ((View)to.getModel()).getElement();
+		if ( o instanceof AbstractUIState ){
+			final AbstractUIState s = (AbstractUIState)o ;
+			final AbstractUIState oldTo = this.selectTo ;
+			this.selectTo = s ;
+			to.getEditingDomain().getCommandStack().execute( new RecordingCommand(to.getEditingDomain()) {
+				@Override
+				protected void doExecute() {
+					if( oldTo != null ) {
+						oldTo.setHighlight("to=false");
+					}
+					s.setHighlight("to=true");
+				}				
+			});
+		}
+		return null;
+	}
+
+	private Object doSelectFrom( GraphicalEditPart from ) {
+		EObject o =  ((View)from.getModel()).getElement();
+		if ( o instanceof AbstractUIState ){
+			final AbstractUIState s = (AbstractUIState)o ;
+			final AbstractUIState oldFrom = this.selectFrom ;
+			this.selectFrom = s ;
+			from.getEditingDomain().getCommandStack().execute( new RecordingCommand(from.getEditingDomain()) {
+				@Override
+				protected void doExecute() {
+					if( oldFrom != null ) {
+						oldFrom.setHighlight("from=false");
+					}
+					s.setHighlight("from=true");
+				}				
+			});
+		}
+		return null;
 	}
 }

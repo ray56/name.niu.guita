@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import name.niu.guitar.uisut.FinalState;
+import name.niu.guitar.uisut.InitialState;
+import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.policies.FinalStateItemSemanticEditPolicy;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 
@@ -32,7 +35,9 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * @generated
@@ -274,9 +279,16 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleNotificationEvent(Notification event) {
+		
+		if (event.getNotifier() instanceof FinalState ) {
+			if ( UisutPackage.eINSTANCE.getUIElement_Highlight().equals( event.getFeature() )) {
+				getPrimaryShape().updateHighlightProperty();//for test
+			}
+		}
+		
 		if (event.getNotifier() == getModel()
 				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
 						.equals(event.getFeature())) {
@@ -329,6 +341,27 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 			constraintElli0.grabExcessVerticalSpace = true;
 			this.add(elli0, constraintElli0);
 
+		}
+		
+		public void updateHighlightProperty() {
+			FinalState finalState = ( FinalState ) ((View)FinalStateEditPart.this.getModel()).getElement() ;
+			String hightlintSyle = finalState.getHighlight() ;
+			if ( "none".equals(hightlintSyle.toLowerCase()) ){
+				this.setLineWidth(1);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;
+			} else if ( "bold_red".equals(hightlintSyle.toLowerCase()) ){				
+				int linewith = 3 ;
+				this.setLineWidth(linewith);
+				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
+			} else if ( "from=true".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+			} else if ( "from=false".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+			} else if ( "to=true".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW));
+			} else if ( "to=false".equals(hightlintSyle.toLowerCase()) ){
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+			} 
 		}
 
 	}

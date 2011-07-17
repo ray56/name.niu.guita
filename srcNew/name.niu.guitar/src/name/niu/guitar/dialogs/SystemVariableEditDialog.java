@@ -64,6 +64,8 @@ public class SystemVariableEditDialog extends Dialog {
 			UISystemVariablePool  variablePool) 
 	{
 		super(parentShell);
+		assert( editingDomain != null);
+		assert( variablePool != null);
 		this.editingDomain = editingDomain ;
 		this.variablePool = variablePool ;
 	}
@@ -205,7 +207,14 @@ public class SystemVariableEditDialog extends Dialog {
 				        super.doSetValue(value);
 				    }    
 			};
-			cellEditors[ 1 ]  =   new  TextCellEditor(viewer.getTable());
+			cellEditors[ 1 ]  =   new  TextCellEditor(viewer.getTable())
+			{
+				protected void doSetValue(Object value) {
+					if (value == null)
+						return;
+					super.doSetValue(value);
+				} 	
+			};
 			cellEditors[2] = new MultiButtonCellEditor(viewer.getTable()){
 				@Override
 				protected void initButtons() {	
