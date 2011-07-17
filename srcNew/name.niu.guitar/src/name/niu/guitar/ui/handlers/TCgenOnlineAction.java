@@ -453,4 +453,17 @@ public class TCgenOnlineAction extends AbstractHandler {
 		}
 		return null;
 	}
+	
+	@Override
+	public	boolean isEnabled(){
+		try {
+			IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (ed instanceof UisutDiagramEditor){
+				return true ;
+			}
+		} catch ( NullPointerException e ){
+			return false;
+		}
+		return false ;
+	}
 }

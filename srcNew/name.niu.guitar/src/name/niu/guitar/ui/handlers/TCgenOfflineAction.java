@@ -15,11 +15,14 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.FileEditorInput;
 
 import name.niu.guitar.ui.wizards.TestCaseGenWizard;
 import name.niu.guitar.uisut.*;
+import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.tcgen.*;
 import name.niu.guitar.uitf.scriptgen.*;
 import name.niu.guitar.uitf.xlsgen.*;
@@ -101,5 +104,16 @@ public class TCgenOfflineAction extends AbstractHandler {
 		}
 		return uisutFilePath;
 	}
-	
+	@Override
+	public	boolean isEnabled(){
+		try {
+			IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (ed instanceof UisutDiagramEditor){
+				return true ;
+			}
+		} catch ( NullPointerException e ){
+			return false;
+		}
+		return false ;
+	}
 }

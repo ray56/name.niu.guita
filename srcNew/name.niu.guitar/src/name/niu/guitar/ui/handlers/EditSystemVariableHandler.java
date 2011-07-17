@@ -21,6 +21,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class EditSystemVariableHandler extends AbstractHandler {
@@ -50,5 +51,19 @@ public class EditSystemVariableHandler extends AbstractHandler {
 		return null;
 	}
 
+	@Override
+	public	boolean isEnabled(){
+		try {
+			IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (ed instanceof UisutDiagramEditor){
+				return true ;
+			}
+		} catch ( NullPointerException e ){
+			return false;
+		}
+		return false ;
+	}
+	
+	
 
 }

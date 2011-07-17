@@ -364,9 +364,13 @@
                   </with>
                </visibleWhen>
             </command>
+            <separator
+                  name="sep1"
+                  visible="true">
+            </separator>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
-                  icon="icons/StartGenAndExe.gif"
+                  icon="icons/OnlineStartGen.png"
                   id="start"
                   label="Start"
                   style="push"
@@ -438,21 +442,40 @@
                </visibleWhen>
             </command>
             <separator
-                  name="sep1"
-                  visible="true">
-            </separator>
-            <command
-                  commandId="name.niu.guitar.ui.commands.GenOffline"
-                  label="Offline"
-                  style="push">
-            </command>
-            <separator
                   name="sep2">
             </separator>
             <command
+                  commandId="name.niu.guitar.ui.commands.GenOffline"
+                  icon="icons/OfflineStartGenAndExe.gif"
+                  label="Offline"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
+                     <equals
+                           value="GEN_AND_EXE_IN_IDLE">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+            <separator
+                  name="sep3">
+            </separator>
+            <command
                   commandId="name.niu.guitar.ui.commands.EditSystemVariable"
+                  icon="icons/SystemVariable.png"
                   label="Edit Variable"
                   style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
+                     <equals
+                           value="GEN_AND_EXE_IN_IDLE">
+                     </equals>
+                  </with>
+               </visibleWhen>
             </command>
          </toolbar>
       </menuContribution>
