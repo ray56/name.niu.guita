@@ -346,6 +346,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				Statement start = UitfFactory.eINSTANCE.createStatement();
 				start.setDescription(stm.getItsUIState().get(iStart).getDescription());
 				start.setScriptStr(stm.getItsUIState().get(iStart).getScriptStr());
+				start.setTrackbackID( stm.getItsUIState().get(iStart).eResource().getURIFragment(stm.getItsUIState().get(iStart)));
 				tc.getItsStatement().add(start);
 				
 				ArrayDeque<Integer> tempqTranPath = this.aqTranPath.clone();
