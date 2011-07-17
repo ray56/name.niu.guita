@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.concurrent.Semaphore;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -37,9 +38,19 @@ public class ScriptEngine
 	static private String scriptInterpreter_scriptFile ;
 	static private String scriptInterpreter_commandLine ;
 	static {
-		ResourceBundle rb = ResourceBundle.getBundle("config/scriptengine");
-		scriptInterpreter_scriptFile = rb.getString("scriptInterpreter_scriptFile");
-		scriptInterpreter_commandLine = rb.getString("scriptInterpreter_commandLine");	
+		Properties property = new Properties();
+		String installLoc = Platform.getInstallLocation().getURL().getPath();
+		//String installLoc = Platform.getInstanceLocation().getURL().getPath();
+
+		try {			
+			property.load(new FileInputStream( installLoc + "\\config\\scriptengine.properties"));
+			scriptInterpreter_scriptFile = property.getProperty("scriptInterpreter_scriptFile");
+			scriptInterpreter_commandLine = property.getProperty("scriptInterpreter_commandLine");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private String status = null ;
