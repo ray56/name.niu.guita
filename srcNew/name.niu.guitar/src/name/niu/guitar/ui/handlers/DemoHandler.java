@@ -38,6 +38,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
@@ -531,7 +532,14 @@ public class DemoHandler extends AbstractHandler
 				e.printStackTrace();
 			}		
 	}
-	
+	private void demo18(ExecutionEvent event) {
+		Platform.getInstallLocation();
+		Platform.getInstanceLocation();
+		ResourcesPlugin.getWorkspace().getRoot().
+			findMember("platform:/resource/SandBox1/RGB.uisut").
+				getLocation().toOSString();
+		
+	}
 	
 	@Override
 	public void updateElement(UIElement element, Map parameters) {

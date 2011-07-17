@@ -66,7 +66,7 @@ public class XlsGen implements ITCDoneSubscriber{
 			int flag = 0;
 			for(Statement s : tc.getItsStatement()){
 				// find test case head
-				if(s.getDescription().contains("test case head")){
+				if(s.getDescription() != null && s.getDescription().contains("test case head")){
 					flag =1;
 					ii = 1;
 					continue;

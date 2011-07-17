@@ -82,8 +82,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 	private ScriptEngine scriptEngine = null ;
 	private Workbench workbench;
 	private WorkbenchWindow workbenchWindown;
-	private AbstractUIState selectTo = null ;
-	private AbstractUIState selectFrom = null ;
+	public AbstractUIState selectTo = null ;
+	public AbstractUIState selectFrom = null ;
 	
 	public void ChangeGenAndExe(String cur) {
 		synchronized (genAndExeSync) {
@@ -383,6 +383,9 @@ public class TCgenOnlineAction extends AbstractHandler {
 			} else {
 				return doStart( event ) ;
 			}
+		} else if (subCmd.equals("OFFLINE")){
+			return doGenOffline(event) ;
+
 		} else if (subCmd.equals("CONTINUE")){
 			return doContinue() ;
 		} else if (subCmd.equals("STOP")) {
@@ -413,6 +416,64 @@ public class TCgenOnlineAction extends AbstractHandler {
 			assert(false);
 		}		
 		return null ;
+	}
+	
+
+	public Object doGenOffline(ExecutionEvent event) throws ExecutionException 
+	{
+		// set maxLoop
+		TestCaseGenWizard wizard = new TestCaseGenWizard();
+		Shell shell = HandlerUtil.getActiveShell(event);
+		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
+		int wizardResult = wizardDialog.open() ;
+		if ( wizardResult == Window.CANCEL ) {
+			return null ;
+		}
+		final int maxLoop = wizard.getMaxLoopCount();
+		final int maxStep = wizard.getMaxStepCount();
+		//
+		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event) ;
+		if ( editorPart instanceof UisutDiagramEditor == false ) {			
+			ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
+			return null ;
+		}		
+		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
+
+		// set start and end
+		AbstractUIState astStart = this.selectFrom;
+		AbstractUIState astEnd = this.selectTo;
+		
+		
+		// set stm
+		UIStatemachine stm = null;
+		if( astStart == null && astEnd == null ) {
+			stm = (UIStatemachine ) ((UisutDiagramEditor)editorPart ).getDiagram().getElement();
+		} else if ( astStart == null ){
+			assert( astEnd.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astEnd.eContainer() ;
+		} else if ( astEnd == null ){
+			assert( astStart.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astStart.eContainer() ;
+		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
+				stm = (UIStatemachine)astEnd.eContainer() ;
+		} else {
+			return null ;
+		}
+		// set uisutFilePath
+		String uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);
+	
+		// add addSubscriber
+		TestCaseGen tcgen = new TestCaseGen();
+		ScriptGen sptgen = new ScriptGen();
+		XlsGen xlsgen = new XlsGen();
+		
+		tcgen.addSubscriber(sptgen);
+		tcgen.addSubscriber(xlsgen);
+		
+		// generate TestCase
+		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
+		
+		return null;
 	}
 
 	private Object doSelectTo( GraphicalEditPart to ) {
@@ -466,4 +527,6 @@ public class TCgenOnlineAction extends AbstractHandler {
 		}
 		return false ;
 	}
+	
+	
 }

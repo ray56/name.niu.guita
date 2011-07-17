@@ -5,6 +5,9 @@ import java.io.IOException;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.internal.resources.Workspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -17,6 +20,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceAction;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.FileEditorInput;
 
@@ -32,7 +36,7 @@ public class TCgenOfflineAction extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
+/*		
 		// set uisutFilePath
 		String uisutFilePath = getCurrentInputString(event);
 		
@@ -64,28 +68,28 @@ public class TCgenOfflineAction extends AbstractHandler {
 		
 		// generate TestCase
 		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
-		
+*/
 		return null;
 	}
 
-	static public UIStatemachine getInputStm(String uisutFilePath) {
-		UIStatemachine stm = null;
-		{
-			ResourceSet uisutResourceSet = new ResourceSetImpl();
-			uisutResourceSet.getResourceFactoryRegistry()
-					.getExtensionToFactoryMap()
-					.put("uisut", new XMIResourceFactoryImpl());
-			URI uisutURI = URI.createFileURI(uisutFilePath);
-			Resource uisutResource = uisutResourceSet.createResource(uisutURI);
-			try {
-				uisutResource.load(null);
-				stm = (UIStatemachine) uisutResource.getContents().get(0);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return stm;
-	}
+//	static public UIStatemachine getInputStm(String uisutFilePath) {
+//		UIStatemachine stm = null;
+//		{
+//			ResourceSet uisutResourceSet = new ResourceSetImpl();
+//			uisutResourceSet.getResourceFactoryRegistry()
+//					.getExtensionToFactoryMap()
+//					.put("uisut", new XMIResourceFactoryImpl());
+//			URI uisutURI = URI.createFileURI(uisutFilePath);
+//			Resource uisutResource = uisutResourceSet.createResource(uisutURI);
+//			try {
+//				uisutResource.load(null);
+//				stm = (UIStatemachine) uisutResource.getContents().get(0);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return stm;
+//	}
 
 	static public String getCurrentInputString(ExecutionEvent event)
 			throws ExecutionException {
@@ -97,8 +101,14 @@ public class TCgenOfflineAction extends AbstractHandler {
 			if (input instanceof FileEditorInput) {
 				uisutDiaFilePath = ((FileEditorInput) input).getPath().toString();
 			} else if (input instanceof URIEditorInput) {
-				uisutDiaFilePath = ((URIEditorInput) input).getURI()
-						.toFileString();
+				org.eclipse.emf.common.util.URI uri = ((URIEditorInput) input).getURI() ;
+				//String x = uri.toString();uri.fileExtension();uri.fragment();uri.path();uri.scheme();uri.segments();uri.trimFragment();
+				if( uri.hasFragment() ){
+					uri = uri.trimFragment() ;
+				}
+				uisutDiaFilePath = uri.toPlatformString(false);				
+				uisutDiaFilePath =
+				ResourcesPlugin.getWorkspace().getRoot().findMember(uisutDiaFilePath).getLocation().toOSString();
 			}
 			uisutFilePath = uisutDiaFilePath;
 		}

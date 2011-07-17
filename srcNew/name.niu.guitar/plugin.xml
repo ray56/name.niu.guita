@@ -296,9 +296,13 @@
                id="name.niu.guitar.ui.guitarMainMenu"
                label="Guitar">
             <command
-                  commandId="name.niu.guitar.ui.commands.GenOffline"
+                  commandId="name.niu.guitar.ui.commands.GenOnline"
                   label="Generate Test Case Offline"
                   style="push">
+               <parameter
+                     name="name.niu.guitar.ui.commands.GenOnline.subCmd"
+                     value="OFFLINE">
+               </parameter>
             </command>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
@@ -442,10 +446,11 @@
                </visibleWhen>
             </command>
             <separator
-                  name="sep2">
+                  name="sep2"
+                  visible="true">
             </separator>
             <command
-                  commandId="name.niu.guitar.ui.commands.GenOffline"
+                  commandId="name.niu.guitar.ui.commands.GenOnline"
                   icon="icons/OfflineStartGenAndExe.gif"
                   label="Offline"
                   style="push">
@@ -458,9 +463,14 @@
                      </equals>
                   </with>
                </visibleWhen>
+               <parameter
+                     name="name.niu.guitar.ui.commands.GenOnline.subCmd"
+                     value="OFFLINE">
+               </parameter>
             </command>
             <separator
-                  name="sep3">
+                  name="sep3"
+                  visible="true">
             </separator>
             <command
                   commandId="name.niu.guitar.ui.commands.EditSystemVariable"
