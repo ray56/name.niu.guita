@@ -40,15 +40,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
-      <?gmfgen generated="true"?>
-  	  <wizard
-  	     name="%newWizardName"
-  	     icon="icons/obj16/UisutDiagramFile.gif"
-  	     category="org.eclipse.ui.Examples"
-  	     class="name.niu.guitar.uisut.diagram.part.UisutCreationWizard"
-  	     id="name.niu.guitar.uisut.diagram.part.UisutCreationWizardID">
-  	  	 <description>%newWizardDesc</description>  
-      </wizard>
+      <?gmfgen generated="false"?>
    </extension>
 
       <extension point="org.eclipse.ui.actionSets" id="init-diagram-action">
@@ -517,6 +509,13 @@
          <context decoratorTargets="generated-top-nodes"/>
       </decoratorProvider>
    </extension>
+<extension
+      point="org.eclipse.emf.transaction.editingDomains">
+   <editingDomain
+         factory="org.eclipse.gmf.runtime.diagram.core.DiagramEditingDomainFactory"
+         id="name.niu.guitar.uisut.diagram.EditingDomain">
+   </editingDomain>
+</extension>
 
 
    <!-- optionally, specify keybindings -->

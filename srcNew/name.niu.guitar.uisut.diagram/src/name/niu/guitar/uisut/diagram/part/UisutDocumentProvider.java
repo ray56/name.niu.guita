@@ -166,12 +166,16 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	private TransactionalEditingDomain createEditingDomain() {
-		TransactionalEditingDomain editingDomain = DiagramEditingDomainFactory
-				.getInstance().createEditingDomain();
-		editingDomain.setID("name.niu.guitar.uisut.diagram.EditingDomain"); //$NON-NLS-1$
+		TransactionalEditingDomain editingDomain ;
+		editingDomain = TransactionalEditingDomain.Registry.INSTANCE
+			.getEditingDomain("name.niu.guitar.uisut.diagram.EditingDomain") ;
+		if (editingDomain == null ){
+			editingDomain = DiagramEditingDomainFactory.getInstance().createEditingDomain();
+			editingDomain.setID("name.niu.guitar.uisut.diagram.EditingDomain"); //$NON-NLS-1$
+		}
 		final NotificationFilter diagramResourceModifiedFilter = NotificationFilter
 				.createNotifierFilter(editingDomain.getResourceSet())
 				.and(NotificationFilter.createEventTypeFilter(Notification.ADD))
