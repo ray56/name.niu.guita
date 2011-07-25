@@ -195,7 +195,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
 				stm = (UIStatemachine)astEnd.eContainer() ;
 		} else {
-			return null ;
+			stm = (UIStatemachine)astEnd.eContainer().eResource().getContents().get(0);
+			//return null ;
 		}
 		
 		tcgen = new TestCaseGen();
@@ -457,7 +458,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
 				stm = (UIStatemachine)astEnd.eContainer() ;
 		} else {
-			return null ;
+			stm = (UIStatemachine)astEnd.eContainer().eResource().getContents().get(0);
+			//return null ;
 		}
 		// set uisutFilePath
 		String uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);

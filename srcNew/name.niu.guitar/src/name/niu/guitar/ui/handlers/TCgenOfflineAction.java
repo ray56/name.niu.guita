@@ -6,6 +6,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.internal.resources.Workspace;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -93,26 +94,34 @@ public class TCgenOfflineAction extends AbstractHandler {
 
 	static public String getCurrentInputString(ExecutionEvent event)
 			throws ExecutionException {
-		String uisutFilePath = null ;
-		{
-			String uisutDiaFilePath = "";
-			IEditorInput input = HandlerUtil.getActiveEditorChecked(event)
-					.getEditorInput();
-			if (input instanceof FileEditorInput) {
-				uisutDiaFilePath = ((FileEditorInput) input).getPath().toString();
-			} else if (input instanceof URIEditorInput) {
-				org.eclipse.emf.common.util.URI uri = ((URIEditorInput) input).getURI() ;
-				//String x = uri.toString();uri.fileExtension();uri.fragment();uri.path();uri.scheme();uri.segments();uri.trimFragment();
-				if( uri.hasFragment() ){
-					uri = uri.trimFragment() ;
-				}
-				uisutDiaFilePath = uri.toPlatformString(false);				
-				uisutDiaFilePath =
-				ResourcesPlugin.getWorkspace().getRoot().findMember(uisutDiaFilePath).getLocation().toOSString();
+		String uisutDiaFilePath = "";
+		IEditorInput input = HandlerUtil.getActiveEditorChecked(event)
+				.getEditorInput();
+		if (input instanceof FileEditorInput) {
+			uisutDiaFilePath = ((FileEditorInput) input).getPath().toString();
+		} else if (input instanceof URIEditorInput) {
+			org.eclipse.emf.common.util.URI uri = ((URIEditorInput) input)
+					.getURI();
+			if (uri.hasFragment()) {
+				uri = uri.trimFragment();
 			}
-			uisutFilePath = uisutDiaFilePath;
+			if (uri.isPlatformResource()) {
+				uisutDiaFilePath = uri.toPlatformString(false);
+				IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(uisutDiaFilePath) ;
+				uisutDiaFilePath = res.getLocation().toOSString() ;
+
+			} else if (uri.isFile()) {
+				uisutDiaFilePath = uri.toFileString();
+			} else {
+				uisutDiaFilePath = uri.toPlatformString(false);
+				uisutDiaFilePath = ResourcesPlugin.getWorkspace().getRoot()
+						.findMember(uisutDiaFilePath).getLocation()
+						.toOSString();
+			}
+
 		}
-		return uisutFilePath;
+
+		return uisutDiaFilePath;
 	}
 	@Override
 	public	boolean isEnabled(){

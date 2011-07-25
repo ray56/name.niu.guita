@@ -43,7 +43,7 @@ public class ScriptEngine
 		//String installLoc = Platform.getInstanceLocation().getURL().getPath();
 
 		try {			
-			property.load(new FileInputStream( installLoc + "\\config\\scriptengine.properties"));
+			property.load(new FileInputStream( installLoc + "\\scriptengine.properties"));
 			scriptInterpreter_scriptFile = property.getProperty("scriptInterpreter_scriptFile");
 			scriptInterpreter_commandLine = property.getProperty("scriptInterpreter_commandLine");
 		} catch (FileNotFoundException e) {

@@ -64,7 +64,9 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		// validate stm
 		Validator vali = new Validator();
 		if(vali.validateStm(stm) == 0){
-			return;
+			int r = JOptionPane.showConfirmDialog(null, "OK to ignore erroes and go on?");
+			if ( r == JOptionPane.CANCEL_OPTION || r == JOptionPane.NO_OPTION )
+				return ;
 		}
 		
 		// set hash maps of stm
@@ -145,7 +147,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		this.aqTranPath.clear();
 		
 		// fill alTranOccur with 0
-		for(int i = 0; i < stm.getItsUITransition().size(); i++){
+		for(int i = 0; i < stm.getItsExpandedUITransition().size(); i++){
 			this.alTranOccur.add(0);
 		}
 		
@@ -154,14 +156,15 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	private void setHashMaps(UIStatemachine stm){
 		
 		// fill hmState
-		for(int i = 0; i < stm.getItsUIState().size(); i++){
-			AbstractUIState ast = stm.getItsUIState().get(i);
+		// 2011-07-17
+		for(int i = 0; i < stm.getItsExpandedUIState().size(); i++){
+			AbstractUIState ast = stm.getItsExpandedUIState().get(i);
 			this.hmState.put(ast, i);
 		}
 		
 		// fill hmTransition
-		for(int i = 0; i < stm.getItsUITransition().size(); i++){
-			UITransition tran = stm.getItsUITransition().get(i);
+		for(int i = 0; i < stm.getItsExpandedUITransition().size(); i++){
+			UITransition tran = stm.getItsExpandedUITransition().get(i);
 			this.hmTransition.put(tran, i);
 		}
 		
@@ -172,8 +175,14 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 	}
 	
-	private int checksetInput(String uisutFilePath, UIStatemachine stm, int maxLoop, int maxStep, AbstractUIState start, AbstractUIState end){
-		
+	private int checksetInput(
+			String uisutFilePath, 
+			UIStatemachine stm, 
+			int maxLoop, 
+			int maxStep, 
+			AbstractUIState start, 
+			AbstractUIState end)
+	{		
 		// set uisutFilePath
 		if(uisutFilePath == null || uisutFilePath == ""){
 			JOptionPane.showMessageDialog(null, "File Error: the uisut file path is null!");
@@ -199,9 +208,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		int startInFlag = 0;
 		int endInFlag = 0;
 		
-		for(int i = 0; i < stm.getItsUIState().size(); i++){
+		//2011-07-17
+		for(int i = 0; i < stm.getItsExpandedUIState().size(); i++){
 			
-			AbstractUIState ast = stm.getItsUIState().get(i);
+			AbstractUIState ast = stm.getItsExpandedUIState().get(i);
 			
 			// set userStart
 			if(start == null && ast instanceof InitialState){
@@ -243,13 +253,14 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		HashSet<UISystemVariable> addedByStates = new HashSet<UISystemVariable>();
 		HashSet<UISystemVariable> needByTransitions = new HashSet<UISystemVariable>();
 		
-		for(AbstractUIState s : stm.getItsUIState()){
+		// 2011-07-17
+		for(AbstractUIState s : stm.getItsExpandedUIState()){
 			for(UISystemVariable dv : s.getAddedSystemVariable()){
 				addedByStates.add(dv);
 			}
 		}
 		
-		for(UITransition t : stm.getItsUITransition()){
+		for(UITransition t : stm.getItsExpandedUITransition()){
 			for(UISystemVariable dv : t.getGuardedSystemVariable()){
 				needByTransitions.add(dv);
 			}
@@ -264,7 +275,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	
 	private void enumeratePath(UIStatemachine stm, TestSuite ts, int icurast) throws StopGenExecption{
 		
-		AbstractUIState curast = stm.getItsUIState().get(icurast);
+		// 2011-07-17
+		AbstractUIState curast = stm.getItsExpandedUIState().get(icurast);
 		
 		// save alCurSystemVar
 		ArrayList<UISystemVariable> alLastSystemVar = (ArrayList<UISystemVariable>) this.alCurSystemVar.clone();
@@ -334,7 +346,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				tc.setId(String.format("TC_%03d", this.tcCount));
 				ts.getItsTestCase().add(tc);
 				
-				AbstractUIState tempst = stm.getItsUIState().get(this.iStart);
+				AbstractUIState tempst = stm.getItsExpandedUIState().get(this.iStart);
 				Statement preStatement = UitfFactory.eINSTANCE.createStatement();
 				preStatement.setDescription(String.format("[Preconditions]\n Current Position: %s\n Need Condition:\n",tempst.getDescription()));
 				tc.getItsStatement().add(preStatement);
@@ -344,15 +356,15 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				tc.getItsStatement().add(tchead);
 				
 				Statement start = UitfFactory.eINSTANCE.createStatement();
-				start.setDescription(stm.getItsUIState().get(iStart).getDescription());
-				start.setScriptStr(stm.getItsUIState().get(iStart).getScriptStr());
-				start.setTrackbackID( stm.getItsUIState().get(iStart).eResource().getURIFragment(stm.getItsUIState().get(iStart)));
+				start.setDescription(stm.getItsExpandedUIState().get(iStart).getDescription());
+				start.setScriptStr(stm.getItsExpandedUIState().get(iStart).getScriptStr());
+				start.setTrackbackID( stm.getItsExpandedUIState().get(iStart).eResource().getURIFragment(stm.getItsExpandedUIState().get(iStart)));
 				tc.getItsStatement().add(start);
 				
 				ArrayDeque<Integer> tempqTranPath = this.aqTranPath.clone();
 				for(int ii = 1; !tempqTranPath.isEmpty(); ii++){
 					// add statement of action
-					UITransition temptran = stm.getItsUITransition().get(tempqTranPath.remove());
+					UITransition temptran = stm.getItsExpandedUITransition().get(tempqTranPath.remove());
 					Statement stepStatement = UitfFactory.eINSTANCE.createStatement();
 					stepStatement.setDescription(String.format("%d.%s\n", ii, temptran.getDescription()));
 					stepStatement.setScriptStr(temptran.getScriptStr());

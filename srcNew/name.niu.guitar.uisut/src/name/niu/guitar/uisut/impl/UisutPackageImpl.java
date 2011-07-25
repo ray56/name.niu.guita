@@ -230,6 +230,24 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUIStatemachine_ItsExpandedUITransition() {
+		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUIStatemachine_ItsExpandedUIState() {
+		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getUIStatemachine_ItsSubSTM() {
 		return (EReference)uiStatemachineEClass.getEStructuralFeatures().get(2);
 	}
@@ -602,6 +620,8 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE_POOL);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
 		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_STATE_SHORTCUT);
+		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION);
+		createEReference(uiStatemachineEClass, UI_STATEMACHINE__ITS_EXPANDED_UI_STATE);
 
 		abstractUIStateEClass = createEClass(ABSTRACT_UI_STATE);
 		createEReference(abstractUIStateEClass, ABSTRACT_UI_STATE__ADDED_SYSTEM_VARIABLE);
@@ -699,6 +719,8 @@ public class UisutPackageImpl extends EPackageImpl implements UisutPackage {
 		initEReference(getUIStatemachine_ItsUISystemVariablePool(), this.getUISystemVariablePool(), null, "itsUISystemVariablePool", null, 1, 1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsUISystemVariable(), this.getUISystemVariable(), null, "itsUISystemVariable", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getUIStatemachine_ItsStateShortcut(), this.getStateshortcut(), null, "itsStateShortcut", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsExpandedUITransition(), this.getUITransition(), null, "itsExpandedUITransition", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getUIStatemachine_ItsExpandedUIState(), this.getAbstractUIState(), null, "itsExpandedUIState", null, 0, -1, UIStatemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractUIStateEClass, AbstractUIState.class, "AbstractUIState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractUIState_AddedSystemVariable(), this.getUISystemVariable(), this.getUISystemVariable_AddUIState(), "addedSystemVariable", null, 0, -1, AbstractUIState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

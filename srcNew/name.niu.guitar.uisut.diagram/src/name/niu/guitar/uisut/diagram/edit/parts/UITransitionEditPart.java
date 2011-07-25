@@ -82,11 +82,12 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 	public class UITransitionFigureDescriptor extends PolylineConnectionEx {
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public UITransitionFigureDescriptor() {
 
 			setTargetDecoration(createTargetDecoration());
+			updateHighlightProperty();
 		}
 
 		/**
@@ -107,6 +108,8 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 		public void updateHighlightProperty() {
 			UITransition transition = ( UITransition ) ((View)UITransitionEditPart.this.getModel()).getElement() ;
 			String hightlintSyle = transition.getHighlight() ;
+			if ( hightlintSyle == null ) 
+				return ;
 			if ( "none".equals(hightlintSyle.toLowerCase()) ){
 				this.setLineWidth(1);
 				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;				

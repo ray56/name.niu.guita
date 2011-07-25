@@ -86,7 +86,7 @@ public class Validator {
 	
 	private void emptyNameConstraint(UIStatemachine stm){
 		
-		for(AbstractUIState ast : stm.getItsUIState()){
+		for(AbstractUIState ast : stm.getItsExpandedUIState()){
 			if(ast.getName() == null || ast.getName().length() == 0){
 				this.emptyNameCount++;
 			}
@@ -99,7 +99,7 @@ public class Validator {
 		
 		ArrayList<String> alUniqueName = new ArrayList<String>();
 		
-		for(AbstractUIState ast : stm.getItsUIState()){
+		for(AbstractUIState ast : stm.getItsExpandedUIState()){
 			if(alUniqueName.contains(ast.getName())){
 				if(!this.alSameName.contains(ast.getName())){
 					this.alSameName.add(ast.getName());
@@ -115,7 +115,7 @@ public class Validator {
 	
 	private void uniqueInitFinlConstraint(UIStatemachine stm){
 	
-		for(AbstractUIState ast : stm.getItsUIState()){
+		for(AbstractUIState ast : stm.getItsExpandedUIState()){
 			if(ast instanceof InitialState){
 				this.initialCount++;
 			}
@@ -136,8 +136,8 @@ public class Validator {
 		ArrayDeque<Integer> State = new ArrayDeque<Integer>();
 		HashSet<Integer> StateAdded = new HashSet<Integer>();
 		
-		for(int i = 0; i < stm.getItsUIState().size(); i++){
-			AbstractUIState ast = stm.getItsUIState().get(i);
+		for(int i = 0; i < stm.getItsExpandedUIState().size(); i++){
+			AbstractUIState ast = stm.getItsExpandedUIState().get(i);
 			hashSUTState.put(ast, i);
 			if(ast instanceof InitialState){
 				iInitial = i;
@@ -151,7 +151,7 @@ public class Validator {
 		StateAdded.add(iInitial);
 		for(;!State.isEmpty();){
 			int icurState = State.remove();
-			AbstractUIState ast = stm.getItsUIState().get(icurState);
+			AbstractUIState ast = stm.getItsExpandedUIState().get(icurState);
 			
 			for(int i = 0; i < ast.getItsExpandedOutTransition().size(); i++){
 				int iState = hashSUTState.get(ast.getItsExpandedOutTransition().get(i).getItsExpandedTarState());
@@ -171,8 +171,8 @@ public class Validator {
 				}
 			}
 		}
-		for(int i = 0; i < stm.getItsUIState().size(); i++){
-			AbstractUIState ast = stm.getItsUIState().get(i);
+		for(int i = 0; i < stm.getItsExpandedUIState().size(); i++){
+			AbstractUIState ast = stm.getItsExpandedUIState().get(i);
 			// the state cannot be reached from initial state
 			if(!StateAdded.contains(i)){
 				this.alCannotIn.add(ast);
@@ -185,10 +185,21 @@ public class Validator {
 		StateAdded.add(iFinal);
 		for(;!State.isEmpty();){
 			int icurState = State.remove();
-			AbstractUIState ast = stm.getItsUIState().get(icurState);
+			AbstractUIState ast = stm.getItsExpandedUIState().get(icurState);
 			
 			for(int i = 0; i < ast.getItsExpandedInTransition().size(); i++){
-				int iState = hashSUTState.get(ast.getItsExpandedInTransition().get(i).getItsExpandedSrcState());
+				if ( ast.getItsExpandedInTransition() == null
+						|| ast.getItsExpandedInTransition().get(i) == null  ) {
+					assert(false);
+				}
+				AbstractUIState  tempS =      ast.getItsExpandedInTransition().get(i).getItsExpandedSrcState() ;
+				int iState;
+				try {
+					iState = hashSUTState.get(tempS);
+				}catch(NullPointerException e) {
+					e.printStackTrace() ;
+					continue;
+				}
 				
 				// leaf node
 				if(StateAdded.contains(iState)){
@@ -205,8 +216,8 @@ public class Validator {
 				}
 			}
 		}
-		for(int i = 0; i < stm.getItsUIState().size(); i++){
-			AbstractUIState ast = stm.getItsUIState().get(i);
+		for(int i = 0; i < stm.getItsExpandedUIState().size(); i++){
+			AbstractUIState ast = stm.getItsExpandedUIState().get(i);
 			// the state cannot reach final state
 			if(!StateAdded.contains(i)){
 				this.alCannotOut.add(ast);

@@ -147,6 +147,12 @@
                   id="demosubmenu1"
                   label="submenu1">
             </menu>
+            <visibleWhen
+                  checkEnabled="false">
+               <instanceof
+                     value="abcdefg">
+               </instanceof>
+            </visibleWhen>
          </menu>
       </menuContribution>
    </extension>
@@ -451,7 +457,7 @@
             </separator>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
-                  icon="icons/OfflineStartGenAndExe.gif"
+                  icon="icons/StartGenAndExe.gif"
                   label="Offline"
                   style="push">
                <visibleWhen
@@ -515,6 +521,34 @@
          <property
                name="appName"
                value="Guitar Application">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/product/about.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Guitar Application for  GUI Test Automating">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/product/window128.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="400080">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="80,145,200,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,165,280,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
          </property>
       </product>
    </extension>

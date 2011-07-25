@@ -16,6 +16,10 @@
         eType="#//UISystemVariable" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsStateShortcut" upperBound="-1"
         eType="#//Stateshortcut" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpandedUITransition"
+        upperBound="-1" eType="#//UITransition" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsExpandedUIState" upperBound="-1"
+        eType="#//AbstractUIState" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractUIState" eSuperTypes="#//Vertex">
     <eStructuralFeatures xsi:type="ecore:EReference" name="addedSystemVariable" upperBound="-1"

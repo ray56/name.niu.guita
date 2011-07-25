@@ -14,6 +14,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariablePool"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsUISystemVariable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsStateShortcut"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsExpandedUITransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//UIStatemachine/itsExpandedUIState"/>
     </genClasses>
     <genClasses ecoreClass="uisut.ecore#//AbstractUIState">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uisut.ecore#//AbstractUIState/addedSystemVariable"/>

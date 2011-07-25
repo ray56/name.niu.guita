@@ -3,6 +3,13 @@
 
 <product name="Guitar Application" uid="name.niu.guitar.ProductGuitar" id="name.niu.guitar.ProductGuitar" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
+   <aboutInfo>
+      <image path="/name.niu.guitar/icons/product/about.gif"/>
+      <text>
+         Guitar Application for  GUI Test Automating
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 
@@ -10,15 +17,30 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <launcher>
+   <windowImages i128="/name.niu.guitar/icons/product/window128.png"/>
+
+   <splash
+      location="name.niu.guitar"
+      startupProgressRect="0,165,280,15"
+      startupMessageRect="80,145,200,20"
+      startupForegroundColor="400080" />
+   <launcher name="guitar">
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/name.niu.guitar/icons/product/launch16.bmp"
+            winSmallLow="/name.niu.guitar/icons/product/launch16_8b.bmp"
+            winMediumHigh="/name.niu.guitar/icons/product/launch32.bmp"
+            winMediumLow="/name.niu.guitar/icons/product/launch32_8b.bmp"
+            winLargeHigh="/name.niu.guitar/icons/product/launch48.bmp"
+            winLargeLow="/name.niu.guitar/icons/product/launch48_8b.bmp"/>
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
 
    <plugins>
       <plugin id="com.ibm.icu"/>

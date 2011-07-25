@@ -389,7 +389,7 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 					getMapMode().DPtoLP(100)));
 			createContents();
 			updateFigureForPic();
-			//updateSimulationColorProperty();
+			updateHighlightProperty();
 		}
 
 		/**
@@ -477,6 +477,8 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		public void updateHighlightProperty() {
 			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
 			String hightlintSyle = commonState.getHighlight() ;
+			if ( hightlintSyle == null) 
+				return ;
 			if ( "none".equals(hightlintSyle.toLowerCase()) ){
 				this.setLineWidth(1);
 				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;

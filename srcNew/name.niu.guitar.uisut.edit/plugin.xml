@@ -19,7 +19,10 @@
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+               org.eclipse.emf.edit.provider.IItemPropertySource
+               org.eclipse.emf.edit.provider.ITableItemLabelProvider
+               org.eclipse.emf.edit.provider.ITableItemColorProvider
+               org.eclipse.emf.edit.provider.IItemColorProvider"/>
    </extension>
 
 </plugin>

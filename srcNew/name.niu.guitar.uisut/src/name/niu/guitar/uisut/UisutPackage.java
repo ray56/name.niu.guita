@@ -215,13 +215,31 @@ public interface UisutPackage extends EPackage {
 	int UI_STATEMACHINE__ITS_STATE_SHORTCUT = UI_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Its Expanded UI Transition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION = UI_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Its Expanded UI State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_STATEMACHINE__ITS_EXPANDED_UI_STATE = UI_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>UI Statemachine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 6;
+	int UI_STATEMACHINE_FEATURE_COUNT = UI_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link name.niu.guitar.uisut.impl.VertexImpl <em>Vertex</em>}' class.
@@ -1245,6 +1263,28 @@ public interface UisutPackage extends EPackage {
 	EReference getUIStatemachine_ItsStateShortcut();
 
 	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsExpandedUITransition <em>Its Expanded UI Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Expanded UI Transition</em>'.
+	 * @see name.niu.guitar.uisut.UIStatemachine#getItsExpandedUITransition()
+	 * @see #getUIStatemachine()
+	 * @generated
+	 */
+	EReference getUIStatemachine_ItsExpandedUITransition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsExpandedUIState <em>Its Expanded UI State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Its Expanded UI State</em>'.
+	 * @see name.niu.guitar.uisut.UIStatemachine#getItsExpandedUIState()
+	 * @see #getUIStatemachine()
+	 * @generated
+	 */
+	EReference getUIStatemachine_ItsExpandedUIState();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link name.niu.guitar.uisut.UIStatemachine#getItsSubSTM <em>Its Sub STM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1714,6 +1754,22 @@ public interface UisutPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UI_STATEMACHINE__ITS_STATE_SHORTCUT = eINSTANCE.getUIStatemachine_ItsStateShortcut();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Expanded UI Transition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION = eINSTANCE.getUIStatemachine_ItsExpandedUITransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Its Expanded UI State</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_STATEMACHINE__ITS_EXPANDED_UI_STATE = eINSTANCE.getUIStatemachine_ItsExpandedUIState();
 
 		/**
 		 * The meta object literal for the '<em><b>Its Sub STM</b></em>' containment reference list feature.

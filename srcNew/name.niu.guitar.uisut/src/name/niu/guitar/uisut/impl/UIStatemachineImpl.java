@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -43,6 +44,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsUISystemVariablePool <em>Its UI System Variable Pool</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsUISystemVariable <em>Its UI System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsStateShortcut <em>Its State Shortcut</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsExpandedUITransition <em>Its Expanded UI Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.impl.UIStatemachineImpl#getItsExpandedUIState <em>Its Expanded UI State</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,6 +113,26 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 	protected EList<Stateshortcut> itsStateShortcut;
 
 	/**
+	 * The cached value of the '{@link #getItsExpandedUITransition() <em>Its Expanded UI Transition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpandedUITransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UITransition> itsExpandedUITransition;
+
+	/**
+	 * The cached value of the '{@link #getItsExpandedUIState() <em>Its Expanded UI State</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItsExpandedUIState()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractUIState> itsExpandedUIState;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,16 +181,24 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 	 * @generated NOT
 	 */
 	public EList<UISystemVariable> getItsUISystemVariable() {
+		EList<UISystemVariable> itsExpendedUISystemVariable = null ;
+		if (itsExpendedUISystemVariable == null) {
+			//itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.COMMON_STATE__ITS_EXPANDED_IN_TRANSITION);
+			itsExpendedUISystemVariable = new UniqueEList<UISystemVariable> () ;
+		}
+		
+		// add this's
 		UISystemVariablePool pool = getItsUISystemVariablePool() ;
 		if ( pool != null ) {
-			return pool.getItsUISystemVariable() ;
-		} else {
-			return new EObjectResolvingEList<UISystemVariable>(UISystemVariable.class, this, UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE) ;
+			itsExpendedUISystemVariable.addAll( pool.getItsUISystemVariable()) ;
 		}
-//		if (itsUISystemVariable == null) {
-//			itsUISystemVariable = new EObjectResolvingEList<UISystemVariable>(UISystemVariable.class, this, UisutPackage.UI_STATEMACHINE__ITS_UI_SYSTEM_VARIABLE);
-//		}
-//		return itsUISystemVariable;
+		// add sub's
+		for( UIStatemachine stm : this.getItsSubSTM() ) {
+			itsExpendedUISystemVariable.addAll( stm.getItsUISystemVariable()) ;
+		}
+		
+		return itsExpendedUISystemVariable ;
+
 	}
 
 	/**
@@ -180,6 +211,51 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 			itsStateShortcut = new EObjectContainmentEList<Stateshortcut>(Stateshortcut.class, this, UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT);
 		}
 		return itsStateShortcut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<UITransition> getItsExpandedUITransition() {		
+		
+		EList<UITransition> itsExpendedUITransition = null ;
+		if (itsExpendedUITransition == null) {
+			//itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.COMMON_STATE__ITS_EXPANDED_IN_TRANSITION);
+			itsExpendedUITransition = new UniqueEList<UITransition> () ;
+		}
+		// this
+		itsExpendedUITransition.addAll( this.getItsUITransition()); 
+		// sub
+		for( UIStatemachine stm : this.getItsSubSTM() ) {
+			itsExpendedUITransition.addAll( stm.getItsExpandedUITransition()) ;
+		}
+		
+		return itsExpendedUITransition ;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<AbstractUIState> getItsExpandedUIState() {
+		EList<AbstractUIState> itsExpendedAbstractUIState = null ;
+		if (itsExpendedAbstractUIState == null) {
+			//itsExpendedInTransition = new EObjectResolvingEList<UITransition>(UITransition.class, this, UisutPackage.COMMON_STATE__ITS_EXPANDED_IN_TRANSITION);
+			itsExpendedAbstractUIState = new UniqueEList<AbstractUIState> () ;
+		}
+		
+		// this
+		itsExpendedAbstractUIState.addAll( this.getItsUIState() );
+		
+		//sub
+		for( UIStatemachine stm : this.getItsSubSTM() ) {
+			itsExpendedAbstractUIState.addAll( stm.getItsExpandedUIState()) ;
+		}
+		
+		return itsExpendedAbstractUIState ;
 	}
 
 	/**
@@ -279,6 +355,10 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				return getItsUISystemVariable();
 			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
 				return getItsStateShortcut();
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION:
+				return getItsExpandedUITransition();
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_STATE:
+				return getItsExpandedUIState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,6 +395,14 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				getItsStateShortcut().clear();
 				getItsStateShortcut().addAll((Collection<? extends Stateshortcut>)newValue);
 				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION:
+				getItsExpandedUITransition().clear();
+				getItsExpandedUITransition().addAll((Collection<? extends UITransition>)newValue);
+				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_STATE:
+				getItsExpandedUIState().clear();
+				getItsExpandedUIState().addAll((Collection<? extends AbstractUIState>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -345,6 +433,12 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
 				getItsStateShortcut().clear();
 				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION:
+				getItsExpandedUITransition().clear();
+				return;
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_STATE:
+				getItsExpandedUIState().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,6 +463,10 @@ public class UIStatemachineImpl extends UIElementImpl implements UIStatemachine 
 				return itsUISystemVariable != null && !itsUISystemVariable.isEmpty();
 			case UisutPackage.UI_STATEMACHINE__ITS_STATE_SHORTCUT:
 				return itsStateShortcut != null && !itsStateShortcut.isEmpty();
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_TRANSITION:
+				return itsExpandedUITransition != null && !itsExpandedUITransition.isEmpty();
+			case UisutPackage.UI_STATEMACHINE__ITS_EXPANDED_UI_STATE:
+				return itsExpandedUIState != null && !itsExpandedUIState.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

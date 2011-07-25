@@ -43,7 +43,15 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -540,7 +548,141 @@ public class DemoHandler extends AbstractHandler
 				getLocation().toOSString();
 		
 	}
+	// how many URI
+	private void demo19(ExecutionEvent event) {
+		URI uri1 = URI.createURI("schema://username:password@hostname:portnumber/path1/path2/path3/file1.2.3.extension#fragment1");
+		String [] uri1_item = { 
+				uri1.device() , uri1.devicePath(), uri1.fileExtension(),
+				uri1.fragment(),uri1.lastSegment(),uri1.path(),uri1.port(),uri1.query()};
+		System.out.println(uri1_item ) ;
+		
+		org.eclipse.emf.common.util.URI
+			uri2 = URI.createURI( "/C:/a/") ;
+		String [] uri2_item = { 
+				uri2.device() , uri2.devicePath(), uri2.fileExtension(),
+				uri2.fragment(),uri2.lastSegment(),uri2.path(),uri2.port(),uri2.query()};
+		System.out.println(uri2_item ) ;
+		
+		URI uri3 = uri2.resolve(uri2) ;
+		String [] uri3_item = { 
+				uri3.device() , uri3.devicePath(), uri3.fileExtension(),
+				uri3.fragment(),uri3.lastSegment(),uri3.path(),uri3.port(),uri3.query()};
+		System.out.println(uri3_item ) ;
+		
+		
+	}
+	// how many Resource
+	private void demo20(ExecutionEvent event) {
+		
+		// convert emf resource to eclipse resource 
+		org.eclipse.emf.ecore.resource.Resource 
+			emfResource = null ;
+		org.eclipse.emf.common.util.URI
+			emfURI = emfResource.getURI();
+		String path = emfURI.toPlatformString(false);
+		org.eclipse.core.resources.IResource 
+			coreResource = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
+		// convert eclipse resource to emf resource
+		String uri2 = coreResource.getFullPath().toOSString() ;		
+		org.eclipse.emf.common.util.URI
+			emfURI2 =  URI.createPlatformResourceURI(uri2,false);
+		org.eclipse.emf.ecore.resource.Resource
+			emfResource2 = new ResourceSetImpl().getResource(emfURI2, false);
+		
+
+		
+	}
 	
+	
+	private void demo21(ExecutionEvent event) {
+		//
+		ResourceSet trgtResourceSet = new ResourceSetImpl();
+		// register extension style 1
+		trgtResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("uitf", new XMIResourceFactoryImpl());
+		// register extension style 2
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("uift", new XMIResourceFactoryImpl());
+		// retister extension style 3 : extension point = "org.eclipse.emf.ecore.extension_parser"
+		
+		URI trgtURI = URI.createURI("");
+		org.eclipse.emf.ecore.resource.Resource
+			trgtResource = trgtResourceSet.createResource(trgtURI);
+	}
+		
+	// how manu commands
+	private void demo22(ExecutionEvent event) {
+		// eclipse ui command
+		org.eclipse.core.commands.Command 
+			coreCommand ;		
+		
+		// emf common command
+		//org.eclipse.emf.common.command.Command
+		//org.eclipse.emf.common.command.AbstractCommand
+		//org.eclipse.emf.common.command.CompoundCommand
+		org.eclipse.emf.common.command.Command
+			emfCommand ; 
+		
+		// emf eit command		
+		//org.eclipse.emf.edit.command.CopyCommand, AddCommand,DeleteCommand,RemoveCommand,SetCommand...
+		
+		// emf edit domain
+		EditingDomain editingDomain = null ;
+		editingDomain.getCommandStack().execute(   
+				 SetCommand.create(editingDomain, null, null,null ));  
+		
+		
+		//org.eclipse.emf.common.command.CommandStack
+		
+		// gef also have  command and commandStack, maybe proxy/delegate of emf command
+		// gef's commands are related to edit pollicies. there's a little of trouble with emf and gef commands' coexist. 
+		//org.eclipse.gef.commands.CommandStack
+		
+		// gef and gmf request
+		//org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest
+		//org.eclipse.gef.requests.CreateRequest
+		//org.eclipse.gef.Request
+		
+		// gmf commands
+		//org.eclipse.gmf.runtime.common.core.command.ICommand
+		//org.eclipse.gmf.runtime.diagram.ui.commands.CreateCommand
+		
+		
+	}
+	
+	// eclipse adapter and emf adapter
+	private void demo23(ExecutionEvent event) {
+
+//		ArrayList<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+//		factories.add(new UisutItemProviderAdapterFactory());
+//		factories.add(new ResourceItemProviderAdapterFactory());
+//		factories.add(new ReflectiveItemProviderAdapterFactory());
+//		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(factories);
+//
+//IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item, IItemLabelProvider.class);
+//labelProvider.getImage(item)
+//
+//=============================================
+//
+//public class List implements IAdaptable { 
+//	public Object getAdapter(Class adapter) { 
+//    		return Platform.getAdapterManager().getAdapter(this, adapter); 
+//	} 
+//}
+//// or List extends PlatformObject
+//
+//
+//public class NodeListFactory implements IAdapterFactory {
+//	public Object getAdapter(Object list, Class clazz) { 
+//		if (clazz == Node.class && list instanceof List) { 
+//		...
+//		return new Node();
+//	}
+//}
+//Platform.getAdapterManager().registerAdapters(   new NodeListFactory(), List.class );
+//
+//List list = new List();
+//...
+//Node node = (Node) list.getAdapter(Node.class)
+	}
 	@Override
 	public void updateElement(UIElement element, Map parameters) {
 		element.setChecked( true );		

@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariablePool <em>Its UI System Variable Pool</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsUISystemVariable <em>Its UI System Variable</em>}</li>
  *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsStateShortcut <em>Its State Shortcut</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsExpandedUITransition <em>Its Expanded UI Transition</em>}</li>
+ *   <li>{@link name.niu.guitar.uisut.UIStatemachine#getItsExpandedUIState <em>Its Expanded UI State</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,6 +95,38 @@ public interface UIStatemachine extends UIElement {
 	 * @generated
 	 */
 	EList<Stateshortcut> getItsStateShortcut();
+
+	/**
+	 * Returns the value of the '<em><b>Its Expanded UI Transition</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.UITransition}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Its Expanded UI Transition</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Its Expanded UI Transition</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getUIStatemachine_ItsExpandedUITransition()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<UITransition> getItsExpandedUITransition();
+
+	/**
+	 * Returns the value of the '<em><b>Its Expanded UI State</b></em>' reference list.
+	 * The list contents are of type {@link name.niu.guitar.uisut.AbstractUIState}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Its Expanded UI State</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Its Expanded UI State</em>' reference list.
+	 * @see name.niu.guitar.uisut.UisutPackage#getUIStatemachine_ItsExpandedUIState()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<AbstractUIState> getItsExpandedUIState();
 
 	/**
 	 * Returns the value of the '<em><b>Its Sub STM</b></em>' containment reference list.
