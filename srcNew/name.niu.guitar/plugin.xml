@@ -591,5 +591,31 @@
          </variable>
       </sourceProvider>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="name.niu.guitar.ui.preferencePages.GuitarPreferencePage"
+            id="name.niu.guitar.ui.preferencePages.GuitarPreferencePage"
+            name="Guitar Preferences">
+      </page>
+      <page
+            category="name.niu.guitar.ui.preferencePages.GuitarPreferencePage"
+            class="name.niu.guitar.ui.preferencePages.GuitarGenPreferencePage"
+            id="name.niu.guitar.ui.preferencePages.GuitarGen"
+            name="Config Guitar Gen">
+      </page>
+      <page
+            category="name.niu.guitar.ui.preferencePages.GuitarPreferencePage"
+            class="name.niu.guitar.ui.preferencePages.GuitarScriptPreferencePage"
+            id="name.niu.guitar.ui.preferencePages.GuitarScript"
+            name="Config Script Engine">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="name.niu.guitar.preference.GuitarPreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

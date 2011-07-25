@@ -731,7 +731,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public void dispose() {
 			getResourceSet().eAdapters().remove(myResourceSetListener);
@@ -740,7 +740,8 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 				Resource resource = it.next();
 				resource.unload();
 			}
-			getEditingDomain().dispose();
+			// Cannot remove statically registered editing domain
+			//getEditingDomain().dispose();
 		}
 
 		/**

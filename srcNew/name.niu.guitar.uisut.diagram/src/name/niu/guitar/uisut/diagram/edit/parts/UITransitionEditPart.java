@@ -1,8 +1,10 @@
 package name.niu.guitar.uisut.diagram.edit.parts;
 
+
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.UITransition;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.diagram.config.Config;
 import name.niu.guitar.uisut.diagram.edit.policies.UITransitionItemSemanticEditPolicy;
 
 import org.eclipse.draw2d.Connection;
@@ -15,7 +17,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -80,6 +84,9 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 	 * @generated
 	 */
 	public class UITransitionFigureDescriptor extends PolylineConnectionEx {
+		
+		// colors
+		ColorRegistry colorRegistry = new ColorRegistry();
 
 		/**
 		 * @generated NOT
@@ -113,11 +120,24 @@ public class UITransitionEditPart extends ConnectionNodeEditPart implements
 			if ( "none".equals(hightlintSyle.toLowerCase()) ){
 				this.setLineWidth(1);
 				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;				
-			} else if ( "bold_red".equals(hightlintSyle.toLowerCase()) ){
+			} else if ( Config.ANIMATIONHEADCOLOR.equals(hightlintSyle) ){
+				Color color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationHeadColor().toString(), Config.getAnimationHeadColor() ) ;
+					color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
+				}	
+				this.setForegroundColor( color ) ;
 				int linewith = 3 ;
 				this.setLineWidth(linewith);
-				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
-				//this.setBackgroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
+			} else if ( Config.ANIMATIONPATHCOLOR.equals(hightlintSyle) ){
+				Color color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationPathColor().toString(), Config.getAnimationPathColor() ) ;
+					color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
+				}	
+				this.setForegroundColor( color ) ;
+				int linewith = 3 ;
+				this.setLineWidth(linewith);
 			}
 		}
 	}

@@ -51,6 +51,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.services.ISourceProviderService;
 
+import name.niu.guitar.config.Config;
 import name.niu.guitar.scriptengine.ScriptEngine;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDonePublisher;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDoneSubscriber;
@@ -216,8 +217,30 @@ public class TCgenOnlineAction extends AbstractHandler {
 				final IProgressMonitor m = monitor ;
 				// add listener to scritpEngine				
 				scriptEngine.addSubscriber( new ITargetScriptExeDoneSubscriber() {
+					
+					String[] lastExecutedUUID = null ;
+					
 					@Override
 					public void OnTargetStatementDone(String[] executedUUID) {
+						
+						// update last Executed uuidID's UIState/UITransition's color
+						if ( lastExecutedUUID != null ) {
+							for ( String uuid : lastExecutedUUID ) {
+								final EObject o = stm.eResource().getEObject( uuid ) ;
+								if ( o instanceof AbstractUIState || o instanceof UITransition ){
+									editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
+
+										@Override
+										protected void doExecute() {
+											((UIElement)o).setHighlight(Config.ANIMATIONPATHCOLOR);
+										}
+									});
+								} else {
+									assert(false):"model changed?";
+								}
+							}
+						} 
+						lastExecutedUUID = executedUUID ;
 						
 						for ( String uuid : executedUUID ) {
 							final EObject o = stm.eResource().getEObject( uuid ) ;
@@ -227,8 +250,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 
 									@Override
 									protected void doExecute() {
-										((UIElement)o).setHighlight("bold_red");
-									}							
+										((UIElement)o).setHighlight(Config.ANIMATIONHEADCOLOR);
+									}
 								});
 							}else {
 								assert(false):"model changed?";

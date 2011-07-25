@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.InitialState;
 import name.niu.guitar.uisut.UisutPackage;
+import name.niu.guitar.uisut.diagram.config.Config;
 import name.niu.guitar.uisut.diagram.edit.policies.InitialStateItemSemanticEditPolicy;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 
@@ -33,6 +35,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
@@ -299,6 +302,9 @@ public class InitialStateEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public class InitialStateFigureDescriptor extends Ellipse {
+		
+		// colors
+		ColorRegistry colorRegistry = new ColorRegistry();
 
 		/**
 		 * @generated
@@ -315,16 +321,40 @@ public class InitialStateEditPart extends ShapeNodeEditPart {
 			if ( "none".equals(hightlintSyle.toLowerCase()) ){
 				this.setLineWidth(1);
 				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;
-			} else if ( "bold_red".equals(hightlintSyle.toLowerCase()) ){				
+			} else if ( Config.ANIMATIONHEADCOLOR.equals(hightlintSyle) ){				
+				Color color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationHeadColor().toString(), Config.getAnimationHeadColor() ) ;
+					color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
+				}	
+				this.setForegroundColor( color ) ;
 				int linewith = 3 ;
 				this.setLineWidth(linewith);
-				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_RED)) ;
+			} else if ( Config.ANIMATIONPATHCOLOR.equals(hightlintSyle) ){		
+				Color color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationPathColor().toString(), Config.getAnimationPathColor() ) ;
+					color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
+				}	
+				this.setForegroundColor( color ) ;
+				int linewith = 3 ;
+				this.setLineWidth(linewith);
 			} else if ( "from=true".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+				Color color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationFromStateColor().toString(), Config.getAnimationFromStateColor() ) ;
+					color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
+				}	
+				this.setBackgroundColor(color);
 			} else if ( "from=false".equals(hightlintSyle.toLowerCase()) ){
 				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 			} else if ( "to=true".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW));
+				Color color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
+				if ( color == null ){
+					colorRegistry.put(Config.getAnimationToStateColor().toString(), Config.getAnimationToStateColor() ) ;
+					color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
+				}
+				this.setBackgroundColor(color);;
 			} else if ( "to=false".equals(hightlintSyle.toLowerCase()) ){
 				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 			} 
