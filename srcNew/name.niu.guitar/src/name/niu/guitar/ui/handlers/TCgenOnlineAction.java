@@ -2,6 +2,8 @@ package name.niu.guitar.ui.handlers;
 
 import java.nio.channels.ClosedByInterruptException;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -63,357 +65,173 @@ import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.tcgen.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
+import name.niu.guitar.uitf.Statement;
+import name.niu.guitar.uitf.TestCase;
 import name.niu.guitar.uitf.scriptgen.ScriptGen;
 import name.niu.guitar.uitf.xlsgen.XlsGen;
 
 public class TCgenOnlineAction extends AbstractHandler {
 	
 	
+	/**
+	 * event queue of the onlien thread 
+	 * contains start, stop, step
+	 */
+	Queue<String> smEventQueue = new LinkedList<String>();
+	
+	private void addEvent( String event ) {
+		//synchronized(smEventQueue)
+		{
+			smEventQueue.add(event);
+			smEventSemaphore.release() ;	
+		}
+	}
+	private String pollEvent () {
+		//synchronized(smEventQueue)
+		{
+			try {
+				smEventSemaphore.acquire() ;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			String str = smEventQueue.poll();
+			if ( str == null)
+				smEventSemaphore.release();
+			return str ;		
+		}
+
+	}
+	// start in continue mode
+	static final private String SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE 	= "TRIGGER_START_IN_CONTINUOUS_MODE" ;
+	// start in step mode
+	static final private String SM_TRIGGER_START_ONLINE_STEP_MODE 			= "TRIGGER_START_IN_STEP_MODE" ;	
+	// start in step mode
+	static final private String SM_TRIGGER_START_OFFLINE 			= "TRIGGER_START_OFFLINE" ;	
+	// stop
+	static final private String SM_TRIGGER_STOP 					= "TRIGGER_STOP" ; 
+	// pause
+	static final private String SM_TRIGGER_PAUSE 					= "TRIGGER_PAUSE" ; 
+	// switch to step mode
+	static final private String SM_TRIGGER_SWITCHTOSTEPMODE 		= "TRIGGER_SWITCH_TO_STEP_MODE" ; 	
+	// switch to continuous mode
+	static final private String SM_TRIGGER_SWITCHTOCONTINUOUSMODE 	= "TRIGGER_SWITCH_TO_CONTINUOUS_MODE" ; 	
+	// step
+	static final private String SM_TRIGGER_STEP 					= "TRIGGER_STEP" ; 
+	
+	private Semaphore smEventSemaphore = new Semaphore(0) ;
+
+	/**
+	 * status of the online thread
+	 * trigger by event in eventQueue
+	 */
+	private String smStatus = SM_STATUS_IDLE ;
+	static final private String SM_STATUS_IDLE = "IDLE" ;
+	static final private String SM_STATUS_RUNNING = "RUNNING" ; 
+	static final private String SM_STATUS_STOPING = "STOPING" ; 
+	static final private String SM_STATUS_STOPPED = "STOPPED" ; 
+	private String getStatus() {
+		return smStatus;
+	}
+	private  void setStatus(String status) {
+		synchronized(smStatus){
+			this.smStatus = status;
+			commandStateService.toogleGenAndExeStatus(status);		
+		}
+	}
+	/**
+	 * config of the online thread
+	 */
+	private boolean onlineStepMode = true ;
+	private boolean getStepMode() {
+		return onlineStepMode;
+	}
+	private void setStepMode(boolean step) {
+		this.onlineStepMode = step;
+	}
+	
+	
+	/**
+	 * prepared parameter for online/offline
+	 */
 	private Shell shell = null ;
-	private String genAndExe = CommandState.GEN_AND_EXE_IN_IDLE ;
-	// sync variable for access genAndExe
-	private Object genAndExeSync = new String[0] ;
-	// semaphore for user click
-	private Semaphore click = new Semaphore(1) ;
-	
-	
-	private CommandState commandStateService = null ;
-	private Job job;
-	private TestCaseGen tcgen = null ;
-	private ScriptEngine scriptEngine = null ;
 	private Workbench workbench;
 	private WorkbenchWindow workbenchWindown;
+	private CommandState commandStateService = null ;
+	private IEditorPart editorPart;
+	private TransactionalEditingDomain editingDomain;
+	
+	/**
+	 * parameter when start online/offline
+	 */
+	private Job job;
+	private IProgressMonitor monitor ;
+	
+	private TestCaseGen tcgen = null ;
+	private ScriptEngine scriptEngine = null ;
+	private ScriptGen sptgen;
+	private XlsGen xlsgen;
+	
+	private UIStatemachine stm;
 	public AbstractUIState selectTo = null ;
 	public AbstractUIState selectFrom = null ;
+	private String uisutFilePath;
+	private int maxLoop;
+	private int maxStep;
+	private AbstractUIState astStart;
+	private AbstractUIState astEnd;
+
+	/**
+	 * temp var for hightlignt
+	 */
+	String[] lastExecutedUUID = null ;
 	
-	public void ChangeGenAndExe(String cur) {
-		synchronized (genAndExeSync) {
-			if (cur != null && !cur.equals(genAndExe)) {
-				genAndExe = cur;
-				// Set Button Visibility				
-				commandStateService.toogleGenAndExeStatus(genAndExe);
-				if ( genAndExe.equals(CommandState.GEN_AND_EXE_IN_STEPED)) {
-					// Set Button Enableness
-					IWorkbenchWindow iww = PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
-					assert ( iww instanceof WorkbenchWindow ); 
-					WorkbenchWindow ww = (WorkbenchWindow) iww ;
-					assert ( iww == workbenchWindown );
-					CoolBarManager cbm  = workbenchWindown.getCoolBarManager() ;	
-					
-					// set enable 
-					IContributionItem demoGroup1 = cbm.find("name.niu.guitar.ui.toolbars.GuitarMainToolBar") ;	
-					final CoolBar guitarCoolBar = cbm.getControl() ;
-					Display.getDefault().syncExec(new Runnable() {
-					    public void run() {
-					    	guitarCoolBar.getItem(1).getControl().setEnabled(true);
-					    	}
-					    }); 
-					
-					
-					
-					IContributionItem continueButton = cbm.find(
-							"name.niu.guitar.ui.toolbars.GuitarMainToolBar/continue") ;
-					if ( continueButton instanceof CommandContributionItem) {
-						((CommandContributionItem)continueButton).getCommand().getCommand().setHandler(null) ;
-					}
-				} else if ( genAndExe.equals(CommandState.GEN_AND_EXE_IN_STEPPING)) {
-					// Set Button Enableness
-					CoolBarManager cbm  = workbenchWindown.getCoolBarManager() ;						
-					// set disable
-					IContributionItem demoGroup1 = cbm.find("name.niu.guitar.ui.toolbars.GuitarMainToolBar") ;	//ToolBarContributionItem2
-					final CoolBar guitarCoolBar = cbm.getControl() ;
-					
-					Display.getDefault().syncExec(new Runnable() {
-					    public void run() {
-					    	guitarCoolBar.getItem(1).getControl().setEnabled(false);
-					    	}
-					    }); 
-					
-					IContributionItem continueButton = cbm.find(
-							"continue") ;
-					if ( continueButton instanceof CommandContributionItem) {
-						((CommandContributionItem)continueButton).getCommand().getCommand().setHandler(this) ;
-					}
-				} else {
-					// Set Button Enableness
-					CoolBarManager cbm  = workbenchWindown.getCoolBarManager() ;						
-					// set disable
-					IContributionItem demoGroup1 = cbm.find("name.niu.guitar.ui.toolbars.GuitarMainToolBar") ;	//ToolBarContributionItem2
-					final CoolBar guitarCoolBar = cbm.getControl() ;
-					
-					Display.getDefault().syncExec(new Runnable() {
-					    public void run() {
-					    	guitarCoolBar.getItem(1).getControl().setEnabled(true);
-					    	}
-					    }); 					
-				}
 
-			}
-		}
-	}
 
-	private Object doStart( ExecutionEvent event) throws ExecutionException 
-	{
-		click = new Semaphore(0) ;
-			
-		
-		final IEditorInput editorInput = HandlerUtil.getActiveEditorChecked(event).getEditorInput();
-		// set uisutFilePath
-		final String uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);
-		
-		// set stm	
-		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event) ;
-		if ( editorPart instanceof UisutDiagramEditor == false ) {			
-			ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
-			return null ;
-		}
-		
-		
-		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
-		
-		// set maxLoop and max Step
-		TestCaseGenWizard wizard = new TestCaseGenWizard();
-		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
-		int wizardResult = wizardDialog.open();
-		if ( wizardResult == Window.CANCEL ) {
-			return null ;
-		}
-		final int maxLoop = wizard.getMaxLoopCount();
-		final int maxStep = wizard.getMaxStepCount();
-		
-		// set start and end
-		final AbstractUIState astStart = this.selectFrom;
-		final AbstractUIState astEnd = this.selectTo;
-		final UIStatemachine stm ;
-		if( astStart == null && astEnd == null ) {
-			stm = (UIStatemachine ) ((UisutDiagramEditor)editorPart ).getDiagram().getElement();
-		} else if ( astStart == null ){
-			assert( astEnd.eContainer() instanceof UIStatemachine );
-			stm = (UIStatemachine)astEnd.eContainer() ;
-		} else if ( astEnd == null ){
-			assert( astStart.eContainer() instanceof UIStatemachine );
-			stm = (UIStatemachine)astStart.eContainer() ;
-		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
-				stm = (UIStatemachine)astEnd.eContainer() ;
-		} else {
-			stm = (UIStatemachine)astEnd.eContainer().eResource().getContents().get(0);
-			//return null ;
-		}
-		
-		tcgen = new TestCaseGen();
-		
-		ScriptGen 		sptgen 	= new ScriptGen();		
-		XlsGen 			xlsgen 	= new XlsGen();
-		scriptEngine = new ScriptEngine();
-		
-		tcgen.addSubscriber(sptgen);
-		tcgen.addSubscriber(xlsgen);
-		tcgen.addSubscriber(scriptEngine);
-		
 
-		
-		job = new Job("GenAndExe") {
-			protected IStatus run(IProgressMonitor monitor) {
-				final IProgressMonitor m = monitor ;
-				// add listener to scritpEngine				
-				scriptEngine.addSubscriber( new ITargetScriptExeDoneSubscriber() {
-					
-					String[] lastExecutedUUID = null ;
-					
-					@Override
-					public void OnTargetStatementDone(String[] executedUUID) {
-						
-						// update last Executed uuidID's UIState/UITransition's color
-						if ( lastExecutedUUID != null ) {
-							for ( String uuid : lastExecutedUUID ) {
-								final EObject o = stm.eResource().getEObject( uuid ) ;
-								if ( o instanceof AbstractUIState || o instanceof UITransition ){
-									editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
 
-										@Override
-										protected void doExecute() {
-											((UIElement)o).setHighlight(Config.ANIMATIONPATHCOLOR);
-										}
-									});
-								} else {
-									assert(false):"model changed?";
-								}
-							}
-						} 
-						lastExecutedUUID = executedUUID ;
-						
-						for ( String uuid : executedUUID ) {
-							final EObject o = stm.eResource().getEObject( uuid ) ;
-							if ( o instanceof AbstractUIState || o instanceof UITransition ){
-								// set color
-								editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
-
-									@Override
-									protected void doExecute() {
-										((UIElement)o).setHighlight(Config.ANIMATIONHEADCOLOR);
-									}
-								});
-							}else {
-								assert(false):"model changed?";
-							}
-							
-							//
-							if( m.isCanceled()) {
-								scriptEngine.stop() ;
-								tcgen.stopGen() ;
-							}							
-							// wait for button clicked
-							try {
-								// change state
-								ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPED ) ;
-								click.acquire() ;
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							} 
-						}
-					}
-
-					@Override
-					public void OnSEStoped(ITargetScriptExeDonePublisher p) {
-						ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE ) ;						
-					}					
-				});		
-				
-				tcgen.addSubscriber(  new ITCDoneSubscriber() {
-
-					@Override
-					public void OnUtifFileDone(String uitfFileParth) {};
-					@Override
-					public void OnTestCaseDone(name.niu.guitar.uitf.TestCase tc) {
-						// set color
-						editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
-							@Override
-							protected void doExecute() {
-								Iterator<EObject> it = stm.eAllContents() ;
-								while( it.hasNext()){
-									EObject eo = it.next() ;
-									if ( eo instanceof UIElement ) {
-										((UIElement)eo).setHighlight("none");
-									}									
-								}								
-							}				
-						});
-					}
-					@Override
-					public void OnTCGStoped(ITCDonePublisher tcg) {
-						ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE ) ;
-					}					
-				});
-				
-				monitor.beginTask("Gen And Exe!!!",IProgressMonitor.UNKNOWN );
-				tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);	
-				
-				// check running or monitor cancelling
-				while ( tcgen.getStatus().equals( TestCaseGen.STATUS_RUNNING ) && 
-						! monitor.isCanceled()) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
-				monitor.done();
-				if (monitor.isCanceled()) {
-					return org.eclipse.core.runtime.Status.CANCEL_STATUS;
-				}
-				return org.eclipse.core.runtime.Status.OK_STATUS;
-			}
-		};
-		job.addJobChangeListener(new JobChangeAdapter() {
-			public void done(IJobChangeEvent event) {
-				if (event.getResult().isOK()) {
-					// end GenAndExe 	
-					job = null ;
-					doExternalStop(true) ;	
-					
-				} else {
-					job = null ;
-					doExternalStop(false) ;					
-				}
-			}
-		});	
-		job.setPriority(Job.INTERACTIVE);
-		job.setUser(true);
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING) ;	
-		job.schedule(500);
-		
-		return null;
-	}
-
-	private Object doContinue()
-	{
-		click.release() ;
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING );
-		return null ;
-	}
 	
-	private Object doStop()   
-	{
-		click.release(3) ;		
-		scriptEngine.stop() ;
-		tcgen.stopGen() ;
-		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE );
-		//click.release();
-//		if ( job != null){
-//			job.cancel();
-//			job = null ;
-//		}		
-		return null ;
-	}
-	
-	private void doExternalStop(boolean isNormallyCompleted )   
-	{
-		if ( isNormallyCompleted ){
-			//MessageDialog.openInformation(shell,"Guitar","Completed!");
-		} else {
-			//MessageDialog.openInformation(shell,"Guitar","Canceled or Failed");
-		}
-		doStop() ;
-	}
-	
+
+	/* 
+	 * 
+	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException 
 	{
-		shell = HandlerUtil.getActiveShell(event);
-		if ( commandStateService == null ) {
-			ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
-					.getActiveWorkbenchWindow(event).getService(
-							ISourceProviderService.class);
-			commandStateService = (CommandState) sourceProviderService
-					.getSourceProvider(CommandState.GEN_AND_EXE_STATUS);
-		}
-
-		workbench = (Workbench)PlatformUI.getWorkbench() ;
-		if ( workbenchWindown instanceof WorkbenchWindow == false ){
-			System.out.println( "not WorkbenchWindwo!") ;
-		}
-		workbenchWindown = (WorkbenchWindow)workbench.getActiveWorkbenchWindow() ;
-
-		//
+		// prepare parameter form event
+		intervalPrepareContext(event);
 		
 		String subCmd = event.getParameter("name.niu.guitar.ui.commands.GenOnline.subCmd") ;
-		if ( subCmd.equals("START")){
-			if ( !genAndExe.equals(CommandState.GEN_AND_EXE_IN_IDLE)){ 
-				MessageDialog.openInformation(
-					HandlerUtil.getActiveShell(event),
-					"Guitar",
-					"Already Started");
+		// online_start
+		if ( subCmd.equals(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE)){
+			if ( getStatus().equals(SM_STATUS_IDLE)) {
+				addEvent(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE);
+				doStart(event);
 			} else {
-				return doStart( event ) ;
+				MessageDialog.openInformation(
+				HandlerUtil.getActiveShell(event),
+				"Guitar",
+				"Already Started");			
 			}
+		// online_step
+		} else if ( subCmd.equals(SM_TRIGGER_START_ONLINE_STEP_MODE)){
+			if ( getStatus().equals(SM_STATUS_IDLE)) {
+				addEvent(SM_TRIGGER_START_ONLINE_STEP_MODE);
+				setStepMode(true);
+				doStart(event);
+			} else {
+				MessageDialog.openInformation(
+				HandlerUtil.getActiveShell(event),
+				"Guitar",
+				"Already Started");			
+			}
+		// online_stop
+		} else if (subCmd.equals(SM_TRIGGER_STOP)) {
+			addEvent(SM_TRIGGER_STOP);
+		} else if (subCmd.equals(SM_TRIGGER_STEP)) {
+			addEvent(SM_TRIGGER_STEP);
+		// offline
 		} else if (subCmd.equals("OFFLINE")){
 			return doGenOffline(event) ;
-
-		} else if (subCmd.equals("CONTINUE")){
-			return doContinue() ;
-		} else if (subCmd.equals("STOP")) {
-			return doStop() ;
 		} else if (subCmd.equals("SELECTFROM")) {
 			ISelection selection = HandlerUtil.getCurrentSelection(event);
 			if ( selection instanceof IStructuredSelection){
@@ -442,6 +260,189 @@ public class TCgenOnlineAction extends AbstractHandler {
 		return null ;
 	}
 	
+	private void smEventLoop() {
+		while ( true ) 
+		{
+//			if ( getStepMode() == false ) {
+//				try {
+//					Thread.sleep(Config.getAnimationInterval());
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//				addEvent(SM_TRIGGER_STEP);
+//			}
+			String event = pollEvent();
+			if ( getStatus().equals(SM_STATUS_IDLE) ) {
+				if (event.equals(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE)) {						
+					scriptEngine.setStepMode(false);
+					setStepMode(false);
+					monitor.beginTask("Gen And Exe!!!",IProgressMonitor.UNKNOWN );
+					tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
+					setStatus(SM_STATUS_RUNNING);
+					
+				} else if (event.equals(SM_TRIGGER_START_ONLINE_STEP_MODE)) {						
+					scriptEngine.setStepMode(true);
+					setStepMode(true);
+					monitor.beginTask("Gen And Exe!!!",IProgressMonitor.UNKNOWN );
+					tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);							
+					setStatus(SM_STATUS_RUNNING);
+				}
+			} else if ( getStatus().equals(SM_STATUS_RUNNING) ) {
+				if ( event.equals(SM_TRIGGER_STEP )){
+					scriptEngine.step(1);
+				} else if (event.equals(SM_TRIGGER_STOP)) {
+					if ( !scriptEngine.getStatus().equals(ScriptEngine.SM_STATUS_STOPPED)) {
+						scriptEngine.stop();
+					}
+					if ( !tcgen.getStatus().equals( TestCaseGen.SM_STATUS_STOPPED )) {
+						tcgen.stopGen() ;
+					}
+					setStatus(SM_STATUS_STOPPED);
+					break ;
+				} 
+			} else if ( getStatus().equals(SM_STATUS_STOPING) ) {
+				
+			} else if ( getStatus().equals(SM_STATUS_STOPPED) ) {
+				
+			} else {
+				assert(false):"add more status?";
+			}
+		}
+	}
+
+
+
+	/**
+	 * @param event
+	 * @return
+	 * @throws ExecutionException
+	 */
+	private Object doStart( ExecutionEvent event) throws ExecutionException 
+	{
+		// set maxLoop and max Step
+		TestCaseGenWizard wizard = new TestCaseGenWizard();
+		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
+		int wizardResult = wizardDialog.open();
+		if ( wizardResult == Window.CANCEL ) {
+			return null ;
+		}
+		maxLoop = wizard.getMaxLoopCount();
+		maxStep = wizard.getMaxStepCount();
+		// set start and end
+		astStart = this.selectFrom;
+		astEnd = this.selectTo;
+		if( astStart == null && astEnd == null ) {
+			stm = (UIStatemachine ) ((UisutDiagramEditor)editorPart ).getDiagram().getElement();
+		} else if ( astStart == null ){
+			assert( astEnd.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astEnd.eContainer() ;
+		} else if ( astEnd == null ){
+			assert( astStart.eContainer() instanceof UIStatemachine );
+			stm = (UIStatemachine)astStart.eContainer() ;
+		} else if ( astStart.eContainer().equals( astEnd.eContainer()) ){
+				stm = (UIStatemachine)astEnd.eContainer() ;
+		} else {
+			stm = (UIStatemachine)astEnd.eContainer().eResource().getContents().get(0);
+		}
+		
+		tcgen = new TestCaseGen();		
+		sptgen = new ScriptGen();		
+		xlsgen = new XlsGen();
+		scriptEngine = new ScriptEngine();
+		
+		tcgen.addSubscriber(sptgen);
+		tcgen.addSubscriber(xlsgen);
+		tcgen.addSubscriber(scriptEngine);
+		
+		// add listener to scritpEngine				
+		scriptEngine.addSubscriber( new ITargetScriptExeDoneSubscriber() {
+			public void OnTargetStatementDone(String[] executedUUID) {
+				internalHightlight(executedUUID ) ;
+			}
+			public void OnSEStoped(ITargetScriptExeDonePublisher p) {
+				addEvent(SM_TRIGGER_STOP);
+			}
+			@Override
+			public void OnTestCaseDone(TestCase tc) {
+				internalClearTC();
+				lastExecutedUUID = null ;
+			}					
+		});			
+		tcgen.addSubscriber(  new ITCDoneSubscriber() {
+			public void OnUtifFileDone(String uitfFileParth) {
+			};
+			public void OnTestCaseDone(name.niu.guitar.uitf.TestCase tc) {
+				//internalClearTC() ;
+			}
+			public void OnTCGStoped(ITCDonePublisher tcg, String reason) {
+				if( reason.equals(ITCDoneSubscriber.Stop_Reason_Completion)) {
+					//addEvent(SM_TRIGGER_STOP);
+				}
+			}					
+		});		
+		job = new Job("GenAndExe") 
+		{
+			protected IStatus run(IProgressMonitor monitor) 
+			{
+				TCgenOnlineAction.this.monitor = monitor ;
+				smEventLoop();
+				setStatus(SM_STATUS_IDLE);
+				monitor.done();
+				if (monitor.isCanceled()) {
+					return org.eclipse.core.runtime.Status.CANCEL_STATUS;
+				}
+				return org.eclipse.core.runtime.Status.OK_STATUS;
+			}
+		};
+		job.addJobChangeListener(new JobChangeAdapter() {
+			public void done(IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
+					addEvent(SM_TRIGGER_STOP);
+					
+				} else {
+					addEvent(SM_TRIGGER_STOP);
+				}
+			}
+		});	
+		job.setPriority(Job.INTERACTIVE);
+		job.setUser(true);
+		job.schedule(500);
+		return null;
+	}
+
+//	private Object doContinue()
+//	{
+//		click.release() ;
+//		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_STEPPING );
+//		return null ;
+//	}
+	
+//	private Object doStop()   
+//	{
+//		click.release(3) ;		
+//		scriptEngine.stop() ;
+//		tcgen.stopGen() ;
+//		ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE );
+//		//click.release();
+////		if ( job != null){
+////			job.cancel();
+////			job = null ;
+////		}
+//		return null ;
+//	}
+	
+//	private void doExternalStop(boolean isNormallyCompleted )   
+//	{
+//		if ( isNormallyCompleted ){
+//			//MessageDialog.openInformation(shell,"Guitar","Completed!");
+//		} else {
+//			//MessageDialog.openInformation(shell,"Guitar","Canceled or Failed");
+//		}
+//		doStop() ;
+//	}
+	
+
+	
 
 	public Object doGenOffline(ExecutionEvent event) throws ExecutionException 
 	{
@@ -456,13 +457,6 @@ public class TCgenOnlineAction extends AbstractHandler {
 		final int maxLoop = wizard.getMaxLoopCount();
 		final int maxStep = wizard.getMaxStepCount();
 		//
-		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event) ;
-		if ( editorPart instanceof UisutDiagramEditor == false ) {			
-			ChangeGenAndExe( CommandState.GEN_AND_EXE_IN_IDLE) ;
-			return null ;
-		}		
-		final TransactionalEditingDomain editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain() ;
-
 		// set start and end
 		AbstractUIState astStart = this.selectFrom;
 		AbstractUIState astEnd = this.selectTo;
@@ -553,5 +547,117 @@ public class TCgenOnlineAction extends AbstractHandler {
 		return false ;
 	}
 	
+	private void internalSetEnableToolBar(final int index, final boolean enable) {
+		CoolBarManager cbm  = workbenchWindown.getCoolBarManager() ;						
+		// set disable
+		IContributionItem demoGroup1 = cbm.find("name.niu.guitar.ui.toolbars.GuitarMainToolBar") ;	
+		final CoolBar guitarCoolBar = cbm.getControl() ;
+		
+		Display.getDefault().syncExec(new Runnable() {
+		    public void run() {
+		    	guitarCoolBar.getItem(index).getControl().setEnabled(enable);
+		    	}
+		    });
+		
+		
+		if ( enable ) {
+			IContributionItem continueButton = cbm.getItems()[index] ;
+			if ( continueButton instanceof CommandContributionItem) {
+				((CommandContributionItem)continueButton).getCommand().getCommand().setHandler(this) ;
+			}
+		} else {
+			IContributionItem continueButton = cbm.find( "name.niu.guitar.ui.toolbars.GuitarMainToolBar/continue") ;// or continue??
+			if ( continueButton instanceof CommandContributionItem) {
+				((CommandContributionItem)continueButton).getCommand().getCommand().setHandler(null) ;
+			}
+		}
+	}
+	private void internalClearTC() {
+		editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
+			@Override
+			protected void doExecute() {
+				Iterator<EObject> it = stm.eAllContents() ;
+				while( it.hasNext()){
+					EObject eo = it.next() ;
+					if ( eo instanceof UIElement ) {
+						((UIElement)eo).setHighlight("none");
+					}									
+				}								
+			}				
+		});
+	}
+	
+	private void internalHightlight( String[] executedUUID ) {
+		
+		// update last Executed uuidID's UIState/UITransition's color
+		if ( lastExecutedUUID != null ) {
+			for ( String uuid : lastExecutedUUID ) {
+				final EObject o = stm.eResource().getEObject( uuid ) ;
+				if ( o instanceof AbstractUIState || o instanceof UITransition ){
+					editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
+
+						@Override
+						protected void doExecute() {
+							((UIElement)o).setHighlight(Config.ANIMATIONPATHCOLOR);
+						}
+					});
+				} else {
+					assert(false):"model changed?";
+				}
+			}
+		} 
+		lastExecutedUUID = executedUUID ;
+		
+		for ( String uuid : executedUUID ) {
+			final EObject o = stm.eResource().getEObject( uuid ) ;
+			if ( o instanceof AbstractUIState || o instanceof UITransition ){
+				// set color
+				editingDomain.getCommandStack().execute( new RecordingCommand(editingDomain) {
+
+					@Override
+					protected void doExecute() {
+						((UIElement)o).setHighlight(Config.ANIMATIONHEADCOLOR);
+					}
+				});
+			}else {
+				assert(false):"model changed?";
+			}
+		}
+	}
+	
+	private void intervalPrepareContext( ExecutionEvent event )  {
+		if ( commandStateService == null ) {
+			ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
+					.getActiveWorkbenchWindow(event).getService(
+							ISourceProviderService.class);
+			commandStateService = (CommandState) sourceProviderService
+					.getSourceProvider(CommandState.GEN_AND_EXE_STATUS);
+		}
+		
+		shell = HandlerUtil.getActiveShell(event);
+
+
+		workbench = (Workbench)PlatformUI.getWorkbench() ;
+		if ( workbenchWindown instanceof WorkbenchWindow == false ){
+			System.out.println( "not WorkbenchWindwo!") ;
+		}
+		workbenchWindown = (WorkbenchWindow)workbench.getActiveWorkbenchWindow() ;
+		
+		try {
+			uisutFilePath = TCgenOfflineAction.getCurrentInputString(event);
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+
+		editorPart = null;
+		try {
+			editorPart = HandlerUtil.getActiveEditorChecked(event);
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		editingDomain = ((UisutDiagramEditor)editorPart).getEditingDomain();
+	}
+	
+
 	
 }

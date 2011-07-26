@@ -47,7 +47,7 @@ public class GuitarGenPreferencePage extends FieldEditorPreferencePage implement
 		addField( new ScaleFieldEditor(Config.ANIMATIONINTERVAL, 
 				"interval of continual steps\t",
 				getFieldEditorParent(),
-				0,5000,500,1000));
+				1000,10000,500,2000));
 	}
 
 }

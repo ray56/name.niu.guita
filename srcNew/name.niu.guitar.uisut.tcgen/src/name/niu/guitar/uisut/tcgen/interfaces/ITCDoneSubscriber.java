@@ -6,6 +6,8 @@ public interface ITCDoneSubscriber {
 	
 	public void OnUtifFileDone(String uitfFileParth);
 	public void OnTestCaseDone(TestCase tc);
-	public void OnTCGStoped(ITCDonePublisher tcg ) ;
+	public static String Stop_Reason_Completion 	= "Stop_Reason_Completion";
+	public static String Stop_Reason_Cancellation 	= "Stop_Reason_Cancellation";
+	public void OnTCGStoped(ITCDonePublisher tcg , String reason) ;
 
 }

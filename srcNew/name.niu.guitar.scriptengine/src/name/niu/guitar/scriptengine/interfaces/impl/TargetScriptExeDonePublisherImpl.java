@@ -31,7 +31,14 @@ public class TargetScriptExeDonePublisherImpl implements ITargetScriptExeDonePub
 			sb.OnTargetStatementDone(executedUUID);
 		}
 	}
-	
+	@Override
+	public void notifyTestCaseDone(TestCase tc) {
+		
+		for(ITargetScriptExeDoneSubscriber sb : sbList){
+			
+			sb.OnTestCaseDone(tc);
+		}
+	}
 	@Override
 	public void notifyTEStoped() {
 		

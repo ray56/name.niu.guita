@@ -21,6 +21,8 @@ public class GuitarPreferenceInitializer extends AbstractPreferenceInitializer {
 		PreferenceConverter.setDefault(store, Config.ANIMATIONHEADCOLOR, 		new RGB(0,255,255));
 		PreferenceConverter.setDefault(store, Config.ANIMATIONFROMSTATECOLOR, 	new RGB(255,0,0));
 		PreferenceConverter.setDefault(store, Config.ANIMATIONTOSTATECOLOR, 	new RGB(0,255,0));
+		
+		store.setDefault(Config.ANIMATIONINTERVAL, 	2000 );
 	}
 
 }

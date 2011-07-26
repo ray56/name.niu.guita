@@ -11,13 +11,8 @@ public class CommandState extends AbstractSourceProvider {
 
 	
 	public final static String GEN_AND_EXE_STATUS = "name.niu.guitar.ui.sourceProviders.genAndExeStatus";
-	// Start clickable, 
-	public final static String GEN_AND_EXE_IN_IDLE = "GEN_AND_EXE_IN_IDLE";
-	// Start not clickable, Resume not clickable, Stop clickable
-	public final static String GEN_AND_EXE_IN_STEPPING = "GEN_AND_EXE_IN_STEPPING";
-	// Start not clickable, Resume clickable, Stop clickable
-	public final static String GEN_AND_EXE_IN_STEPED = "GEN_AND_EXE_IN_STEPED";
-	private String genAndExe = GEN_AND_EXE_IN_IDLE;
+
+	private String genAndExe = "IDLE";
 	
 	public CommandState() {	}
 	@Override
@@ -44,7 +39,7 @@ public class CommandState extends AbstractSourceProvider {
 							ISources.WORKBENCH | ISources.ACTIVE_MENU, 
 							GEN_AND_EXE_STATUS, 
 							genAndExe);
-				}				
+				}
 			});
 
 		}

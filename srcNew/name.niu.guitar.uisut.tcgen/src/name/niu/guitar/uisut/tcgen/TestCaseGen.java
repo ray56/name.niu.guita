@@ -5,15 +5,22 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Semaphore;
+
 import javax.swing.JOptionPane;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+
 import name.niu.guitar.uisut.*;
+import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 import name.niu.guitar.uisut.tcgen.interfaces.impl.TCDonePublisherImpl;
 import name.niu.guitar.uisut.validator.*;
 import name.niu.guitar.uitf.*;
@@ -30,16 +37,89 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	int iStart;
 	int iEnd;
 	
-	private Integer runningFlag = 0 ; // set to 1 means stop running 
-	private String status = null ;
-	static final public String STATUS_END_OK = "OK" ; // normally closed ;
-	static final public String STATUS_END_STOPED = "STOPED" ; // closed by stop
-	static final public String STATUS_RUNNING = "RUNNING" ; // closed by stop
+	/**
+	 * event queue of the onlien thread 
+	 * contains start, stop, step
+	 */
+	Queue<String> smEventQueue = new LinkedList<String>();
+	
+	private void addEvent( String event ) {
+		//synchronized(smEventQueue)
+		{
+			smEventQueue.add(event);
+			smEventSemaphore.release() ;	
+		}
+	}
+	private String pollEvent () {
+		//synchronized(smEventQueue)
+		{
+			try {
+				smEventSemaphore.acquire() ;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			String str = smEventQueue.poll();
+			if ( str == null)
+				smEventSemaphore.release();
+			return str ;		
+		}
+
+	}
+	static final private String SM_TRIGGER_START 			= "SM_TRIGGER_START" ;	
+	static final private String SM_TRIGGER_STOP 					= "SM_TRIGGER_STOP" ; 
+	static final private String SM_TRIGGER_STEP 					= "SM_TRIGGER_STEP" ; 
+	
+	private Semaphore smEventSemaphore = new Semaphore(0) ;
+	
+	
+	// status of test case gen
+	private String smStatus = SM_STATUS_IDLE ;
+	static final public String SM_STATUS_IDLE = "IDLE" ;
+	static final public String SM_STATUS_RUNNING = "RUNNING" ; // closed by stop
+	static final public String SM_STATUS_STOPPING = "STOP" ; 
+	static final public String SM_STATUS_STOPPED = "STOPPED" ; // closed by stop
+	static final public String STATUS_END_OK = "OK" ; // closed by stop
 	public String getStatus() {
-		return status;
+		return smStatus;
 	}
 	private void setStatus(String status) {
-		this.status = status;
+		this.smStatus = status;
+	}
+	
+	private void smEventLoop() {
+		while ( true ) 
+		{
+			String event = pollEvent();
+			if ( getStatus().equals(SM_STATUS_IDLE) ) {
+				if (event.equals(SM_TRIGGER_START)) {						
+					try {
+						doGenerateTestCase(par_uisutFilePath, par_stm, par_maxLoop, par_maxStep,
+								par_start, par_end);
+					} catch (StopGenExecption e) {
+//						setStatus(SM_STATUS_STOPPED);
+						notifyTCGStoped(ITCDoneSubscriber.Stop_Reason_Cancellation);
+						return ;
+					} 
+//					setStatus(STATUS_END_OK);
+					notifyTCGStoped(ITCDoneSubscriber.Stop_Reason_Completion);
+					setStatus(SM_STATUS_RUNNING);
+				} 
+			} else if ( getStatus().equals(SM_STATUS_RUNNING) ) {
+				if (event.equals(SM_TRIGGER_STOP)) {					
+					setStatus(SM_STATUS_STOPPED);
+					break ;
+				} 
+			} else if ( getStatus().equals(SM_STATUS_STOPPING) ) {
+				
+			} else if ( getStatus().equals(SM_STATUS_STOPPED) ) {
+				
+			} else {
+				assert(false):"add more status?";
+			}
+		}
+	}
+	public TestCaseGen() {
+		super() ;
 	}
 	
 
@@ -52,8 +132,17 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	
 	ArrayList<Integer> alTranOccur = new ArrayList<Integer>();
 	ArrayDeque<Integer> aqTranPath = new ArrayDeque<Integer>();
+	private String par_uisutFilePath;
+	private UIStatemachine par_stm;
+	private int par_maxLoop;
+	private int par_maxStep;
+	private AbstractUIState par_start;
+	private AbstractUIState par_end;
 	
-	public void doGenerateTestCase(String uisutFilePath, UIStatemachine stm, int maxLoop, int maxStep, AbstractUIState start, AbstractUIState end) throws StopGenExecption
+	private void doGenerateTestCase(
+			String uisutFilePath, UIStatemachine stm, 
+			int maxLoop, int maxStep, AbstractUIState start, 
+			AbstractUIState end) throws StopGenExecption
 	{
 		// get start time
 		long startTime = System.currentTimeMillis();
@@ -97,23 +186,32 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		JOptionPane.showMessageDialog(null, "Generate Test Case Successfully!\n"+generationTime);
 	}
 	
-	public void generateTestCase(final String uisutFilePath, final UIStatemachine stm, final int maxLoop, final int maxStep, final AbstractUIState start, final AbstractUIState end) 
+	public void generateTestCase(
+			final String uisutFilePath, 
+			final UIStatemachine stm, 
+			final int maxLoop, 
+			final int maxStep, 
+			final AbstractUIState start, 
+			final AbstractUIState end) 
 	{
-		setStatus(STATUS_RUNNING);
-		this.runningFlag = 0;
+		if (! getStatus().equals(SM_STATUS_IDLE)){
+			System.out.println("in running or already run");
+			return ;
+		}
+		addEvent(SM_TRIGGER_START);
+		this.par_uisutFilePath = uisutFilePath ;
+		this.par_stm = stm ;
+		this.par_maxLoop = maxLoop ;
+		this.par_maxStep = maxStep ;
+		this.par_start = start ;
+		this.par_end = end ;
+		
+		//setStatus(SM_STATUS_RUNNING);
 		final TestCaseGen tcg = this ;
 		Thread gen = new Thread() {
 			public void run() {
-				try {
-					doGenerateTestCase(uisutFilePath, stm, maxLoop, maxStep,
-							start, end);
-				} catch (StopGenExecption e) {
-					setStatus(STATUS_END_STOPED);
-					return ;
-				} finally {
-					tcg.notifyTCGStoped();
-				}
-				setStatus(STATUS_END_OK);
+				smEventLoop() ;
+				setStatus(SM_STATUS_IDLE);
 			}
 		};
 		gen.start();
@@ -121,8 +219,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	}
 	
 	public void stopGen () {
-		this.runningFlag = 1 ;
-		setStatus(STATUS_END_STOPED);
+		addEvent(SM_TRIGGER_STOP);
 	}
 	
 	private void initialVariables(UIStatemachine stm){ 
@@ -386,7 +483,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				this.notifyTestCaseDone(tc);
 				
 				// HERE is a interrupt point
-				if( this.runningFlag == 1 ) {
+				if( smStatus.equals(SM_STATUS_STOPPING) ) {
 					throw new StopGenExecption() ;
 				}
 				

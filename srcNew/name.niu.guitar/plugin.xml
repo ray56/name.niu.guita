@@ -348,7 +348,7 @@
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <equals
-                           value="GEN_AND_EXE_IN_IDLE">
+                           value="IDLE">
                      </equals>
                   </with>
                </visibleWhen>
@@ -369,7 +369,7 @@
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <equals
-                           value="GEN_AND_EXE_IN_IDLE">
+                           value="IDLE">
                      </equals>
                   </with>
                </visibleWhen>
@@ -380,21 +380,42 @@
             </separator>
             <command
                   commandId="name.niu.guitar.ui.commands.GenOnline"
-                  icon="icons/OnlineStartGen.png"
+                  icon="icons/OnlineStartGen2.png"
                   id="start"
-                  label="Start"
+                  label="Start StepMode"
                   style="push"
                   tooltip="Start gen and exe test case">
                <parameter
                      name="name.niu.guitar.ui.commands.GenOnline.subCmd"
-                     value="START">
+                     value="TRIGGER_START_IN_STEP_MODE">
                </parameter>
                <visibleWhen
                      checkEnabled="false">
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <equals
-                           value="GEN_AND_EXE_IN_IDLE">
+                           value="IDLE">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="name.niu.guitar.ui.commands.GenOnline"
+                  icon="icons/OnlineStartGen.png"
+                  id="start"
+                  label="Start Continue Mode"
+                  style="push"
+                  tooltip="Start gen and exe test case">
+               <parameter
+                     name="name.niu.guitar.ui.commands.GenOnline.subCmd"
+                     value="TRIGGER_START_IN_CONTINUOUS_MODE">
+               </parameter>
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
+                     <equals
+                           value="IDLE">
                      </equals>
                   </with>
                </visibleWhen>
@@ -408,7 +429,7 @@
                   tooltip="Continue exe test case">
                <parameter
                      name="name.niu.guitar.ui.commands.GenOnline.subCmd"
-                     value="CONTINUE">
+                     value="TRIGGER_STEP">
                </parameter>
                <visibleWhen
                      checkEnabled="false">
@@ -416,10 +437,10 @@
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <or>
                         <equals
-                              value="GEN_AND_EXE_IN_STEPED">
+                              value="RUNNING">
                         </equals>
                         <equals
-                              value="GEN_AND_EXE_IN_STEPPING">
+                              value="RUNNING">
                         </equals>
                      </or>
                   </with>
@@ -434,7 +455,7 @@
                   tooltip="Stop exe test case">
                <parameter
                      name="name.niu.guitar.ui.commands.GenOnline.subCmd"
-                     value="STOP">
+                     value="TRIGGER_STOP">
                </parameter>
                <visibleWhen
                      checkEnabled="false">
@@ -442,10 +463,10 @@
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <or>
                         <equals
-                              value="GEN_AND_EXE_IN_STEPED">
+                              value="RUNNING">
                         </equals>
                         <equals
-                              value="GEN_AND_EXE_IN_STEPPING">
+                              value="RUNNING">
                         </equals>
                      </or>
                   </with>
@@ -465,7 +486,7 @@
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <equals
-                           value="GEN_AND_EXE_IN_IDLE">
+                           value="IDLE">
                      </equals>
                   </with>
                </visibleWhen>
@@ -488,7 +509,7 @@
                   <with
                         variable="name.niu.guitar.ui.sourceProviders.genAndExeStatus">
                      <equals
-                           value="GEN_AND_EXE_IN_IDLE">
+                           value="IDLE">
                      </equals>
                   </with>
                </visibleWhen>

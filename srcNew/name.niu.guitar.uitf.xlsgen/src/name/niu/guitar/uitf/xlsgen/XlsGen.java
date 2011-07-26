@@ -123,7 +123,7 @@ public class XlsGen implements ITCDoneSubscriber{
 	}
 
 	@Override
-	public void OnTCGStoped(ITCDonePublisher tcg) {
+	public void OnTCGStoped(ITCDonePublisher tcg, String reason) {
 		// TODO Auto-generated method stub
 		
 	}

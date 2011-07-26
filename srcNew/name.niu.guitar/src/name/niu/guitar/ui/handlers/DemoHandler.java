@@ -421,7 +421,7 @@ public class DemoHandler extends AbstractHandler
 						ISourceProviderService.class);
 		CommandState commandStateService = (CommandState) sourceProviderService
 				.getSourceProvider(CommandState.GEN_AND_EXE_STATUS);
-		commandStateService.toogleGenAndExeStatus(CommandState.GEN_AND_EXE_IN_STEPED);
+		commandStateService.toogleGenAndExeStatus("XXXXXX");
 	}
 
 	private void demo14(ExecutionEvent event) {

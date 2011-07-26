@@ -33,39 +33,39 @@ public class GuitarPreferencePage extends FieldEditorPreferencePage implements
 	@Override
 	protected void createFieldEditors() {
 		
-		String myPrefString = Activator.getDefault().getPreferenceStore()
-		.getString("MySTRING1");
-		
-		String text = Platform.getPreferencesService().getString(
-				"name.niu.guitar", "MySTRING2", "hello", null);
-		
-		////
-		addField(new DirectoryFieldEditor("PATH", "&Directory preference:",
-				getFieldEditorParent()));
-		addField( new ColorFieldEditor("COLOR","&Color",
-				getFieldEditorParent() ) );
-		addField( new PathEditor("PATH2","","",
-				getFieldEditorParent()));
-		addField( new FileFieldEditor("File" , "", 
-				getFieldEditorParent()) );
-		addField(new BooleanFieldEditor("BOOLEAN_VALUE",
-				"&An example of a boolean preference", 
-				getFieldEditorParent()));
-
-		addField(new RadioGroupFieldEditor("CHOICE",
-				"An example of a multiple-choice preference", 1,
-				new String[][] { { "&Choice 1", "choice1" },
-						{ "C&hoice 2", "choice2" } }, 
-				getFieldEditorParent()));
-		addField(new StringFieldEditor("MySTRING1", "A &text preference:",
-				getFieldEditorParent()));
-		addField(new StringFieldEditor("MySTRING2", "A &text preference:",
-				getFieldEditorParent()));
-		
-		
-		////
-		String myPrefString2 = Activator.getDefault().getPreferenceStore().getString("MySTRING1");
-		
+//		String myPrefString = Activator.getDefault().getPreferenceStore()
+//		.getString("MySTRING1");
+//		
+//		String text = Platform.getPreferencesService().getString(
+//				"name.niu.guitar", "MySTRING2", "hello", null);
+//		
+//		////
+//		addField(new DirectoryFieldEditor("PATH", "&Directory preference:",
+//				getFieldEditorParent()));
+//		addField( new ColorFieldEditor("COLOR","&Color",
+//				getFieldEditorParent() ) );
+//		addField( new PathEditor("PATH2","","",
+//				getFieldEditorParent()));
+//		addField( new FileFieldEditor("File" , "", 
+//				getFieldEditorParent()) );
+//		addField(new BooleanFieldEditor("BOOLEAN_VALUE",
+//				"&An example of a boolean preference", 
+//				getFieldEditorParent()));
+//
+//		addField(new RadioGroupFieldEditor("CHOICE",
+//				"An example of a multiple-choice preference", 1,
+//				new String[][] { { "&Choice 1", "choice1" },
+//						{ "C&hoice 2", "choice2" } }, 
+//				getFieldEditorParent()));
+//		addField(new StringFieldEditor("MySTRING1", "A &text preference:",
+//				getFieldEditorParent()));
+//		addField(new StringFieldEditor("MySTRING2", "A &text preference:",
+//				getFieldEditorParent()));
+//		
+//		
+//		////
+//		String myPrefString2 = Activator.getDefault().getPreferenceStore().getString("MySTRING1");
+//		
 	}
 
 
