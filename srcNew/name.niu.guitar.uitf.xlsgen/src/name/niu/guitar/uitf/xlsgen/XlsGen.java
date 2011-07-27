@@ -75,7 +75,7 @@ public class XlsGen implements ITCDoneSubscriber{
 				if(flag == 0){
 					tc_statements_sb.append((s.getDescription() == null)?"":s.getDescription()).append("\n");
 				}
-				else if((ii % 2) == 1){
+				else if((ii % 2) == 0){
 					ii++;
 					tc_statements_sb.append((s.getDescription() == null)?"":s.getDescription()).append("\n");
 				}
