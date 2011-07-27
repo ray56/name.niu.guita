@@ -55,6 +55,7 @@ public class ScriptEngine
 		Statement statement = (Statement) obj ;
 		return statement;
 	}
+
 	/**
 	 * event queue of the onlien thread 
 	 * contains start, stop, step
@@ -81,7 +82,10 @@ public class ScriptEngine
 			smEventSemaphore.release();
 		return str ;
 	}
-	
+	private String peekEvent() {
+		String str = smEventQueue.peek() ;
+		return str ;
+	}
 	private Semaphore smEventSemaphore = new Semaphore(0) ;
 	/**
 	 * status of engine
@@ -125,6 +129,8 @@ public class ScriptEngine
 		
 	static private String scriptInterpreter_scriptFile ;
 	static private String scriptInterpreter_commandLine ;
+
+	private Thread scriptExeThread = null;
 	static {
 		Properties property = new Properties();
 		String installLoc = Platform.getInstallLocation().getURL().getPath();
@@ -143,7 +149,7 @@ public class ScriptEngine
 	
 
 	@Override
-	public void OnTestCaseDone(TestCase tc) {
+	public synchronized void OnTestCaseDone(TestCase tc) {
 		if ( getStatus().equals(SM_STATUS_IDLE)){
 			start() ;
 		}
@@ -166,56 +172,24 @@ public class ScriptEngine
 			return ;
 		}
 		addEvent(SM_TRIGGER_START);
-		Thread scriptExe = new Thread("Script Engine Thread") {
-			@Override
-			public void run() {
-				smEventLoop();
-//				setStatus(SM_STATUS_RUNNING);
-//				while( !smStatus.equals( SM_STATUS_STOPPING ) ) {
-//					Statement statement = pollStatementQueue() ;
-//					if ( statement != null ){
-//						if ( stepMode ) {
-//							try {
-//								down.acquire();
-//							} catch (InterruptedException e) {
-//								e.printStackTrace();
-//							}
-//						}
-//						// exe script
-//						if(statement.getScriptStr() != null){							
-//							// convert state to string
-//							String generatedScriptStatement = convertTargetScript(statement);
-//							// write file
-//							String targetScriptFile = writeTargetScripToFile(generatedScriptStatement);
-//							// sent to engine
-//							doExecuteTargetScrip(statement, targetScriptFile);					
-//						} 	
-//						// fire target statement down
-//						if ( statement.getTrackbackID() != null ) {
-//							String [] trackbackIds = {statement.getTrackbackID()};
-//							notifyTargetStatementDone(trackbackIds);
-//						}
-//					} else {
-//						try {
-//							Thread.sleep(1000);
-//						} catch (InterruptedException e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				}								
-				setStatus(SM_STATUS_IDLE);				
+		if (scriptExeThread == null ) {
+			scriptExeThread = new Thread("Guitar Thread: Script Engine Thread") {
+				@Override
+				public void run() {
+					smEventLoop();						
+					setStatus(SM_STATUS_IDLE);				
+				}
+			};
+			try{
+				scriptExeThread.start() ;
+			}finally{
+				
 			}
-		};
-		try{
-			scriptExe.start() ;
-		}finally{
-			
-		}
-		
-		
+		}		
 	}
 	
 	private void smEventLoop() {
+		System.out.println("Begin:\tScriptEngine smEventLoop");
 		while ( true ) 
 		{
 			if ( getStepMode() == false ) {
@@ -226,6 +200,7 @@ public class ScriptEngine
 				}
 				//Statement statement = pollStatementQueue() ;
 				// if ( statement != null )
+				if ( peekEvent() == null )
 					addEvent(SM_TRIGGER_STEP) ;
 			}
 			String event = pollEvent();
@@ -252,6 +227,7 @@ public class ScriptEngine
 				}
 			} 
 		}
+		System.out.println("End:\tScriptEngine smEventLoop");
 	}
 	
 	private void smActionProcessStatement ( Statement statement ) {

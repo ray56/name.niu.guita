@@ -87,6 +87,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	}
 	
 	private void smEventLoop() {
+		System.out.println("Begin:\t TestCaseGen smEventLoop");
 		while ( true ) 
 		{
 			String event = pollEvent();
@@ -117,6 +118,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				assert(false):"add more status?";
 			}
 		}
+		System.out.println("End:\t TestCaseGen smEventLoop");
 	}
 	public TestCaseGen() {
 		super() ;
@@ -208,7 +210,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		//setStatus(SM_STATUS_RUNNING);
 		final TestCaseGen tcg = this ;
-		Thread gen = new Thread() {
+		Thread gen = new Thread("Guitar Thread: TestCaseGen Thread") {
 			public void run() {
 				smEventLoop() ;
 				setStatus(SM_STATUS_IDLE);

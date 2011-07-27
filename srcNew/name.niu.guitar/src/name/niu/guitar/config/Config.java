@@ -18,22 +18,45 @@ public class Config {
 	public static String ANIMATIONFROMSTATECOLOR = "animationFromStateColor" ;
 	public static String ANIMATIONTOSTATECOLOR = "animationToStateColor" ;
 	public static String ANIMATIONINTERVAL = "animationInterval" ;
-	
-	//
 	public static String SCRIPTINTERPRETER_SCRIPTFILE = "scriptInterpreter_scriptFile" ;
 	public static String SCRIPTINTERPRETER_COMMANDLINE = "scriptInterpreter_commandLine" ;
 	
-	static private String scriptInterpreter_scriptFile ;
 	
-	static private String scriptInterpreter_commandLine ;
+	static public String scriptInterpreter_scriptFile ;
 	
-	static private String animationPathColor ;
+	static public String scriptInterpreter_commandLine ;
 	
-	static private String animationHeadColor ;
+	static public String animationPathColor ;
 	
-	static private String animationFromStateColor ;
+	static public String animationHeadColor ;
 	
-	static private String animationToStateColor ;
+	static public String animationFromStateColor ;
+	
+	static public String animationToStateColor ;
+	
+	static public String animationInterval ;
+	
+	static {
+		Properties property = new Properties();
+		String installLoc = Platform.getInstallLocation().getURL().getPath();
+		//String installLoc = Platform.getInstanceLocation().getURL().getPath();
+
+		try {			
+			property.load(new FileInputStream( installLoc + "\\scriptengine.properties"));
+			scriptInterpreter_scriptFile = property.getProperty(SCRIPTINTERPRETER_SCRIPTFILE);
+			scriptInterpreter_commandLine = property.getProperty(SCRIPTINTERPRETER_COMMANDLINE);
+			animationPathColor = property.getProperty(ANIMATIONPATHCOLOR);
+			animationHeadColor = property.getProperty(ANIMATIONHEADCOLOR);
+			animationFromStateColor = property.getProperty(ANIMATIONFROMSTATECOLOR);
+			animationToStateColor = property.getProperty(ANIMATIONTOSTATECOLOR);
+			animationInterval = property.getProperty(ANIMATIONINTERVAL);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public static RGB getAnimationPathColor() {
 		RGB rgb = PreferenceConverter.getColor(
@@ -68,21 +91,18 @@ public class Config {
 		return interval ;
 	}
 	
-	
-	static {
-		Properties property = new Properties();
-		String installLoc = Platform.getInstallLocation().getURL().getPath();
-		//String installLoc = Platform.getInstanceLocation().getURL().getPath();
-
-		try {			
-			property.load(new FileInputStream( installLoc + "\\scriptengine.properties"));
-			scriptInterpreter_scriptFile = property.getProperty("scriptInterpreter_scriptFile");
-			scriptInterpreter_commandLine = property.getProperty("scriptInterpreter_commandLine");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public static String getScriptFile() {
+		String file = Platform.getPreferencesService()
+			.getString("name.niu.guitar", Config.SCRIPTINTERPRETER_SCRIPTFILE, "C:\\temp.txt", null);
+		return file ;
 	}
+	
+	public static String getScriptCommandLine() {
+		String cmd = Platform.getPreferencesService()
+			.getString("name.niu.guitar", Config.SCRIPTINTERPRETER_COMMANDLINE, "", null);
+		return cmd ;
+	}
+	
+	
 
 }

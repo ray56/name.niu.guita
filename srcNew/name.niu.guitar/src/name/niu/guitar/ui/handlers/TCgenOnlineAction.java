@@ -261,6 +261,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 	}
 	
 	private void smEventLoop() {
+		System.out.println("Begin:\t Online smEventLoop");
 		while ( true ) 
 		{
 //			if ( getStepMode() == false ) {
@@ -308,6 +309,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 				assert(false):"add more status?";
 			}
 		}
+		System.out.println("End:\t Online smEventLoop");
 	}
 
 
@@ -361,6 +363,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 			}
 			public void OnSEStoped(ITargetScriptExeDonePublisher p) {
 				addEvent(SM_TRIGGER_STOP);
+				internalClearTC();
+				lastExecutedUUID = null ;
 			}
 			@Override
 			public void OnTestCaseDone(TestCase tc) {
@@ -405,7 +409,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 			}
 		});	
 		job.setPriority(Job.INTERACTIVE);
-		job.setUser(true);
+		job.setUser(false);
 		job.schedule(500);
 		return null;
 	}
