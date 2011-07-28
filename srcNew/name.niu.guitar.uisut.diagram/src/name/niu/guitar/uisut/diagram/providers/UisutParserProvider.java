@@ -4,6 +4,7 @@ import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.StateshortcutNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineNameEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.UITransitionNameEditPart;
 import name.niu.guitar.uisut.diagram.parsers.MessageFormatParser;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 
@@ -92,6 +93,27 @@ public class UisutParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser uITransitionName_6001Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getUITransitionName_6001Parser() {
+		if (uITransitionName_6001Parser == null) {
+			EAttribute[] features = new EAttribute[] { UisutPackage.eINSTANCE
+					.getUIElement_Name() };
+			EAttribute[] editableFeatures = new EAttribute[] { UisutPackage.eINSTANCE
+					.getUIElement_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features,
+					editableFeatures);
+			uITransitionName_6001Parser = parser;
+		}
+		return uITransitionName_6001Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case CommonStateNameEditPart.VISUAL_ID:
@@ -100,6 +122,8 @@ public class UisutParserProvider extends AbstractProvider implements
 			return getUIStatemachineName_5002Parser();
 		case StateshortcutNameEditPart.VISUAL_ID:
 			return getStateshortcutName_5003Parser();
+		case UITransitionNameEditPart.VISUAL_ID:
+			return getUITransitionName_6001Parser();
 		}
 		return null;
 	}

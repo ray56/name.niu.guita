@@ -38,10 +38,10 @@ public class UisutPropertySection extends AdvancedPropertySection implements
 		if (af != null) {
 
 			if (object instanceof CommonState) {
-				IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
+				IItemPropertySource ips = (IItemPropertySource) af.adapt(
+						object, IItemPropertySource.class);
 				return new PicPropertySource(object, ips);
 			}
-			
 
 			IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
 					IItemPropertySource.class);

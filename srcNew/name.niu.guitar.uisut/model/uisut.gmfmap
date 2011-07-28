@@ -101,6 +101,15 @@
   <links>
     <domainMetaElement
         href="uisut.ecore#//UITransition"/>
+    <labelMappings
+        xsi:type="gmfmap:FeatureLabelMapping">
+      <diagramLabel
+          href="uisut.gmfgraph#UITransitionName"/>
+      <features
+          href="uisut.ecore#//UIElement/name"/>
+      <editableFeatures
+          href="uisut.ecore#//UIElement/name"/>
+    </labelMappings>
     <containmentFeature
         href="uisut.ecore#//UIStatemachine/itsUITransition"/>
     <tool

@@ -12,6 +12,7 @@ import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachine2EditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UITransitionEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.UITransitionNameEditPart;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -39,6 +40,7 @@ import org.eclipse.gmf.runtime.notation.DecorationNode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
@@ -538,6 +540,14 @@ public class UisutViewProvider extends AbstractProvider implements
 					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
 					routing);
 		}
+		Node label6001 = createLabel(edge,
+				UisutVisualIDRegistry
+						.getType(UITransitionNameEditPart.VISUAL_ID));
+		label6001.setLayoutConstraint(NotationFactory.eINSTANCE
+				.createLocation());
+		Location location6001 = (Location) label6001.getLayoutConstraint();
+		location6001.setX(0);
+		location6001.setY(40);
 		return edge;
 	}
 

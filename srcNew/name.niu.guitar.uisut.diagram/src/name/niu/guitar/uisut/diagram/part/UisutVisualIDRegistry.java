@@ -13,6 +13,7 @@ import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineNameEditPart;
 import name.niu.guitar.uisut.diagram.edit.parts.UITransitionEditPart;
 
+import name.niu.guitar.uisut.diagram.edit.parts.UITransitionNameEditPart;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -204,6 +205,11 @@ public class UisutVisualIDRegistry {
 			break;
 		case StateshortcutEditPart.VISUAL_ID:
 			if (StateshortcutNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case UITransitionEditPart.VISUAL_ID:
+			if (UITransitionNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

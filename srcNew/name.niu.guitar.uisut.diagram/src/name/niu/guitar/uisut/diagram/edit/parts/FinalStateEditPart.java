@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
 import name.niu.guitar.uisut.FinalState;
 import name.niu.guitar.uisut.InitialState;
 import name.niu.guitar.uisut.UisutPackage;
@@ -285,13 +284,14 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void handleNotificationEvent(Notification event) {
-		
-		if (event.getNotifier() instanceof FinalState ) {
-			if ( UisutPackage.eINSTANCE.getUIElement_Highlight().equals( event.getFeature() )) {
+
+		if (event.getNotifier() instanceof FinalState) {
+			if (UisutPackage.eINSTANCE.getUIElement_Highlight().equals(
+					event.getFeature())) {
 				getPrimaryShape().updateHighlightProperty();//for test
 			}
 		}
-		
+
 		if (event.getNotifier() == getModel()
 				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
 						.equals(event.getFeature())) {
@@ -305,7 +305,7 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public class FinalStateFigureDescriptor extends Ellipse {
-		
+
 		// colors
 		ColorRegistry colorRegistry = new ColorRegistry();
 
@@ -348,50 +348,69 @@ public class FinalStateEditPart extends ShapeNodeEditPart {
 			this.add(elli0, constraintElli0);
 
 		}
-		
+
 		public void updateHighlightProperty() {
-			FinalState finalState = ( FinalState ) ((View)FinalStateEditPart.this.getModel()).getElement() ;
-			String hightlintSyle = finalState.getHighlight() ;
-			if ( "none".equals(hightlintSyle.toLowerCase()) ){
+			FinalState finalState = (FinalState) ((View) FinalStateEditPart.this
+					.getModel()).getElement();
+			String hightlintSyle = finalState.getHighlight();
+			if ("none".equals(hightlintSyle.toLowerCase())) {
 				this.setLineWidth(1);
-				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;
-			} else if ( Config.ANIMATIONHEADCOLOR.equals(hightlintSyle) ){				
-				Color color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationHeadColor().toString(), Config.getAnimationHeadColor() ) ;
-					color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
-				}	
-				this.setForegroundColor( color ) ;
-				int linewith = 3 ;
-				this.setLineWidth(linewith);
-			} else if ( Config.ANIMATIONPATHCOLOR.equals(hightlintSyle) ){		
-				Color color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationPathColor().toString(), Config.getAnimationPathColor() ) ;
-					color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
-				}	
-				this.setForegroundColor( color ) ;
-				int linewith = 3 ;
-				this.setLineWidth(linewith);
-			} else if ( "from=true".equals(hightlintSyle.toLowerCase()) ){
-				Color color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationFromStateColor().toString(), Config.getAnimationFromStateColor() ) ;
-					color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
-				}	
-				this.setBackgroundColor(color);
-			} else if ( "from=false".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-			} else if ( "to=true".equals(hightlintSyle.toLowerCase()) ){
-				Color color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationToStateColor().toString(), Config.getAnimationToStateColor() ) ;
-					color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
+				this.setForegroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_BLACK));
+			} else if (Config.ANIMATIONHEADCOLOR.equals(hightlintSyle)) {
+				Color color = colorRegistry.get(Config.getAnimationHeadColor()
+						.toString());
+				if (color == null) {
+					colorRegistry.put(
+							Config.getAnimationHeadColor().toString(),
+							Config.getAnimationHeadColor());
+					color = colorRegistry.get(Config.getAnimationHeadColor()
+							.toString());
 				}
-				this.setBackgroundColor(color);;
-			} else if ( "to=false".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-			} 
+				this.setForegroundColor(color);
+				int linewith = 3;
+				this.setLineWidth(linewith);
+			} else if (Config.ANIMATIONPATHCOLOR.equals(hightlintSyle)) {
+				Color color = colorRegistry.get(Config.getAnimationPathColor()
+						.toString());
+				if (color == null) {
+					colorRegistry.put(
+							Config.getAnimationPathColor().toString(),
+							Config.getAnimationPathColor());
+					color = colorRegistry.get(Config.getAnimationPathColor()
+							.toString());
+				}
+				this.setForegroundColor(color);
+				int linewith = 3;
+				this.setLineWidth(linewith);
+			} else if ("from=true".equals(hightlintSyle.toLowerCase())) {
+				Color color = colorRegistry.get(Config
+						.getAnimationFromStateColor().toString());
+				if (color == null) {
+					colorRegistry.put(Config.getAnimationFromStateColor()
+							.toString(), Config.getAnimationFromStateColor());
+					color = colorRegistry.get(Config
+							.getAnimationFromStateColor().toString());
+				}
+				this.setBackgroundColor(color);
+			} else if ("from=false".equals(hightlintSyle.toLowerCase())) {
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+			} else if ("to=true".equals(hightlintSyle.toLowerCase())) {
+				Color color = colorRegistry.get(Config
+						.getAnimationToStateColor().toString());
+				if (color == null) {
+					colorRegistry.put(Config.getAnimationToStateColor()
+							.toString(), Config.getAnimationToStateColor());
+					color = colorRegistry.get(Config.getAnimationToStateColor()
+							.toString());
+				}
+				this.setBackgroundColor(color);
+				;
+			} else if ("to=false".equals(hightlintSyle.toLowerCase())) {
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+			}
 		}
 
 	}

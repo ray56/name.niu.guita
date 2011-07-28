@@ -94,7 +94,12 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name=""
-          targetDecoration="//@figures.0/@descriptors.4/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.4/@actualFigure/@children.1">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="UITransitionLable"/>
         <children
             xsi:type="gmfgraph:PolylineDecoration">
           <template
@@ -106,6 +111,8 @@
               y="1"/>
         </children>
       </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="StateshortcutFigureDescriptor">
@@ -161,4 +168,9 @@
       name="StateshortcutName"
       figure="StateshortcutFigureDescriptor"
       accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+  <labels
+      name="UITransitionName"
+      figure="UITransitionFigureDescriptor"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
 </gmfgraph:Canvas>

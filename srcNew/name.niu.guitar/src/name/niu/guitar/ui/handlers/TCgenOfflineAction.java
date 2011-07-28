@@ -1,10 +1,13 @@
 package name.niu.guitar.ui.handlers;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.filesystem.URIUtil;
 import org.eclipse.core.internal.resources.Workspace;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -107,6 +110,12 @@ public class TCgenOfflineAction extends AbstractHandler {
 			}
 			if (uri.isPlatformResource()) {
 				uisutDiaFilePath = uri.toPlatformString(false);
+				// there are escaped chart ( "%20" ... ), and findMember cannot decode
+//				try {
+//					uisutDiaFilePath = URLDecoder.decode(uisutDiaFilePath,"UTF8") ;
+//				} catch (UnsupportedEncodingException e) {
+//					e.printStackTrace();
+//				}
 				IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(uisutDiaFilePath) ;
 				uisutDiaFilePath = res.getLocation().toOSString() ;
 

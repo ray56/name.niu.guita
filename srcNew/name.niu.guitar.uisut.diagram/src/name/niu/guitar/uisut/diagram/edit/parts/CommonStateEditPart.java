@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
 import name.niu.guitar.uisut.CommonState;
 import name.niu.guitar.uisut.UisutPackage;
 import name.niu.guitar.uisut.diagram.config.Config;
@@ -340,15 +339,17 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void handleNotificationEvent(Notification event) {
-		
-		if (event.getNotifier() instanceof CommonState ) {
-			if ( UisutPackage.eINSTANCE.getCommonState_Picture().equals( event.getFeature() ) ) {
-				getPrimaryShape().updateFigureForPic();				
-			} else if ( UisutPackage.eINSTANCE.getUIElement_Highlight().equals( event.getFeature() )) {
+
+		if (event.getNotifier() instanceof CommonState) {
+			if (UisutPackage.eINSTANCE.getCommonState_Picture().equals(
+					event.getFeature())) {
+				getPrimaryShape().updateFigureForPic();
+			} else if (UisutPackage.eINSTANCE.getUIElement_Highlight().equals(
+					event.getFeature())) {
 				getPrimaryShape().updateHighlightProperty();//for test
 			}
 		}
-		
+
 		if (event.getNotifier() == getModel()
 				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
 						.equals(event.getFeature())) {
@@ -367,10 +368,10 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureCommonStateLabel;
-		
+
 		// ScreenSnap of CommonState
-		private RectangleFigure screensnapContainer = null ;
-		
+		private RectangleFigure screensnapContainer = null;
+
 		// colors
 		ColorRegistry colorRegistry = new ColorRegistry();
 
@@ -379,15 +380,15 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		 */
 		public CommonStateFigureDescriptor() {
 
-			GridLayout 
-				layoutThis = new GridLayout(){
+			GridLayout layoutThis = new GridLayout() {
 				// override enable zoom in at first time
-				public Dimension getMinimumSize(IFigure container, int wHint, int hHint) {
-					return new Dimension( 10, 10 );
+				public Dimension getMinimumSize(IFigure container, int wHint,
+						int hHint) {
+					return new Dimension(10, 10);
 				}
 			};
-				layoutThis.numColumns = 1;
-				layoutThis.makeColumnsEqualWidth = true;
+			layoutThis.numColumns = 1;
+			layoutThis.makeColumnsEqualWidth = true;
 			this.setLayoutManager(layoutThis);
 
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
@@ -406,42 +407,39 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 
 			fFigureCommonStateLabel = new WrappingLabel();
 			fFigureCommonStateLabel.setText("");
-			GridData 
-				constraintFFigureCommonStateLabel = new GridData();
-				constraintFFigureCommonStateLabel.verticalAlignment = SWT.TOP ;
-				constraintFFigureCommonStateLabel.horizontalAlignment = SWT.CENTER;
-				constraintFFigureCommonStateLabel.horizontalIndent = 0;
-				constraintFFigureCommonStateLabel.horizontalSpan = 1;
-				constraintFFigureCommonStateLabel.verticalSpan = 1;
-				constraintFFigureCommonStateLabel.grabExcessHorizontalSpace = true;
-				constraintFFigureCommonStateLabel.grabExcessVerticalSpace = false;
+			GridData constraintFFigureCommonStateLabel = new GridData();
+			constraintFFigureCommonStateLabel.verticalAlignment = SWT.TOP;
+			constraintFFigureCommonStateLabel.horizontalAlignment = SWT.CENTER;
+			constraintFFigureCommonStateLabel.horizontalIndent = 0;
+			constraintFFigureCommonStateLabel.horizontalSpan = 1;
+			constraintFFigureCommonStateLabel.verticalSpan = 1;
+			constraintFFigureCommonStateLabel.grabExcessHorizontalSpace = true;
+			constraintFFigureCommonStateLabel.grabExcessVerticalSpace = false;
 			this.add(fFigureCommonStateLabel, constraintFFigureCommonStateLabel);
 
-			 
 			screensnapContainer = new RectangleFigure();
 			screensnapContainer.setFill(false);
 			screensnapContainer.setOutline(false);
 			screensnapContainer.setLineWidth(0);
-			screensnapContainer.setBackgroundColor( new Color(null, 255, 255, 255) );
-			GridData 
-				constraintSandboxRectangle0 = new GridData();
-				constraintSandboxRectangle0.verticalAlignment = SWT.FILL;
-				constraintSandboxRectangle0.horizontalAlignment = SWT.FILL;
-				constraintSandboxRectangle0.horizontalIndent = 0;
-				constraintSandboxRectangle0.horizontalSpan = 1;
-				constraintSandboxRectangle0.verticalSpan = 1;
-				constraintSandboxRectangle0.grabExcessHorizontalSpace = true;
-				constraintSandboxRectangle0.grabExcessVerticalSpace = true;					
-			GridLayout 
-				layoutScreenshotArea0 = new GridLayout();
-				layoutScreenshotArea0.numColumns = 1;
-				layoutScreenshotArea0.makeColumnsEqualWidth = true;
-				layoutScreenshotArea0.verticalSpacing = 0 ;
-				layoutScreenshotArea0.horizontalSpacing = 0 ;
-				layoutScreenshotArea0.marginHeight = 0 ;
-				layoutScreenshotArea0.marginWidth = 0 ;				
+			screensnapContainer.setBackgroundColor(new Color(null, 255, 255,
+					255));
+			GridData constraintSandboxRectangle0 = new GridData();
+			constraintSandboxRectangle0.verticalAlignment = SWT.FILL;
+			constraintSandboxRectangle0.horizontalAlignment = SWT.FILL;
+			constraintSandboxRectangle0.horizontalIndent = 0;
+			constraintSandboxRectangle0.horizontalSpan = 1;
+			constraintSandboxRectangle0.verticalSpan = 1;
+			constraintSandboxRectangle0.grabExcessHorizontalSpace = true;
+			constraintSandboxRectangle0.grabExcessVerticalSpace = true;
+			GridLayout layoutScreenshotArea0 = new GridLayout();
+			layoutScreenshotArea0.numColumns = 1;
+			layoutScreenshotArea0.makeColumnsEqualWidth = true;
+			layoutScreenshotArea0.verticalSpacing = 0;
+			layoutScreenshotArea0.horizontalSpacing = 0;
+			layoutScreenshotArea0.marginHeight = 0;
+			layoutScreenshotArea0.marginWidth = 0;
 			screensnapContainer.setLayoutManager(layoutScreenshotArea0);
-			this.add(screensnapContainer, constraintSandboxRectangle0);		
+			this.add(screensnapContainer, constraintSandboxRectangle0);
 		}
 
 		/**
@@ -450,92 +448,111 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 		public WrappingLabel getFigureCommonStateLabel() {
 			return fFigureCommonStateLabel;
 		}
-		
+
 		// update according to dynamic property of pic
 		public void updateFigureForPic() {
-			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
-			String picString = commonState.getPicture() ;
-			if ( picString == null || picString.isEmpty() ) {
-				this.screensnapContainer.removeAll() ;
-				return ;
+			CommonState commonState = (CommonState) ((View) CommonStateEditPart.this
+					.getModel()).getElement();
+			String picString = commonState.getPicture();
+			if (picString == null || picString.isEmpty()) {
+				this.screensnapContainer.removeAll();
+				return;
 			}
-			
-			screensnapContainer.removeAll() ;
-			
-			ScalableImageFigure 
-				screenshot1 = new ScalableImageFigure(
-					RenderedImageFactory.getInstance(picString), false, true, true );
-				screenshot1.setMinimumSize( new Dimension(getMapMode().DPtoLP(20),
-						getMapMode().DPtoLP(20))) ;
-			
-			GridData 
-				constraintScreenshot1 = new GridData();			
-				constraintScreenshot1.verticalAlignment = GridData.FILL;
-				constraintScreenshot1.horizontalAlignment = GridData.FILL;
-				constraintScreenshot1.horizontalIndent = 0;
-				constraintScreenshot1.horizontalSpan = 1;
-				constraintScreenshot1.verticalSpan = 1;
-				constraintScreenshot1.grabExcessHorizontalSpace = true;
-				constraintScreenshot1.grabExcessVerticalSpace = true;			
-			screensnapContainer.add(screenshot1, constraintScreenshot1 ) ;			
+
+			screensnapContainer.removeAll();
+
+			ScalableImageFigure screenshot1 = new ScalableImageFigure(
+					RenderedImageFactory.getInstance(picString), false, true,
+					true);
+			screenshot1.setMinimumSize(new Dimension(getMapMode().DPtoLP(20),
+					getMapMode().DPtoLP(20)));
+
+			GridData constraintScreenshot1 = new GridData();
+			constraintScreenshot1.verticalAlignment = GridData.FILL;
+			constraintScreenshot1.horizontalAlignment = GridData.FILL;
+			constraintScreenshot1.horizontalIndent = 0;
+			constraintScreenshot1.horizontalSpan = 1;
+			constraintScreenshot1.verticalSpan = 1;
+			constraintScreenshot1.grabExcessHorizontalSpace = true;
+			constraintScreenshot1.grabExcessVerticalSpace = true;
+			screensnapContainer.add(screenshot1, constraintScreenshot1);
 		}
-		
+
 		// update according to dynamic property of hight
 		public void updateHighlightProperty() {
-			CommonState commonState = ( CommonState ) ((View)CommonStateEditPart.this.getModel()).getElement() ;
-			String hightlintSyle = commonState.getHighlight() ;
-			if ( hightlintSyle == null) 
-				return ;
-			if ( "none".equals(hightlintSyle.toLowerCase()) ){
+			CommonState commonState = (CommonState) ((View) CommonStateEditPart.this
+					.getModel()).getElement();
+			String hightlintSyle = commonState.getHighlight();
+			if (hightlintSyle == null)
+				return;
+			if ("none".equals(hightlintSyle.toLowerCase())) {
 				this.setLineWidth(1);
-				this.setForegroundColor( Display.getCurrent().getSystemColor(SWT.COLOR_BLACK)) ;
-			} else if ( Config.ANIMATIONHEADCOLOR.equals(hightlintSyle) ){				
-				Color color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationHeadColor().toString(), Config.getAnimationHeadColor() ) ;
-					color = colorRegistry.get( Config.getAnimationHeadColor().toString() ) ;
-				}	
-				this.setForegroundColor( color ) ;
-				int linewith = 3 ;
-				this.setLineWidth(linewith);
-			} else if ( Config.ANIMATIONPATHCOLOR.equals(hightlintSyle) ){		
-				Color color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationPathColor().toString(), Config.getAnimationPathColor() ) ;
-					color = colorRegistry.get( Config.getAnimationPathColor().toString() ) ;
-				}	
-				this.setForegroundColor( color ) ;
-				int linewith = 3 ;
-				this.setLineWidth(linewith);
-			} else if ( "from=true".equals(hightlintSyle.toLowerCase()) ){
-				Color color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationFromStateColor().toString(), Config.getAnimationFromStateColor() ) ;
-					color = colorRegistry.get( Config.getAnimationFromStateColor().toString() ) ;
-				}	
-				this.setBackgroundColor(color);
-			} else if ( "from=false".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-			} else if ( "to=true".equals(hightlintSyle.toLowerCase()) ){
-				Color color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
-				if ( color == null ){
-					colorRegistry.put(Config.getAnimationToStateColor().toString(), Config.getAnimationToStateColor() ) ;
-					color = colorRegistry.get( Config.getAnimationToStateColor().toString() ) ;
+				this.setForegroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_BLACK));
+			} else if (Config.ANIMATIONHEADCOLOR.equals(hightlintSyle)) {
+				Color color = colorRegistry.get(Config.getAnimationHeadColor()
+						.toString());
+				if (color == null) {
+					colorRegistry.put(
+							Config.getAnimationHeadColor().toString(),
+							Config.getAnimationHeadColor());
+					color = colorRegistry.get(Config.getAnimationHeadColor()
+							.toString());
 				}
-				this.setBackgroundColor(color);;
-			} else if ( "to=false".equals(hightlintSyle.toLowerCase()) ){
-				this.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-			} 
-			
+				this.setForegroundColor(color);
+				int linewith = 3;
+				this.setLineWidth(linewith);
+			} else if (Config.ANIMATIONPATHCOLOR.equals(hightlintSyle)) {
+				Color color = colorRegistry.get(Config.getAnimationPathColor()
+						.toString());
+				if (color == null) {
+					colorRegistry.put(
+							Config.getAnimationPathColor().toString(),
+							Config.getAnimationPathColor());
+					color = colorRegistry.get(Config.getAnimationPathColor()
+							.toString());
+				}
+				this.setForegroundColor(color);
+				int linewith = 3;
+				this.setLineWidth(linewith);
+			} else if ("from=true".equals(hightlintSyle.toLowerCase())) {
+				Color color = colorRegistry.get(Config
+						.getAnimationFromStateColor().toString());
+				if (color == null) {
+					colorRegistry.put(Config.getAnimationFromStateColor()
+							.toString(), Config.getAnimationFromStateColor());
+					color = colorRegistry.get(Config
+							.getAnimationFromStateColor().toString());
+				}
+				this.setBackgroundColor(color);
+			} else if ("from=false".equals(hightlintSyle.toLowerCase())) {
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+			} else if ("to=true".equals(hightlintSyle.toLowerCase())) {
+				Color color = colorRegistry.get(Config
+						.getAnimationToStateColor().toString());
+				if (color == null) {
+					colorRegistry.put(Config.getAnimationToStateColor()
+							.toString(), Config.getAnimationToStateColor());
+					color = colorRegistry.get(Config.getAnimationToStateColor()
+							.toString());
+				}
+				this.setBackgroundColor(color);
+				;
+			} else if ("to=false".equals(hightlintSyle.toLowerCase())) {
+				this.setBackgroundColor(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+			}
+
 			// update tooltip
-//			String description = commonState.getDescription() ;
-//			if (description != null && !description.isEmpty()){
-//				if ( this.getToolTip() == null ) {
-//					this.setToolTip( new Label(description)) ;
-//				} else {
-//					((Label)this.getToolTip()).setText(description) ;
-//				}
-//			}
+			//			String description = commonState.getDescription() ;
+			//			if (description != null && !description.isEmpty()){
+			//				if ( this.getToolTip() == null ) {
+			//					this.setToolTip( new Label(description)) ;
+			//				} else {
+			//					((Label)this.getToolTip()).setText(description) ;
+			//				}
+			//			}
 		}
 	}
 

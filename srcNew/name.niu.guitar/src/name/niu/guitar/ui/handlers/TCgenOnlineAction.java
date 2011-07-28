@@ -61,6 +61,8 @@ import name.niu.guitar.ui.sourceProviders.CommandState;
 import name.niu.guitar.ui.wizards.TestCaseGenWizard;
 import name.niu.guitar.uisut.*;
 import name.niu.guitar.uisut.diagram.edit.parts.CommonStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.FinalStateEditPart;
+import name.niu.guitar.uisut.diagram.edit.parts.InitialStateEditPart;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
 import name.niu.guitar.uisut.tcgen.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
@@ -237,10 +239,12 @@ public class TCgenOnlineAction extends AbstractHandler {
 			if ( selection instanceof IStructuredSelection){
 				IStructuredSelection ss = (IStructuredSelection)selection ;
 				Object selObj = ss.getFirstElement();
-				if ( selObj instanceof GraphicalEditPart ){
-					CommonStateEditPart ep = (CommonStateEditPart)selObj;
+				if ( selObj instanceof CommonStateEditPart
+						|| selObj instanceof InitialStateEditPart
+						|| selObj instanceof FinalStateEditPart  ){
+					GraphicalEditPart ep = (GraphicalEditPart)selObj;
 					return doSelectFrom ( ep );
-				}
+				} 
 			}
 			return null ;
 		} else if (subCmd.equals("SELECTTO")) {
@@ -248,10 +252,12 @@ public class TCgenOnlineAction extends AbstractHandler {
 			if ( selection instanceof IStructuredSelection){
 				IStructuredSelection ss = (IStructuredSelection)selection ;
 				Object selObj = ss.getFirstElement();
-				if ( selObj instanceof GraphicalEditPart){
-					CommonStateEditPart ep = (CommonStateEditPart)selObj;
+				if ( selObj instanceof CommonStateEditPart
+						|| selObj instanceof InitialStateEditPart
+						|| selObj instanceof FinalStateEditPart  ){
+					GraphicalEditPart ep = (GraphicalEditPart)selObj;
 					return doSelectTo ( ep );
-				}
+				} 
 			}
 			return null ;
 		} else {

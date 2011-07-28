@@ -59,6 +59,9 @@ public class UisutEditPartFactory implements EditPartFactory {
 			case UITransitionEditPart.VISUAL_ID:
 				return new UITransitionEditPart(view);
 
+			case UITransitionNameEditPart.VISUAL_ID:
+				return new UITransitionNameEditPart(view);
+
 			}
 		}
 		return createUnrecognizedEditPart(context, model);
