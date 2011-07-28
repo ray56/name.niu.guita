@@ -1,5 +1,17 @@
 package name.niu.guitar;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWindowListener;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchListener;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -26,7 +38,38 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		plugin = this;
+		
+		final Timer timer = new Timer();
+		TimerTask autoSaveTask = new TimerTask() {
+			public void run() {
+				Display.getDefault().asyncExec
+				(new Runnable() {
+					 public void run() {
+						 PlatformUI.getWorkbench().saveAllEditors(false);
+					 }
+				 });
+			}
+		};
+		// every 5 minutes ( 5*60*1000 mili seconds) save.
+		timer.schedule(autoSaveTask, 1*1000, 5*60*1000) ;
+		Workbench.getInstance().addWorkbenchListener(
+				new IWorkbenchListener () {
+
+					@Override
+					public boolean preShutdown(IWorkbench workbench,
+							boolean forced) {
+						timer.cancel();
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeAllEditors(true);
+						return true;
+					}
+
+					@Override
+					public void postShutdown(IWorkbench workbench) {
+						
+					}
+					
+				});
+		plugin = this;		
 	}
 
 	/*
