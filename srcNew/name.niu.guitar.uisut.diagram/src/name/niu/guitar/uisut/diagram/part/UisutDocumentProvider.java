@@ -160,7 +160,7 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 			FileEditorInputProxy proxy = (FileEditorInputProxy) input;
 			document.setEditingDomain(proxy.getEditingDomain());
 		} else {
-			document.setEditingDomain(createEditingDomain());
+			document.setEditingDomain(createEditingDomain());		
 		}
 		return document;
 	}
@@ -332,10 +332,18 @@ public class UisutDocumentProvider extends AbstractDocumentProvider implements
 	 * @generated
 	 */
 	protected void disposeElementInfo(Object element, ElementInfo info) {
-		if (info instanceof ResourceSetInfo) {
-			ResourceSetInfo resourceSetInfo = (ResourceSetInfo) info;
-			resourceSetInfo.dispose();
+		if ( element instanceof URIEditorInput ) {
+			// if sub diagram
+			if ( !((URIEditorInput)element).getURI().hasFragment() ) {
+				if (info instanceof ResourceSetInfo) {
+					ResourceSetInfo resourceSetInfo = (ResourceSetInfo) info;
+					resourceSetInfo.dispose();
+				}
+			}
+		} else {
+			assert(false):"not URIEditorInput";
 		}
+
 		super.disposeElementInfo(element, info);
 	}
 
