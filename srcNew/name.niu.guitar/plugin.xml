@@ -455,5 +455,24 @@
             class="name.niu.guitar.preference.GuitarPreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.ui.ide.resourceFilters">
+      <filter
+            pattern="*.uitf"
+            selected="true">
+      </filter>
+      <filter
+            pattern="*.xls"
+            selected="true">
+      </filter>
+      <filter
+            pattern=".project"
+            selected="true">
+      </filter>
+      <filter
+            pattern="*.txt"
+            selected="true">
+      </filter>
+   </extension>
 
 </plugin>
