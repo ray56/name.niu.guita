@@ -37,7 +37,6 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
 
@@ -45,6 +44,7 @@
    <plugins>
       <plugin id="com.ibm.icu"/>
       <plugin id="name.niu.guitar"/>
+      <plugin id="name.niu.guitar.common"/>
       <plugin id="name.niu.guitar.scriptengine"/>
       <plugin id="name.niu.guitar.uisut"/>
       <plugin id="name.niu.guitar.uisut.diagram"/>
@@ -67,6 +67,7 @@
       <plugin id="org.apache.batik.util"/>
       <plugin id="org.apache.batik.util.gui"/>
       <plugin id="org.apache.batik.xml"/>
+      <plugin id="org.apache.log4j"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
