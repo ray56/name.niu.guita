@@ -3,6 +3,8 @@ package name.niu.guitar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import name.niu.guitar.log.GuitarLog;
+
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Display;
@@ -46,12 +48,13 @@ public class Activator extends AbstractUIPlugin {
 				(new Runnable() {
 					 public void run() {
 						 PlatformUI.getWorkbench().saveAllEditors(false);
+						 GuitarLog.getInstance().debug("auto saved");
 					 }
 				 });
 			}
 		};
 		// every 5 minutes ( 5*60*1000 mili seconds) save.
-		timer.schedule(autoSaveTask, 1*1000, 5*60*1000) ;
+		timer.schedule(autoSaveTask, 1*1000, 10*60*1000) ;
 		Workbench.getInstance().addWorkbenchListener(
 				new IWorkbenchListener () {
 

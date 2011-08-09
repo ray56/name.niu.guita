@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import name.niu.guitar.log.GuitarLog;
 import name.niu.guitar.uitf.*;
 import name.niu.guitar.uitf.xlsgen.excelExporter.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
@@ -22,7 +23,7 @@ import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 public class XlsGen implements ITCDoneSubscriber{
 
 	public void doGenXls(String uitfFilePath) {
-		
+		GuitarLog.getInstance().info("Gen Xls Start");
 		// open source resource to read
 		TestSuite ts = null;
 		{
@@ -57,7 +58,7 @@ public class XlsGen implements ITCDoneSubscriber{
 		Integer i = 0;
 		for(TestCase tc :ts.getItsTestCase()){
 			i++;
-			System.out.println(tc.getId());
+			GuitarLog.getInstance().info( tc.getId());
 			TestCaseDescription tcDescription;
 			
 			StringBuffer tc_statements_sb = new StringBuffer();
@@ -96,7 +97,7 @@ public class XlsGen implements ITCDoneSubscriber{
 			eetc.exportExcel(eetc_title,eetc_header, eetc_columnWidth,eetc_dataset, eetc_out,"YYYY-MM-DD");
 			eetc_out.close();
 			JOptionPane.showMessageDialog(null, "Generate Test Case Document Successfully!");
-			System.out.println("Generate Test Case Document Successfully!");
+			GuitarLog.getInstance().info( "Generate Test Case Document Successfully!");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -104,6 +105,7 @@ public class XlsGen implements ITCDoneSubscriber{
 		} finally {
 
 		}
+		GuitarLog.getInstance().info("Gen Script End");
 	}
 	
 	@Override

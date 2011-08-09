@@ -401,17 +401,17 @@
    </extension>
 
    <extension point="org.eclipse.ui.actionSets" id="rcp-actions">
-      <?gmfgen generated="true"?>
+      <?gmfgen generated="false"?>
       <actionSet
             label="%applicationActionSetLabel"
             visible="true"
             id="name.niu.guitar.uisut.diagram.ActionSet">
-         <action
+         <!-- action
                label="%newDiagramActionLabel"
                class="name.niu.guitar.uisut.diagram.application.DiagramEditorActionBarAdvisor$NewDiagramAction"
                menubarPath="file/new/additions"
                id="name.niu.guitar.uisut.diagram.NewDiagramAction">
-         </action>
+         </action -->
          <action
                label="%aboutActionLabel"
                class="name.niu.guitar.uisut.diagram.application.DiagramEditorActionBarAdvisor$AboutAction"

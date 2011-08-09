@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import name.niu.guitar.log.GuitarLog;
 import name.niu.guitar.scriptengine.config.Config;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDonePublisher;
 import name.niu.guitar.scriptengine.interfaces.impl.TargetScriptExeDonePublisherImpl;
@@ -189,7 +190,7 @@ public class ScriptEngine
 	}
 	
 	private void smEventLoop() {
-		System.out.println("Begin:\tScriptEngine smEventLoop");
+		GuitarLog.getInstance().info("Begin");
 		while ( true ) 
 		{
 			if ( getStepMode() == false ) {
@@ -227,7 +228,7 @@ public class ScriptEngine
 				}
 			} 
 		}
-		System.out.println("End:\tScriptEngine smEventLoop");
+		GuitarLog.getInstance().info("End");
 	}
 	
 	private void smActionProcessStatement ( Statement statement ) {
@@ -304,7 +305,7 @@ public class ScriptEngine
 						String s;
 						while( ( s=br4StdOutput.readLine() ) != null) 
 						{
-							System.out.println("Output:" + s);
+							GuitarLog.getInstance().info("Output:" + s );
 						};
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -317,7 +318,7 @@ public class ScriptEngine
 						String s;
 						while( ( s=br4ErrOutput.readLine() ) != null) 
 						{
-							System.out.println("Error:" + s);
+							GuitarLog.getInstance().info("Error:" + s);
 						};
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -327,7 +328,7 @@ public class ScriptEngine
 			
 			p_r = p.waitFor();
 			if ( p_r != 0 ) {
-				System.out.println("exe failed!");				
+				GuitarLog.getInstance().info("exe failed!");
 			}
 			
 //			if ( statement.getTrackbackID() != null ) {

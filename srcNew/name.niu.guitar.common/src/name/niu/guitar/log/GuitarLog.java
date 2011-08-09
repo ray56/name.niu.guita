@@ -4,6 +4,13 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.core.runtime.Platform;
 
+/**
+ * frequency:low + framwork : seperated file
+ * frequency:hight + detail : seperated file
+ * 
+ * @author Ray
+ *
+ */
 public class GuitarLog {
 	static{
 		String installLoc = Platform.getInstallLocation().getURL().getPath();
@@ -13,9 +20,14 @@ public class GuitarLog {
 		logger.debug("hello! guitar log!");
 	}
 	private static Logger logger = Logger.getLogger("GuitarLog");
+	private static Logger frameLogger = Logger.getLogger("GuitarLog");
 	
 	public static Logger getInstance() {
 		return logger ;
+	}
+	
+	public static Logger getFrameLogger() {
+		return frameLogger ;
 	}
 	
 	public static void error( String str ) {

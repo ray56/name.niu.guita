@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 
+import name.niu.guitar.log.GuitarLog;
 import name.niu.guitar.uisut.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
 import name.niu.guitar.uisut.tcgen.interfaces.impl.TCDonePublisherImpl;
@@ -87,7 +88,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	}
 	
 	private void smEventLoop() {
-		System.out.println("Begin:\t TestCaseGen smEventLoop");
+		GuitarLog.getInstance().info("Begin");
 		while ( true ) 
 		{
 			String event = pollEvent();
@@ -118,7 +119,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				assert(false):"add more status?";
 			}
 		}
-		System.out.println("End:\t TestCaseGen smEventLoop");
+		GuitarLog.getInstance().info("End");
 	}
 	public TestCaseGen() {
 		super() ;
@@ -197,7 +198,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			final AbstractUIState end) 
 	{
 		if (! getStatus().equals(SM_STATUS_IDLE)){
-			System.out.println("in running or already run");
+			GuitarLog.getInstance().warn("in running or already run");
 			return ;
 		}
 		addEvent(SM_TRIGGER_START);
@@ -212,8 +213,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		final TestCaseGen tcg = this ;
 		Thread gen = new Thread("Guitar Thread: TestCaseGen Thread") {
 			public void run() {
+				GuitarLog.getInstance().info("Thread Begin");
 				smEventLoop() ;
 				setStatus(SM_STATUS_IDLE);
+				GuitarLog.getInstance().info("Thread End");
 			}
 		};
 		gen.start();
@@ -513,7 +516,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	private void checkAndFlush(TestSuite ts, boolean forceFlush){
 
 		// set target resource
-		if(forceFlush == false && ts.getItsTestCase().size() <= TestCaseGen.flushSize ){
+		if(forceFlush == false && ts.getItsTestCase().size() < TestCaseGen.flushSize ){
 			return;
 		}
 		this.flushCount++;
@@ -528,6 +531,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		try {
 			trgtResource.save(null);
+			GuitarLog.getInstance().info("itf saved:" + uitfFilePath);
 			ts.getItsTestCase().clear() ;
 		} catch (IOException e) {
 			e.printStackTrace();

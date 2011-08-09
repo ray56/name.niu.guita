@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Activator: name.niu.guitar.uisut.diagram.part.UisutDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: name.niu.guitar.uisut.diagram.edit.parts,
+Export-Package: name.niu.guitar.uisut.diagram.application,
+ name.niu.guitar.uisut.diagram.edit.parts,
  name.niu.guitar.uisut.diagram.part,
  name.niu.guitar.uisut.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,

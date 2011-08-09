@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import name.niu.guitar.log.GuitarLog;
 import name.niu.guitar.uitf.*;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDonePublisher;
 import name.niu.guitar.uisut.tcgen.interfaces.ITCDoneSubscriber;
@@ -21,7 +22,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 
 	@Override
 	public void OnUtifFileDone(String uitfFilePath) {
-
+		GuitarLog.getInstance().info("Gen Script Start");
 		// fill target string buffer with head
 		StringBuffer target_sb = new StringBuffer();
 		String headStr = 
@@ -81,7 +82,7 @@ public class ScriptGen implements ITCDoneSubscriber {
 			}
 			
 		}
-		
+		GuitarLog.getInstance().info("Gen Script End");
 	}
 
 	@Override

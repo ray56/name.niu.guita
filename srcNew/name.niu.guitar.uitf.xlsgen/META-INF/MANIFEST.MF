@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
  name.niu.guitar.uisut.tcgen;bundle-version="1.0.0",
- name.niu.guitar.uitf;bundle-version="1.0.0"
+ name.niu.guitar.uitf;bundle-version="1.0.0",
+ name.niu.guitar.common;bundle-version="1.0.0",
+ org.apache.log4j;bundle-version="1.2.15"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: name.niu.guitar.uitf.xlsgen

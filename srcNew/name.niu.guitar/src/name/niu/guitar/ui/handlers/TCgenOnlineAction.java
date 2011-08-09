@@ -54,6 +54,7 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.services.ISourceProviderService;
 
 import name.niu.guitar.config.Config;
+import name.niu.guitar.log.GuitarLog;
 import name.niu.guitar.scriptengine.ScriptEngine;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDonePublisher;
 import name.niu.guitar.scriptengine.interfaces.ITargetScriptExeDoneSubscriber;
@@ -456,12 +457,14 @@ public class TCgenOnlineAction extends AbstractHandler {
 
 	public Object doGenOffline(ExecutionEvent event) throws ExecutionException 
 	{
+		GuitarLog.getInstance().info("Method Start");
 		// set maxLoop
 		TestCaseGenWizard wizard = new TestCaseGenWizard();
 		Shell shell = HandlerUtil.getActiveShell(event);
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
 		int wizardResult = wizardDialog.open() ;
 		if ( wizardResult == Window.CANCEL ) {
+			GuitarLog.getInstance().info("Method End:Cancel");
 			return null ;
 		}
 		final int maxLoop = wizard.getMaxLoopCount();
@@ -502,6 +505,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 		// generate TestCase
 		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
 		
+		GuitarLog.getInstance().info("Method End");
 		return null;
 	}
 
