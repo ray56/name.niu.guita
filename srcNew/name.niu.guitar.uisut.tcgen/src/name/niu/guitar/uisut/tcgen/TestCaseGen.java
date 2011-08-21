@@ -135,6 +135,9 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	
 	ArrayList<Integer> alTranOccur = new ArrayList<Integer>();
 	ArrayDeque<Integer> aqTranPath = new ArrayDeque<Integer>();
+	
+	PathCycleDynamicCalcutor pcdc = null ;
+	
 	private String par_uisutFilePath;
 	private UIStatemachine par_stm;
 	private int par_maxLoop;
@@ -150,8 +153,13 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		// get start time
 		long startTime = System.currentTimeMillis();
 		
+		this.pcdc = new PathCycleDynamicCalcutor( stm , start ) ;
+		pcdc.initialize() ;
+		GuitarLog.debug(pcdc.toString());
+		
 		// initial variables
 		this.initialVariables(stm);
+		
 		
 		// validate stm
 		Validator vali = new Validator();
@@ -425,7 +433,16 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			
 			// out of loop
 			if(this.alTranOccur.get(icurtran) >= this.maxLoop){
-				continue;
+				//TODO : "aqTranPath's max cycle counter > this.maxLoop"
+				UITransition transition2add = stm.getItsExpandedUITransition().get( icurtran );
+				this.pcdc.addPathHead( transition2add );
+				GuitarLog.debug( pcdc.toString() ) ;
+				int maxCycleCounter = this.pcdc.getMaxCycleCounter() ;
+				this.pcdc.rollbackPathHead() ;
+				GuitarLog.debug( pcdc.toString() ) ;
+				if( maxCycleCounter > this.maxLoop ) {
+					continue ;
+				} 
 			}
 			
 			// out of step
@@ -435,6 +452,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			
 			// add icurtran to alTranPath
 			this.aqTranPath.addLast(icurtran);
+			UITransition transition2add = stm.getItsExpandedUITransition().get( icurtran);
+			// add current transition to path
+			this.pcdc.addPathHead( transition2add );
+			GuitarLog.debug(pcdc.toString());
 			alTranOccur.set(icurtran, alTranOccur.get(icurtran)+1);
 			
 			AbstractUIState nextast = curtran.getItsExpandedTarState();
@@ -442,7 +463,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			
 			// output path
 			if(inextast == this.iEnd){
-				
+				// 
+				GuitarLog.debug( "Output Path:" + this.pcdc.getPath().toString() ) ;
 				TestCase tc = UitfFactory.eINSTANCE.createTestCase();
 				this.tcCount++;
 				tc.setId(String.format("TC_%03d", this.tcCount));
@@ -503,6 +525,9 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		if(!this.aqTranPath.isEmpty()){
 			int temptran = this.aqTranPath.removeLast();
+			assert( this.pcdc.getPath().getEdgeSize() != 0 ) ;
+			this.pcdc.rollbackPathHead() ;
+			GuitarLog.debug(pcdc.toString()) ;
 			this.alTranOccur.set(temptran, this.alTranOccur.get(temptran)-1);
 		}
 		
