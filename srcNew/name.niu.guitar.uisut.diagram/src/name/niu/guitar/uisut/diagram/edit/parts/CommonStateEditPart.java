@@ -1,5 +1,6 @@
 package name.niu.guitar.uisut.diagram.edit.parts;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +12,7 @@ import name.niu.guitar.uisut.diagram.edit.policies.CommonStateItemSemanticEditPo
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
@@ -22,6 +24,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -458,11 +461,24 @@ public class CommonStateEditPart extends ShapeNodeEditPart {
 				this.screensnapContainer.removeAll();
 				return;
 			}
-
+			
+			URI uri4test1 = URI.createURI( picString ) ;
+			String picFullPath = null ;
+			if( uri4test1.scheme().equals("platform")) {
+				picFullPath = ResourcesPlugin.getWorkspace().getRoot()
+					.findMember( uri4test1.toPlatformString(false) ).getLocation().toOSString();				
+			} else {
+				File f = new File(picString) ;
+				if( f.exists()) {
+					picFullPath = picString ;
+				} else {
+					return ;
+				}
+			}
 			screensnapContainer.removeAll();
 
 			ScalableImageFigure screenshot1 = new ScalableImageFigure(
-					RenderedImageFactory.getInstance(picString), false, true,
+					RenderedImageFactory.getInstance(picFullPath), false, true,
 					true);
 			screenshot1.setMinimumSize(new Dimension(getMapMode().DPtoLP(20),
 					getMapMode().DPtoLP(20)));

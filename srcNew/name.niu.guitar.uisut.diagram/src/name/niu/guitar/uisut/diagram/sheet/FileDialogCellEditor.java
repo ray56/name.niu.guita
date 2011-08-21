@@ -7,7 +7,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.ui.actions.ImportResourcesAction;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.gmf.runtime.common.ui.services.properties.extended.IPropertyAction;
 import org.eclipse.gmf.runtime.common.ui.services.properties.extended.MultiButtonCellEditor ;
 
@@ -69,7 +72,15 @@ public class FileDialogCellEditor extends MultiButtonCellEditor/*DialogCellEdito
         		fileDialog.setFileName("选择图形文件");
         		fileDialog.setFilterExtensions(new String[] { "*.gif;*.png;*.jpg" , "*.*" });
         		String path = fileDialog.open();
-        		return path;                
+        		String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
+        		
+        		if( path.contains( workspacePath )) {        			
+        			ResourcesPlugin.getWorkspace().getRoot().getLocationURI();
+        			URI uri = URI.createPlatformResourceURI(path.replace( workspacePath, ""), false);
+        			String uriStr = uri.toPlatformString(false) ;
+        			path = uri.toString() ;        			
+        		}
+        		return path; 
             }
         };
         addButton("select image", setAction);
