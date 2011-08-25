@@ -2,6 +2,9 @@ package name.niu.guitar.uisut.tcgen;
 
 import java.util.ArrayList;
 
+import javax.naming.spi.DirStateFactory.Result;
+
+import name.niu.guitar.uisut.AbstractUIState;
 import name.niu.guitar.uisut.UITransition;
 
 public class Path {
@@ -32,6 +35,25 @@ public class Path {
 			return mTransitionSeq.get(index);
 		}
 		return null ;
+	}
+	
+	public AbstractUIState[] getVertexSeq(){
+		ArrayList<AbstractUIState> result = new ArrayList<AbstractUIState> () ;
+		if ( mTransitionSeq != null ){
+			result.add( mTransitionSeq.get(0).getItsExpandedSrcState() ) ;
+			for( UITransition t : mTransitionSeq ) {
+				result.add( t.getItsExpandedTarState() ) ;
+			}			
+		}
+		return result.toArray( new AbstractUIState[0]) ;
+	}
+	
+	public UITransition[] getTransitionSeq() {
+		if ( mTransitionSeq != null ){
+			return mTransitionSeq.toArray(new UITransition[0]) ;
+		}
+		return null ;
+		
 	}
 	
 	public void addHead(UITransition transition) {

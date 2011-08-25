@@ -109,6 +109,25 @@ public class PathCycleDynamicCalcutor {
 		}
 		return maxCycleCount ;
 	}
+	
+	public int getSimpleCycleCount( Cycle cycle ){
+		Integer result = null ;
+		if ( mCycleCounter != null ) {
+			result = mCycleCounter.get( cycle ) ;
+		}
+		if ( result == null)
+			return 0 ;
+		else
+			return result ;
+	}
+	
+	public Cycle[] getSimpleCycleSeq() {
+		if ( mCycles != null && mCycles.size() != 0 ) {
+			return this.mCycles.keySet().toArray( new Cycle[0]) ;	
+		}
+		return new Cycle[0] ;
+	}
+	
 	public void addPathHead( UITransition transition ) {
 		this.mPath.addHead(transition);	
 		for ( Cycle c  : mCycles.values() ){

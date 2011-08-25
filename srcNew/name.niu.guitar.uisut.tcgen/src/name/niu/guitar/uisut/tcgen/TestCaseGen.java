@@ -11,6 +11,7 @@ import java.util.concurrent.Semaphore;
 
 import javax.swing.JOptionPane;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -137,6 +138,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	ArrayDeque<Integer> aqTranPath = new ArrayDeque<Integer>();
 	
 	PathCycleDynamicCalcutor pcdc = null ;
+	TestCaseGenStatistics tcgs = null ;
 	
 	private String par_uisutFilePath;
 	private UIStatemachine par_stm;
@@ -150,11 +152,16 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			int maxLoop, int maxStep, AbstractUIState start, 
 			AbstractUIState end) throws StopGenExecption
 	{
+		
 		// get start time
 		long startTime = System.currentTimeMillis();
 		
+		tcgs = new TestCaseGenStatistics(stm, maxStep, maxLoop, start, end) ;
+		tcgs.setStart(startTime);
+		
 		this.pcdc = new PathCycleDynamicCalcutor( stm , start ) ;
 		pcdc.initialize() ;
+		tcgs.setSimpleCount( pcdc.getSimpleCycleSeq() ) ;
 		GuitarLog.debug(pcdc.toString());
 		
 		// initial variables
@@ -191,6 +198,9 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		// get end time
 		long endTime = System.currentTimeMillis();
+		tcgs.setEnd(endTime);
+		//GuitarLog.info( "$$$$$$$$$$$$$$$$\r\n" + tcgs.toString() );
+		Logger.getLogger(TestCaseGen.class).info( "$$$$$$$$$$$$$$$$\r\n" + tcgs.toString() );
 		String generationTime = String.format("cost time:%s ms", endTime - startTime);
 		
 		// show message
@@ -465,6 +475,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			if(inextast == this.iEnd){
 				// 
 				GuitarLog.debug( "Output Path:" + this.pcdc.getPath().toString() ) ;
+				tcgs.countCompletedPath( pcdc ) ;
+				
 				TestCase tc = UitfFactory.eINSTANCE.createTestCase();
 				this.tcCount++;
 				tc.setId(String.format("TC_%03d", this.tcCount));
