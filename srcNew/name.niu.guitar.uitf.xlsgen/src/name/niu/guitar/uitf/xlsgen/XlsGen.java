@@ -96,7 +96,7 @@ public class XlsGen implements ITCDoneSubscriber{
 			eetc_out = new FileOutputStream(target_file_path);
 			eetc.exportExcel(eetc_title,eetc_header, eetc_columnWidth,eetc_dataset, eetc_out,"YYYY-MM-DD");
 			eetc_out.close();
-			JOptionPane.showMessageDialog(null, "Generate Test Case Document Successfully!");
+			//JOptionPane.showMessageDialog(null, "Generate Test Case Document Successfully!");
 			GuitarLog.getInstance().info( "Generate Test Case Document Successfully!");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
