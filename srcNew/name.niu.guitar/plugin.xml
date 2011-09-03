@@ -54,7 +54,7 @@
                   style="push">
                <parameter
                      name="name.niu.guitar.ui.commands.GenOnline.subCmd"
-                     value="START">
+                     value="TRIGGER_START_IN_STEP_MODE">
                </parameter>
             </command>
             <command
