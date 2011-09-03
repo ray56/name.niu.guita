@@ -233,11 +233,11 @@ public class TestCaseGenStatistics {
 		}	
 		
 		sb.append( String.format("Simple Cycle Count:%s\r\n", simpleCycleCount )) ;
-		sb.append( String.format("Simple Cycle Count:%s\r\n", coverageRateSimpleCycle )) ;
+		sb.append( String.format("Simple Cycle Coverage Rate:%s\r\n", coverageRateSimpleCycle )) ;
 		for( Cycle c : simpleCycleArray ){
 			sb.append( String.format("\t Simple Cycle [%s] occurs %s times\r\n", 
 					c.toString(), simpleCycleCoverageCount.get(c) )) ;
-		}		
+		}
 		
 		
 		return sb.toString() ;

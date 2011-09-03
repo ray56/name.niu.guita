@@ -35,7 +35,7 @@ public class Cycle {
 				if ( i < operand2.mTransitionSeq.length ){
 					int j ;
 					for ( j = 0 ; j < operand2.mTransitionSeq.length 
-						&& ! operand1.getEdge(j).equals( operand2.getEdge( (j+i )% operand2.mTransitionSeq.length ) ); j ++ ) {				
+						&& operand1.getEdge(j).equals( operand2.getEdge( (j+i )% operand2.mTransitionSeq.length ) ); j ++ ) {				
 					}
 					if ( j >=operand2.mTransitionSeq.length ){
 						return true ;

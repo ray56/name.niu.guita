@@ -73,7 +73,8 @@ public class PathCycleDynamicCalcutor {
 				Cycle cycle ;
 				
 				if( tran2add.getItsExpandedSrcState().equals( tran2add.getItsExpandedTarState() )) {
-					cycle = new Cycle( tranSeq.toArray(new UITransition[0]));
+					UITransition[] list = {tran2add};
+					cycle = new Cycle( list );
 					this.mCycles.put(cycle , cycle );
 				} else {
 					boolean fFindSame = false ;					
@@ -188,7 +189,8 @@ public class PathCycleDynamicCalcutor {
 				if ( mPath.getEdgeSize() - 1 + 1 <= lastPair.second  ) {
 					cycleList.remove(cycleList.size() - 1 ) ;
 					this.mCycleCounter.put(c, cycleList.size());
-					if( maxCycleCount == cycleList.size() + 1 ) {
+					// if maxCycleCount == null, then the expression cycleList.size() + 1 == maxCycleCount will throw
+					if( maxCycleCount != null && cycleList.size() + 1 == maxCycleCount ) {
 						maxCycleCount = null ;
 					}
 				} else if ( mPath.getEdgeSize() - 1 + 1 <= lastPair.second + c.getEdgeSize() - 1 ) {
@@ -240,7 +242,7 @@ public class PathCycleDynamicCalcutor {
 	
 	public String toString(){
 		StringBuffer sb = new StringBuffer() ;
-		sb.append("©³©¥©¥©¥©¥©¥©·\r\n");
+		sb.append("\r\n©³©¥©¥PathCycleDynamicCalcutor©¥©¥©¥©·\r\n");
 		sb.append("max cycle count:").append( getMaxCycleCounter() ).append("\r\n");
 		for(Cycle c : mCycles.values() ) {
 			sb.append( c.toString() ).append(", ") ;

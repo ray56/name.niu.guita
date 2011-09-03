@@ -162,7 +162,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		this.pcdc = new PathCycleDynamicCalcutor( stm , start ) ;
 		pcdc.initialize() ;
 		tcgs.setSimpleCount( pcdc.getSimpleCycleSeq() ) ;
-		GuitarLog.debug(pcdc.toString());
+		//GuitarLog.debug(pcdc.toString());
 		
 		// initial variables
 		this.initialVariables(stm);
@@ -446,10 +446,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				//TODO : "aqTranPath's max cycle counter > this.maxLoop"
 				UITransition transition2add = stm.getItsExpandedUITransition().get( icurtran );
 				this.pcdc.addPathHead( transition2add );
-				GuitarLog.debug( pcdc.toString() ) ;
+				//GuitarLog.debug( pcdc.toString() ) ;
 				int maxCycleCounter = this.pcdc.getMaxCycleCounter() ;
 				this.pcdc.rollbackPathHead() ;
-				GuitarLog.debug( pcdc.toString() ) ;
+				//GuitarLog.debug( pcdc.toString() ) ;
 				if( maxCycleCounter > this.maxLoop ) {
 					continue ;
 				} 
@@ -465,7 +465,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			UITransition transition2add = stm.getItsExpandedUITransition().get( icurtran);
 			// add current transition to path
 			this.pcdc.addPathHead( transition2add );
-			GuitarLog.debug(pcdc.toString());
+			//GuitarLog.debug(pcdc.toString());
 			alTranOccur.set(icurtran, alTranOccur.get(icurtran)+1);
 			
 			AbstractUIState nextast = curtran.getItsExpandedTarState();
@@ -474,7 +474,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			// output path
 			if(inextast == this.iEnd){
 				// 
-				GuitarLog.debug( "Output Path:" + this.pcdc.getPath().toString() ) ;
+				//GuitarLog.debug( "Output Path:" + this.pcdc.getPath().toString() ) ;
 				tcgs.countCompletedPath( pcdc ) ;
 				
 				TestCase tc = UitfFactory.eINSTANCE.createTestCase();
@@ -539,7 +539,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 			int temptran = this.aqTranPath.removeLast();
 			assert( this.pcdc.getPath().getEdgeSize() != 0 ) ;
 			this.pcdc.rollbackPathHead() ;
-			GuitarLog.debug(pcdc.toString()) ;
+			//GuitarLog.debug(pcdc.toString()) ;
 			this.alTranOccur.set(temptran, this.alTranOccur.get(temptran)-1);
 		}
 		
