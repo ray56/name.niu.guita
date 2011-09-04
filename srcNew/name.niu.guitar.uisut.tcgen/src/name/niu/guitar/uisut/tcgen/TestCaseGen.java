@@ -484,7 +484,8 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				
 				AbstractUIState tempst = stm.getItsExpandedUIState().get(this.iStart);
 				Statement preStatement = UitfFactory.eINSTANCE.createStatement();
-				preStatement.setDescription(String.format("[Preconditions]\n Current Position: %s\n Need Condition:\n",tempst.getDescription()));
+				preStatement.setDescription(String.format("[Preconditions]\n Current Position: %s\n Need Condition:\n",
+						tempst.getDescription()==null?tempst.getName():tempst.getDescription() ));
 				tc.getItsStatement().add(preStatement);
 				
 				Statement tchead = UitfFactory.eINSTANCE.createStatement();
@@ -492,7 +493,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				tc.getItsStatement().add(tchead);
 				
 				Statement start = UitfFactory.eINSTANCE.createStatement();
-				start.setDescription(stm.getItsExpandedUIState().get(iStart).getDescription());
+				start.setDescription(
+						stm.getItsExpandedUIState().get(iStart).getDescription() == null ?
+								stm.getItsExpandedUIState().get(iStart).getName():
+									stm.getItsExpandedUIState().get(iStart).getDescription());
 				start.setScriptStr(stm.getItsExpandedUIState().get(iStart).getScriptStr());
 				start.setTrackbackID( stm.getItsExpandedUIState().get(iStart).eResource().getURIFragment(stm.getItsExpandedUIState().get(iStart)));
 				tc.getItsStatement().add(start);
@@ -502,7 +506,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 					// add statement of action
 					UITransition temptran = stm.getItsExpandedUITransition().get(tempqTranPath.remove());
 					Statement stepStatement = UitfFactory.eINSTANCE.createStatement();
-					stepStatement.setDescription(String.format("%d.%s\n", ii, temptran.getDescription()));
+					stepStatement.setDescription(String.format("%d.%s\n", ii, 
+							temptran.getDescription()== null ? 
+									temptran.getName():
+										temptran.getDescription()));
 					stepStatement.setScriptStr(temptran.getScriptStr());
 					// set trackbackId as eObject's URIFragment
 					stepStatement.setTrackbackID( temptran.eResource().getURIFragment(temptran));
@@ -510,7 +517,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 					
 					// add statement of expect
 					Statement stepExpStatement = UitfFactory.eINSTANCE.createStatement();
-					stepExpStatement.setDescription( String.format("%d.Enter: %s\n", ii, temptran.getItsExpandedTarState().getDescription()));
+					stepExpStatement.setDescription( String.format("%d.Enter: %s\n", ii, 
+							temptran.getItsExpandedTarState().getDescription() == null ?
+									temptran.getItsExpandedTarState().getName():
+										temptran.getItsExpandedTarState().getDescription()));
 					stepExpStatement.setScriptStr( temptran.getItsExpandedTarState().getScriptStr());
 					// set trackbackId as eObject's URIFragment
 					stepExpStatement.setTrackbackID(temptran.eResource().getURIFragment(temptran.getItsExpandedTarState()));
