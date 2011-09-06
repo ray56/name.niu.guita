@@ -3,6 +3,7 @@ package name.niu.guitar.uisut.diagram.edit.policies;
 import java.io.IOException;
 import java.util.Iterator;
 
+import name.niu.guitar.uisut.UIStatemachine;
 import name.niu.guitar.uisut.diagram.edit.parts.UIStatemachineEditPart;
 import name.niu.guitar.uisut.diagram.part.Messages;
 import name.niu.guitar.uisut.diagram.part.UisutDiagramEditor;
@@ -84,7 +85,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
 		// FIXME canExecute if  !(readOnly && getDiagramToOpen == null), i.e. open works on ro diagrams only when there's associated diagram already
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 				IAdaptable info) throws ExecutionException {
@@ -96,6 +97,13 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
 				URI uri = EcoreUtil.getURI(diagram);
 				String editorName = uri.lastSegment() + '#'
 						+ diagram.eResource().getContents().indexOf(diagram);
+				// 2011-09-06 add diagram's element's name
+				if ( diagram.getElement() instanceof UIStatemachine) {
+					UIStatemachine m = (UIStatemachine) diagram.getElement() ;
+					if ( m.getName() != null && m.getName().length() != 0 ) {
+						editorName = editorName + "(" + m.getName() + ")" ;
+					}
+				}
 				IEditorInput editorInput = new URIEditorInput(uri, editorName);
 				IWorkbenchPage page = PlatformUI.getWorkbench()
 						.getActiveWorkbenchWindow().getActivePage();
