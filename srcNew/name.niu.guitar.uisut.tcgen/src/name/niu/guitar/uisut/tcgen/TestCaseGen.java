@@ -94,9 +94,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		{
 			String event = pollEvent();
 			if ( getStatus().equals(SM_STATUS_IDLE) ) {
-				if (event.equals(SM_TRIGGER_START)) {						
+				if (event.equals(SM_TRIGGER_START)) {
+					int i = 0 ;
 					try {
-						doGenerateTestCase(par_uisutFilePath, par_stm, par_maxLoop, par_maxStep,
+						i = doGenerateTestCase(par_uisutFilePath, par_stm, par_maxLoop, par_maxStep,
 								par_start, par_end);
 					} catch (StopGenExecption e) {
 //						setStatus(SM_STATUS_STOPPED);
@@ -104,7 +105,11 @@ public class TestCaseGen extends TCDonePublisherImpl{
 						return ;
 					} 
 //					setStatus(STATUS_END_OK);
-					notifyTCGStoped(ITCDoneSubscriber.Stop_Reason_Completion);
+					if( i == -1 ) {
+						notifyTCGStoped(ITCDoneSubscriber.Stop_Reason_ValidatioError);
+					} else {
+						notifyTCGStoped(ITCDoneSubscriber.Stop_Reason_Completion);
+					}
 					setStatus(SM_STATUS_RUNNING);
 				} 
 			} else if ( getStatus().equals(SM_STATUS_RUNNING) ) {
@@ -147,7 +152,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 	private AbstractUIState par_start;
 	private AbstractUIState par_end;
 	
-	private void doGenerateTestCase(
+	private int doGenerateTestCase(
 			String uisutFilePath, UIStatemachine stm, 
 			int maxLoop, int maxStep, AbstractUIState start, 
 			AbstractUIState end) throws StopGenExecption
@@ -171,9 +176,10 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		// validate stm
 		Validator vali = new Validator();
 		if(vali.validateStm(stm) == 0){
-			int r = JOptionPane.showConfirmDialog(null, "OK to ignore erroes and go on?");
-			if ( r == JOptionPane.CANCEL_OPTION || r == JOptionPane.NO_OPTION )
-				return ;
+//			int r = JOptionPane.showConfirmDialog(null, "OK to ignore erroes and go on?");
+//			if ( r == JOptionPane.CANCEL_OPTION || r == JOptionPane.NO_OPTION )
+//				return ;
+			return -1;
 		}
 		
 		// set hash maps of stm
@@ -205,6 +211,7 @@ public class TestCaseGen extends TCDonePublisherImpl{
 		
 		// show message
 		JOptionPane.showMessageDialog(null, "Generate Test Case Successfully!\n"+generationTime);
+		return 0 ;
 	}
 	
 	public void generateTestCase(

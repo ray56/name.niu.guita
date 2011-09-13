@@ -8,6 +8,7 @@ public interface ITCDoneSubscriber {
 	public void OnTestCaseDone(TestCase tc);
 	public static String Stop_Reason_Completion 	= "Stop_Reason_Completion";
 	public static String Stop_Reason_Cancellation 	= "Stop_Reason_Cancellation";
+	public static String Stop_Reason_ValidatioError 	= "Stop_Reason_ValidatioError";
 	public void OnTCGStoped(ITCDonePublisher tcg , String reason) ;
 
 }
