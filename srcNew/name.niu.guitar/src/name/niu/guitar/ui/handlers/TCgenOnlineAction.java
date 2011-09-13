@@ -208,7 +208,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 		if ( subCmd.equals(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE)){
 			if ( getStatus().equals(SM_STATUS_IDLE)) {
 				addEvent(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE);
-				doStart(event);
+				doStart(event, false);
 			} else {
 				MessageDialog.openInformation(
 				HandlerUtil.getActiveShell(event),
@@ -220,7 +220,7 @@ public class TCgenOnlineAction extends AbstractHandler {
 			if ( getStatus().equals(SM_STATUS_IDLE)) {
 				addEvent(SM_TRIGGER_START_ONLINE_STEP_MODE);
 				setStepMode(true);
-				doStart(event);
+				doStart(event, false);
 			} else {
 				MessageDialog.openInformation(
 				HandlerUtil.getActiveShell(event),
@@ -233,8 +233,17 @@ public class TCgenOnlineAction extends AbstractHandler {
 		} else if (subCmd.equals(SM_TRIGGER_STEP)) {
 			addEvent(SM_TRIGGER_STEP);
 		// offline
-		} else if (subCmd.equals("OFFLINE")){
-			return doGenOffline(event) ;
+		} else if (subCmd.equals("OFFLINE")){			
+			if ( getStatus().equals(SM_STATUS_IDLE)) {
+				addEvent(SM_TRIGGER_START_ONLINE_CONTINUOUS_MODE);
+				doStart(event, true) ;
+			} else {
+				MessageDialog.openInformation(
+				HandlerUtil.getActiveShell(event),
+				"Guitar",
+				"Already Started");			
+			}
+			//return doGenOffline(event) ;
 		} else if (subCmd.equals("SELECTFROM")) {
 			ISelection selection = HandlerUtil.getCurrentSelection(event);
 			if ( selection instanceof IStructuredSelection){
@@ -323,10 +332,11 @@ public class TCgenOnlineAction extends AbstractHandler {
 
 	/**
 	 * @param event
+	 * @param isOffline TODO
 	 * @return
 	 * @throws ExecutionException
 	 */
-	private Object doStart( ExecutionEvent event) throws ExecutionException 
+	private Object doStart( ExecutionEvent event, boolean isOffline) throws ExecutionException 
 	{
 		// set maxLoop and max Step
 		TestCaseGenWizard wizard = new TestCaseGenWizard();
@@ -361,36 +371,52 @@ public class TCgenOnlineAction extends AbstractHandler {
 		
 		tcgen.addSubscriber(sptgen);
 		tcgen.addSubscriber(xlsgen);
-		tcgen.addSubscriber(scriptEngine);
 		
-		// add listener to scritpEngine				
-		scriptEngine.addSubscriber( new ITargetScriptExeDoneSubscriber() {
-			public void OnTargetStatementDone(String[] executedUUID) {
-				internalHightlight(executedUUID ) ;
-			}
-			public void OnSEStoped(ITargetScriptExeDonePublisher p) {
-				addEvent(SM_TRIGGER_STOP);
-				internalClearTC();
-				lastExecutedUUID = null ;
-			}
-			@Override
-			public void OnTestCaseDone(TestCase tc) {
-				internalClearTC();
-				lastExecutedUUID = null ;
-			}					
-		});			
-		tcgen.addSubscriber(  new ITCDoneSubscriber() {
-			public void OnUtifFileDone(String uitfFileParth) {
-			};
-			public void OnTestCaseDone(name.niu.guitar.uitf.TestCase tc) {
-				//internalClearTC() ;
-			}
-			public void OnTCGStoped(ITCDonePublisher tcg, String reason) {
-				if( reason.equals(ITCDoneSubscriber.Stop_Reason_Completion)) {
-					//addEvent(SM_TRIGGER_STOP);
+		if( ! isOffline ) {
+			tcgen.addSubscriber(scriptEngine);
+			// add listener to scritpEngine				
+			scriptEngine.addSubscriber( new ITargetScriptExeDoneSubscriber() {
+				public void OnTargetStatementDone(String[] executedUUID) {
+					internalHightlight(executedUUID ) ;
 				}
-			}					
-		});		
+				public void OnSEStoped(ITargetScriptExeDonePublisher p) {
+					addEvent(SM_TRIGGER_STOP);
+					internalClearTC();
+					lastExecutedUUID = null ;
+				}
+				@Override
+				public void OnTestCaseDone(TestCase tc) {
+					internalClearTC();
+					lastExecutedUUID = null ;
+				}					
+			});	
+			tcgen.addSubscriber(  new ITCDoneSubscriber() {
+				public void OnUtifFileDone(String uitfFileParth) {
+				};
+				public void OnTestCaseDone(name.niu.guitar.uitf.TestCase tc) {
+					//internalClearTC() ;
+				}
+				public void OnTCGStoped(ITCDonePublisher tcg, String reason) {
+					if( reason.equals(ITCDoneSubscriber.Stop_Reason_ValidatioError)) {
+						addEvent(SM_TRIGGER_STOP);
+					}
+				}	
+			});
+		} else {
+			tcgen.addSubscriber(  new ITCDoneSubscriber() {
+				public void OnUtifFileDone(String uitfFileParth) {
+				};
+				public void OnTestCaseDone(name.niu.guitar.uitf.TestCase tc) {
+					
+				}
+				public void OnTCGStoped(ITCDonePublisher tcg, String reason) {
+					addEvent(SM_TRIGGER_STOP) ;
+				}					
+			});	
+			
+		}
+	
+		
 		job = new Job("GenAndExe") 
 		{
 			protected IStatus run(IProgressMonitor monitor) 
@@ -502,8 +528,8 @@ public class TCgenOnlineAction extends AbstractHandler {
 		tcgen.addSubscriber(sptgen);
 		tcgen.addSubscriber(xlsgen);
 		
-		// generate TestCase
-		tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
+				// generate TestCase
+				tcgen.generateTestCase(uisutFilePath, stm, maxLoop, maxStep, astStart, astEnd);
 		
 		GuitarLog.getInstance().info("Method End");
 		return null;
