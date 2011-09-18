@@ -20,6 +20,7 @@ public class Config {
 	public static String ANIMATIONINTERVAL = "animationInterval" ;
 	public static String SCRIPTINTERPRETER_SCRIPTFILE = "scriptInterpreter_scriptFile" ;
 	public static String SCRIPTINTERPRETER_COMMANDLINE = "scriptInterpreter_commandLine" ;
+	public static String CHUNKSIZE = "chunkSize" ;
 	
 	
 	static public String scriptInterpreter_scriptFile ;
@@ -36,6 +37,8 @@ public class Config {
 	
 	static public String animationInterval ;
 	
+	static public String chunkSize ;
+	
 	static {
 		Properties property = new Properties();
 		String installLoc = Platform.getInstallLocation().getURL().getPath();
@@ -50,6 +53,7 @@ public class Config {
 			animationFromStateColor = property.getProperty(ANIMATIONFROMSTATECOLOR);
 			animationToStateColor = property.getProperty(ANIMATIONTOSTATECOLOR);
 			animationInterval = property.getProperty(ANIMATIONINTERVAL);
+			chunkSize = property.getProperty(CHUNKSIZE);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -103,6 +107,10 @@ public class Config {
 		return cmd ;
 	}
 	
+	public static int getChunkSize() {
+		int chunkSize = Activator.getDefault().getPreferenceStore().getInt(Config.CHUNKSIZE);
+		return chunkSize ;
+	}
 	
 
 }

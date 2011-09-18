@@ -8,6 +8,7 @@ import org.eclipse.jface.preference.ColorFieldEditor;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.jface.preference.PathEditor;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.preference.PreferencePage;
@@ -48,6 +49,9 @@ public class GuitarGenPreferencePage extends FieldEditorPreferencePage implement
 				"interval of continual steps\t",
 				getFieldEditorParent(),
 				1000,10000,500,2000));
+		addField( new IntegerFieldEditor(Config.CHUNKSIZE,
+				"max case number in a single file",
+				getFieldEditorParent())) ;
 	}
 
 }

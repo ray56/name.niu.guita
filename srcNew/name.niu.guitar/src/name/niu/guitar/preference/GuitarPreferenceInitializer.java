@@ -32,6 +32,7 @@ public class GuitarPreferenceInitializer extends AbstractPreferenceInitializer {
 				Config.scriptInterpreter_scriptFile ) ;
 		store.setDefault( Config.SCRIPTINTERPRETER_COMMANDLINE, 
 				Config.scriptInterpreter_commandLine ) ;
+		store.setDefault(Config.CHUNKSIZE, Config.chunkSize);
 	}
 
 }

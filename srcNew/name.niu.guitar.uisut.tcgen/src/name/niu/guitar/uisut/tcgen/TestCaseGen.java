@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -29,7 +30,8 @@ import name.niu.guitar.uitf.*;
 
 public class TestCaseGen extends TCDonePublisherImpl{
 	
-	static int flushSize = 10000;
+	static int flushSize = Platform.getPreferencesService().
+		getInt("name.niu.guitar", "chunkSize", 100, null)/*10000*/;
 	int flushCount;
 	int tcCount;
 	
