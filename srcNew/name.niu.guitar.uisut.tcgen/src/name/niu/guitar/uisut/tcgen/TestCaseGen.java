@@ -456,13 +456,15 @@ public class TestCaseGen extends TCDonePublisherImpl{
 				UITransition transition2add = stm.getItsExpandedUITransition().get( icurtran );
 				this.pcdc.addPathHead( transition2add );
 				//GuitarLog.debug( pcdc.toString() ) ;
-				int maxCycleCounter = this.pcdc.getMaxCycleCounter() ;
+				//int maxCycleCounter = this.pcdc.getMaxCycleCounter() ;
+				boolean isLastContinuousCycleGT = pcdc.isLastContinuousCycleGT( this.maxLoop ) ;
 				this.pcdc.rollbackPathHead() ;
 				//GuitarLog.debug( pcdc.toString() ) ;
-				if( maxCycleCounter > this.maxLoop ) {
+				if( isLastContinuousCycleGT ) {
 					continue ;
 				} 
 			}
+			
 			
 			// out of step
 			if(this.aqTranPath.size() >= this.maxStep){

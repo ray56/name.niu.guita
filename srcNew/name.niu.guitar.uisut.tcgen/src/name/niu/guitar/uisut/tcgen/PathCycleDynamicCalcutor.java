@@ -111,6 +111,22 @@ public class PathCycleDynamicCalcutor {
 		return maxCycleCount ;
 	}
 	
+	public boolean isLastContinuousCycleGT( int maxLoop) {
+		
+		for ( Cycle c  : mCycles.values() ){
+			ArrayList<Pair<CycleIterator,Integer>> cycleList = mCycleCoverage.get(c) ;
+			if (  cycleList.size() >= maxLoop + 1 ) {
+				Pair<CycleIterator,Integer> x = cycleList.get(cycleList.size() - maxLoop - 1 ) ;
+				Pair<CycleIterator,Integer> tail = cycleList.get( cycleList.size() - 1) ;
+				if( tail.first.isAtEnd() &&
+						x.second + c.getEdgeSize() * (maxLoop+1) - 1  == mPath.getEdgeSize() - 1 ) {
+					return true ;
+				} 
+			} 
+		}
+		return false ;
+	}
+	
 	public int getSimpleCycleCount( Cycle cycle ){
 		Integer result = null ;
 		if ( mCycleCounter != null ) {
