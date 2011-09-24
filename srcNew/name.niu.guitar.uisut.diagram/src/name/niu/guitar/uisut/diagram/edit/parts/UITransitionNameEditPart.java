@@ -7,6 +7,7 @@ import name.niu.guitar.uisut.diagram.edit.policies.UisutTextSelectionEditPolicy;
 import name.niu.guitar.uisut.diagram.part.UisutVisualIDRegistry;
 import name.niu.guitar.uisut.diagram.providers.UisutElementTypes;
 import name.niu.guitar.uisut.diagram.providers.UisutParserProvider;
+import name.niu.guitar.uisut.UITransition ;
 
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
@@ -198,7 +199,7 @@ public class UITransitionNameEditPart extends LabelEditPart implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected String getLabelText() {
 		String text = null;
@@ -207,6 +208,9 @@ public class UITransitionNameEditPart extends LabelEditPart implements
 			text = getParser().getPrintString(
 					new EObjectAdapter(parserElement),
 					getParserOptions().intValue());
+		}
+		if (text == null || text.length() == 0) {
+			text = ((UITransition)parserElement).getDescription();
 		}
 		if (text == null || text.length() == 0) {
 			text = defaultText;

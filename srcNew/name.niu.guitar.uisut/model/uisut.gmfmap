@@ -102,11 +102,16 @@
     <domainMetaElement
         href="uisut.ecore#//UITransition"/>
     <labelMappings
-        xsi:type="gmfmap:FeatureLabelMapping">
+        xsi:type="gmfmap:FeatureLabelMapping"
+        viewPattern="{0}"
+        editorPattern="{0}"
+        editPattern="{0}">
       <diagramLabel
           href="uisut.gmfgraph#UITransitionName"/>
       <features
           href="uisut.ecore#//UIElement/name"/>
+      <features
+          href="uisut.ecore#//UIElement/description"/>
       <editableFeatures
           href="uisut.ecore#//UIElement/name"/>
     </labelMappings>

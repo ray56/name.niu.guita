@@ -93,22 +93,26 @@ public class UisutParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser uITransitionName_6001Parser;
+	private IParser uITransitionNameDescription_6001Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getUITransitionName_6001Parser() {
-		if (uITransitionName_6001Parser == null) {
-			EAttribute[] features = new EAttribute[] { UisutPackage.eINSTANCE
-					.getUIElement_Name() };
+	private IParser getUITransitionNameDescription_6001Parser() {
+		if (uITransitionNameDescription_6001Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UisutPackage.eINSTANCE.getUIElement_Name(),
+					UisutPackage.eINSTANCE.getUIElement_Description() };
 			EAttribute[] editableFeatures = new EAttribute[] { UisutPackage.eINSTANCE
 					.getUIElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features,
 					editableFeatures);
-			uITransitionName_6001Parser = parser;
+			parser.setViewPattern("{0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0}"); //$NON-NLS-1$
+			parser.setEditPattern("{0}"); //$NON-NLS-1$
+			uITransitionNameDescription_6001Parser = parser;
 		}
-		return uITransitionName_6001Parser;
+		return uITransitionNameDescription_6001Parser;
 	}
 
 	/**
@@ -123,7 +127,7 @@ public class UisutParserProvider extends AbstractProvider implements
 		case StateshortcutNameEditPart.VISUAL_ID:
 			return getStateshortcutName_5003Parser();
 		case UITransitionNameEditPart.VISUAL_ID:
-			return getUITransitionName_6001Parser();
+			return getUITransitionNameDescription_6001Parser();
 		}
 		return null;
 	}

@@ -287,7 +287,8 @@
       <labels
           visualID="6001"
           editPartClassName="UITransitionNameEditPart"
-          itemSemanticEditPolicyClassName="UITransitionNameItemSemanticEditPolicy">
+          itemSemanticEditPolicyClassName="UITransitionNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="UITransitionNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -300,9 +301,14 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
+            parser="//@labelParsers/@implementations.0"
+            viewPattern="{0}"
+            editorPattern="{0}"
+            editPattern="{0}">
           <metaFeatures
               href="uisut.genmodel#//uisut/UIElement/name"/>
+          <metaFeatures
+              href="uisut.genmodel#//uisut/UIElement/description"/>
           <editableMetaFeatures
               href="uisut.genmodel#//uisut/UIElement/name"/>
         </modelFacet>
